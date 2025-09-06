@@ -1,32 +1,143 @@
-<section id="profile" style="text-align:center; margin:40px 0;">
-  <img src="ramiropluss.jpg" alt="Ramiro Plüss" 
-       style="width:160px; height:160px; border-radius:50%; object-fit:cover; border:3px solid #ccc; margin-bottom:15px;">
-  <h1>Ramiro Plüss</h1>
-  <p><em>PhD Candidate in Computational Neuroscience & Robotics (ITBA)</em></p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ramiro Plüss — Academic Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      color: #333;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px 60px;
+    }
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+    header p {
+      font-size: 16px;
+      font-style: italic;
+      margin-top: 5px;
+    }
+    main {
+      max-width: 800px;
+      margin: -40px auto 40px;
+      padding: 0 20px;
+    }
+    section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    ul {
+      padding-left: 18px;
+    }
+    a {
+      color: #1d76d2;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      display: inline-block;
+      margin: 4px 6px 0 0;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f4f4f4;
+      font-size: 14px;
+    }
+    .btn:hover {
+      background: #e9e9e9;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="ramiropluss.jpg" alt="Ramiro Plüss">
+    <h1>Ramiro Plüss</h1>
+    <p>PhD Candidate in Computational Neuroscience & Robotics (ITBA)</p>
+  </header>
 
-<section id="publications">
-  <h2>📄 Publications & Preprints</h2>
-  <ul>
-    <li>
-      <strong>Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity</strong><br>
-      <a href="https://plussramiro.github.io/pluss2025_hemispheric_model.pdf">[GitHub PDF]</a> ·
-      <a href="https://drive.google.com/file/d/ID_HEMISPHERIC/view?usp=sharing">[Google Drive]</a> ·
-      <a href="https://arxiv.org/abs/2506.22951">[arXiv]</a>
-    </li>
-    <li>
-      <strong>The Role of Connection Density in Adaptive Networks with Chaotic Units</strong><br>
-      <a href="https://plussramiro.github.io/pluss2025_chaotic_model.pdf">[GitHub PDF]</a> ·
-      <a href="https://drive.google.com/file/d/ID_CHAOTIC/view?usp=sharing">[Google Drive]</a> ·
-      <a href="https://arxiv.org/abs/2505.11437">[arXiv]</a>
-    </li>
-  </ul>
-</section>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a Physicist and PhD candidate at ITBA, working on computational and robotic models of proprioception. My research
+        explores how neural dynamics and connectome-based architectures give rise to cognition, embodied motor control, and
+        emergent behavior, using interdisciplinary tools at the intersection of neuroscience, robotics, and complex systems.
+      </p>
+    </section>
 
-<section id="cv">
-  <h2>📌 Curriculum Vitae</h2>
-  <p>
-    <a href="https://plussramiro.github.io/Pluss_Ramiro_CV.pdf">[GitHub PDF]</a> ·
-    <a href="https://drive.google.com/file/d/ID_CV/view?usp=sharing">[Google Drive]</a>
-  </p>
-</section>
+    <section id="publications">
+      <h2>📄 Publications & Preprints</h2>
+      <ul>
+        <li>
+          <strong>Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity</strong><br>
+          <a class="btn" href="pluss2025_hemispheric_model.pdf">GitHub PDF</a>
+          <a class="btn" href="https://drive.google.com/file/d/ID_HEMISPHERIC/view?usp=sharing">Google Drive</a>
+          <a class="btn" href="https://arxiv.org/abs/2506.22951">arXiv</a>
+        </li>
+        <li>
+          <strong>The Role of Connection Density in Adaptive Networks with Chaotic Units</strong><br>
+          <a class="btn" href="pluss2025_chaotic_model.pdf">GitHub PDF</a>
+          <a class="btn" href="https://drive.google.com/file/d/ID_CHAOTIC/view?usp=sharing">Google Drive</a>
+          <a class="btn" href="https://arxiv.org/abs/2505.11437">arXiv</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="cv">
+      <h2>📌 Curriculum Vitae</h2>
+      <a class="btn" href="Pluss_Ramiro_CV.pdf">GitHub PDF</a>
+      <a class="btn" href="https://drive.google.com/file/d/ID_CV/view?usp=sharing">Google Drive</a>
+    </section>
+
+    <section id="contact">
+      <h2>📬 Contact</h2>
+      <p>Email: <a href="mailto:rpluss@itba.edu.ar">rpluss@itba.edu.ar</a></p>
+      <p>
+        <a href="https://www.linkedin.com/in/ramiropluss/">LinkedIn</a> ·
+        <a href="https://github.com/plussramiro">GitHub</a> ·
+        <a href="https://scholar.google.com/citations?user=l1XV7YYAAAAJ">Google Scholar</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Ramiro Plüss · Built with GitHub Pages
+  </footer>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
+
