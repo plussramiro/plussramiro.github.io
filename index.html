@@ -51,15 +51,17 @@
     #robotics .muted { color: #666; margin: 6px 0 14px; font-size: 15px; }
     .carousel {position: relative;overflow: hidden;border-radius: 12px;background: #fafafa;box-shadow: 0 1px 4px rgba(0,0,0,0.06);} /* Contenedor visible del carrusel */
     .carousel .track {display: flex;transition: transform 320ms ease;will-change: transform;} /* Pista que se traslada horizontalmente */
-    .carousel .slide {min-width: 100%;margin: 0;background: #fff;} /* Cada slide ocupa todo el ancho del carrusel */
-    .carousel .slide img {width: 100%;height: 100%;aspect-ratio: 4 / 3;object-fit: cover;display: block;}/* Imagenes con mismo formato visual */ /* mismo formato para todas: cambiá a 4/3 si querés */  /* recorta sin deformar */
-    .carousel figcaption {padding: 8px 12px 12px;font-size: 14px;color: #444;text-align: center;}/* Caption */
+    
+    .carousel .slide {min-width: 100%;margin: 0;background: #fff;display: flex;flex-direction: column;}
+    .carousel .slide img {width: 100%;aspect-ratio: 4 / 3;object-fit: cover;flex-shrink: 0;}  /* Fuerza 4:3 */ /* Recorta si sobra */ /* Que no se achique */
+    
+    .carousel figcaption {padding: 10px;font-size: 14px;color: #444;text-align: center;background: #fff; /* opcional: refuerza contraste */}
     .carousel .nav {position: absolute;top: 50%;transform: translateY(-50%);z-index: 2;width: 40px; height: 40px;border: none;border-radius: 50%;background: rgba(0,0,0,0.45);color: #fff;font-size: 26px;line-height: 40px; cursor: pointer;} /* Flechas */
     .carousel .nav:hover { background: rgba(0,0,0,0.6); }
     .carousel .nav:focus { outline: 2px solid #1d76d2; }
     .carousel .prev { left: 10px; }
     .carousel .next { right: 10px; }
-    .carousel .dots {display: flex;justify-content: center;gap: 8px;padding: 10px 0 12px;} /* Puntitos */
+    .carousel .dots {display: flex;justify-content: center;gap: 8px;padding: 8px 0 16px; /* más espacio inferior */position: relative;z-index: 1; /* asegura que quede arriba si se superpone */} /* Puntitos */
     .carousel .dot {width: 8px; height: 8px;border-radius: 50%;background: #cfd6dd;cursor: pointer;}
     .carousel .dot.active { background: #1d76d2; }
     @media (hover: none) {.carousel .nav { background: rgba(0,0,0,0.35); }} /* Desactivar hover en touch y permitir swipe */
@@ -146,23 +148,29 @@
         <button class="nav prev" aria-label="Previous slide">‹</button>
         <div class="track">
           <!-- Cada .slide es una imagen con mismo formato visual -->
+
+          <figure class="slide">
+            <img src="hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
+            <figcaption>Hexapod prototype with servos & wiring</figcaption>
+          </figure>
+
+          <figure class="slide">
+            <img src="hexapod2.jpg" alt="Hexapod robot during calibration" loading="lazy">
+            <figcaption>Hexapod robot during calibration</figcaption>
+          </figure>
+
+          <figure class="slide">
+            <img src="1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
+            <figcaption>Single leg prototype</figcaption>
+          </figure>
+          
           <figure class="slide">
             <img src="4legs.jpg" alt="Early test with 4 legs module" loading="lazy">
             <figcaption>Early test with 4 legs module</figcaption>
           </figure>
     
           <figure class="slide">
-            <img src="hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
-            <figcaption>Hexapod prototype with servos & wiring</figcaption>
-          </figure>
-    
-          <figure class="slide">
-            <img src="hexapod2.jpg" alt="Hexapod robot during calibration" loading="lazy">
-            <figcaption>Hexapod robot during calibration</figcaption>
-          </figure>
-    
-          <figure class="slide">
-            <img src="robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor" loading="lazy">
+            <img src="robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor and and light sensor (LDR)" loading="lazy">
             <figcaption>Two-wheel robot with ultrasonic sensor</figcaption>
           </figure>
     
@@ -181,10 +189,6 @@
             <figcaption>Dual-eye prototype</figcaption>
           </figure>
     
-          <figure class="slide">
-            <img src="1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
-            <figcaption>Single leg prototype</figcaption>
-          </figure>
         </div>
         <button class="nav next" aria-label="Next slide">›</button>
     
