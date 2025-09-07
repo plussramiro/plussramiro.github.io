@@ -40,9 +40,14 @@
     .affiliations-logos {display: flex;flex-wrap: wrap;justify-content: center;gap: 30px;margin-top: 15px;} /* se acomodan en celular */ /* centrados */  /* espacio entre logos */
     .affiliations-logos img {height: 50px;object-fit: contain;opacity: 0.95;transition: transform 0.2s, opacity 0.2s;} /* todos del mismo alto */
     .affiliations-logos img:hover {transform: scale(1.30);opacity: 1;} /* elegí: 1.05 sutil, 1.12 medio, 1.20 fuerte */
-    @media (hover: none) {.affiliations-logos img:hover {transform: none;}
-}
+    @media (hover: none) {.affiliations-logos img:hover {transform: none;}}
 
+    #robotics {background: #fff;border-radius: 12px;padding: 22px;margin: 20px 0;box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
+    #robotics h2 {margin-top: 0;color: #2c3e50;}
+    .gallery {display: grid;gap: 18px;grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));}
+    .gallery figure {margin: 0;background: #fafafa;border-radius: 10px;overflow: hidden;box-shadow: 0 1px 4px rgba(0,0,0,0.08);}
+    .gallery img {width: 100%;object-fit: cover;display: block;transition: transform 0.25s ease;}
+    .gallery figcaption {padding: 8px 10px 10px;font-size: 14px;color: #444;text-align: center;}
   </style>
 </head>
   
@@ -118,6 +123,56 @@
         </li>
       </ul>
     </section>
+
+    <section id="robotics">
+      <h2>🤖 Robotics Prototypes & Evolution</h2>
+      <p class="muted">A progression of the different robotic systems and prototypes I have been building and improving over time.</p>
+    
+      <div class="gallery">
+        <!-- Legs / early structure -->
+        <figure>
+          <img src="4legs.jpg" alt="First test with 4 robotic legs module" loading="lazy">
+          <figcaption>Early test with 4 legs module (structural assembly)</figcaption>
+        </figure>
+    
+        <!-- Hexapod evolution -->
+        <figure>
+          <img src="hexapod1.jpg" alt="Hexapod prototype frame with servo connections" loading="lazy">
+          <figcaption>Hexapod prototype with servos and wiring</figcaption>
+        </figure>
+        <figure>
+          <img src="hexapod2.jpg" alt="Hexapod robot during calibration stage" loading="lazy">
+          <figcaption>Hexapod robot during calibration</figcaption>
+        </figure>
+    
+        <!-- Wheeled robots -->
+        <figure>
+          <img src="robot_sensor.png" alt="Two-wheel robot with sensors" loading="lazy">
+          <figcaption>Two-wheel robot with ultrasonic sensor (Arduino-based)</figcaption>
+        </figure>
+        <figure>
+          <img src="robot_wheels.jpg" alt="Four-wheel robot with mecanum wheels" loading="lazy">
+          <figcaption>Four-wheel robot with mecanum wheels</figcaption>
+        </figure>
+    
+        <!-- Eye prototypes -->
+        <figure>
+          <img src="1eye.jpg" alt="Single robotic eye prototype" loading="lazy">
+          <figcaption>Single robotic eye prototype</figcaption>
+        </figure>
+        <figure>
+          <img src="2eyes.jpg" alt="Dual robotic eye prototype" loading="lazy">
+          <figcaption>Dual-eye prototype for visual-motor experiments</figcaption>
+        </figure>
+    
+        <!-- Leg prototype -->
+        <figure>
+          <img src="1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
+          <figcaption>Single leg prototype with servo actuator</figcaption>
+        </figure>
+      </div>
+    </section>
+
 
     <section id="programs"> <!-- Sección de programas y cursos -->
       <h2>🎓 Relevant programs and courses</h2>
