@@ -130,6 +130,13 @@
   <footer> <!-- Pie de página -->
     © <span id="y"></span> Ramiro Plüss · Built with GitHub Pages <!-- Texto y año automático -->
   </footer>
+
+  <script> // Busca en el documento el elemento que tiene el id="y"
+  var yearSpan = document.getElementById("y"); // En tu footer es: <span id="y"></span>
+  var currentYear = new Date().getFullYear(); // Obtiene el año actual desde la fecha del sistema
+  yearSpan.textContent = currentYear; // Inserta ese año como texto dentro del <span>
+</script>
+  
 </body>
 </html>
 
