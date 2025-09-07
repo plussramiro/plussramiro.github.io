@@ -45,14 +45,90 @@
     .affiliations-logos img:hover {transform: scale(1.30);opacity: 1;} /* elegí: 1.05 sutil, 1.12 medio, 1.20 fuerte */
     @media (hover: none) {.affiliations-logos img:hover {transform: none;}}
 
+    /* ===== Carousel base ===== */
     #robotics {background: #fff;border-radius: 12px;padding: 22px;margin: 20px 0;box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
-    #robotics h2 {margin-top: 0;color: #2c3e50;}
-    .gallery {display: grid;gap: 18px;grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));}
-    .gallery figure {margin: 0;background: #fafafa;border-radius: 10px;overflow: hidden;box-shadow: 0 1px 4px rgba(0,0,0,0.08);}
-    .gallery img {width: 100%;object-fit: cover;display: block;transition: transform 0.25s ease;}
-    .gallery figcaption {padding: 8px 10px 10px;font-size: 14px;color: #444;text-align: center;}
+    #robotics h2 { margin-top: 0; color: #2c3e50; }
+    #robotics .muted { color: #666; margin: 6px 0 14px; font-size: 15px; }
+    .carousel {position: relative;overflow: hidden;border-radius: 12px;background: #fafafa;box-shadow: 0 1px 4px rgba(0,0,0,0.06);} /* Contenedor visible del carrusel */
+    .carousel .track {display: flex;transition: transform 320ms ease;will-change: transform;} /* Pista que se traslada horizontalmente */
+    .carousel .slide {min-width: 100%;margin: 0;background: #fff;} /* Cada slide ocupa todo el ancho del carrusel */
+    .carousel .slide img {width: 100%;height: 100%;aspect-ratio: 4 / 3;object-fit: cover;display: block;}/* Imagenes con mismo formato visual */ /* mismo formato para todas: cambiá a 4/3 si querés */  /* recorta sin deformar */
+    .carousel figcaption {padding: 8px 12px 12px;font-size: 14px;color: #444;text-align: center;}/* Caption */
+    .carousel .nav {position: absolute;top: 50%;transform: translateY(-50%);z-index: 2;width: 40px; height: 40px;border: none;border-radius: 50%;background: rgba(0,0,0,0.45);color: #fff;font-size: 26px;line-height: 40px; cursor: pointer;} /* Flechas */
+    .carousel .nav:hover { background: rgba(0,0,0,0.6); }
+    .carousel .nav:focus { outline: 2px solid #1d76d2; }
+    .carousel .prev { left: 10px; }
+    .carousel .next { right: 10px; }
+    .carousel .dots {display: flex;justify-content: center;gap: 8px;padding: 10px 0 12px;} /* Puntitos */
+    .carousel .dot {width: 8px; height: 8px;border-radius: 50%;background: #cfd6dd;cursor: pointer;}
+    .carousel .dot.active { background: #1d76d2; }
+    @media (hover: none) {.carousel .nav { background: rgba(0,0,0,0.35); }} /* Desactivar hover en touch y permitir swipe */
+
   </style>
 </head>
+
+  <script>
+  (function makeCarousel(id) {
+    const root = document.getElementById(id);
+    const track = root.querySelector('.track');
+    const slides = Array.from(root.querySelectorAll('.slide'));
+    const prev = root.querySelector('.prev');
+    const next = root.querySelector('.next');
+    const dotsWrap = root.querySelector('.dots');
+  
+    let index = 0;
+    const last = slides.length - 1;
+  
+    // Crear puntitos
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i+1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(dotsWrap.children);
+  
+    function update() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d,i)=> d.classList.toggle('active', i === index));
+    }
+    function goTo(i) { index = Math.max(0, Math.min(last, i)); update(); }
+    function nextSlide() { if (index < last) goTo(index+1); else goTo(0); }
+    function prevSlide() { if (index > 0) goTo(index-1); else goTo(last); }
+  
+    // Botones y teclado
+    next.addEventListener('click', nextSlide);
+    prev.addEventListener('click', prevSlide);
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+    root.tabIndex = 0; // focus para teclado
+  
+    // Swipe en touch
+    let startX = 0, delta = 0, dragging = false;
+    const threshold = 40; // píxeles para considerar swipe
+    root.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      dragging = true;
+    }, {passive:true});
+    root.addEventListener('touchmove', (e) => {
+      if (!dragging) return;
+      delta = e.touches[0].clientX - startX;
+    }, {passive:true});
+    root.addEventListener('touchend', () => {
+      if (!dragging) return;
+      if (Math.abs(delta) > threshold) {
+        delta < 0 ? nextSlide() : prevSlide();
+      }
+      dragging = false; delta = 0;
+    });
+  
+    // Inicio
+    update();
+  })('roboticsCarousel');
+  </script>
   
 <body> <!-- Comienza el cuerpo visible de la página -->
   <header> <!-- Cabecera con imagen, nombre y subtítulos -->
@@ -129,52 +205,59 @@
 
     <section id="robotics">
       <h2>🤖 Robotics Prototypes & Evolution</h2>
-      <p class="muted">A progression of the different robotic systems and prototypes I have been building and improving over time.</p>
+      <p class="muted">A compact carousel showing the progression of my robotics prototypes.</p>
     
-      <div class="gallery">
-        <!-- Legs / early structure -->
-        <figure>
-          <img src="4legs.jpg" alt="First test with 4 robotic legs module" loading="lazy">
-          <figcaption>Early test with 4 legs module (structural assembly)</figcaption>
-        </figure>
+      <div class="carousel" id="roboticsCarousel">
+        <button class="nav prev" aria-label="Previous slide">‹</button>
+        <div class="track">
+          <!-- Cada .slide es una imagen con mismo formato visual -->
+          <figure class="slide">
+            <img src="4legs.jpg" alt="Early test with 4 legs module" loading="lazy">
+            <figcaption>Early test with 4 legs module</figcaption>
+          </figure>
     
-        <!-- Hexapod evolution -->
-        <figure>
-          <img src="hexapod1.jpg" alt="Hexapod prototype frame with servo connections" loading="lazy">
-          <figcaption>Hexapod prototype with servos and wiring</figcaption>
-        </figure>
-        <figure>
-          <img src="hexapod2.jpg" alt="Hexapod robot during calibration stage" loading="lazy">
-          <figcaption>Hexapod robot during calibration</figcaption>
-        </figure>
+          <figure class="slide">
+            <img src="hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
+            <figcaption>Hexapod prototype with servos & wiring</figcaption>
+          </figure>
     
-        <!-- Wheeled robots -->
-        <figure>
-          <img src="robot_sensor.png" alt="Two-wheel robot with sensors" loading="lazy">
-          <figcaption>Two-wheel robot with ultrasonic sensor (Arduino-based)</figcaption>
-        </figure>
-        <figure>
-          <img src="robot_wheels.jpg" alt="Four-wheel robot with mecanum wheels" loading="lazy">
-          <figcaption>Four-wheel robot with mecanum wheels</figcaption>
-        </figure>
+          <figure class="slide">
+            <img src="hexapod2.jpg" alt="Hexapod robot during calibration" loading="lazy">
+            <figcaption>Hexapod robot during calibration</figcaption>
+          </figure>
     
-        <!-- Eye prototypes -->
-        <figure>
-          <img src="1eye.jpg" alt="Single robotic eye prototype" loading="lazy">
-          <figcaption>Single robotic eye prototype</figcaption>
-        </figure>
-        <figure>
-          <img src="2eyes.jpg" alt="Dual robotic eye prototype" loading="lazy">
-          <figcaption>Dual-eye prototype for visual-motor experiments</figcaption>
-        </figure>
+          <figure class="slide">
+            <img src="robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor" loading="lazy">
+            <figcaption>Two-wheel robot with ultrasonic sensor</figcaption>
+          </figure>
     
-        <!-- Leg prototype -->
-        <figure>
-          <img src="1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
-          <figcaption>Single leg prototype with servo actuator</figcaption>
-        </figure>
+          <figure class="slide">
+            <img src="robot_wheels.jpg" alt="Four-wheel robot with mecanum wheels" loading="lazy">
+            <figcaption>Four-wheel robot with mecanum wheels</figcaption>
+          </figure>
+    
+          <figure class="slide">
+            <img src="1eye.jpg" alt="Single robotic eye prototype" loading="lazy">
+            <figcaption>Single robotic eye prototype</figcaption>
+          </figure>
+    
+          <figure class="slide">
+            <img src="2eyes.jpg" alt="Dual-eye prototype" loading="lazy">
+            <figcaption>Dual-eye prototype</figcaption>
+          </figure>
+    
+          <figure class="slide">
+            <img src="1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
+            <figcaption>Single leg prototype</figcaption>
+          </figure>
+        </div>
+        <button class="nav next" aria-label="Next slide">›</button>
+    
+        <!-- Indicadores (puntitos) -->
+        <div class="dots" aria-label="Carousel pagination"></div>
       </div>
     </section>
+
 
 
     <section id="programs"> <!-- Sección de programas y cursos -->
