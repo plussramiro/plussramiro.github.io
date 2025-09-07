@@ -35,10 +35,9 @@
     #programs li {margin-bottom: 6px;} /* Espacio entre ítems de lista en programas */
     #posters li { margin-bottom: 6px;} /* Espacio entre ítems de lista en posters */
 
-    #affiliations {
-  display: flex; justify-content: center;gap: 30px;margin: 20px 0;}
-    #affiliations img {height: 50px;object-fit: contain;opacity: 0.9;transition: transform 0.2s,opacity 0.2s;}
-    #affiliations img:hover {transform: scale(1.1);   opacity: 1;}
+    :root {--logo-scale: 1.12;--logo-speed: 180ms;} /* Ajustes finos para logos */ /* 1.05 (sutil) … 1.20 (marcado) */ /* rapidez del zoom */
+    #affiliations img {height: 50px;object-fit: contain;opacity: 0.9;transition: transform var(--logo-speed) ease, opacity var(--logo-speed) ease;}
+    #affiliations img:hover {transform: scale(var(--logo-scale));opacity: 1;}
   </style>
 </head>
   
