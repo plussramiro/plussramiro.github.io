@@ -33,6 +33,11 @@
     #programs ul {font-size: 15px; line-height: 1.5;} /* Texto de programas un poco más chico y con buen interlineado */
     #programs li {margin-bottom: 6px;} /* Espacio entre ítems de lista en programas */
     #posters li { margin-bottom: 6px;} /* Espacio entre ítems de lista en posters */
+
+    #affiliations {
+  display: flex; justify-content: center;gap: 30px;margin: 20px 0;}
+    #affiliations img {height: 50px;object-fit: contain;opacity: 0.9;transition: transform 0.2s,opacity 0.2s;}
+    #affiliations img:hover {transform: scale(1.1);   opacity: 1;}
   </style>
 </head>
   
@@ -46,6 +51,14 @@
   <a href="https://web.fceia.unr.edu.ar/es/" target="_blank" rel="noopener">FCEIA</a>)
 </p> <!-- Otro subtítulo con links a UNR y FCEIA -->
   </header>
+
+  <div id="affiliations">
+    <img src="logo_itba.png" alt="ITBA logo" title="Instituto Tecnológico de Buenos Aires">
+    <img src="logo_conicet.png" alt="CONICET logo" title="Consejo Nacional de Investigaciones Científicas y Técnicas">
+    <img src="logo_unr.png" alt="UNR logo" title="Universidad Nacional de Rosario">
+    <img src="logo_fceia.png" alt="FCEIA logo" title="Facultad de Ciencias Exactas, Ingeniería y Agrimensura">
+  </div>
+
 
   <main> <!-- Contenido principal -->
     <section id="about"> <!-- Sección "About Me" -->
