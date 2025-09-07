@@ -66,70 +66,6 @@
 
   </style>
 </head>
-
-  <script>
-  (function makeCarousel(id) {
-    const root = document.getElementById(id);
-    const track = root.querySelector('.track');
-    const slides = Array.from(root.querySelectorAll('.slide'));
-    const prev = root.querySelector('.prev');
-    const next = root.querySelector('.next');
-    const dotsWrap = root.querySelector('.dots');
-  
-    let index = 0;
-    const last = slides.length - 1;
-  
-    // Crear puntitos
-    slides.forEach((_, i) => {
-      const d = document.createElement('button');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Go to slide ' + (i+1));
-      d.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(d);
-    });
-    const dots = Array.from(dotsWrap.children);
-  
-    function update() {
-      track.style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach((d,i)=> d.classList.toggle('active', i === index));
-    }
-    function goTo(i) { index = Math.max(0, Math.min(last, i)); update(); }
-    function nextSlide() { if (index < last) goTo(index+1); else goTo(0); }
-    function prevSlide() { if (index > 0) goTo(index-1); else goTo(last); }
-  
-    // Botones y teclado
-    next.addEventListener('click', nextSlide);
-    prev.addEventListener('click', prevSlide);
-    root.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
-    });
-    root.tabIndex = 0; // focus para teclado
-  
-    // Swipe en touch
-    let startX = 0, delta = 0, dragging = false;
-    const threshold = 40; // píxeles para considerar swipe
-    root.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      dragging = true;
-    }, {passive:true});
-    root.addEventListener('touchmove', (e) => {
-      if (!dragging) return;
-      delta = e.touches[0].clientX - startX;
-    }, {passive:true});
-    root.addEventListener('touchend', () => {
-      if (!dragging) return;
-      if (Math.abs(delta) > threshold) {
-        delta < 0 ? nextSlide() : prevSlide();
-      }
-      dragging = false; delta = 0;
-    });
-  
-    // Inicio
-    update();
-  })('roboticsCarousel');
-  </script>
-  
 <body> <!-- Comienza el cuerpo visible de la página -->
   <header> <!-- Cabecera con imagen, nombre y subtítulos -->
     <img src="ramiropluss.jpg" alt="Portrait of Ramiro Plüss, physicist and PhD candidate at ITBA"> <!-- Imagen de perfil, con descripción alternativa -->
@@ -165,7 +101,6 @@
         </a>
       </div>
     </section>
-
 
     <section id="publications"> <!-- Sección de publicaciones -->
       <h2>📄 Publications & Preprints</h2>
@@ -257,6 +192,69 @@
         <div class="dots" aria-label="Carousel pagination"></div>
       </div>
     </section>
+
+    <script>
+    (function makeCarousel(id) {
+      const root = document.getElementById(id);
+      const track = root.querySelector('.track');
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      const prev = root.querySelector('.prev');
+      const next = root.querySelector('.next');
+      const dotsWrap = root.querySelector('.dots');
+    
+      let index = 0;
+      const last = slides.length - 1;
+    
+      // Crear puntitos
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i+1));
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+      });
+      const dots = Array.from(dotsWrap.children);
+    
+      function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d,i)=> d.classList.toggle('active', i === index));
+      }
+      function goTo(i) { index = Math.max(0, Math.min(last, i)); update(); }
+      function nextSlide() { if (index < last) goTo(index+1); else goTo(0); }
+      function prevSlide() { if (index > 0) goTo(index-1); else goTo(last); }
+    
+      // Botones y teclado
+      next.addEventListener('click', nextSlide);
+      prev.addEventListener('click', prevSlide);
+      root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+      });
+      root.tabIndex = 0; // focus para teclado
+    
+      // Swipe en touch
+      let startX = 0, delta = 0, dragging = false;
+      const threshold = 40; // píxeles para considerar swipe
+      root.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        dragging = true;
+      }, {passive:true});
+      root.addEventListener('touchmove', (e) => {
+        if (!dragging) return;
+        delta = e.touches[0].clientX - startX;
+      }, {passive:true});
+      root.addEventListener('touchend', () => {
+        if (!dragging) return;
+        if (Math.abs(delta) > threshold) {
+          delta < 0 ? nextSlide() : prevSlide();
+        }
+        dragging = false; delta = 0;
+      });
+    
+      // Inicio
+      update();
+    })('roboticsCarousel');
+    </script>
 
 
 
