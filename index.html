@@ -35,9 +35,40 @@
     #programs li {margin-bottom: 6px;} /* Espacio entre ítems de lista en programas */
     #posters li { margin-bottom: 6px;} /* Espacio entre ítems de lista en posters */
 
-    :root {--logo-scale: 1.12;--logo-speed: 180ms;} /* Ajustes finos para logos */ /* 1.05 (sutil) … 1.20 (marcado) */ /* rapidez del zoom */
-    #affiliations img {height: 50px;object-fit: contain;opacity: 0.9;transition: transform var(--logo-speed) ease, opacity var(--logo-speed) ease;}
-    #affiliations img:hover {transform: scale(var(--logo-scale));opacity: 1;}
+    #affiliations {
+      background: #fff;              /* franja blanca */
+      border-radius: 12px;           /* bordes redondeados */
+      padding: 20px;
+      margin: 20px 0;                /* espacio con otras secciones */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* sombra suave */
+      text-align: center;
+    }
+    
+    #affiliations h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    
+    .affiliations-logos {
+      display: flex;
+      flex-wrap: wrap;               /* se acomodan en celular */
+      justify-content: center;       /* centrados */
+      gap: 30px;                     /* espacio entre logos */
+      margin-top: 15px;
+    }
+    
+    .affiliations-logos img {
+      height: 50px;                  /* todos del mismo alto */
+      object-fit: contain;
+      opacity: 0.95;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    
+    .affiliations-logos img:hover {
+      transform: scale(1.12);        /* agranda en hover */
+      opacity: 1;
+    }
+
   </style>
 </head>
   
@@ -52,14 +83,6 @@
 </p> <!-- Otro subtítulo con links a UNR y FCEIA -->
   </header>
 
-  <div id="affiliations">
-    <img src="logo_itba.png" alt="ITBA logo" title="Instituto Tecnológico de Buenos Aires">
-    <img src="logo_conicet.png" alt="CONICET logo" title="Consejo Nacional de Investigaciones Científicas y Técnicas">
-    <img src="logo_unr.png" alt="UNR logo" title="Universidad Nacional de Rosario">
-    <img src="logo_fceia.png" alt="FCEIA logo" title="Facultad de Ciencias Exactas, Ingeniería y Agrimensura">
-  </div>
-
-
   <main> <!-- Contenido principal -->
     <section id="about"> <!-- Sección "About Me" -->
       <h2>About Me</h2>
@@ -69,6 +92,25 @@
         emergent behavior, using interdisciplinary tools at the intersection of neuroscience, robotics, and complex systems.
       </p>
     </section>
+
+    <section id="affiliations">
+      <h2>🏛 Affiliations & Support</h2>
+      <div class="affiliations-logos">
+        <a href="https://www.itba.edu.ar" target="_blank" rel="noopener" title="ITBA">
+          <img src="logo_itba.png" alt="ITBA logo">
+        </a>
+        <a href="https://www.conicet.gov.ar" target="_blank" rel="noopener" title="CONICET">
+          <img src="logo_conicet.png" alt="CONICET logo">
+        </a>
+        <a href="https://unr.edu.ar" target="_blank" rel="noopener" title="UNR">
+          <img src="logo_unr.png" alt="UNR logo">
+        </a>
+        <a href="https://web.fceia.unr.edu.ar/es/" target="_blank" rel="noopener" title="FCEIA">
+          <img src="logo_fceia.png" alt="FCEIA logo">
+        </a>
+      </div>
+    </section>
+
 
     <section id="publications"> <!-- Sección de publicaciones -->
       <h2>📄 Publications & Preprints</h2>
