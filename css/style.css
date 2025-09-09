@@ -153,4 +153,9 @@ section { scroll-margin-top: 84px; } /* ~altura nav + margen */
   .carousel .nav { background: rgba(0,0,0,0.35); }
 }
 
+/* Ajuste para navegación con anclas */
+section {
+  scroll-margin-top: 80px; /* altura aproximada del nav */
+}
+
 
