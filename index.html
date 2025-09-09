@@ -1,121 +1,65 @@
-<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
-<html lang="en"> <!-- Comienza el HTML, idioma inglés -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8"> <!-- Codificación de caracteres, permite ñ, acentos -->
-  <title>Ramiro Plüss — Academic Website</title> <!-- Título que aparece en la pestaña del navegador -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que se adapte a móviles (responsive) -->
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet"> <!-- Importa las fuentes Roboto (texto) y Merriweather (títulos) desde Google Fonts -->
-  <style>
-    html, body {margin: 0;padding: 0;} /* Reset para que no aparezcan bordes blancos alrededor */
-    body {font-family: 'Roboto', sans-serif;} /* Texto normal en Roboto */
-    
-    h1, h2 {font-family: 'Merriweather', serif;} /* Títulos en Merriweather */
-
-    header {background: #2c3e50; color: #fff; text-align: center; padding: 40px 20px 60px;} /* Cabecera con fondo azul oscuro, texto blanco, centrado y con espacio interno */
-    header img {width: 140px; height: 140px; border-radius: 50%; border: 3px solid #fff; object-fit: cover; margin-bottom: 15px;} /* Imagen circular, 140px, borde blanco */
-    header h1 {margin: 0; font-size: 32px;} /* Nombre principal grande, sin márgenes */
-    header p {font-size: 16px; font-style: italic; margin-top: 5px;} /* Subtítulo más chico, cursiva, poco margen arriba */
-
-    main {max-width: 800px; margin: -40px auto 40px; padding: 0 20px;} /* Contenido centrado, ancho máximo 800px */
-    section {background: #fff; border-radius: 12px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);} /* Cada sección con fondo blanco, bordes redondeados, sombra */
-    
-    h2 {margin-top: 0; color: #2c3e50;} /* Subtítulos en azul oscuro */
-    ul {padding-left: 18px;} /* Ajusta indentación de listas */
-    a {color: #1d76d2; text-decoration: none;} /* Links azules, sin subrayar */
-    a:hover {text-decoration: underline;} /* Links se subrayan al pasar el mouse */
-    
-    .btn {display: inline-block; margin: 4px 6px 0 0; padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; background: #f4f4f4; font-size: 14px;} /* Botones grises con bordes suaves */
-    .btn:hover {background: #e9e9e9;} /* Botón cambia de color al pasar el mouse */
-
-    footer {text-align: center; color: #666; font-size: 14px; padding: 20px 0; border-top: 1px solid #ddd;} /* Pie de página centrado, gris claro, línea superior */
-
-    .subtitle { font-style: italic; } /* Clase para subtítulos en cursiva */
-
-    #programs ul {font-size: 15px; line-height: 1.5;} /* Texto de programas un poco más chico y con buen interlineado */
-    #programs li {margin-bottom: 6px;} /* Espacio entre ítems de lista en programas */
-    
-    #posters li { margin-bottom: 6px;} /* Espacio entre ítems de lista en posters */
-
-    #publications li { margin-bottom: 6px;} /* Espacio entre ítems de lista en publications */
-
-    #affiliations {background: #fff;border-radius: 12px;padding: 20px;margin: 20px 0;box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align: center;} /* franja blanca */ /* bordes redondeados */  /* espacio con otras secciones */ /* sombra suave */
-    #affiliations h2 {margin-top: 0;color: #2c3e50;}
-    .affiliations-logos {display: flex;flex-wrap: wrap;justify-content: center;gap: 30px;margin-top: 15px;} /* se acomodan en celular */ /* centrados */  /* espacio entre logos */
-    .affiliations-logos img {height: 50px;object-fit: contain;opacity: 0.95;transition: transform 0.2s, opacity 0.2s;} /* todos del mismo alto */
-    .affiliations-logos img:hover {transform: scale(1.30);opacity: 1;} /* elegí: 1.05 sutil, 1.12 medio, 1.20 fuerte */
-    @media (hover: none) {.affiliations-logos img:hover {transform: none;}}
-
-    /* ===== Carousel base ===== */
-    #robotics {background: #fff;border-radius: 12px;padding: 22px;margin: 20px 0;box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
-    #robotics h2 { margin-top: 0; color: #2c3e50; }
-    #robotics .muted { color: #666; margin: 6px 0 14px; font-size: 15px; }
-    .carousel {position: relative;overflow: hidden;border-radius: 12px;background: #fafafa;box-shadow: 0 1px 4px rgba(0,0,0,0.06);} /* Contenedor visible del carrusel */
-    .carousel .track {display: flex;transition: transform 320ms ease;will-change: transform;} /* Pista que se traslada horizontalmente */
-    
-    .carousel .slide {min-width: 100%;margin: 0;background: #fff;display: flex;flex-direction: column;}
-    /* .carousel .slide img {width: 100%;aspect-ratio: 4 / 3;object-fit: cover;flex-shrink: 0;} */  /* Fuerza 4:3 */ /* Recorta si sobra */ /* Que no se achique */
-    .carousel .slide img {width: 100%;aspect-ratio: 3 / 4;object-fit: cover; /* recorta pero no deforma */} 
-        
-    .carousel figcaption {padding: 10px;font-size: 14px;color: #444;text-align: center;background: #fff; /* opcional: refuerza contraste */}
-    .carousel .nav {position: absolute;top: 50%;transform: translateY(-50%);z-index: 2;width: 40px; height: 40px;border: none;border-radius: 50%;background: rgba(0,0,0,0.45);color: #fff;font-size: 26px;line-height: 40px; cursor: pointer;} /* Flechas */
-    .carousel .nav:hover { background: rgba(0,0,0,0.6); }
-    .carousel .nav:focus { outline: 2px solid #1d76d2; }
-    .carousel .prev { left: 10px; }
-    .carousel .next { right: 10px; }
-    .carousel .dots {display: flex;justify-content: center;gap: 8px;padding: 8px 0 16px; /* más espacio inferior */position: relative;z-index: 1; /* asegura que quede arriba si se superpone */} /* Puntitos */
-    .carousel .dot {width: 8px; height: 8px;border-radius: 50%;background: #cfd6dd;cursor: pointer;}
-    .carousel .dot.active { background: #1d76d2; }
-    @media (hover: none) {.carousel .nav { background: rgba(0,0,0,0.35); }} /* Desactivar hover en touch y permitir swipe */
-
-  </style>
+  <meta charset="UTF-8">
+  <title>Ramiro Plüss — Academic Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body> <!-- Comienza el cuerpo visible de la página -->
-  <header> <!-- Cabecera con imagen, nombre y subtítulos -->
-    <img src="ramiropluss.jpg" alt="Portrait of Ramiro Plüss, physicist and PhD candidate at ITBA"> <!-- Imagen de perfil, con descripción alternativa -->
-    <h1>Ramiro Plüss</h1> <!-- Nombre principal -->
+<body>
+  <header>
+    <img src="images/profile/ramiropluss.jpg" alt="Portrait of Ramiro Plüss, physicist and PhD candidate at ITBA">
+    <h1>Ramiro Plüss</h1>
     <p class="subtitle">PhD Candidate in Engineering at ITBA</p>
     <p class="subtitle">Undergraduate degree in Physics, awarded by UNR – FCEIA</p>
   </header>
 
-  <main> <!-- Contenido principal -->
-    <section id="about"> <!-- Sección "About Me" -->
+  <main>
+    <section id="about">
       <h2>About Me</h2>
-  
       <p>
-        My name is Ramiro Plüss. I am a physicist, graduated from UNR–FCEIA, and currently a PhD candidate at ITBA. My research combines computational models of complex networks with robotic models to study proprioception and cognition. In recent work, I showed how changes in network connection density shape cluster synchronization and structural properties such as integration and segregation, a balance that is fundamental in neuroscience. I have also applied a hemispheric-specific Wilson–Cowan model to connectome data from patients with schizophrenia, improving the modeling of functional connectivity.
+        My name is Ramiro Plüss. I am a physicist, graduated from UNR–FCEIA, and currently a PhD candidate at ITBA. 
+        My research combines computational models of complex networks with robotic models to study proprioception and cognition. 
+        In recent work, I showed how changes in network connection density shape cluster synchronization and structural properties 
+        such as integration and segregation, a balance that is fundamental in neuroscience. I have also applied a hemispheric-specific 
+        Wilson–Cowan model to connectome data from patients with schizophrenia, improving the modeling of functional connectivity.
       </p>
-  
       <p>
-        Currently, I am working with robotic models based on real connectomics of <em>Drosophila</em> and <em>C. elegans</em> to explore embodiment and autonomy. These connectome architectures can be seen as biologically pre-trained networks, offering a bridge between neuroscience and robotics while reducing reliance on conventional artificial training. With this line of research, I aim to contribute to autonomous robotics and long-range exploration, while also expanding my interests toward models of consciousness, behavior, and artificial intelligence.
+        Currently, I am working with robotic models based on real connectomics of <em>Drosophila</em> and <em>C. elegans</em> 
+        to explore embodiment and autonomy. These connectome architectures can be seen as biologically pre-trained networks, 
+        offering a bridge between neuroscience and robotics while reducing reliance on conventional artificial training. 
+        With this line of research, I aim to contribute to autonomous robotics and long-range exploration, while also expanding 
+        my interests toward models of consciousness, behavior, and artificial intelligence.
       </p>
-
-  
     </section>
 
     <section id="affiliations">
       <h2>🏛 Affiliations & Support</h2>
       <div class="affiliations-logos">
         <a href="https://www.itba.edu.ar" target="_blank" rel="noopener" title="ITBA">
-          <img src="logo_itba.png" alt="ITBA logo">
+          <img src="images/affiliations/logo_itba.png" alt="ITBA logo">
         </a>
         <a href="https://www.conicet.gov.ar" target="_blank" rel="noopener" title="CONICET">
-          <img src="logo_conicet.png" alt="CONICET logo">
+          <img src="images/affiliations/logo_conicet.png" alt="CONICET logo">
         </a>
         <a href="https://unr.edu.ar" target="_blank" rel="noopener" title="UNR">
-          <img src="logo_unr.png" alt="UNR logo">
+          <img src="images/affiliations/logo_unr.png" alt="UNR logo">
         </a>
         <a href="https://web.fceia.unr.edu.ar/es/" target="_blank" rel="noopener" title="FCEIA">
-          <img src="logo_fceia.png" alt="FCEIA logo">
+          <img src="images/affiliations/logo_fceia.png" alt="FCEIA logo">
         </a>
       </div>
     </section>
 
-    <section id="publications"> <!-- Sección de publicaciones -->
+    <section id="publications">
       <h2>📄 Publications & Preprints</h2>
       <ul>
         <li>
-          <strong>Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity</strong><br> <!-- Título en negrita -->
-          <a class="btn" href="https://arxiv.org/abs/2506.22951" target="_blank" rel="noopener">arXiv</a> <!-- Botón link a arXiv -->
+          <strong>Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity</strong><br>
+          <a class="btn" href="https://arxiv.org/abs/2506.22951" target="_blank" rel="noopener">arXiv</a>
         </li>
         <li>
           <strong>The Role of Connection Density in Adaptive Networks with Chaotic Units</strong><br>
@@ -131,142 +75,41 @@
     <section id="robotics">
       <h2>🤖 Robotics Prototypes & Evolution</h2>
       <p class="muted">A compact carousel showing the progression of my robotics prototypes.</p>
-    
-      <div class="carousel" id="roboticsCarousel">
+      <div class="carousel" id="roboticsCarousel" data-autoplay="5000">
         <button class="nav prev" aria-label="Previous slide">‹</button>
         <div class="track">
-          <!-- Cada .slide es una imagen con mismo formato visual -->
-
           <figure class="slide">
-            <img src="hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
+            <img src="images/robotics/hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
             <figcaption>Hexapod prototype with servos & wiring</figcaption>
           </figure>
-
           <figure class="slide">
-            <img src="hexapod2.jpg" alt="Hexapod robot during calibration" loading="lazy">
+            <img src="images/robotics/hexapod2.jpg" alt="Hexapod robot during calibration" loading="lazy">
             <figcaption>Hexapod robot during calibration</figcaption>
           </figure>
-
           <figure class="slide">
-            <img src="1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
-            <figcaption>Single leg prototype</figcaption>
-          </figure>
-          
-          <figure class="slide">
-            <img src="4legs.jpg" alt="Early test with 4 legs module" loading="lazy">
-            <figcaption>Early test with 4 legs module</figcaption>
-          </figure>
-    
-          <figure class="slide">
-            <img src="robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor and light sensor (LDR)" loading="lazy">
+            <img src="images/robotics/robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor and light sensor (LDR)" loading="lazy">
             <figcaption>Two-wheel robot with ultrasonic sensor</figcaption>
           </figure>
-    
           <figure class="slide">
-            <img src="robot_wheels.jpg" alt="Four-wheel robot with mecanum wheels" loading="lazy">
+            <img src="images/robotics/robot_wheels.jpg" alt="Four-wheel robot with mecanum wheels" loading="lazy">
             <figcaption>Four-wheel robot with mecanum wheels</figcaption>
           </figure>
-    
-          <figure class="slide">
-            <img src="1eye.jpg" alt="Single robotic eye prototype" loading="lazy">
-            <figcaption>Single robotic eye prototype</figcaption>
-          </figure>
-    
-          <figure class="slide">
-            <img src="2eyes.jpg" alt="Dual-eye prototype" loading="lazy">
-            <figcaption>Dual-eye prototype</figcaption>
-          </figure>
-    
         </div>
         <button class="nav next" aria-label="Next slide">›</button>
-    
-        <!-- Indicadores (puntitos) -->
         <div class="dots" aria-label="Carousel pagination"></div>
       </div>
     </section>
 
-    <script>
-    (function makeCarousel(id) {
-      const root = document.getElementById(id);
-      const track = root.querySelector('.track');
-      const slides = Array.from(root.querySelectorAll('.slide'));
-      const prev = root.querySelector('.prev');
-      const next = root.querySelector('.next');
-      const dotsWrap = root.querySelector('.dots');
-    
-      let index = 0;
-      const last = slides.length - 1;
-    
-      // Crear puntitos
-      slides.forEach((_, i) => {
-        const d = document.createElement('button');
-        d.className = 'dot' + (i === 0 ? ' active' : '');
-        d.setAttribute('aria-label', 'Go to slide ' + (i+1));
-        d.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(d);
-      });
-      const dots = Array.from(dotsWrap.children);
-    
-      function update() {
-        track.style.transform = `translateX(-${index * 100}%)`;
-        dots.forEach((d,i)=> d.classList.toggle('active', i === index));
-      }
-      function goTo(i) { index = Math.max(0, Math.min(last, i)); update(); }
-      function nextSlide() { if (index < last) goTo(index+1); else goTo(0); }
-      function prevSlide() { if (index > 0) goTo(index-1); else goTo(last); }
-    
-      // Botones y teclado
-      next.addEventListener('click', nextSlide);
-      prev.addEventListener('click', prevSlide);
-      root.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-      });
-      root.tabIndex = 0; // focus para teclado
-    
-      // Swipe en touch
-      let startX = 0, delta = 0, dragging = false;
-      const threshold = 40; // píxeles para considerar swipe
-      root.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        dragging = true;
-      }, {passive:true});
-      root.addEventListener('touchmove', (e) => {
-        if (!dragging) return;
-        delta = e.touches[0].clientX - startX;
-      }, {passive:true});
-      root.addEventListener('touchend', () => {
-        if (!dragging) return;
-        if (Math.abs(delta) > threshold) {
-          delta < 0 ? nextSlide() : prevSlide();
-        }
-        dragging = false; delta = 0;
-      });
-    
-      // Inicio
-      update();
-    })('roboticsCarousel');
-    </script>
-
-    <section id="posters"> <!-- Sección de posters -->
+    <section id="posters">
       <h2>📌 Poster Presentations in Conferences and International Schools</h2>
       <ul>
-        <li>
-          <strong><em>Modeling Functional Connectivity Alterations in Schizophrenia Patients from the Structural Connectome</em></strong>
-          (with Hernán Villota, Tomás Bosch, and Patricio Orio). Presented at XIV National Congress and XV International Seminar of Neurosciences, Bogotá, Colombia (April 2025).
-        </li>
-        <li>
-          <strong><em>Phase Transition in an Adaptive Network with Chaotic Units</em></strong>
-          (with Pablo Gleiser). Presented at School on the Origins of Life, Behavior and Cognition – ICTP-SAIFR, São Paulo, Brazil (March 2025); School on Synchronization: from Collective Motion to Brain Dynamics – ICTP-SAIFR, São Paulo, Brazil (February 2025); IRCN/Chen Institute Joint Course on Neuro-inspired Computation – University of Tokyo, Japan (July 2024); RAFA 108 – Bahía Blanca, Argentina (September 2023); RAFA 107 – Bariloche, Argentina (September 2022); Science, Technology and Innovation Conference – Rosario, Argentina (October 2022).
-        </li>
-        <li>
-          <strong><em>Preliminary Study of the Viscoelastic Properties of Red Blood Cells Irradiated with Gamma Radiation Using a Rheometer</em></strong>
-          (with F. Gómez Fava et al.). Presented at RAFA 107 – Bariloche, Argentina (September 2022); Science, Technology and Innovation Conference – Rosario, Argentina (October 2022).
-        </li>
+        <li><strong><em>Modeling Functional Connectivity Alterations in Schizophrenia Patients from the Structural Connectome</em></strong> (Bogotá, Colombia, April 2025)</li>
+        <li><strong><em>Phase Transition in an Adaptive Network with Chaotic Units</em></strong> (ICTP-SAIFR Brazil, Tokyo 2024, RAFA 2022–2023, Rosario 2022)</li>
+        <li><strong><em>Preliminary Study of the Viscoelastic Properties of Red Blood Cells Irradiated with Gamma Radiation Using a Rheometer</em></strong> (RAFA 2022, Rosario 2022)</li>
       </ul>
     </section>
 
-    <section id="programs"> <!-- Sección de programas y cursos -->
+    <section id="programs">
       <h2>🎓 Relevant programs and courses</h2>
       <ul>
         <li><em>School on the Origins of Life, Behavior and Cognition</em>, ICTP-SAIFR, Brazil — March 2025</li>
@@ -274,43 +117,38 @@
         <li><em>Latin American Summer School of Computational Neuroscience</em>, University of Valparaíso, Chile — January 2025</li>
         <li><em>Artificial Intelligence Systems</em>, ITBA, Argentina — August–November 2024</li>
         <li><em>Complex Networks</em>, ITBA, Argentina — August–November 2024</li>
-        <li><em>Modeling and Analysis of Complex Systems</em>, University of Buenos Aires, Argentina — July 2024</li>
+        <li><em>Modeling and Analysis of Complex Systems</em>, UBA, Argentina — July 2024</li>
         <li><em>IRCN/Chen Institute Joint Course on Neuro-inspired Computation</em>, University of Tokyo, Japan — July 2024</li>
         <li><em>Neuroscience and Productive Development</em>, ITBA, Argentina — March–June 2024</li>
-        <li><em>Latin American School of Computational Neuroscience</em>, University of São Paulo, Brazil — January 2024</li>
+        <li><em>Latin American School of Computational Neuroscience</em>, USP, Brazil — January 2024</li>
         <li><em>Bioinspired Robotics</em>, ITBA, Argentina — August–December 2023</li>
         <li><em>Introduction to Medical and Biomedical Physics</em>, UNR, Argentina — October–December 2019</li>
       </ul>
     </section>
 
-    <section id="cv"> <!-- Sección de CV -->
-      <h2>📑Curriculum Vitae</h2>
-      <a class="btn" href="https://drive.google.com/file/d/1HVBofvdWIET62d3NLVKvbWxi8QytLzof/view?usp=drive_link" target="_blank" rel="noopener">Google Drive (PDF)</a> <!-- Botón para abrir CV en PDF -->
+    <section id="cv">
+      <h2>📑 Curriculum Vitae</h2>
+      <a class="btn" href="assets/cv_ramiro.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
       <p class="muted">For a condensed or customized version of my CV, please do not hesitate to contact me.</p>
     </section>
 
-    <section id="contact"> <!-- Sección de contacto -->
+    <section id="contact">
       <h2>📬 Contact</h2>
-      <p>Email: <a href="mailto:rpluss@itba.edu.ar">rpluss@itba.edu.ar</a></p> <!-- Link que abre el correo -->
+      <p>Email: <a href="mailto:rpluss@itba.edu.ar">rpluss@itba.edu.ar</a></p>
       <p>
         <a href="https://www.linkedin.com/in/ramiropluss/" target="_blank" rel="noopener">LinkedIn</a> ·
         <a href="https://github.com/plussramiro" target="_blank" rel="noopener">GitHub</a> ·
         <a href="https://scholar.google.com/citations?user=l1XV7YYAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
       </p>
-
     </section>
   </main>
 
-  <footer> <!-- Pie de página -->
-    © <span id="y"></span> Ramiro Plüss · Built with GitHub Pages <!-- Texto y año automático -->
+  <footer>
+    © <span id="y"></span> Ramiro Plüss · Built with GitHub Pages
   </footer>
 
-  <script> // Busca en el documento el elemento que tiene el id="y"
-  var yearSpan = document.getElementById("y"); // En tu footer es: <span id="y"></span>
-  var currentYear = new Date().getFullYear(); // Obtiene el año actual desde la fecha del sistema
-  yearSpan.textContent = currentYear; // Inserta ese año como texto dentro del <span>
-</script>
-  
+  <!-- Script externo -->
+  <script src="js/main.js"></script>
 </body>
 </html>
 
