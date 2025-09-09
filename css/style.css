@@ -101,8 +101,8 @@ footer {
 }
 
 .research-carousel .slide img {
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
   object-fit: contain;    /* mostrar completa, sin recortar */
   background: #fff;       /* por si la imagen tiene transparencias */
 }
