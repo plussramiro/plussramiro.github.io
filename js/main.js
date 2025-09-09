@@ -1,0 +1,109 @@
+// js/main.js
+(() => {
+  'use strict';
+
+  /* ===== Año automático en el footer ===== */
+  function initYear() {
+    const span = document.getElementById('y');
+    if (span) span.textContent = new Date().getFullYear();
+  }
+
+  /* ===== Carrusel reusable =====
+     Estructura esperada dentro de .carousel:
+       .track (contiene .slide*)
+       .nav.prev  .nav.next
+       .dots (contenedor para los puntitos)
+     Opcional: data-autoplay="ms" en .carousel para avance automático.
+  */
+  function initCarousel(root) {
+    const track = root.querySelector('.track');
+    const slides = Array.from(root.querySelectorAll('.slide'));
+    const prev = root.querySelector('.prev');
+    const next = root.querySelector('.next');
+    const dotsWrap = root.querySelector('.dots');
+
+    if (!track || slides.length === 0 || !prev || !next || !dotsWrap) return;
+
+    let index = 0;
+    const last = slides.length - 1;
+
+    // Crear puntitos
+    dotsWrap.innerHTML = '';
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function update() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+    function goTo(i) {
+      index = (i + slides.length) % slides.length; // wrap circular
+      update();
+    }
+    function nextSlide() { goTo(index + 1); }
+    function prevSlide() { goTo(index - 1); }
+
+    // Controles
+    next.addEventListener('click', nextSlide);
+    prev.addEventListener('click', prevSlide);
+
+    // Teclado
+    root.tabIndex = 0;
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Swipe en pantallas táctiles
+    let startX = 0, dragging = false;
+    const threshold = 40;
+    root.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      dragging = true;
+    }, { passive: true });
+    root.addEventListener('touchmove', (e) => {
+      if (!dragging) return;
+      const delta = e.touches[0].clientX - startX;
+      // (Opcional: podrías hacer un arrastre visual moviendo track acá)
+      if (Math.abs(delta) > threshold) {
+        delta < 0 ? nextSlide() : prevSlide();
+        dragging = false;
+      }
+    }, { passive: true });
+    root.addEventListener('touchend', () => { dragging = false; });
+
+    // Autoplay opcional (data-autoplay="4000")
+    let timer = null;
+    const autoplayMs = Number(root.dataset.autoplay) || 0;
+    function startAutoplay() {
+      if (autoplayMs > 0 && !timer) {
+        timer = setInterval(nextSlide, autoplayMs);
+      }
+    }
+    function stopAutoplay() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+    // Pausa si se oculta la pestaña
+    document.addEventListener('visibilitychange', () => {
+      document.hidden ? stopAutoplay() : startAutoplay();
+    });
+    // Pausa al pasar el mouse (desktop)
+    root.addEventListener('mouseenter', stopAutoplay);
+    root.addEventListener('mouseleave', startAutoplay);
+
+    // Inicio
+    update();
+    startAutoplay();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initYear();
+    document.querySelectorAll('.carousel').forEach(initCarousel);
+  });
+})();
