@@ -39,6 +39,48 @@ footer {
 
 .subtitle { font-style: italic; }
 
+/* ===== Navegación fija (anclas) ===== */
+html { scroll-behavior: smooth; }  /* scroll suave */
+
+.topnav {
+  position: sticky;  /* se fija al llegar arriba */
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  padding: 10px 14px;
+  background: #243443;            /* tono cercano al header */
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: saturate(140%) blur(2px); /* sutil en desktop */
+}
+
+.topnav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  opacity: 0.9;
+}
+.topnav a:hover, .topnav a:focus {
+  opacity: 1;
+  background: rgba(255,255,255,0.10);
+  outline: none;
+}
+
+/* Asegura buen anclaje debajo de la barra (y del header) */
+section { scroll-margin-top: 84px; } /* ~altura nav + margen */
+
+/* Responsive: compacta en pantallas chicas */
+@media (max-width: 520px) {
+  .topnav { gap: 10px; padding: 8px 10px; }
+  .topnav a { font-size: 14px; padding: 6px; }
+}
+
+/* ======================================== */
+
+
 #programs ul {font-size: 15px; line-height: 1.5;}
 #programs li {margin-bottom: 6px;}
 #posters li { margin-bottom: 6px;}
@@ -110,3 +152,5 @@ footer {
 @media (hover: none) {
   .carousel .nav { background: rgba(0,0,0,0.35); }
 }
+
+
