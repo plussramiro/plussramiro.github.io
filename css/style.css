@@ -158,4 +158,8 @@ section {
   scroll-margin-top: 80px; /* altura aproximada del nav */
 }
 
+main {
+  padding-top: 40px; /* o el valor que quieras */
+}
+
 
