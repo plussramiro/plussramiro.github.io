@@ -188,14 +188,38 @@ footer {
 .figure-grid .card img { display:block; width:100%; height:auto; }
 .figure-grid .card figcaption { padding:10px 12px; font-size:14px; color:#333; }
 
-/* ========= Contact ========= */
-#contact p {
-  margin: 6px 0;
-  display: flex; align-items: center; gap: 6px;   /* ícono + texto alineados */
+/* ===== Contact responsive ===== */
+#contact {
+  text-align: left;
 }
-#contact i { color:#1d76d2; margin-right: 0; font-size:1.1em; }
-#contact a { color:#1d76d2; text-decoration:none; }
-#contact a:hover { text-decoration:underline; }
+
+#contact p {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#contact i {
+  font-size: 1.2em;
+  min-width: 20px;
+}
+
+#contact .social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;            /* espacio entre LinkedIn, GitHub, Scholar */
+  margin-top: 8px;
+}
+
+/* En pantallas chicas centramos todo */
+@media (max-width: 520px) {
+  #contact { text-align: center; }
+  #contact p { justify-content: center; }
+  #contact .social-links { justify-content: center; }
+}
+
 
 /* ========= Ajustes extra ========= */
 main { padding-top: 40px; }              /* respiro bajo la barra fija */
