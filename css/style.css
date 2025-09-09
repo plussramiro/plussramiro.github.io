@@ -96,7 +96,7 @@ footer {
 /* Reutiliza .carousel general; solo ajustamos el estilo de las imágenes */
 .research-carousel .slide img {
   width: 100%;
-  aspect-ratio: 16 / 9;         /* figuras apaisadas */
+  aspect-ratio: 9 / 16;         /* figuras apaisadas */
   object-fit: contain;           /* no recortar: encajar completa */
   background: #fff;              /* fondo blanco detrás de imágenes */
 }
