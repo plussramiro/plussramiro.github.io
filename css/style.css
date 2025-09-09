@@ -162,4 +162,11 @@ main {
   padding-top: 40px; /* o el valor que quieras */
 }
 
+/* Forzar un color uniforme en los íconos del contacto */
+#contact i {
+  color: #1d76d2;  /* mismo azul que tus links */
+  margin-right: 6px;
+}
+
+
 
