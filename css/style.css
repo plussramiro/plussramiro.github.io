@@ -202,9 +202,11 @@ footer {
 }
 
 #contact i {
+  color: #1d76d2 !important;
   font-size: 1.2em;
   min-width: 20px;
 }
+
 
 #contact .social-links {
   display: flex;
