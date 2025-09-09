@@ -113,6 +113,14 @@ footer {
   object-fit: cover;
 }
 
+/* Más aire en captions de research figures */
+.research-carousel figcaption {
+  padding: 14px 16px;   /* antes eran ~10px */
+  margin-top: 6px;      /* separa un poquito del borde inferior de la imagen */
+  font-size: 15px;      /* opcional: un poquito más grande */
+  line-height: 1.5;     /* más respiración entre líneas */
+}
+
 /* Opcional: en móvil hacerla un poco más cuadrada para que no quede baja */
 @media (max-width: 520px) {
   .research-carousel .slide {
