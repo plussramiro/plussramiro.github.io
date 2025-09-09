@@ -85,29 +85,53 @@
       <h2>🧩 Research Figures</h2>
       <p class="muted">Selected figures from my recent publications and comparative references.</p>
     
-      <div class="figure-grid">
-        <figure class="card">
-          <img src="images/connectomics/hemispheric.png"
-               alt="Hemispheric-specific coupling vs global coupling"
-               loading="lazy">
-          <figcaption>
-            Hemispheric-specific coupling (G₁ intra / G₂ inter) improves SC–FC correspondence.
-            <a class="btn" href="https://arxiv.org/abs/2506.22951" target="_blank" rel="noopener">Paper</a>
-          </figcaption>
-        </figure>
+      <div class="carousel research-carousel" id="figuresCarousel" data-autoplay="6000">
+        <button class="nav prev" aria-label="Previous slide">‹</button>
     
-        <figure class="card">
-          <img src="images/connectomics/comparative_connectomes_adaptive_model.png"
-               alt="Comparative connectomes and adaptive network evolution"
-               loading="lazy">
-          <figcaption>
-            Comparative connectomes (C. elegans, Drosophila, Mouse, Macaque, Human)
-            alongside my adaptive network model.
-            <a class="btn" href="https://arxiv.org/abs/2505.11437" target="_blank" rel="noopener">Paper</a>
-          </figcaption>
-        </figure>
+        <div class="track">
+    
+          <figure class="slide">
+            <img
+              src="images/connectomics/hemispheric.png"
+              alt="Hemispheric-specific coupling vs global coupling in a Wilson–Cowan model"
+              loading="lazy">
+            <figcaption>
+              Hemispheric-specific coupling (G₁ intra / G₂ inter) improves SC–FC correspondence.
+              <a class="btn" href="https://arxiv.org/abs/2506.22951" target="_blank" rel="noopener">Paper</a>
+            </figcaption>
+          </figure>
+    
+          <figure class="slide">
+            <img
+              src="images/connectomics/comparative_connectomes_adaptive_model.png"
+              alt="Comparative connectomes across species alongside an adaptive network model"
+              loading="lazy">
+            <figcaption>
+              Comparative connectomes (C. elegans, Drosophila, Mouse, Macaque, Human)
+              alongside my adaptive network model.
+              <a class="btn" href="https://arxiv.org/abs/2505.11437" target="_blank" rel="noopener">Paper</a>
+            </figcaption>
+          </figure>
+    
+          <!-- Podés sumar más slides cuando agregues Drosophila / C. elegans propios -->
+          <!--
+          <figure class="slide">
+            <img src="images/connectomics/drosophila_connectome.png" alt="Drosophila connectome">
+            <figcaption>Drosophila connectome (matrix snapshot).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/connectomics/celegans_connectome.png" alt="C. elegans connectome">
+            <figcaption><em>C. elegans</em> connectome (matrix snapshot).</figcaption>
+          </figure>
+          -->
+    
+        </div>
+    
+        <button class="nav next" aria-label="Next slide">›</button>
+        <div class="dots" aria-label="Carousel pagination"></div>
       </div>
     </section>
+
 
     <section id="robotics">
       <h2>🤖 Robotics Prototypes & Evolution</h2>
