@@ -93,18 +93,31 @@ footer {
 }
 #figures .muted { color:#666; margin:6px 0 14px; font-size:15px; }
 
-/* Reutiliza .carousel general; solo ajustamos el estilo de las imágenes */
+/* ===== Research Figures: forzar que NO recorte ===== */
+.research-carousel .slide {
+  /* el slide define el alto por proporción */
+  aspect-ratio: 16 / 9;   /* apaisado; cambiá a 4/3 si te gusta más */
+  background: #fff;
+}
+
 .research-carousel .slide img {
   width: 100%;
-  aspect-ratio: 9 / 16;         /* figuras apaisadas */
-  object-fit: contain;           /* no recortar: encajar completa */
-  background: #fff;              /* fondo blanco detrás de imágenes */
+  height: 100%;
+  object-fit: contain;    /* mostrar completa, sin recortar */
+  background: #fff;       /* por si la imagen tiene transparencias */
 }
-.research-carousel figcaption {
-  padding: 10px 12px;
-  font-size: 14px;
-  color: #333;
-  text-align: center;
+
+/* Evitar que la regla global del carrusel se imponga */
+.carousel:not(.research-carousel) .slide img {
+  aspect-ratio: 3 / 4;    /* solo para el carrusel de Robotics */
+  object-fit: cover;
+}
+
+/* Opcional: en móvil hacerla un poco más cuadrada para que no quede baja */
+@media (max-width: 520px) {
+  .research-carousel .slide {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 /* ========= Robotics (carrusel) ========= */
