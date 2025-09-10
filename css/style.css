@@ -307,4 +307,26 @@ details.exp > *:not(summary) {
 }
 details.exp ul { margin: 0; padding-left: 20px; }
 
+/* ===== Contact + CV combinado ===== */
+.contact-cv { padding: 16px 18px; margin: 14px auto; }
+.contact-cv .cc-grid {
+  display: grid;
+  grid-template-columns: 1fr;     /* mobile: apilado */
+  gap: 14px;
+  align-items: start;
+}
+.contact-cv h2 { margin: 0 0 8px; }
+.contact-cv h3 { margin: 0 0 8px; font-size: 22px; }
+
+/* ancla #cv con margen para no quedar tapada por el nav si es sticky */
+#cv { scroll-margin-top: var(--nav-h, 64px); }
+
+@media (min-width: 820px) {
+  .contact-cv .cc-grid {
+    grid-template-columns: 1.2fr 0.8fr;   /* dos columnas en desktop */
+    gap: 18px;
+  }
+}
+
+
 
