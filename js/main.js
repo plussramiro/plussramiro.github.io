@@ -25,7 +25,6 @@
     if (!track || slides.length === 0 || !prev || !next || !dotsWrap) return;
 
     let index = 0;
-    const last = slides.length - 1;
 
     // Crear puntitos
     dotsWrap.innerHTML = '';
@@ -70,7 +69,6 @@
     root.addEventListener('touchmove', (e) => {
       if (!dragging) return;
       const delta = e.touches[0].clientX - startX;
-      // (Opcional: podrías hacer un arrastre visual moviendo track acá)
       if (Math.abs(delta) > threshold) {
         delta < 0 ? nextSlide() : prevSlide();
         dragging = false;
@@ -89,11 +87,9 @@
     function stopAutoplay() {
       if (timer) { clearInterval(timer); timer = null; }
     }
-    // Pausa si se oculta la pestaña
     document.addEventListener('visibilitychange', () => {
       document.hidden ? stopAutoplay() : startAutoplay();
     });
-    // Pausa al pasar el mouse (desktop)
     root.addEventListener('mouseenter', stopAutoplay);
     root.addEventListener('mouseleave', startAutoplay);
 
@@ -102,8 +98,22 @@
     startAutoplay();
   }
 
+  // === NUEVO: abre el acordeón si la URL trae #posters o #programs ===
+  function expandTargetFromHash() {
+    const id = location.hash.slice(1);
+    if (!id) return;
+    if (!['posters', 'programs'].includes(id)) return;
+    const det = document.querySelector(`#${id} details`);
+    if (det) det.open = true;
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initYear();
     document.querySelectorAll('.carousel').forEach(initCarousel);
+
+    // Llamadas para los acordeones
+    expandTargetFromHash();                         // abre si la página ya carga con #posters/#programs
+    window.addEventListener('hashchange', expandTargetFromHash); // abre si cambiás el hash luego
   });
 })();
+
