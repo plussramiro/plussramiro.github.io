@@ -283,6 +283,25 @@ main { padding-top: 40px; }              /* respiro bajo la barra fija */
 /* Truco simple: resalta si la URL contiene ese hash */
 .topnav a.active { background: rgba(255,255,255,.18); }
 
+/* Tema oscuro automático si el SO está en dark mode */
+@media (prefers-color-scheme: dark) {
+  body { background: #0f141a; color: #e6edf3; }
+  header { background: #0b1220; }
+  section, #robotics, #figures, #affiliations { background:#111925; box-shadow: 0 2px 6px rgba(0,0,0,0.6); }
+  .topnav { background:#0b1220; border-bottom-color: rgba(255,255,255,0.06); }
+  .btn { background:#0f1b2a; border-color:#243443; color:#c9d1d9; }
+  .btn:hover { background:#152235; }
+  footer { background:#0b1220; border-top-color:#1e2a36; color:#9fb0c0; }
+}
+
+/* Accesibilidad: foco visible más claro para teclado */
+a:focus-visible, .btn:focus-visible, .carousel .nav:focus-visible {
+  outline: 2px solid #1d76d2;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+
 
 
 
