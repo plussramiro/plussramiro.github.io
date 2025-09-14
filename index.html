@@ -142,6 +142,22 @@
       </div>
     </section>
 
+    <!-- Overlay “phone card” para demos de video -->
+    <div id="videoOverlay" class="vo" aria-hidden="true">
+      <div class="vo-backdrop" data-vo-close></div>
+      <div class="vo-card" role="dialog" aria-modal="true" aria-label="Demo video">
+        <button class="vo-close" aria-label="Close" data-vo-close>✕</button>
+        <div class="vo-meta">
+          <span class="vo-title"></span>
+          <span class="vo-dot">•</span>
+          <span class="vo-duration"></span>
+        </div>
+        <div class="vo-player"><!-- aquí se inyecta el iframe --></div>
+        <div class="vo-caption"></div>
+      </div>
+    </div>
+
+
 
     <section id="robotics">
       <h2>🤖 Robotics Prototypes & Evolution</h2>
@@ -153,11 +169,14 @@
           <figure class="slide">
             <img src="images/robotics/hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
             <figcaption>Hexapod prototype with servos & wiring</figcaption>
-          
-            <details class="demo">
-              <summary>▶ Watch servo offset calibration (14 s)</summary>
-              <div class="yt-lazy" data-id="sP3aGM9wyew" data-title="Hexapod — Servo offset calibration & first steps"></div>
-            </details>
+            <button class="demo-btn"
+                    data-id="sP3aGM9wyew"
+                    data-title="Hexapod — Servo offset calibration & first steps"
+                    data-duration="14 s"
+                    data-caption="18 servos · tripod gait · offsets tuned">
+              ▶ Watch servo offset calibration (14 s)
+            </button>
+
           </figure>
 
           <figure class="slide">
@@ -173,21 +192,25 @@
           <figure class="slide">
             <img src="images/robotics/robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor and light sensor (LDR)" loading="lazy">
             <figcaption>Two-wheel robot with ultrasonic sensor</figcaption>
-          
-            <details class="demo">
-              <summary>▶ Watch obstacle avoidance (28 s)</summary>
-              <div class="yt-lazy" data-id="YI7VJW33vqE" data-title="Two-wheel — Obstacle avoidance"></div>
-            </details>
+            <button class="demo-btn"
+                    data-id="YI7VJW33vqE"
+                    data-title="Two-wheel — Obstacle avoidance"
+                    data-duration="28 s"
+                    data-caption="Rule-based reactive control · Ultrasonic + LDR">
+              ▶ Watch obstacle avoidance (28 s)
+            </button>
           </figure>
     
           <figure class="slide">
             <img src="images/robotics/2eyes.jpg" alt="Dual-eye prototype" loading="lazy">
             <figcaption>Dual-eye prototype</figcaption>
-          
-            <details class="demo">
-              <summary>▶ Watch saccades & blink (24 s)</summary>
-              <div class="yt-lazy" data-id="N5s2vDSFmpc" data-title="Dual-eye — Saccades & blink"></div>
-            </details>
+            <button class="demo-btn"
+                    data-id="N5s2vDSFmpc"
+                    data-title="Dual-eye — Saccades & blink"
+                    data-duration="24 s"
+                    data-caption="2-DOF per eye (pitch–yaw) + eyelids">
+              ▶ Watch saccades & blink (24 s)
+            </button>
           </figure>
     
         </div>
