@@ -98,7 +98,7 @@
     startAutoplay();
   }
 
-  // === NUEVO: abre el acordeón si la URL trae #posters o #programs ===
+  // === Abre el acordeón si la URL trae #posters o #programs ===
   function expandTargetFromHash() {
     const id = location.hash.slice(1);
     if (!id) return;
@@ -107,13 +107,48 @@
     if (det) det.open = true;
   }
 
+  /* ===== Lazy YouTube dentro de <details class="demo"> ===== */
+  function buildYT(id, title) {
+    const wrap = document.createElement('div');
+    wrap.className = 'yt-wrap';
+    wrap.innerHTML =
+      `<iframe
+         src="https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1"
+         title="${title || 'Demo video'}"
+         loading="lazy"
+         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         allowfullscreen></iframe>`;
+    return wrap;
+  }
+
+  function loadDemo(det) {
+    const ph = det.querySelector('.yt-lazy');
+    if (!ph || ph.dataset.loaded === '1') return;
+    const id = ph.dataset.id;
+    const title = ph.dataset.title || '';
+    if (!id) return;
+    ph.replaceWith(buildYT(id, title));
+    det.dataset.loaded = '1';
+  }
+
+  function initLazyDemos() {
+    document.querySelectorAll('details.demo').forEach(det => {
+      det.addEventListener('toggle', () => { if (det.open) loadDemo(det); });
+      // Si ya estaba abierto cuando cargó el JS, cargar igual
+      if (det.open) loadDemo(det);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initYear();
     document.querySelectorAll('.carousel').forEach(initCarousel);
 
-    // Llamadas para los acordeones
-    expandTargetFromHash();                         // abre si la página ya carga con #posters/#programs
-    window.addEventListener('hashchange', expandTargetFromHash); // abre si cambiás el hash luego
+    expandTargetFromHash();
+    window.addEventListener('hashchange', expandTargetFromHash);
+
+    // Demos de video (click-to-embed)
+    initLazyDemos();
   });
 })();
+
 
