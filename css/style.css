@@ -328,5 +328,59 @@ details.exp ul { margin: 0; padding-left: 20px; }
   }
 }
 
+/* ===== Botón “Watch …” debajo del caption ===== */
+.demo-btn{
+  display:inline-block; margin:8px 0 4px; padding:8px 12px;
+  font-size:14px; border:1px solid #e2e8f0; border-radius:9999px;
+  background:#f8fafc; color:#243443; cursor:pointer;
+}
+.demo-btn:hover{ background:#eef6ff; }
+
+/* ===== Overlay phone-card ===== */
+.vo{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:2000; }
+.vo.open{ display:flex; }
+.vo-backdrop{
+  position:absolute; inset:0; background:rgba(0,0,0,.55); backdrop-filter: blur(1.5px);
+}
+.vo-card{
+  position:relative; z-index:1;
+  width:min(420px, 92vw);
+  aspect-ratio: 9 / 16;
+  background:#000; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.vo-close{
+  position:absolute; top:8px; right:8px;
+  width:36px; height:36px; border:none; border-radius:50%;
+  background:rgba(255,255,255,.15); color:#fff; font-size:18px; cursor:pointer;
+}
+.vo-close:hover{ background:rgba(255,255,255,.25); }
+
+.vo-meta{
+  position:absolute; top:10px; left:12px; right:56px;
+  display:flex; align-items:center; gap:8px;
+  color:#e6edf3; font-size:13px; opacity:.92; text-shadow:0 1px 2px rgba(0,0,0,.5);
+}
+.vo-dot{ opacity:.7; }
+
+.vo-player{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.vo-player iframe{
+  width:100%; height:100%; border:0;
+}
+
+/* Caption técnico, pegado abajo, sobre un gradiente */
+.vo-caption{
+  position:absolute; left:0; right:0; bottom:0; padding:10px 12px;
+  font-size:13px; color:#eef2f6;
+  background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));
+}
+
+/* Mientras está abierto, desactivar controles del carrusel debajo */
+body.vo-open .carousel .nav,
+body.vo-open .carousel .dots{ pointer-events:none; opacity:.35; }
+
+
 
 
