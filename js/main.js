@@ -113,7 +113,7 @@
       if (!this.root) this.mount();
       this.title.textContent = title || '';
       this.duration.textContent = duration || '';
-      this.caption.textContent = caption || '';
+      this.caption.innerHTML = caption || '';
 
       // Inyectar iframe (9:16, sin autoplay, nocookie)
       this.playerWrap.innerHTML =
