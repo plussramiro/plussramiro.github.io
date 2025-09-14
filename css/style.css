@@ -387,7 +387,25 @@ body.vo-open .carousel .dots{ pointer-events:none; opacity:.35; }
 }
 .vo-caption a.credit:hover{ opacity:1; }
 
+/* About: “See more / See less” */
+details.fold { margin-top: 8px; }
+details.fold > summary {
+  display: inline-flex; gap: 8px; align-items: center;
+  cursor: pointer; user-select: none;
+  padding: 6px 10px; border: 1px solid #e2e8f0;
+  border-radius: 9999px; background: #f8fafc; font-size: 14px;
+}
+details.fold[open] > summary { background: #eef6ff; }
+details.fold > summary::before {
+  content: '▸'; font-size: 12px; transform: translateY(1px);
+}
+details.fold[open] > summary::before { content: '▾'; }
 
+/* Alternar etiquetas “See more/less” sin JS */
+details.fold > summary .less { display: none; }
+details.fold[open] > summary .more { display: none; }
+details.fold[open] > summary .less { display: inline; }
 
-
+/* Espaciado del contenido expandido */
+details.fold > *:not(summary) { margin-top: 10px; }
 
