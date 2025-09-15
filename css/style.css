@@ -372,8 +372,11 @@ details.exp ul { margin: 0; padding-left: 20px; }
 
 /* Caption técnico, pegado abajo, sobre un gradiente */
 .vo-caption{
-  position:absolute; left:0; right:0; bottom:0; padding:10px 12px;
-  font-size:13px; color:#eef2f6;
+  background:none;   /* quita el gradiente */
+  text-shadow:none;  /* asegura sin sombra en el texto */
+ /* position:absolute; left:0; right:0; bottom:0; padding:10px 12px;*/
+  /*font-size:13px; color:#eef2f6;*/
+  /*background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));*/
 }
 
 /* Mientras está abierto, desactivar controles del carrusel debajo */
