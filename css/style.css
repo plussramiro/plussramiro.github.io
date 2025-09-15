@@ -407,24 +407,29 @@ details.fold[open] > summary .less{ display:inline !important; }
 /* Espaciado del contenido expandido */
 details.fold > *:not(summary){ margin-top:10px; }
 
-/* === Fix: evitar superposición caption ↔︎ controles de YouTube === */
-:root {
-  /* alto estimado de la barra de controles (ajustable) */
-  --yt-controls-h: clamp(42px, 6vh, 68px);
+/* === Overlay video: sin superposición y sin cajón negro === */
+:root{
+  /* alto típico de controles de YouTube; podés ajustar si querés */
+  --yt-controls-h: clamp(40px, 6vh, 64px);
 }
 
-/* el iframe sigue llenando el card, pero dejamos “aire” abajo para los controles */
-.vo-player {
-  padding-bottom: var(--yt-controls-h);
-  box-sizing: border-box;
-}
+/* revertimos el padding que generaba el hueco negro */
+.vo-player { padding-bottom: 0 !important; }
 
-/* movemos el caption por encima de la barra de controles + safe-area iOS */
-.vo-caption {
+/* movemos el caption por arriba de los controles y no bloquea clics */
+.vo-caption{
   bottom: calc(var(--yt-controls-h) + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;               /* deja pasar clics */
+  /* un poco más suave para no “gritar” sobre el video */
+  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));
 }
 
-/* opcional: si preferís permitir click-through a los controles cuando el caption está cerca */
-.vo-caption { pointer-events: none; }
+/* los links dentro del caption siguen siendo clickeables */
 .vo-caption a, .vo-caption button { pointer-events: auto; }
+
+/* desktop: el caption puede ser un pelín más chico */
+@media (min-width: 900px){
+  .vo-caption{ font-size: 12px; padding: 8px 10px; }
+}
+
 
