@@ -346,7 +346,7 @@ details.exp ul { margin: 0; padding-left: 20px; }
   position:relative; z-index:1;
   width:min(420px, 92vw);
   aspect-ratio: 9 / 16;
-  background:#000; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+  background:transparent; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35);
   display:flex; flex-direction:column; overflow:hidden;
 }
 .vo-close{
