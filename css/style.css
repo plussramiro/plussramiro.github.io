@@ -407,3 +407,24 @@ details.fold[open] > summary .less{ display:inline !important; }
 /* Espaciado del contenido expandido */
 details.fold > *:not(summary){ margin-top:10px; }
 
+/* === Fix: evitar superposición caption ↔︎ controles de YouTube === */
+:root {
+  /* alto estimado de la barra de controles (ajustable) */
+  --yt-controls-h: clamp(42px, 6vh, 68px);
+}
+
+/* el iframe sigue llenando el card, pero dejamos “aire” abajo para los controles */
+.vo-player {
+  padding-bottom: var(--yt-controls-h);
+  box-sizing: border-box;
+}
+
+/* movemos el caption por encima de la barra de controles + safe-area iOS */
+.vo-caption {
+  bottom: calc(var(--yt-controls-h) + env(safe-area-inset-bottom, 0px));
+}
+
+/* opcional: si preferís permitir click-through a los controles cuando el caption está cerca */
+.vo-caption { pointer-events: none; }
+.vo-caption a, .vo-caption button { pointer-events: auto; }
+
