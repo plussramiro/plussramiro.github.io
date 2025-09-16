@@ -17,7 +17,7 @@ header {
   padding: 40px 20px 60px;
 }
 header img {
-  width: 140px; height: 140px; border-radius: 50%;
+  width: 200px; height: 200px; border-radius: 50%;
   border: 3px solid #fff; object-fit: cover; margin-bottom: 15px;
 }
 header h1 { margin: 0; font-size: 32px; }
