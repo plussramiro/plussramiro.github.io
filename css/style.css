@@ -419,11 +419,13 @@ details.fold > *:not(summary){ margin-top:10px; }
 .vo-player { padding-bottom: 0 !important; }
 
 /* movemos el caption por arriba de los controles y no bloquea clics */
+/* background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0)); */
 .vo-caption{
   bottom: calc(var(--yt-controls-h) + env(safe-area-inset-bottom, 0px));
   pointer-events: none;               /* deja pasar clics */
   /* un poco más suave para no “gritar” sobre el video */
-  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));
+  background: none; 
+  text-shadow: none !important;
 }
 
 /* los links dentro del caption siguen siendo clickeables */
