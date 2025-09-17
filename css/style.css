@@ -1,11 +1,18 @@
 /* ========= Base ========= */
 html, body { margin: 0; padding: 0; }
-:root { --nav-h: 56px; }                  /* altura aprox. de la barra */
+:root { --nav-h: 56px; }  /* altura aprox. de la barra */
 html { scroll-behavior: smooth; }
 
-body { font-family: 'Roboto', sans-serif; background:#f7f8fa; }
-h1, h2 { font-family: 'Merriweather', serif; }
-h2 { margin-top: 0; color: #2c3e50; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background:#f7f8fa;
+  color:#1f2a35;
+}
+h1, h2 {
+  font-family: 'Source Serif 4', Georgia, "Times New Roman", serif;
+  letter-spacing: .2px;
+}
+h2 { margin-top: 0; color: #223447; }
 ul { padding-left: 18px; }
 a { color: #1d76d2; text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -17,7 +24,7 @@ header {
   padding: 40px 20px 60px;
 }
 header img {
-  width: 220px; height: 220px; border-radius: 50%;
+  width: 220px; height: 220px; border-radius: 0; /* recto */
   border: 3px solid #fff; object-fit: cover; margin-bottom: 15px;
 }
 header h1 { margin: 0; font-size: 32px; }
@@ -26,7 +33,8 @@ header p  { font-size: 16px; font-style: italic; margin-top: 5px; }
 /* ========= Layout principal ========= */
 main { max-width: 800px; margin: -40px auto 40px; padding: 0 20px; }
 section {
-  background: #fff; border-radius: 12px; padding: 25px;
+  background: #fff; border-radius: 0; /* recto */
+  padding: 25px;
   margin: 20px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 /* que los anclajes no queden debajo de la nav */
@@ -35,36 +43,60 @@ section { scroll-margin-top: calc(var(--nav-h) + 24px); }
 /* ========= Botones y footer ========= */
 .btn {
   display: inline-block; margin: 4px 6px 0 0; padding: 6px 10px;
-  border: 1px solid #ccc; border-radius: 6px; background: #f4f4f4;
-  font-size: 14px;
+  border: 1px solid #cfd6dd; border-radius: 0; /* recto */
+  background: #f4f6f8; font-size: 14px;
 }
-.btn:hover { background: #e9e9e9; }
+.btn:hover { background: #e9eef3; }
 
 footer {
   text-align: center; color: #666; font-size: 14px;
   padding: 20px 0; border-top: 1px solid #ddd; background:#fff;
 }
 
-/* ========= Top Nav (anclas) ========= */
+/* ========= Topnav (única definición, consolidada) ========= */
 .topnav {
   position: sticky; top: 0; z-index: 1000;
-  display: flex; gap: 18px; justify-content: center;
-  padding: 10px 14px;
   background: #243443;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: saturate(140%) blur(2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+}
+.topnav .scroller {
+  display: flex; gap: 18px; justify-content: center;
+  padding: 10px 14px;
 }
 .topnav a {
   color: #fff; text-decoration: none; font-size: 15px;
-  padding: 6px 8px; border-radius: 6px; opacity: 0.9;
+  padding: 8px 10px; /* mayor área táctil */
+  border-radius: 0;  /* recto */
+  opacity: .95;
 }
-.topnav a:hover, .topnav a:focus {
-  opacity: 1; background: rgba(255,255,255,0.10); outline: none;
+.topnav a:hover, .topnav a:focus-visible {
+  opacity: 1; background: rgba(255,255,255,.12); outline: none;
 }
+
+/* Mobile: chips scrolleables */
 @media (max-width: 520px) {
-  .topnav { gap: 10px; padding: 8px 10px; }
-  .topnav a { font-size: 14px; padding: 6px; }
+  .topnav .scroller {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-snap-type: x proximity;
+  }
+  .topnav .scroller::-webkit-scrollbar { display: none; }
+  .topnav a {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    font-size: 15px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,.08);
+  }
 }
+
+/* Marca el link activo cuando hay hash (#seccion) */
+.topnav a.active { background: rgba(255,255,255,.18); }
 
 /* ========= Listas de secciones ========= */
 #programs ul { font-size: 15px; line-height: 1.5; }
@@ -73,7 +105,8 @@ footer {
 /* ========= Affiliations ========= */
 #affiliations {
   text-align: center;
-  background: #fff; border-radius: 12px; padding: 20px; margin: 20px 0;
+  background: #fff; border-radius: 0; /* recto */
+  padding: 20px; margin: 20px 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 .affiliations-logos {
@@ -87,57 +120,53 @@ footer {
 .affiliations-logos img:hover { transform: scale(1.30); opacity: 1; }
 @media (hover:none) { .affiliations-logos img:hover { transform:none; } }
 
-/* Research figures: carrusel */
-#figures { background:#fff; border-radius:12px; padding:22px; margin:20px 0;
+/* ========= Research Figures (única definición, consolidada) ========= */
+#figures {
+  background:#fff; border-radius:0; /* recto */
+  padding:22px; margin:20px 0;
   box-shadow:0 2px 6px rgba(0,0,0,.1);
 }
 #figures .muted { color:#666; margin:6px 0 14px; font-size:15px; }
 
-/* ===== Research Figures: forzar que NO recorte ===== */
+/* ===== Research Figures: que NO recorte ===== */
 .research-carousel .slide {
-  /* el slide define el alto por proporción */
-  aspect-ratio: 16 / 9;   /* apaisado; cambiá a 4/3 si te gusta más */
+  aspect-ratio: 16 / 9;   /* apaisado; cambiá a 4/3 si preferís */
   background: #fff;
 }
-
 .research-carousel .slide img {
   width: 70%;
   height: 70%;
   object-fit: contain;    /* mostrar completa, sin recortar */
-  background: #fff;       /* por si la imagen tiene transparencias */
+  background: #fff;
 }
-
 /* Evitar que la regla global del carrusel se imponga */
 .carousel:not(.research-carousel) .slide img {
   aspect-ratio: 3 / 4;    /* solo para el carrusel de Robotics */
   object-fit: cover;
 }
-
 /* Más aire en captions de research figures */
 .research-carousel figcaption {
-  padding: 14px 16px;   /* antes eran ~10px */
-  margin-top: 6px;      /* separa un poquito del borde inferior de la imagen */
-  font-size: 15px;      /* opcional: un poquito más grande */
-  line-height: 1.5;     /* más respiración entre líneas */
+  padding: 14px 16px;
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.5;
 }
-
-/* Opcional: en móvil hacerla un poco más cuadrada para que no quede baja */
+/* móvil: un poco más cuadrada */
 @media (max-width: 520px) {
-  .research-carousel .slide {
-    aspect-ratio: 4 / 3;
-  }
+  .research-carousel .slide { aspect-ratio: 4 / 3; }
 }
 
 /* ========= Robotics (carrusel) ========= */
 #robotics {
-  background: #fff; border-radius: 12px; padding: 22px; margin: 20px 0;
+  background: #fff; border-radius: 0; /* recto */
+  padding: 22px; margin: 20px 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-#robotics h2 { margin-top: 0; color: #2c3e50; }
+#robotics h2 { margin-top: 0; color: #223447; }
 #robotics .muted { color: #666; margin: 6px 0 14px; font-size: 15px; }
 
 .carousel {
-  position: relative; overflow: hidden; border-radius: 12px;
+  position: relative; overflow: hidden; border-radius: 0; /* recto */
   background: #fafafa; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 .carousel .track {
@@ -153,7 +182,8 @@ footer {
 }
 .carousel .nav {
   position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 2; width: 40px; height: 40px; border: none; border-radius: 50%;
+  z-index: 2; width: 40px; height: 40px; border: none;
+  border-radius: 0; /* recto */
   background: rgba(0,0,0,0.45); color: #fff; font-size: 26px; line-height: 40px; cursor: pointer;
 }
 .carousel .nav:hover { background: rgba(0,0,0,0.6); }
@@ -165,34 +195,27 @@ footer {
   position: relative; z-index: 1;
 }
 .carousel .dot {
-  width: 8px; height: 8px; border-radius: 50%; background: #cfd6dd; cursor: pointer;
+  width: 8px; height: 8px; border-radius: 0; /* recto (cuadraditos) */
+  background: #cfd6dd; cursor: pointer;
 }
 .carousel .dot.active { background: #1d76d2; }
 @media (hover:none) { .carousel .nav { background: rgba(0,0,0,0.35); } }
 
-/* ========= Figures / Research highlights ========= */
-#figures {
-  background:#fff; border-radius:12px; padding:22px; margin:20px 0;
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
-}
-#figures .muted { color:#666; margin:6px 0 14px; font-size:15px; }
+/* ========= Figures / Research highlights (cards) ========= */
 .figure-grid {
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 .figure-grid .card {
-  background:#fff; border:1px solid #eee; border-radius:12px; overflow:hidden;
-  display:flex; flex-direction:column;
+  background:#fff; border:1px solid #eee; border-radius:0; /* recto */
+  overflow:hidden; display:flex; flex-direction:column;
 }
 .figure-grid .card img { display:block; width:100%; height:auto; }
 .figure-grid .card figcaption { padding:10px 12px; font-size:14px; color:#333; }
 
 /* ===== Contact responsive ===== */
-#contact {
-  text-align: left;
-}
-
+#contact { text-align: left; }
 #contact p {
   margin: 8px 0;
   display: flex;
@@ -200,21 +223,15 @@ footer {
   flex-wrap: wrap;
   gap: 6px;
 }
-
 #contact i {
   color: #1d76d2 !important;
   font-size: 1.2em;
   min-width: 20px;
 }
-
-
 #contact .social-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;            /* espacio entre LinkedIn, GitHub, Scholar */
-  margin-top: 8px;
+  display: flex; flex-wrap: wrap;
+  gap: 14px; margin-top: 8px;
 }
-
 /* En pantallas chicas centramos todo */
 @media (max-width: 520px) {
   #contact { text-align: center; }
@@ -222,85 +239,25 @@ footer {
   #contact .social-links { justify-content: center; }
 }
 
-
 /* ========= Ajustes extra ========= */
-main { padding-top: 40px; }              /* respiro bajo la barra fija */
+main { padding-top: 40px; } /* respiro bajo la barra fija */
 
-/* ===== Topnav mejoras mobile ===== */
-.topnav {
-  position: sticky; top: 0; z-index: 1000;
-  background: #243443;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: saturate(140%) blur(2px);
-  box-shadow: 0 2px 6px rgba(0,0,0,.12);      /* más “presencia” */
-}
-
-/* Desktop: como ya lo tenías */
-.topnav .scroller {
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  padding: 10px 14px;
-}
-
-/* Links */
-.topnav a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 8px 10px;                         /* mayor área táctil */
-  border-radius: 9999px;
-  opacity: .95;
-}
-.topnav a:hover, .topnav a:focus-visible {
-  opacity: 1;
-  background: rgba(255,255,255,.12);
-  outline: none;
-}
-
-/* Mobile: chips scrolleables */
-@media (max-width: 520px) {
-  .topnav .scroller {
-    justify-content: flex-start;
-    gap: 10px;
-    padding: 8px 12px;
-    overflow-x: auto;
-    white-space: nowrap;
-    scroll-snap-type: x proximity;
-  }
-  .topnav .scroller::-webkit-scrollbar { display: none; } /* oculta scroll */
-  .topnav a {
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-    font-size: 15px;
-    padding: 10px 14px;                      /* tap target 44px aprox */
-    background: rgba(255,255,255,.08);
-  }
-}
-
-/* Marca el link activo cuando hay hash (#seccion) */
-.topnav a[href*="#"]:is(:target, :hover) {}
-/* Truco simple: resalta si la URL contiene ese hash */
-.topnav a.active { background: rgba(255,255,255,.18); }
-
-/* Accesibilidad: foco visible más claro para teclado */
+/* ===== Accesibilidad: foco visible más claro ===== */
 a:focus-visible, .btn:focus-visible, .carousel .nav:focus-visible {
   outline: 2px solid #1d76d2;
   outline-offset: 2px;
-  border-radius: 6px;
 }
 
 /* === Acordeones (details/summary) === */
-details.exp { padding: 0; border-radius: 12px; }
+details.exp { padding: 0; border-radius: 0; } /* recto */
 details.exp summary {
   list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px;
-  font-family: 'Merriweather', serif; font-size: 22px; line-height: 1.3;
+  font-family: 'Source Serif 4', serif; font-size: 22px; line-height: 1.3;
   margin: 0; padding: 6px 0;
 }
 details.exp summary::-webkit-details-marker { display: none; }
 details.exp summary .chev { margin-left: auto; transition: transform .2s ease; }
 details.exp[open] summary .chev { transform: rotate(180deg); }
-
 /* Contenido del acordeón */
 details.exp > *:not(summary) {
   margin-top: 14px; padding-top: 14px; border-top: 1px solid #eee;
@@ -317,10 +274,7 @@ details.exp ul { margin: 0; padding-left: 20px; }
 }
 .contact-cv h2 { margin: 0 0 8px; }
 .contact-cv h3 { margin: 0 0 8px; font-size: 22px; }
-
-/* ancla #cv con margen para no quedar tapada por el nav si es sticky */
 #cv { scroll-margin-top: var(--nav-h, 64px); }
-
 @media (min-width: 820px) {
   .contact-cv .cc-grid {
     grid-template-columns: 1.2fr 0.8fr;   /* dos columnas en desktop */
@@ -329,12 +283,12 @@ details.exp ul { margin: 0; padding-left: 20px; }
 }
 
 /* ===== Botón “Watch …” debajo del caption ===== */
-.demo-btn{
+.demo-btn {
   display:inline-block; margin:8px 0 4px; padding:8px 12px;
-  font-size:14px; border:1px solid #e2e8f0; border-radius:9999px;
+  font-size:14px; border:1px solid #e2e8f0; border-radius:0; /* recto */
   background:#f8fafc; color:#243443; cursor:pointer;
 }
-.demo-btn:hover{ background:#eef6ff; }
+.demo-btn:hover { background:#eef6ff; }
 
 /* ===== Overlay phone-card ===== */
 .vo{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:2000; }
@@ -346,94 +300,67 @@ details.exp ul { margin: 0; padding-left: 20px; }
   position:relative; z-index:1;
   width:min(420px, 92vw);
   aspect-ratio: 9 / 16;
-  background:transparent; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+  background:transparent; border-radius:0; /* recto */
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
   display:flex; flex-direction:column; overflow:hidden;
 }
 .vo-close{
   position:absolute; top:8px; right:8px;
-  width:36px; height:36px; border:none; border-radius:50%;
+  width:36px; height:36px; border:none; border-radius:0; /* recto */
   background:rgba(255,255,255,.15); color:#fff; font-size:18px; cursor:pointer;
 }
-.vo-close:hover{ background:rgba(255,255,255,.25); }
-
 .vo-meta{
   position:absolute; top:10px; left:12px; right:56px;
   display:flex; align-items:center; gap:8px;
   color:#e6edf3; font-size:13px; opacity:.92; text-shadow:0 1px 2px rgba(0,0,0,.5);
 }
 .vo-dot{ opacity:.7; }
+.vo-player{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.vo-player iframe{ width:100%; height:100%; border:0; }
 
-.vo-player{
-  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-}
-.vo-player iframe{
-  width:100%; height:100%; border:0;
-}
-
-/* Caption técnico, pegado abajo, sobre un gradiente */
-/*background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));*/
+/* Caption técnico */
 .vo-caption{
   position:absolute; left:0; right:0; bottom:0; padding:10px 12px;
   font-size:13px; color:#eef2f6;
-  background:none;   /* quita el gradiente */
-  text-shadow:none;  /* asegura sin sombra en el texto */
+  background:none; text-shadow:none;
 }
-
-/* Mientras está abierto, desactivar controles del carrusel debajo */
 body.vo-open .carousel .nav,
 body.vo-open .carousel .dots{ pointer-events:none; opacity:.35; }
-
 .vo-caption a.credit{
   color:#cdd6e0; text-decoration:none; opacity:.85;
   border-bottom:1px dotted rgba(255,255,255,.35);
 }
 .vo-caption a.credit:hover{ opacity:1; }
 
-/* About: See more / See less */
+/* About: See more / See less (recto) */
 details.fold { margin-top: 8px; }
 details.fold > summary{
   display:inline-flex; gap:8px; align-items:center;
   cursor:pointer; user-select:none;
   padding:6px 10px; border:1px solid #e2e8f0;
-  border-radius:9999px; background:#f8fafc; font-size:14px;
+  border-radius:0; /* recto */
+  background:#f8fafc; font-size:14px;
 }
 details.fold[open] > summary{ background:#eef6ff; }
 details.fold > summary::before{ content:'▸'; font-size:12px; transform:translateY(1px); }
 details.fold[open] > summary::before{ content:'▾'; }
-
-/* Mostrar/ocultar labels con mayor prioridad (móviles) */
+/* Mostrar/ocultar labels */
 details.fold > summary .less{ display:none !important; }
 details.fold[open] > summary .more{ display:none !important; }
 details.fold[open] > summary .less{ display:inline !important; }
-
-/* Espaciado del contenido expandido */
+/* Contenido expandido */
 details.fold > *:not(summary){ margin-top:10px; }
 
-/* === Overlay video: sin superposición y sin cajón negro === */
-:root{
-  /* alto típico de controles de YouTube; podés ajustar si querés */
-  --yt-controls-h: clamp(40px, 6vh, 64px);
-}
-
-/* revertimos el padding que generaba el hueco negro */
+/* === Overlay video: ajustes sin borde redondeado y sin cajón negro === */
+:root{ --yt-controls-h: clamp(40px, 6vh, 64px); }
 .vo-player { padding-bottom: 0 !important; }
-
-/* movemos el caption por arriba de los controles y no bloquea clics */
-/* background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0)); */
 .vo-caption{
   bottom: calc(var(--yt-controls-h) + env(safe-area-inset-bottom, 0px));
-  pointer-events: none;               /* deja pasar clics */
-  /* un poco más suave para no “gritar” sobre el video */
-  background: none; 
-  text-shadow: none !important;
+  pointer-events: none;
+  background: none; text-shadow: none !important;
 }
-
-/* los links dentro del caption siguen siendo clickeables */
 .vo-caption a, .vo-caption button { pointer-events: auto; }
-
-/* desktop: el caption puede ser un pelín más chico */
 @media (min-width: 900px){
   .vo-caption{ font-size: 12px; padding: 8px 10px; }
 }
-
 
