@@ -68,7 +68,7 @@ footer {
 .topnav a {
   color: #fff; text-decoration: none; font-size: 15px;
   padding: 8px 10px; /* mayor área táctil */
-  border-radius: 0;  /* recto */
+  border-radius: 9999px;
   opacity: .95;
 }
 .topnav a:hover, .topnav a:focus-visible {
