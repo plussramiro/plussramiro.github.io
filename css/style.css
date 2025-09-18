@@ -365,19 +365,24 @@ details.fold > *:not(summary){ margin-top:10px; }
   .vo-caption{ font-size: 12px; padding: 8px 10px; }
 }
 
-/* ===== Collapsibles: smooth height/opacity (para panels generados por JS) ===== */
+/* Collapsibles con transición suave */
 .collapsible{
-  overflow: hidden;
+  overflow: clip;              /* mejor que hidden p/animación vertical */
   height: 0;
   opacity: 0;
   transition:
     height 280ms cubic-bezier(.22,.61,.36,1),
-    padding 280ms cubic-bezier(.22,.61,.36,1),
-    opacity 220ms ease;
-  will-change: height, padding;
+    opacity 220ms ease;        /* <- quitamos padding de la transición */
+  will-change: height, opacity;
+  contain: layout;             /* aísla recalculos y evita “janks” */
+  box-sizing: border-box;
 }
 
-.collapsible--open { opacity: 1; }
+/* estado abierto (visual); padding sin animar para evitar micro saltos */
+.collapsible--open {
+  opacity: 1;
+  /* el padding lo maneja JS antes de medir la altura */
+}
 
 /* Reducir movimiento si el usuario lo pidió */
 @media (prefers-reduced-motion: reduce) {
