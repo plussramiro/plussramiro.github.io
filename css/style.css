@@ -493,29 +493,5 @@ details[open] .summary-toggle .chev {
   transform: rotate(180deg);
 }
 
-/* Texto See more / See less */
-.label-expanded { display: none; }
-details[open] .label-collapsed { display: none; }
-details[open] .label-expanded { display: inline; }
 
-/* Animación de altura sin JS: truco de grid */
-details .panel {
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: 0fr;           /* cerrado */
-  transition: grid-template-rows 280ms ease;
-}
-details[open] .panel {
-  grid-template-rows: 1fr;           /* abierto */
-}
-details .panel > * {
-  min-height: 0;                     /* para que colapse bien */
-}
-
-/* details.exp, details.fold {
-  border-radius: 12px;
-  padding: .25rem .75rem;
-  border: 1px solid rgba(127,127,127,.25);
-  background: rgba(127,127,127,.04);
-} */
 
