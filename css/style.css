@@ -366,15 +366,17 @@ details.fold > *:not(summary){ margin-top:10px; }
 }
 
 /* ===== Collapsibles: smooth height/opacity (para panels generados por JS) ===== */
-.collapsible {
+.collapsible{
   overflow: hidden;
   height: 0;
   opacity: 0;
   transition:
     height 280ms cubic-bezier(.22,.61,.36,1),
+    padding 280ms cubic-bezier(.22,.61,.36,1),
     opacity 220ms ease;
-  will-change: height;
+  will-change: height, padding;
 }
+
 .collapsible--open { opacity: 1; }
 
 /* Reducir movimiento si el usuario lo pidió */
