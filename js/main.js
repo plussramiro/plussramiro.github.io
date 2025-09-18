@@ -102,7 +102,6 @@
     } else {
       det.open = true;
       // Estado visual consistente
-      content.style.display = 'block';
       content.style.height  = 'auto';
       content.style.opacity = '1';
       content.classList.add('collapsible--open');
@@ -168,8 +167,7 @@
       this.root.classList.remove('open');
       document.body.classList.remove('vo-open');
       this.root.setAttribute('aria-hidden', 'true');
-      // (opcional) limpiar la variable si querés
-      // document.documentElement.style.removeProperty('--yt-controls-h');
+      // document.documentElement.style.removeProperty('--yt-controls-h'); // opcional
     }
   };
 
@@ -188,117 +186,142 @@
     });
   }
 
-/* ===== <details> con transición suave (sin display:none) =====
-   - Envolvemos todo menos <summary> en .details-content
-   - Animamos 'height' pero NUNCA usamos display:none
-   - Durante el cierre mantenemos details.open=true y lo cambiamos a false al final
-================================================================= */
-function ensureDetailsContent(detailsEl) {
-  let wrap = detailsEl.querySelector(':scope > .details-content');
-  if (!wrap) {
-    wrap = document.createElement('div');
-    wrap.className = 'details-content collapsible';
-    wrap.style.overflow = 'hidden';
-    // Mover todo excepto summary
-    const kids = Array.from(detailsEl.children).filter(n => n.tagName.toLowerCase() !== 'summary');
-    kids.forEach(n => wrap.appendChild(n));
-    detailsEl.appendChild(wrap);
+  /* ===== <details> con transición suave (sin display:none) =====
+     - Envolvemos todo menos <summary> en .details-content
+     - Animamos 'height' y nunca usamos display:none durante la animación
+     - Durante el cierre mantenemos details.open=true y lo cambiamos a false al final
+  ================================================================= */
+  function ensureDetailsContent(detailsEl) {
+    let wrap = detailsEl.querySelector(':scope > .details-content');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'details-content collapsible';
+      wrap.style.overflow = 'hidden';
+      // Mover todo excepto summary
+      const kids = Array.from(detailsEl.children).filter(n => n.tagName.toLowerCase() !== 'summary');
+      kids.forEach(n => wrap.appendChild(n));
+      detailsEl.appendChild(wrap);
+    }
+    // Estado inicial
+    if (detailsEl.open) {
+      wrap.style.height  = 'auto';
+      wrap.style.opacity = '1';
+      wrap.classList.add('collapsible--open');
+    } else {
+      wrap.style.height  = '0px';
+      wrap.style.opacity = '0';
+      wrap.classList.remove('collapsible--open');
+    }
+    wrap.dataset.animating = '0';
+    return wrap;
   }
-  // Estado inicial
-  if (detailsEl.open) {
-    wrap.style.height  = 'auto';
-    wrap.style.opacity = '1';
-    wrap.classList.add('collapsible--open');
-  } else {
-    wrap.style.height  = '0px';
-    wrap.style.opacity = '0';
-    wrap.classList.remove('collapsible--open');
-  }
-  wrap.dataset.animating = '0';
-  return wrap;
-}
 
-function detailsOpen(detailsEl, content) {
-  if (content.dataset.animating === '1') return;
-  content.dataset.animating = '1';
+  function detailsOpen(detailsEl, content) {
+    if (content.dataset.animating === '1') return;
+    content.dataset.animating = '1';
 
-  // Asegurarnos de que el <details> quede "open" para que el contenido exista en el flow
-  detailsEl.open = true;
+    detailsEl.open = true;                         // mantener visible
+    content.classList.add('collapsible--open');
 
-  const start  = content.offsetHeight;      // normalmente 0
-  const target = content.scrollHeight;
-
-  content.classList.add('collapsible--open');
-  content.style.height  = start + 'px';
-  content.style.opacity = '0';
-
-  requestAnimationFrame(() => {
-    content.style.height  = target + 'px';
-    content.style.opacity = '1';
-  });
-
-  const onEnd = (e) => {
-    if (e.propertyName !== 'height') return;
-    content.style.height = 'auto';          // libera para responsive
-    content.dataset.animating = '0';
-    content.removeEventListener('transitionend', onEnd);
-  };
-  content.addEventListener('transitionend', onEnd, { once: true });
-}
-
-function detailsClose(detailsEl, content) {
-  if (content.dataset.animating === '1') return;
-  content.dataset.animating = '1';
-
-  // MUY IMPORTANTE: mantener details.open=true DURANTE la animación de cierre
-  const start = content.scrollHeight;
-  content.style.height  = start + 'px';
-  content.style.opacity = '1';
-
-  requestAnimationFrame(() => {
+    // Estado inicial
     content.style.height  = '0px';
     content.style.opacity = '0';
-  });
 
-  const onEnd = (e) => {
-    if (e.propertyName !== 'height') return;
-    content.classList.remove('collapsible--open');
-    // recién ahora marcamos cerrado
-    detailsEl.open = false;
-    content.dataset.animating = '0';
-    content.removeEventListener('transitionend', onEnd);
-  };
-  content.addEventListener('transitionend', onEnd, { once: true });
-}
+    // Reflow forzado (fija el estado inicial)
+    content.getBoundingClientRect();
 
-function enhanceDetails(detailsEl) {
-  const summary = detailsEl.querySelector(':scope > summary');
-  if (!summary) return;
-  const content = ensureDetailsContent(detailsEl);
+    const target = content.scrollHeight;
 
-  // Evitar múltiples listeners si llamamos dos veces
-  summary.__hasEnhancer && summary.removeEventListener('click', summary.__enhancer);
-  summary.__enhancer = (ev) => {
-    ev.preventDefault(); // no dejamos que el toggle nativo rompa la animación
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      // sin animación
-      detailsEl.open = !detailsEl.open;
-      content.style.height  = detailsEl.open ? 'auto' : '0px';
-      content.style.opacity = detailsEl.open ? '1'    : '0';
-      content.classList.toggle('collapsible--open', detailsEl.open);
+    // Ir al estado final
+    requestAnimationFrame(() => {
+      content.style.height  = target + 'px';
+      content.style.opacity = '1';
+    });
+
+    const onEnd = (e) => {
+      if (e.propertyName !== 'height') return;
+      cleanup();
+    };
+
+    // Fallback si transitionend no dispara
+    const fallback = setTimeout(cleanup, 450);
+
+    function cleanup(){
+      clearTimeout(fallback);
+      content.style.height = 'auto';               // liberar para responsive
       content.dataset.animating = '0';
-      return;
+      content.removeEventListener('transitionend', onEnd);
     }
-    detailsEl.open ? detailsClose(detailsEl, content) : detailsOpen(detailsEl, content);
-  };
-  summary.addEventListener('click', summary.__enhancer);
-  summary.__hasEnhancer = true;
-}
 
-function initDetailsAccordions() {
-  document.querySelectorAll('details.fold, details.exp').forEach(enhanceDetails);
-}
+    content.removeEventListener('transitionend', onEnd);
+    content.addEventListener('transitionend', onEnd);
+  }
+
+  function detailsClose(detailsEl, content) {
+    if (content.dataset.animating === '1') return;
+    content.dataset.animating = '1';
+
+    // Estado inicial = altura actual
+    const start = content.scrollHeight;
+    content.style.height  = start + 'px';
+    content.style.opacity = '1';
+
+    // Reflow forzado
+    content.getBoundingClientRect();
+
+    // Ir a 0
+    requestAnimationFrame(() => {
+      content.style.height  = '0px';
+      content.style.opacity = '0';
+    });
+
+    const onEnd = (e) => {
+      if (e.propertyName !== 'height') return;
+      cleanup();
+    };
+
+    const fallback = setTimeout(cleanup, 450);
+
+    function cleanup(){
+      clearTimeout(fallback);
+      content.classList.remove('collapsible--open');
+      detailsEl.open = false;                      // marcar cerrado al final
+      content.dataset.animating = '0';
+      content.removeEventListener('transitionend', onEnd);
+    }
+
+    content.removeEventListener('transitionend', onEnd);
+    content.addEventListener('transitionend', onEnd);
+  }
+
+  function enhanceDetails(detailsEl) {
+    const summary = detailsEl.querySelector(':scope > summary');
+    if (!summary) return;
+    const content = ensureDetailsContent(detailsEl);
+
+    // Evitar múltiples listeners si volvemos a inicializar
+    summary.__hasEnhancer && summary.removeEventListener('click', summary.__enhancer);
+    summary.__enhancer = (ev) => {
+      ev.preventDefault(); // evita el toggle nativo
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        // sin animación
+        detailsEl.open = !detailsEl.open;
+        content.style.height  = detailsEl.open ? 'auto' : '0px';
+        content.style.opacity = detailsEl.open ? '1'    : '0';
+        content.classList.toggle('collapsible--open', detailsEl.open);
+        content.dataset.animating = '0';
+        return;
+      }
+      detailsEl.open ? detailsClose(detailsEl, content) : detailsOpen(detailsEl, content);
+    };
+    summary.addEventListener('click', summary.__enhancer);
+    summary.__hasEnhancer = true;
+  }
+
+  function initDetailsAccordions() {
+    document.querySelectorAll('details.fold, details.exp').forEach(enhanceDetails);
+  }
 
   document.addEventListener('DOMContentLoaded', () => {
     initYear();
@@ -384,6 +407,3 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
-
-
-
