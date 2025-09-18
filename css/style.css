@@ -24,7 +24,7 @@ header {
   padding: 40px 20px 60px;
 }
 header img {
-  width: 220px; height: 220px; border-radius: 50%; 
+  width: 220px; height: 220px; border-radius: 50%;
   border: 3px solid #fff; object-fit: cover; margin-bottom: 15px;
 }
 header h1 { margin: 0; font-size: 32px; }
@@ -180,16 +180,11 @@ footer {
 .carousel figcaption {
   padding: 10px; font-size: 14px; color: #444; text-align: center; background:#fff;
 }
-.carousel .nav {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 2; width: 40px; height: 40px; border: none;
-  border-radius: 0; /* recto */
-  background: rgba(0,0,0,0.45); color: #fff; font-size: 26px; line-height: 40px; cursor: pointer;
-}
-.carousel .nav:hover { background: rgba(0,0,0,0.6); }
-.carousel .nav:focus { outline: 2px solid #1d76d2; }
-.carousel .prev { left: 10px; }
-.carousel .next { right: 10px; }
+
+/* Flechas originales: las ocultamos por defecto para dejar solo hotzones */
+.carousel .nav { display: none !important; }
+
+/* Dots */
 .carousel .dots {
   display: flex; justify-content: center; gap: 8px; padding: 8px 0 16px;
   position: relative; z-index: 1;
@@ -199,7 +194,6 @@ footer {
   background: #cfd6dd; cursor: pointer;
 }
 .carousel .dot.active { background: #1d76d2; }
-@media (hover:none) { .carousel .nav { background: rgba(0,0,0,0.35); } }
 
 /* ========= Figures / Research highlights (cards) ========= */
 .figure-grid {
@@ -243,7 +237,7 @@ footer {
 main { padding-top: 40px; } /* respiro bajo la barra fija */
 
 /* ===== Accesibilidad: foco visible más claro ===== */
-a:focus-visible, .btn:focus-visible, .carousel .nav:focus-visible {
+a:focus-visible, .btn:focus-visible, .carousel .nav:focus-visible, .hotzone:focus-visible {
   outline: 2px solid #1d76d2;
   outline-offset: 2px;
 }
@@ -324,7 +318,6 @@ details.exp ul { margin: 0; padding-left: 20px; }
   font-size:13px; color:#eef2f6;
   background:none; text-shadow:none;
 }
-body.vo-open .carousel .nav,
 body.vo-open .carousel .dots{ pointer-events:none; opacity:.35; }
 .vo-caption a.credit{
   color:#cdd6e0; text-decoration:none; opacity:.85;
@@ -364,7 +357,7 @@ details.fold > *:not(summary){ margin-top:10px; }
   .vo-caption{ font-size: 12px; padding: 8px 10px; }
 }
 
-/* ===== Collapsibles: smooth height/opacity ===== */
+/* ===== Collapsibles: smooth height/opacity (para panels generados por JS) ===== */
 .collapsible {
   overflow: hidden;
   height: 0;
@@ -374,24 +367,49 @@ details.fold > *:not(summary){ margin-top:10px; }
     opacity 220ms ease;
   will-change: height;
 }
-
-.collapsible--open {
-  /* durante la animación dejamos height en px; al finalizar, JS setea 'auto' */
-  opacity: 1;
-}
+.collapsible--open { opacity: 1; }
 
 /* Reducir movimiento si el usuario lo pidió */
 @media (prefers-reduced-motion: reduce) {
   .collapsible { transition: none !important; }
 }
 
-/* Botones/links que abren/cerran */
-.toggle-btn[aria-expanded="true"] .toggle-icon {
-  transform: rotate(180deg);
-  transition: transform 220ms ease;
-}
-.toggle-btn .toggle-icon {
-  display: inline-block;
-  transition: transform 220ms ease;
-}
+/* Botones/links que abren/cerran (si usás .toggle-btn) */
+.toggle-btn[aria-expanded="true"] .toggle-icon { transform: rotate(180deg); transition: transform 220ms ease; }
+.toggle-btn .toggle-icon { display: inline-block; transition: transform 220ms ease; }
 
+/* ===== Hotzones invisibles para carruseles (amplían área clickeable) ===== */
+.hotzone{
+  position:absolute; top:0; bottom:0; width:15%;
+  border:0; background:transparent; cursor:pointer; z-index:5;
+  transition: background 160ms ease;
+}
+.hotzone--prev{ left:0; }
+.hotzone--next{ right:0; }
+
+.hotzone:hover,
+.hotzone:focus-visible{
+  /* gradiente sutil de feedback; lado acorde */
+  background: linear-gradient(to var(--hz-dir, right), rgba(0,0,0,0.10), rgba(0,0,0,0.00));
+}
+.hotzone--prev{ --hz-dir: right; }
+.hotzone--next{ --hz-dir: left; }
+
+/* Indicador mínimo opcional (flecha apenas visible al hover/focus) */
+.hotzone::after{
+  content:''; position:absolute; top:50%;
+  width:10px; height:10px;
+  border-top:2px solid rgba(255,255,255,0.7);
+  border-right:2px solid rgba(255,255,255,0.7);
+  opacity:0; transform: translateY(-50%) rotate(45deg);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.hotzone--prev::after{ left:12px; transform: translateY(-50%) rotate(-135deg); }
+.hotzone--next::after{ right:12px; transform: translateY(-50%) rotate(45deg); }
+.hotzone:hover::after,
+.hotzone:focus-visible::after{ opacity:1; }
+
+/* Touch targets más cómodos en mobile */
+@media (max-width: 520px){
+  .hotzone{ width: 18%; }
+}
