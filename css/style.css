@@ -367,22 +367,17 @@ details.fold > *:not(summary){ margin-top:10px; }
 
 /* Collapsibles con transición suave */
 .collapsible{
-  overflow: clip;              /* mejor que hidden p/animación vertical */
+  overflow: clip;
   height: 0;
   opacity: 0;
   transition:
     height 280ms cubic-bezier(.22,.61,.36,1),
-    opacity 220ms ease;        /* <- quitamos padding de la transición */
-  will-change: height, opacity;
-  contain: layout;             /* aísla recalculos y evita “janks” */
+    opacity 220ms ease;
+  will-change: height, opacity; /* OK dejarlo o quitarlo, JS lo setea puntual */
+  contain: layout;
   box-sizing: border-box;
 }
-
-/* estado abierto (visual); padding sin animar para evitar micro saltos */
-.collapsible--open {
-  opacity: 1;
-  /* el padding lo maneja JS antes de medir la altura */
-}
+.collapsible--open { opacity: 1; }
 
 /* Reducir movimiento si el usuario lo pidió */
 @media (prefers-reduced-motion: reduce) {
