@@ -101,9 +101,11 @@
       if (!det.open) detailsOpen(det, content);
     } else {
       det.open = true;
-      // Estado visual consistente
-      content.style.height  = 'auto';
-      content.style.opacity = '1';
+      // Estado visual consistente (incluye padding suavizado)
+      content.style.height       = 'auto';
+      content.style.opacity      = '1';
+      content.style.paddingTop   = DETAILS_PAD + 'px';
+      content.style.paddingBottom= DETAILS_PAD + 'px';
       content.classList.add('collapsible--open');
     }
   }
@@ -188,28 +190,37 @@
 
   /* ===== <details> con transición suave (sin display:none) =====
      - Envolvemos todo menos <summary> en .details-content
-     - Animamos 'height' y nunca usamos display:none durante la animación
+     - Animamos height + padding + opacity
      - Durante el cierre mantenemos details.open=true y lo cambiamos a false al final
   ================================================================= */
+
+  // Padding acolchonado para la animación
+  const DETAILS_PAD = 12; // px
+
   function ensureDetailsContent(detailsEl) {
     let wrap = detailsEl.querySelector(':scope > .details-content');
     if (!wrap) {
       wrap = document.createElement('div');
       wrap.className = 'details-content collapsible';
       wrap.style.overflow = 'hidden';
+      wrap.style.boxSizing = 'border-box';
       // Mover todo excepto summary
       const kids = Array.from(detailsEl.children).filter(n => n.tagName.toLowerCase() !== 'summary');
       kids.forEach(n => wrap.appendChild(n));
       detailsEl.appendChild(wrap);
     }
-    // Estado inicial
+    // Estado inicial + padding
     if (detailsEl.open) {
-      wrap.style.height  = 'auto';
-      wrap.style.opacity = '1';
+      wrap.style.height        = 'auto';
+      wrap.style.opacity       = '1';
+      wrap.style.paddingTop    = DETAILS_PAD + 'px';
+      wrap.style.paddingBottom = DETAILS_PAD + 'px';
       wrap.classList.add('collapsible--open');
     } else {
-      wrap.style.height  = '0px';
-      wrap.style.opacity = '0';
+      wrap.style.height        = '0px';
+      wrap.style.opacity       = '0';
+      wrap.style.paddingTop    = '0px';
+      wrap.style.paddingBottom = '0px';
       wrap.classList.remove('collapsible--open');
     }
     wrap.dataset.animating = '0';
@@ -224,12 +235,17 @@
     content.classList.add('collapsible--open');
 
     // Estado inicial
-    content.style.height  = '0px';
-    content.style.opacity = '0';
+    content.style.height        = '0px';
+    content.style.opacity       = '0';
+    content.style.paddingTop    = '0px';
+    content.style.paddingBottom = '0px';
 
     // Reflow forzado (fija el estado inicial)
     content.getBoundingClientRect();
 
+    // Aplicar padding destino y medir con padding ya aplicado
+    content.style.paddingTop    = DETAILS_PAD + 'px';
+    content.style.paddingBottom = DETAILS_PAD + 'px';
     const target = content.scrollHeight;
 
     // Ir al estado final
@@ -244,7 +260,7 @@
     };
 
     // Fallback si transitionend no dispara
-    const fallback = setTimeout(cleanup, 450);
+    const fallback = setTimeout(cleanup, 500);
 
     function cleanup(){
       clearTimeout(fallback);
@@ -269,10 +285,12 @@
     // Reflow forzado
     content.getBoundingClientRect();
 
-    // Ir a 0
+    // Ir a 0 (altura + padding)
     requestAnimationFrame(() => {
-      content.style.height  = '0px';
-      content.style.opacity = '0';
+      content.style.height        = '0px';
+      content.style.opacity       = '0';
+      content.style.paddingTop    = '0px';
+      content.style.paddingBottom = '0px';
     });
 
     const onEnd = (e) => {
@@ -280,7 +298,7 @@
       cleanup();
     };
 
-    const fallback = setTimeout(cleanup, 450);
+    const fallback = setTimeout(cleanup, 500);
 
     function cleanup(){
       clearTimeout(fallback);
@@ -306,10 +324,13 @@
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduced) {
         // sin animación
-        detailsEl.open = !detailsEl.open;
-        content.style.height  = detailsEl.open ? 'auto' : '0px';
-        content.style.opacity = detailsEl.open ? '1'    : '0';
-        content.classList.toggle('collapsible--open', detailsEl.open);
+        const toOpen = !detailsEl.open;
+        detailsEl.open = toOpen;
+        content.style.height        = toOpen ? 'auto' : '0px';
+        content.style.opacity       = toOpen ? '1'    : '0';
+        content.style.paddingTop    = toOpen ? (DETAILS_PAD + 'px') : '0px';
+        content.style.paddingBottom = toOpen ? (DETAILS_PAD + 'px') : '0px';
+        content.classList.toggle('collapsible--open', toOpen);
         content.dataset.animating = '0';
         return;
       }
@@ -407,3 +428,4 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
+
