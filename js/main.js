@@ -227,114 +227,103 @@
     return wrap;
   }
 
-  // Apertura MUY suave: bloqueamos altura en px al final y pasamos a 'auto' sin transición (doble rAF)
-  function detailsOpen(detailsEl, content) {
-    if (content.dataset.animating === '1') return;
-    content.dataset.animating = '1';
+// --- Apertura: igual que antes pero un pelín más tolerante ---
+function detailsOpen(detailsEl, content) {
+  if (content.dataset.animating === '1') return;
+  content.dataset.animating = '1';
 
-    detailsEl.open = true;                         // mantener visible
-    content.classList.add('collapsible--open');
+  detailsEl.open = true;
+  content.classList.add('collapsible--open');
 
-    // Estado inicial
-    content.style.height        = '0px';
-    content.style.opacity       = '0';
-    content.style.paddingTop    = '0px';
-    content.style.paddingBottom = '0px';
+  // Estado inicial
+  content.style.height        = '0px';
+  content.style.opacity       = '0';
+  content.style.paddingTop    = '0px';
+  content.style.paddingBottom = '0px';
 
-    // Reflow forzado (fija el estado inicial)
-    content.getBoundingClientRect();
+  // Reflow
+  content.getBoundingClientRect();
 
-    // Aplicar padding destino ANTES de medir altura final
-    content.style.paddingTop    = DETAILS_PAD + 'px';
-    content.style.paddingBottom = DETAILS_PAD + 'px';
-    const target = content.scrollHeight;
+  // Padding destino ANTES de medir
+  content.style.paddingTop    = DETAILS_PAD + 'px';
+  content.style.paddingBottom = DETAILS_PAD + 'px';
+  const target = content.scrollHeight;
 
-    // Ir al estado final animado
-    requestAnimationFrame(() => {
-      content.style.height  = target + 'px';
-      content.style.opacity = '1';
-    });
-
-    const onEnd = (e) => {
-      if (e.propertyName !== 'height') return;
-
-      // 1) fijamos altura exacta en px y APAGAMOS la transición temporalmente
-      const prevTransition = content.style.transition;
-      content.style.transition = 'none';
-      content.style.height = target + 'px';
-
-      // 2) en los próximos 2 frames, pasamos a 'auto' y restauramos transición (sin “salto”)
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          content.style.height = 'auto';
-          content.style.transition = prevTransition || '';
-          content.dataset.animating = '0';
-          content.removeEventListener('transitionend', onEnd);
-        });
-      });
-    };
-
-    // Fallback si transitionend no dispara
-    const fallback = setTimeout(() => {
-      const prevTransition = content.style.transition;
-      content.style.transition = 'none';
-      content.style.height = 'auto';
-      requestAnimationFrame(() => { content.style.transition = prevTransition || ''; });
-      content.dataset.animating = '0';
-      content.removeEventListener('transitionend', onEnd);
-    }, 600);
-
-    content.removeEventListener('transitionend', onEnd);
-    content.addEventListener('transitionend', (ev) => {
-      clearTimeout(fallback);
-      onEnd(ev);
-    }, { once: true });
-  }
-
-  // Cierre suave: quitamos padding SIN animar y animamos solo height/opacity
-  function detailsClose(detailsEl, content) {
-    if (content.dataset.animating === '1') return;
-    content.dataset.animating = '1';
-
-    // Estado inicial = altura actual
-    const start = content.scrollHeight;
-    content.style.height  = start + 'px';
+  // Animar a abierto
+  requestAnimationFrame(() => {
+    content.style.height  = target + 'px';
     content.style.opacity = '1';
+  });
 
-    // Quitamos padding ya mismo (no animado) para que el objetivo sea 0 exacto
-    content.style.paddingTop    = '0px';
-    content.style.paddingBottom = '0px';
-
-    // Reflow forzado
-    content.getBoundingClientRect();
-
-    // Animar a cerrado
+  const finishOpen = () => {
+    const prev = content.style.transition;
+    content.style.transition = 'none';
+    content.style.height = target + 'px';
     requestAnimationFrame(() => {
-      content.style.height  = '0px';
-      content.style.opacity = '0';
+      requestAnimationFrame(() => {
+        content.style.height = 'auto';
+        content.style.transition = prev || '';
+        content.dataset.animating = '0';
+      });
     });
+  };
 
-    const onEnd = (e) => {
-      if (e.propertyName !== 'height') return;
-      content.classList.remove('collapsible--open');
-      detailsEl.open = false;                      // marcar cerrado al final
-      content.dataset.animating = '0';
-      content.removeEventListener('transitionend', onEnd);
-    };
+  // Cerrar listener robusto (cualquier prop) + fallback
+  let ended = false;
+  const onEnd = () => { if (ended) return; ended = true; finishOpen(); cleanup(); };
+  const cleanup = () => content.removeEventListener('transitionend', onEnd);
 
-    const fallback = setTimeout(() => {
-      content.classList.remove('collapsible--open');
-      detailsEl.open = false;
-      content.dataset.animating = '0';
-      content.removeEventListener('transitionend', onEnd);
-    }, 600);
+  content.addEventListener('transitionend', onEnd);
+  setTimeout(onEnd, 700); // fallback si el evento no llega
+}
 
-    content.removeEventListener('transitionend', onEnd);
-    content.addEventListener('transitionend', (ev) => {
-      clearTimeout(fallback);
-      onEnd(ev);
-    }, { once: true });
-  }
+// --- Cierre: quitar padding sin animar, forzar transición y limpiar SIEMPRE ---
+function detailsClose(detailsEl, content) {
+  if (content.dataset.animating === '1') return;
+  content.dataset.animating = '1';
+
+  // Altura actual (si está en 'auto', la fijamos primero)
+  const start = content.scrollHeight;
+  content.style.height  = start + 'px';
+  content.style.opacity = '1';
+
+  // Quitar padding ya (sin animación) para que el target sea 0 exacto
+  content.style.paddingTop    = '0px';
+  content.style.paddingBottom = '0px';
+
+  // Reflow
+  content.getBoundingClientRect();
+
+  // Animar a cerrado
+  // dentro de detailsClose, antes de setear height/opacity a 0:
+  requestAnimationFrame(() => {
+    const td = getComputedStyle(content).transitionDuration
+                 .split(',')
+                 .some(v => parseFloat(v) > 0);
+    if (!td) {
+      content.style.transition = 'height 280ms cubic-bezier(.22,.61,.36,1), opacity 220ms ease';
+    }
+    content.style.height  = '0px';
+    content.style.opacity = '0';
+  });
+
+  const finishClose = () => {
+    content.classList.remove('collapsible--open');
+    detailsEl.open = false;
+    // limpiar estilos temporales sin romper la próxima animación
+    content.style.height = '0px';
+    // No resetear transition aquí; dejá que CSS la defina (o quedará el inline que pusimos arriba)
+    content.dataset.animating = '0';
+  };
+
+  // Listener robusto + fallback
+  let ended = false;
+  const onEnd = () => { if (ended) return; ended = true; finishClose(); cleanup(); };
+  const cleanup = () => content.removeEventListener('transitionend', onEnd);
+
+  content.addEventListener('transitionend', onEnd);
+  setTimeout(onEnd, 800); // si por lo que sea no llega el evento, igual cerramos
+}
 
   function enhanceDetails(detailsEl) {
     const summary = detailsEl.querySelector(':scope > summary');
