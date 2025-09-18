@@ -9,13 +9,13 @@
   }
 
   /* ===== Carrusel reusable =====
-     Requiere estructura:
+     Estructura:
      <div class="carousel" data-autoplay="6000">
-       <button class="nav prev">‹</button>   (ocultas por CSS si usás hotzones)
+       <button class="nav prev">‹</button>   (pueden estar ocultas por CSS)
        <div class="track"> <figure class="slide">…</figure>… </div>
        <button class="nav next">›</button>
        <div class="dots"></div>
-       <button class="hotzone hotzone--prev"></button>   (zonas clickeables amplias)
+       <button class="hotzone hotzone--prev"></button>
        <button class="hotzone hotzone--next"></button>
      </div>
   ======================================== */
@@ -32,7 +32,7 @@
 
     let index = 0;
 
-    // Crear puntitos
+    // Puntitos
     dotsWrap.innerHTML = '';
     slides.forEach((_, i) => {
       const d = document.createElement('button');
@@ -47,14 +47,11 @@
       track.style.transform = `translateX(-${index * 100}%)`;
       dots.forEach((d, i) => d.classList.toggle('active', i === index));
     }
-    function goTo(i) {
-      index = (i + slides.length) % slides.length;
-      update();
-    }
+    function goTo(i) { index = (i + slides.length) % slides.length; update(); }
     function nextSlide() { goTo(index + 1); }
     function prevSlide() { goTo(index - 1); }
 
-    // Botones flecha (si están visibles) y hotzones invisibles
+    // Flechas + hotzones
     nextBtn?.addEventListener('click', nextSlide);
     prevBtn?.addEventListener('click', prevSlide);
     hzNext?.addEventListener('click', nextSlide);
@@ -67,7 +64,7 @@
       if (e.key === 'ArrowLeft')  prevSlide();
     });
 
-    // Swipe (simple)
+    // Swipe simple
     let startX = 0, dragging = false;
     const threshold = 40;
     root.addEventListener('touchstart', (e) => {
@@ -75,49 +72,44 @@
     }, { passive: true });
     root.addEventListener('touchmove', (e) => {
       if (!dragging) return;
-      const delta = e.touches[0].clientX - startX;
-      if (Math.abs(delta) > threshold) {
-        delta < 0 ? nextSlide() : prevSlide();
-        dragging = false;
-      }
+      const dx = e.touches[0].clientX - startX;
+      if (Math.abs(dx) > threshold) { dx < 0 ? nextSlide() : prevSlide(); dragging = false; }
     }, { passive: true });
     root.addEventListener('touchend', () => { dragging = false; });
 
     // Autoplay opcional
     let timer = null;
     const autoplayMs = Number(root.dataset.autoplay) || 0;
-    function startAutoplay() {
-      if (autoplayMs > 0 && !timer) timer = setInterval(nextSlide, autoplayMs);
-    }
-    function stopAutoplay() {
-      if (timer) { clearInterval(timer); timer = null; }
-    }
-    document.addEventListener('visibilitychange', () => {
-      document.hidden ? stopAutoplay() : startAutoplay();
-    });
+    function startAutoplay() { if (autoplayMs > 0 && !timer) timer = setInterval(nextSlide, autoplayMs); }
+    function stopAutoplay()  { if (timer) { clearInterval(timer); timer = null; } }
+    document.addEventListener('visibilitychange', () => { document.hidden ? stopAutoplay() : startAutoplay(); });
     root.addEventListener('mouseenter', stopAutoplay);
     root.addEventListener('mouseleave', startAutoplay);
 
     update(); startAutoplay();
   }
 
-  // === Abrir acordeón de secciones si URL trae hash (#posters o #programs)
+  // === Abrir acordeón si URL trae hash (#posters o #programs)
   function expandTargetFromHash(openAnimated = false) {
     const id = location.hash.slice(1);
     if (!id) return;
     if (!['posters', 'programs'].includes(id)) return;
     const det = document.querySelector(`#${id} details`);
     if (!det) return;
+    const content = ensureDetailsContent(det);
     if (openAnimated) {
-      // animado si ya está inicializado
-      const content = det.querySelector('.details-content');
-      if (content && !det.open) detailsOpen(det, content);
+      if (!det.open) detailsOpen(det, content);
     } else {
       det.open = true;
+      // Estado visual consistente
+      content.style.display = 'block';
+      content.style.height  = 'auto';
+      content.style.opacity = '1';
+      content.classList.add('collapsible--open');
     }
   }
 
-  /* ===== Overlay “phone card” para videos (YouTube privacy-enhanced) ===== */
+  /* ===== Overlay “phone card” (YouTube nocookie) ===== */
   const VO = {
     root: null, playerWrap: null, title: null, duration: null, caption: null,
 
@@ -151,6 +143,11 @@
       this.duration.textContent = duration || '';
       this.caption.innerHTML    = caption || '';
 
+      // Altura segura para controles en móvil (evita superposición del caption)
+      const isNarrow = window.matchMedia('(max-width: 640px)').matches;
+      const controlsH = isNarrow ? Math.max(84, Math.round(window.innerHeight * 0.1)) : 56;
+      document.documentElement.style.setProperty('--yt-controls-h', `${controlsH}px`);
+
       // Inyectar iframe (nocookie)
       this.playerWrap.innerHTML =
         `<iframe
@@ -171,6 +168,8 @@
       this.root.classList.remove('open');
       document.body.classList.remove('vo-open');
       this.root.setAttribute('aria-hidden', 'true');
+      // (opcional) limpiar la variable si querés
+      // document.documentElement.style.removeProperty('--yt-controls-h');
     }
   };
 
@@ -189,69 +188,85 @@
     });
   }
 
-  /* ===== Animación suave para <details> (fold/exp) =====
-     - Envuelve el contenido (excepto <summary>) en .details-content
-     - Anima height + opacity al abrir/cerrar
+  /* ===== <details> con transición suave =====
+     - Se envuelve el contenido (todo menos <summary>) en .details-content
+     - Se anima height + opacity al abrir/cerrar
   ===================================================== */
-  function wrapDetailsContent(detailsEl) {
-    // Si ya está envuelto, devolver
-    if (detailsEl.querySelector(':scope > .details-content')) {
-      return detailsEl.querySelector(':scope > .details-content');
-    }
-    const frag = document.createDocumentFragment();
-    const kids = Array.from(detailsEl.children).filter(n => n.tagName.toLowerCase() !== 'summary');
+  function ensureDetailsContent(detailsEl) {
+    const existing = detailsEl.querySelector(':scope > .details-content');
+    if (existing) return existing;
+
     const wrap = document.createElement('div');
-    wrap.className = 'details-content collapsible'; // reusa reglas de .collapsible (CSS)
-    kids.forEach(n => frag.appendChild(n));
-    wrap.appendChild(frag);
+    wrap.className = 'details-content collapsible';
+    wrap.style.overflow = 'hidden';
+    // Mover todo lo que no sea summary dentro del wrap
+    const kids = Array.from(detailsEl.children).filter(n => n.tagName.toLowerCase() !== 'summary');
+    kids.forEach(n => wrap.appendChild(n));
     detailsEl.appendChild(wrap);
-    // Estado inicial según abierto o no
+
+    // Estado inicial
     if (detailsEl.open) {
-      wrap.style.height = 'auto';
+      wrap.style.display = 'block';
+      wrap.style.height  = 'auto';
       wrap.style.opacity = '1';
       wrap.classList.add('collapsible--open');
-      wrap.hidden = false;
+      wrap.dataset.animating = '0';
     } else {
-      wrap.style.height = '0px';
+      wrap.style.display = 'none';
+      wrap.style.height  = '0px';
       wrap.style.opacity = '0';
-      wrap.hidden = true;
+      wrap.dataset.animating = '0';
     }
     return wrap;
   }
 
   function detailsOpen(detailsEl, content) {
+    if (content.dataset.animating === '1') return;
+    content.dataset.animating = '1';
+
     detailsEl.open = true;
-    content.hidden = false;
-    content.classList.add('collapsible--open');
-    const start = content.offsetHeight;           // 0 si estaba oculto
+    content.style.display = 'block';          // aseguro medible
+    const start = 0;
     const target = content.scrollHeight;
+
+    // Reset inicial
+    content.classList.add('collapsible--open');
     content.style.height  = start + 'px';
     content.style.opacity = '0';
+
     requestAnimationFrame(() => {
       content.style.height  = target + 'px';
       content.style.opacity = '1';
     });
+
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
-      content.style.height = 'auto';
+      content.style.height = 'auto';          // libera para responsive
+      content.dataset.animating = '0';
       content.removeEventListener('transitionend', onEnd);
     };
     content.addEventListener('transitionend', onEnd, { once: true });
   }
 
   function detailsClose(detailsEl, content) {
+    if (content.dataset.animating === '1') return;
+    content.dataset.animating = '1';
+
     const start = content.scrollHeight;
     content.style.height  = start + 'px';
     content.style.opacity = '1';
+
     requestAnimationFrame(() => {
       content.style.height  = '0px';
       content.style.opacity = '0';
     });
+
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
       content.classList.remove('collapsible--open');
-      content.hidden = true;
-      detailsEl.open = false; // marcar cerrado tras animar
+      content.style.display = 'none';
+      detailsEl.open = false;
+      content.dataset.animating = '0';
       content.removeEventListener('transitionend', onEnd);
     };
     content.addEventListener('transitionend', onEnd, { once: true });
@@ -260,25 +275,20 @@
   function enhanceDetails(detailsEl) {
     const summary = detailsEl.querySelector(':scope > summary');
     if (!summary) return;
-    const content = wrapDetailsContent(detailsEl);
+    const content = ensureDetailsContent(detailsEl);
 
-    // Click en summary -> animar en vez de toggle instantáneo
+    // Click en summary -> animación controlada
     summary.addEventListener('click', (ev) => {
-      ev.preventDefault(); // evitamos el toggle nativo inmediato
+      ev.preventDefault(); // evitamos el toggle nativo
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduced) {
-        // comportamiento instantáneo para a11y
+        // modo sin animación
         detailsEl.open = !detailsEl.open;
-        content.hidden = !detailsEl.open;
-        if (detailsEl.open) {
-          content.style.height = 'auto';
-          content.style.opacity = '1';
-          content.classList.add('collapsible--open');
-        } else {
-          content.style.height = '0px';
-          content.style.opacity = '0';
-          content.classList.remove('collapsible--open');
-        }
+        content.style.display = detailsEl.open ? 'block' : 'none';
+        content.style.height  = detailsEl.open ? 'auto' : '0px';
+        content.style.opacity = detailsEl.open ? '1' : '0';
+        content.classList.toggle('collapsible--open', detailsEl.open);
+        content.dataset.animating = '0';
         return;
       }
       detailsEl.open ? detailsClose(detailsEl, content) : detailsOpen(detailsEl, content);
@@ -308,15 +318,13 @@
   });
 })();
 
-/* ===== Collapsible helpers (height animation to/from scrollHeight) =====
-   Estas funciones quedan disponibles si más adelante agregás paneles .collapsible
-   controlados por botones .toggle-btn[aria-controls].
-============================================================================ */
+/* ===== Collapsible helpers genéricos (por si usás .toggle-btn en el futuro) ===== */
 function openCollapsible(panel) {
-  panel.hidden = false;                         // permite medir
+  panel.style.display = 'block';
   panel.classList.add('collapsible--open');
-  const startHeight = panel.offsetHeight;       // 0 si estaba colapsado
-  const targetHeight = panel.scrollHeight;      // altura real del contenido
+
+  const startHeight = 0;
+  const targetHeight = panel.scrollHeight;
 
   panel.style.height = startHeight + 'px';
   panel.style.opacity = '0';
@@ -327,7 +335,7 @@ function openCollapsible(panel) {
 
   const onEnd = (e) => {
     if (e.propertyName !== 'height') return;
-    panel.style.height = 'auto';                // libera para responsive
+    panel.style.height = 'auto';
     panel.removeEventListener('transitionend', onEnd);
   };
   panel.addEventListener('transitionend', onEnd, { once: true });
@@ -335,7 +343,7 @@ function openCollapsible(panel) {
 
 function closeCollapsible(panel) {
   const startHeight = panel.scrollHeight;
-  panel.style.height = startHeight + 'px';      // fija altura actual
+  panel.style.height = startHeight + 'px';
   panel.style.opacity = '1';
   requestAnimationFrame(() => {
     panel.style.height = '0px';
@@ -344,13 +352,13 @@ function closeCollapsible(panel) {
   const onEnd = (e) => {
     if (e.propertyName !== 'height') return;
     panel.classList.remove('collapsible--open');
-    panel.hidden = true;                        // saca del flujo a11y
+    panel.style.display = 'none';
     panel.removeEventListener('transitionend', onEnd);
   };
   panel.addEventListener('transitionend', onEnd, { once: true });
 }
 
-/* Hook universal: .toggle-btn controla un #panel por aria-controls */
+// Hook universal: .toggle-btn controla un #panel por aria-controls
 document.addEventListener('click', (ev) => {
   const btn = ev.target.closest('.toggle-btn[aria-controls]');
   if (!btn) return;
@@ -362,21 +370,19 @@ document.addEventListener('click', (ev) => {
   btn.setAttribute('aria-expanded', String(!expanded));
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    panel.hidden = expanded;
+    panel.style.display = expanded ? 'none' : 'block';
     panel.classList.toggle('collapsible--open', !expanded);
-    panel.style.height = '';
-    panel.style.opacity = '';
+    panel.style.height = expanded ? '0px' : 'auto';
+    panel.style.opacity = expanded ? '0' : '1';
     return;
   }
 
   expanded ? closeCollapsible(panel) : openCollapsible(panel);
 
-  // Al abrir, asegurar visibilidad del inicio del panel
   if (!expanded) {
-    setTimeout(() => {
-      panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }, 60);
+    setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
+
 
 
