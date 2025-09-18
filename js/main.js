@@ -381,7 +381,7 @@ function detailsClose(detailsEl, content) {
     document.querySelectorAll('.carousel').forEach(initCarousel);
 
     // Acordeones animados para About (fold) y Posters/Programs (exp)
-    initDetailsAccordions();
+    //initDetailsAccordions();
 
     // Abrir desde hash si corresponde
     expandTargetFromHash();
