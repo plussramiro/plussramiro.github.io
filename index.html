@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
   <meta charset="UTF-8">
   <title>Ramiro Plüss — Academic Website</title>
@@ -29,9 +28,7 @@
   <!-- Favicon básico (ajusta la ruta si hace falta) -->
   <link rel="icon" href="/images/profile/ramiropluss.jpg">
 
-
   <!-- Fuentes -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto&display=swap" rel="stylesheet">  --> 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Estilos externos -->
@@ -60,29 +57,26 @@
     </div>
   </nav>
 
-  
   <main>
     <section id="about">
       <h2>About Me</h2>
     
-      <!-- Primer párrafo visible -->
       <p>
         My name is Ramiro Plüss. I am a physicist, graduated from UNR–FCEIA, and currently a PhD candidate at ITBA. My research combines computational models of complex networks with robotic models to study proprioception and cognition. In recent work, I investigated how changes in connection density in an adaptive network of chaotic units shape cluster synchronization and structural properties such as integration and segregation, a balance that is fundamental in neuroscience. I have also applied a hemispheric-specific Wilson–Cowan model to connectome data from patients with schizophrenia, improving the modeling of functional connectivity.
       </p>
     
-      <!-- Desplegable para el resto -->
+      <!-- Desplegable con transición suave (enhanced por JS) -->
       <details class="fold">
         <summary>
           <span class="more">See more</span>
           <span class="less">See less</span>
         </summary>
+        <!-- El JS envolverá el contenido en .details-content para animar height -->
         <p>
           Currently, I am working with robotic models based on real connectomics of Drosophila and C. elegans to explore embodiment and autonomy. These connectome architectures can be seen as biologically pre-trained networks, offering a bridge between neuroscience and robotics while reducing reliance on conventional artificial training. With this line of research, I aim to contribute to autonomous robotics and long-range exploration, while also expanding my interests toward models of consciousness, behavior, and artificial intelligence.
         </p>
       </details>
     </section>
-
-    
 
     <section id="publications">
       <h2><i class="fa-solid fa-book-open"></i> Publications & Preprints</h2>
@@ -107,20 +101,20 @@
       <h2><i class="fa-solid fa-diagram-project"></i> Research Figures</h2>
       <p class="muted">Selected figures from my recent publications and comparative references.</p>
     
-      <div class="carousel research-carousel" id="figuresCarousel" data-autoplay="6000">
+      <div class="carousel research-carousel" id="figuresCarousel" data-autoplay="6000" aria-roledescription="carousel" aria-label="Research figures">
+        <!-- Flechas originales quedan por si querés volver a mostrarlas -->
         <button class="nav prev" aria-label="Previous slide">‹</button>
     
-        <div class="track">
-    
+        <div class="track" role="group" aria-live="polite">
           <figure class="slide">
             <img
               src="images/connectomics/hemispheric.png"
               alt="Hemispheric-specific coupling vs global coupling in a Wilson–Cowan model"
               loading="lazy">
-              <figcaption>
+            <figcaption>
               Hemisphere-specific coupling (G₁ intra / G₂ inter) improves SC–FC correspondence
               comparing with global coupling (G) [Plüss et al., 2025b].
-              </figcaption>
+            </figcaption>
           </figure>
     
           <figure class="slide">
@@ -128,28 +122,19 @@
               src="images/connectomics/comparative_connectomes_adaptive_model.png"
               alt="Comparative connectomes across species alongside an adaptive network model"
               loading="lazy">
-              <figcaption>
+            <figcaption>
               Figure 1: Comparative connectomes (C. elegans, Drosophila, Mouse, Macaque, Human) [van den Heuvel et al., 2016].
               Figure 2: Evolution of the adaptive network along time obtaining balanced properties such as segregation and integration [Plüss et al., 2025a].
-              </figcaption>
+            </figcaption>
           </figure>
-    
-          <!-- Podés sumar más slides cuando agregues Drosophila / C. elegans propios -->
-          <!--
-          <figure class="slide">
-            <img src="images/connectomics/drosophila_connectome.png" alt="Drosophila connectome">
-            <figcaption>Drosophila connectome (matrix snapshot).</figcaption>
-          </figure>
-          <figure class="slide">
-            <img src="images/connectomics/celegans_connectome.png" alt="C. elegans connectome">
-            <figcaption><em>C. elegans</em> connectome (matrix snapshot).</figcaption>
-          </figure>
-          -->
-    
         </div>
     
         <button class="nav next" aria-label="Next slide">›</button>
         <div class="dots" aria-label="Carousel pagination"></div>
+
+        <!-- NUEVO: hotzones invisibles (zonas clickeables amplias) -->
+        <button class="hotzone hotzone--prev" type="button" aria-label="Previous"></button>
+        <button class="hotzone hotzone--next" type="button" aria-label="Next"></button>
       </div>
     </section>
 
@@ -168,15 +153,13 @@
       </div>
     </div>
 
-
-
     <section id="robotics">
       <h2><i class="fa-solid fa-robot"></i> Robotics Prototypes & Evolution</h2>
       <p class="muted">A compact carousel showing the progression of my robotics prototypes.</p>
-      <div class="carousel" id="roboticsCarousel" data-autoplay="5000">
+
+      <div class="carousel" id="roboticsCarousel" data-autoplay="5000" aria-roledescription="carousel" aria-label="Robotics gallery">
         <button class="nav prev" aria-label="Previous slide">‹</button>
-        <div class="track">
-    
+        <div class="track" role="group" aria-live="polite">
           <figure class="slide">
             <img src="images/robotics/hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
             <figcaption>Hexapod prototype with servos & wiring</figcaption>
@@ -187,8 +170,6 @@
                     data-caption="18 servos · tripod gait · offsets tuned · <a href='https://www.instructables.com/Hexapod-Robot/' target='_blank' rel='noopener noreferrer' class='credit'>Ref: Instructables</a>">
               ▶ Watch servo offset calibration (14 s)
             </button>
-
-
           </figure>
 
           <figure class="slide">
@@ -224,20 +205,21 @@
               ▶ Watch saccades & blink (24 s)
             </button>
           </figure>
-    
         </div>
         <button class="nav next" aria-label="Next slide">›</button>
         <div class="dots" aria-label="Carousel pagination"></div>
+
+        <!-- NUEVO: hotzones invisibles -->
+        <button class="hotzone hotzone--prev" type="button" aria-label="Previous"></button>
+        <button class="hotzone hotzone--next" type="button" aria-label="Next"></button>
       </div>
     </section>
 
-    
     <section id="posters">
       <details class="exp">
         <summary><i class="fa-solid fa-thumbtack"></i> Poster Presentations in Conferences and International Schools
           <span class="chev" aria-hidden="true">▾</span>
         </summary>
-    
         <ul>
           <li>
             <strong><em>Modeling Functional Connectivity Alterations in Schizophrenia Patients from the Structural Connectome</em></strong>
@@ -260,7 +242,6 @@
         <summary><i class="fa-solid fa-graduation-cap"></i> Relevant programs and courses
           <span class="chev" aria-hidden="true">▾</span>
         </summary>
-    
         <ul>
           <li><em>School on the Origins of Life, Behavior and Cognition</em>, ICTP-SAIFR, Brazil — March 2025</li>
           <li><em>School on Synchronization: from Collective Motion to Brain Dynamics</em>, ICTP-SAIFR, Brazil — February 2025</li>
@@ -295,10 +276,8 @@
       </div>
     </section>
     
-    
     <section id="contact" class="contact-cv">
       <div class="cc-grid">
-
         <div class="cc-col cc-contact">
           <h2><i class="fa-solid fa-envelope"></i> Contact</h2>
           <p><i class="fa-solid fa-location-dot"></i> Buenos Aires, Argentina</p>
@@ -322,20 +301,15 @@
              target="_blank" rel="noopener" aria-label="Open CV in Google Drive (PDF)">
             Google Drive (PDF)
           </a>
-          <!-- si querés, acá podés agregar luego un meta tipo “PDF — actualizado sep 2025 • 1,2 MB” -->
+          <!-- meta de actualización del PDF la podés sumar luego -->
         </div>
-    
       </div>
     </section>
-
-
-
   </main>
 
   <footer>
     © <span id="y"></span> Ramiro Plüss · All rights reserved · Built with GitHub Pages
   </footer>
-
 
   <!-- Script externo -->
   <script src="js/main.js"></script>
