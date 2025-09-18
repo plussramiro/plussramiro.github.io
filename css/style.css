@@ -413,3 +413,25 @@ details.fold > *:not(summary){ margin-top:10px; }
 @media (max-width: 520px){
   .hotzone{ width: 18%; }
 }
+
+/* --- Mejoras overlay móvil: caption por encima de controles --- */
+:root { --yt-controls-h: 56px; } /* default desktop (se sobreescribe en JS para móvil) */
+
+.vo { z-index: 2000; }
+.vo-player { position: absolute; inset: 0; }
+.vo-caption{
+  position: absolute;
+  left: 0; right: 0;
+  bottom: calc(var(--yt-controls-h) + env(safe-area-inset-bottom, 0px));
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #eef2f6;
+  /* leve degradado para legibilidad sobre video */
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+  pointer-events: none; /* enlaces internos reactivados por JS si hace falta */
+}
+.vo-caption a, .vo-caption button { pointer-events: auto; }
+
+/* Evita gestos horizontales agresivos en carruseles (mejora swipe) */
+.carousel { touch-action: pan-y; }
+
