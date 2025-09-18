@@ -364,3 +364,34 @@ details.fold > *:not(summary){ margin-top:10px; }
   .vo-caption{ font-size: 12px; padding: 8px 10px; }
 }
 
+/* ===== Collapsibles: smooth height/opacity ===== */
+.collapsible {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition:
+    height 280ms cubic-bezier(.22,.61,.36,1),
+    opacity 220ms ease;
+  will-change: height;
+}
+
+.collapsible--open {
+  /* durante la animación dejamos height en px; al finalizar, JS setea 'auto' */
+  opacity: 1;
+}
+
+/* Reducir movimiento si el usuario lo pidió */
+@media (prefers-reduced-motion: reduce) {
+  .collapsible { transition: none !important; }
+}
+
+/* Botones/links que abren/cerran */
+.toggle-btn[aria-expanded="true"] .toggle-icon {
+  transform: rotate(180deg);
+  transition: transform 220ms ease;
+}
+.toggle-btn .toggle-icon {
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+
