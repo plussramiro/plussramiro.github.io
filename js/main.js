@@ -102,10 +102,10 @@
     } else {
       det.open = true;
       // Estado visual consistente (incluye padding suavizado)
-      content.style.height       = 'auto';
-      content.style.opacity      = '1';
-      content.style.paddingTop   = DETAILS_PAD + 'px';
-      content.style.paddingBottom= DETAILS_PAD + 'px';
+      content.style.height        = 'auto';
+      content.style.opacity       = '1';
+      content.style.paddingTop    = DETAILS_PAD + 'px';
+      content.style.paddingBottom = DETAILS_PAD + 'px';
       content.classList.add('collapsible--open');
     }
   }
@@ -190,7 +190,7 @@
 
   /* ===== <details> con transición suave (sin display:none) =====
      - Envolvemos todo menos <summary> en .details-content
-     - Animamos height + padding + opacity
+     - Animamos height + opacity (el padding lo cambiamos sin animar)
      - Durante el cierre mantenemos details.open=true y lo cambiamos a false al final
   ================================================================= */
 
@@ -227,6 +227,7 @@
     return wrap;
   }
 
+  // Apertura MUY suave: bloqueamos altura en px al final y pasamos a 'auto' sin transición (doble rAF)
   function detailsOpen(detailsEl, content) {
     if (content.dataset.animating === '1') return;
     content.dataset.animating = '1';
@@ -243,12 +244,12 @@
     // Reflow forzado (fija el estado inicial)
     content.getBoundingClientRect();
 
-    // Aplicar padding destino y medir con padding ya aplicado
+    // Aplicar padding destino ANTES de medir altura final
     content.style.paddingTop    = DETAILS_PAD + 'px';
     content.style.paddingBottom = DETAILS_PAD + 'px';
     const target = content.scrollHeight;
 
-    // Ir al estado final
+    // Ir al estado final animado
     requestAnimationFrame(() => {
       content.style.height  = target + 'px';
       content.style.opacity = '1';
@@ -256,23 +257,41 @@
 
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
-      cleanup();
+
+      // 1) fijamos altura exacta en px y APAGAMOS la transición temporalmente
+      const prevTransition = content.style.transition;
+      content.style.transition = 'none';
+      content.style.height = target + 'px';
+
+      // 2) en los próximos 2 frames, pasamos a 'auto' y restauramos transición (sin “salto”)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          content.style.height = 'auto';
+          content.style.transition = prevTransition || '';
+          content.dataset.animating = '0';
+          content.removeEventListener('transitionend', onEnd);
+        });
+      });
     };
 
     // Fallback si transitionend no dispara
-    const fallback = setTimeout(cleanup, 500);
-
-    function cleanup(){
-      clearTimeout(fallback);
-      content.style.height = 'auto';               // liberar para responsive
+    const fallback = setTimeout(() => {
+      const prevTransition = content.style.transition;
+      content.style.transition = 'none';
+      content.style.height = 'auto';
+      requestAnimationFrame(() => { content.style.transition = prevTransition || ''; });
       content.dataset.animating = '0';
       content.removeEventListener('transitionend', onEnd);
-    }
+    }, 600);
 
     content.removeEventListener('transitionend', onEnd);
-    content.addEventListener('transitionend', onEnd);
+    content.addEventListener('transitionend', (ev) => {
+      clearTimeout(fallback);
+      onEnd(ev);
+    }, { once: true });
   }
 
+  // Cierre suave: quitamos padding SIN animar y animamos solo height/opacity
   function detailsClose(detailsEl, content) {
     if (content.dataset.animating === '1') return;
     content.dataset.animating = '1';
@@ -282,34 +301,39 @@
     content.style.height  = start + 'px';
     content.style.opacity = '1';
 
+    // Quitamos padding ya mismo (no animado) para que el objetivo sea 0 exacto
+    content.style.paddingTop    = '0px';
+    content.style.paddingBottom = '0px';
+
     // Reflow forzado
     content.getBoundingClientRect();
 
-    // Ir a 0 (altura + padding)
+    // Animar a cerrado
     requestAnimationFrame(() => {
-      content.style.height        = '0px';
-      content.style.opacity       = '0';
-      content.style.paddingTop    = '0px';
-      content.style.paddingBottom = '0px';
+      content.style.height  = '0px';
+      content.style.opacity = '0';
     });
 
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
-      cleanup();
-    };
-
-    const fallback = setTimeout(cleanup, 500);
-
-    function cleanup(){
-      clearTimeout(fallback);
       content.classList.remove('collapsible--open');
       detailsEl.open = false;                      // marcar cerrado al final
       content.dataset.animating = '0';
       content.removeEventListener('transitionend', onEnd);
-    }
+    };
+
+    const fallback = setTimeout(() => {
+      content.classList.remove('collapsible--open');
+      detailsEl.open = false;
+      content.dataset.animating = '0';
+      content.removeEventListener('transitionend', onEnd);
+    }, 600);
 
     content.removeEventListener('transitionend', onEnd);
-    content.addEventListener('transitionend', onEnd);
+    content.addEventListener('transitionend', (ev) => {
+      clearTimeout(fallback);
+      onEnd(ev);
+    }, { once: true });
   }
 
   function enhanceDetails(detailsEl) {
@@ -333,7 +357,7 @@
         content.classList.toggle('collapsible--open', toOpen);
         content.dataset.animating = '0';
         return;
-      }
+        }
       detailsEl.open ? detailsClose(detailsEl, content) : detailsOpen(detailsEl, content);
     };
     summary.addEventListener('click', summary.__enhancer);
@@ -380,8 +404,18 @@ function openCollapsible(panel) {
 
   const onEnd = (e) => {
     if (e.propertyName !== 'height') return;
-    panel.style.height = 'auto';
-    panel.removeEventListener('transitionend', onEnd);
+
+    const prevTransition = panel.style.transition;
+    panel.style.transition = 'none';
+    panel.style.height = targetHeight + 'px';
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        panel.style.height = 'auto';
+        panel.style.transition = prevTransition || '';
+        panel.removeEventListener('transitionend', onEnd);
+      });
+    });
   };
   panel.addEventListener('transitionend', onEnd, { once: true });
 }
@@ -390,10 +424,16 @@ function closeCollapsible(panel) {
   const startHeight = panel.scrollHeight;
   panel.style.height = startHeight + 'px';
   panel.style.opacity = '1';
+
+  // quitar padding si correspondiera (si tu panel lo usa)
+  panel.style.paddingTop = '0px';
+  panel.style.paddingBottom = '0px';
+
   requestAnimationFrame(() => {
     panel.style.height = '0px';
     panel.style.opacity = '0';
   });
+
   const onEnd = (e) => {
     if (e.propertyName !== 'height') return;
     panel.classList.remove('collapsible--open');
@@ -428,4 +468,5 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
+
 
