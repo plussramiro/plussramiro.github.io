@@ -443,3 +443,14 @@ details.fold > *:not(summary){ margin-top:10px; }
 /* Evita gestos horizontales agresivos en carruseles (mejora swipe) */
 .carousel { touch-action: pan-y; }
 
+/* ---- Quitar difuminado/sombra en captions del overlay (forzado) ---- */
+.vo .vo-caption,
+#videoOverlay .vo-caption{
+  background: none !important;
+  text-shadow: none !important;
+}
+
+.vo .vo-caption::before,
+#videoOverlay .vo-caption::before{ display:none !important; content:none !important; }
+
+
