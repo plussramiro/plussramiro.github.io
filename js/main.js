@@ -227,133 +227,116 @@
     return wrap;
   }
 
-// --- Apertura SUAVE y estable (espera transitionend de 'height') ---
-function detailsOpen(detailsEl, content) {
-  if (content.dataset.animating === '1') return;
-  content.dataset.animating = '1';
+  // --- Apertura SUAVE ---
+  function detailsOpen(detailsEl, content) {
+    if (content.dataset.animating === '1') return;
+    content.dataset.animating = '1';
 
-  detailsEl.open = true;
-  content.classList.add('collapsible--open');
+    detailsEl.open = true;
+    content.classList.add('collapsible--open');
 
-  // Limpieza de ciclos previos
-  content.style.transition = '';            // usar CSS
-  content.style.willChange = 'height, opacity';
+    content.style.transition = '';
+    content.style.willChange = 'height, opacity';
 
-  // Estado inicial
-  content.style.height        = '0px';
-  content.style.opacity       = '0';
-  content.style.paddingTop    = '0px';
-  content.style.paddingBottom = '0px';
+    content.style.height        = '0px';
+    content.style.opacity       = '0';
+    content.style.paddingTop    = '0px';
+    content.style.paddingBottom = '0px';
 
-  // Fijar estado inicial
-  content.getBoundingClientRect();
+    content.getBoundingClientRect();
 
-  // Padding destino ANTES de medir
-  content.style.paddingTop    = DETAILS_PAD + 'px';
-  content.style.paddingBottom = DETAILS_PAD + 'px';
-  const target = content.scrollHeight;
+    content.style.paddingTop    = DETAILS_PAD + 'px';
+    content.style.paddingBottom = DETAILS_PAD + 'px';
+    const target = content.scrollHeight;
 
-  // Dos frames para asegurar estado -> disparar animación
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      content.style.height  = target + 'px';
-      content.style.opacity = '1';
-    });
-  });
-
-  let ended = false;
-  const finish = () => {
-    if (ended) return; ended = true;
-    // Pasar a 'auto' sin salto
-    const prev = content.style.transition;
-    content.style.transition = 'none';
-    content.style.height = target + 'px';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        content.style.height = 'auto';
-        content.style.transition = '';   // limpiar inline
-        content.style.willChange = '';
-        content.dataset.animating = '0';
+        content.style.height  = target + 'px';
+        content.style.opacity = '1';
       });
     });
-  };
 
-  // 👉 Escuchamos **solo** el transitionend de 'height'
-  const onEnd = (ev) => {
-    if (ev.propertyName !== 'height') return;
-    finish(); cleanup();
-  };
-  const cleanup = () => content.removeEventListener('transitionend', onEnd);
+    let ended = false;
+    const finish = () => {
+      if (ended) return; ended = true;
+      const prev = content.style.transition;
+      content.style.transition = 'none';
+      content.style.height = target + 'px';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          content.style.height = 'auto';
+          content.style.transition = '';
+          content.style.willChange = '';
+          content.dataset.animating = '0';
+        });
+      });
+    };
 
-  content.addEventListener('transitionend', onEnd, { once: true });
-  // Fallback por si no llega el evento (pestaña en segundo plano, etc.)
-  setTimeout(() => { finish(); cleanup(); }, 900);
-}
+    const onEnd = (ev) => {
+      if (ev.propertyName !== 'height') return;
+      finish(); cleanup();
+    };
+    const cleanup = () => content.removeEventListener('transitionend', onEnd);
 
-// --- Cierre (como antes, con limpieza de inline transition al final) ---
-function detailsClose(detailsEl, content) {
-  if (content.dataset.animating === '1') return;
-  content.dataset.animating = '1';
-
-  // Si está en 'auto', fijamos altura actual primero
-  const start = content.scrollHeight;
-  content.style.height  = start + 'px';
-  content.style.opacity = '1';
-
-  // Quitar padding (no animado)
-  content.style.paddingTop    = '0px';
-  content.style.paddingBottom = '0px';
-
-  // Reflow
-  content.getBoundingClientRect();
-
-  // Asegurar que haya transición (si CSS no la provee)
-  const td = getComputedStyle(content).transitionDuration
-               .split(',').some(v => parseFloat(v) > 0);
-  if (!td) {
-    content.style.transition =
-      'height 280ms cubic-bezier(.22,.61,.36,1), opacity 220ms ease';
+    content.addEventListener('transitionend', onEnd, { once: true });
+    setTimeout(() => { finish(); cleanup(); }, 900);
   }
-  content.style.willChange = 'height, opacity';
 
-  requestAnimationFrame(() => {
-    content.style.height  = '0px';
-    content.style.opacity = '0';
-  });
+  // --- Cierre SUAVE ---
+  function detailsClose(detailsEl, content) {
+    if (content.dataset.animating === '1') return;
+    content.dataset.animating = '1';
 
-  let ended = false;
-  const finish = () => {
-    if (ended) return; ended = true;
-    content.classList.remove('collapsible--open');
-    detailsEl.open = false;
-    content.dataset.animating = '0';
-    // Limpieza para que la próxima apertura sea idéntica a la primera
-    content.style.willChange = '';
-    content.style.transition = '';
-    content.style.height = '0px';
-  };
+    const start = content.scrollHeight;
+    content.style.height  = start + 'px';
+    content.style.opacity = '1';
 
-  const onEnd = () => { finish(); cleanup(); };
-  const cleanup = () => content.removeEventListener('transitionend', onEnd);
+    content.style.paddingTop    = '0px';
+    content.style.paddingBottom = '0px';
 
-  content.addEventListener('transitionend', onEnd, { once: true });
-  setTimeout(() => { finish(); cleanup(); }, 900);
-}
+    content.getBoundingClientRect();
 
+    const td = getComputedStyle(content).transitionDuration
+                 .split(',').some(v => parseFloat(v) > 0);
+    if (!td) {
+      content.style.transition =
+        'height 280ms cubic-bezier(.22,.61,.36,1), opacity 220ms ease';
+    }
+    content.style.willChange = 'height, opacity';
 
+    requestAnimationFrame(() => {
+      content.style.height  = '0px';
+      content.style.opacity = '0';
+    });
+
+    let ended = false;
+    const finish = () => {
+      if (ended) return; ended = true;
+      content.classList.remove('collapsible--open');
+      detailsEl.open = false;
+      content.dataset.animating = '0';
+      content.style.willChange = '';
+      content.style.transition = '';
+      content.style.height = '0px';
+    };
+
+    const onEnd = () => { finish(); cleanup(); };
+    const cleanup = () => content.removeEventListener('transitionend', onEnd);
+
+    content.addEventListener('transitionend', onEnd, { once: true });
+    setTimeout(() => { finish(); cleanup(); }, 900);
+  }
 
   function enhanceDetails(detailsEl) {
     const summary = detailsEl.querySelector(':scope > summary');
     if (!summary) return;
     const content = ensureDetailsContent(detailsEl);
 
-    // Evitar múltiples listeners si volvemos a inicializar
     summary.__hasEnhancer && summary.removeEventListener('click', summary.__enhancer);
     summary.__enhancer = (ev) => {
-      ev.preventDefault(); // evita el toggle nativo
+      ev.preventDefault();
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduced) {
-        // sin animación
         const toOpen = !detailsEl.open;
         detailsEl.open = toOpen;
         content.style.height        = toOpen ? 'auto' : '0px';
@@ -363,7 +346,7 @@ function detailsClose(detailsEl, content) {
         content.classList.toggle('collapsible--open', toOpen);
         content.dataset.animating = '0';
         return;
-        }
+      }
       detailsEl.open ? detailsClose(detailsEl, content) : detailsOpen(detailsEl, content);
     };
     summary.addEventListener('click', summary.__enhancer);
@@ -376,18 +359,15 @@ function detailsClose(detailsEl, content) {
 
   document.addEventListener('DOMContentLoaded', () => {
     initYear();
-
-    // Carruseles (Figures + Robotics)
     document.querySelectorAll('.carousel').forEach(initCarousel);
 
-    // Acordeones animados para About (fold) y Posters/Programs (exp)
-    //initDetailsAccordions();
+    // Acordeones animados (About + Posters + Programs)
+    initDetailsAccordions();
 
     // Abrir desde hash si corresponde
     expandTargetFromHash();
     window.addEventListener('hashchange', () => expandTargetFromHash(true));
 
-    // Botones “Watch …” -> overlay
     VO.mount();
     initDemoButtons();
   });
@@ -410,7 +390,6 @@ function openCollapsible(panel) {
 
   const onEnd = (e) => {
     if (e.propertyName !== 'height') return;
-
     const prevTransition = panel.style.transition;
     panel.style.transition = 'none';
     panel.style.height = targetHeight + 'px';
@@ -431,7 +410,6 @@ function closeCollapsible(panel) {
   panel.style.height = startHeight + 'px';
   panel.style.opacity = '1';
 
-  // quitar padding si correspondiera (si tu panel lo usa)
   panel.style.paddingTop = '0px';
   panel.style.paddingBottom = '0px';
 
@@ -449,7 +427,6 @@ function closeCollapsible(panel) {
   panel.addEventListener('transitionend', onEnd, { once: true });
 }
 
-// Hook universal: .toggle-btn controla un #panel por aria-controls
 document.addEventListener('click', (ev) => {
   const btn = ev.target.closest('.toggle-btn[aria-controls]');
   if (!btn) return;
@@ -474,5 +451,6 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
+
 
 
