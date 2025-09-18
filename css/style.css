@@ -333,24 +333,40 @@ body.vo-open .carousel .dots{ pointer-events:none; opacity:.35; }
 }
 .vo-caption a.credit:hover{ opacity:1; }
 
-/* About: See more / See less (recto) */
+/* About: See more / See less (plano, sin recuadro) */
 details.fold { margin-top: 8px; }
-details.fold > summary{
-  display:inline-flex; gap:8px; align-items:center;
-  cursor:pointer; user-select:none;
-  padding:6px 10px; border:1px solid #e2e8f0;
-  border-radius:0; /* recto */
-  background:#f8fafc; font-size:14px;
+
+details.fold > summary {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  padding: 0;          /* quitamos padding del recuadro */
+  border: none;        /* quitamos borde */
+  background: none;    /* quitamos fondo */
 }
-details.fold[open] > summary{ background:#eef6ff; }
-details.fold > summary::before{ content:'▸'; font-size:12px; transform:translateY(1px); }
-details.fold[open] > summary::before{ content:'▾'; }
+
+details.fold[open] > summary {
+  background: none;    /* sin highlight al abrir */
+}
+
+details.fold > summary::before {
+  content: '▸';
+  font-size: 12px;
+  transform: translateY(1px);
+}
+details.fold[open] > summary::before { content: '▾'; }
+
 /* Mostrar/ocultar labels */
-details.fold > summary .less{ display:none !important; }
-details.fold[open] > summary .more{ display:none !important; }
-details.fold[open] > summary .less{ display:inline !important; }
+details.fold > summary .less { display: none !important; }
+details.fold[open] > summary .more { display: none !important; }
+details.fold[open] > summary .less { display: inline !important; }
+
 /* Contenido expandido */
-details.fold > *:not(summary){ margin-top:10px; }
+details.fold > *:not(summary) { margin-top: 10px; }
+
 
 /* === Overlay video: ajustes sin borde redondeado y sin cajón negro === */
 :root{ --yt-controls-h: clamp(40px, 6vh, 64px); }
