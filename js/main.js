@@ -165,3 +165,71 @@
   });
 })();
 
+/* ===== Collapsible helpers (height animation to/from scrollHeight) ===== */
+function openCollapsible(panel) {
+  panel.hidden = false;                         // permite medir
+  panel.classList.add('collapsible--open');
+  const startHeight = panel.offsetHeight;       // 0 si estaba colapsado
+  const targetHeight = panel.scrollHeight;      // altura real del contenido
+
+  panel.style.height = startHeight + 'px';
+  panel.style.opacity = '0';
+  requestAnimationFrame(() => {
+    panel.style.height = targetHeight + 'px';
+    panel.style.opacity = '1';
+  });
+
+  const onEnd = (e) => {
+    if (e.propertyName !== 'height') return;
+    panel.style.height = 'auto';                // libera para responsive
+    panel.removeEventListener('transitionend', onEnd);
+  };
+  panel.addEventListener('transitionend', onEnd, { once: true });
+}
+
+function closeCollapsible(panel) {
+  const startHeight = panel.scrollHeight;
+  panel.style.height = startHeight + 'px';      // fija altura actual
+  panel.style.opacity = '1';
+  requestAnimationFrame(() => {
+    panel.style.height = '0px';
+    panel.style.opacity = '0';
+  });
+  const onEnd = (e) => {
+    if (e.propertyName !== 'height') return;
+    panel.classList.remove('collapsible--open');
+    panel.hidden = true;                        // saca del flujo a11y
+    panel.removeEventListener('transitionend', onEnd);
+  };
+  panel.addEventListener('transitionend', onEnd, { once: true });
+}
+
+/* Hook universal para botones con aria-controls */
+document.addEventListener('click', (ev) => {
+  const btn = ev.target.closest('.toggle-btn[aria-controls]');
+  if (!btn) return;
+  const id = btn.getAttribute('aria-controls');
+  const panel = document.getElementById(id);
+  if (!panel) return;
+
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!expanded));
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Sin animación: alterna directamente
+    panel.hidden = expanded;
+    panel.classList.toggle('collapsible--open', !expanded);
+    panel.style.height = '';
+    panel.style.opacity = '';
+    return;
+  }
+  expanded ? closeCollapsible(panel) : openCollapsible(panel);
+
+  // Si abrimos, procurar que el inicio del panel quede visible
+  if (!expanded) {
+    setTimeout(() => {
+      panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }, 60);
+  }
+});
+
+
