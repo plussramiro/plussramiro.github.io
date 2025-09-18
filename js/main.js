@@ -227,7 +227,7 @@
     return wrap;
   }
 
-// --- Apertura: igual que antes pero un pelín más tolerante ---
+// --- Apertura SUAVE y repetible ---
 function detailsOpen(detailsEl, content) {
   if (content.dataset.animating === '1') return;
   content.dataset.animating = '1';
@@ -235,95 +235,108 @@ function detailsOpen(detailsEl, content) {
   detailsEl.open = true;
   content.classList.add('collapsible--open');
 
+  // Limpieza por si quedó algo de un ciclo previo
+  content.style.transition = '';            // usar la del CSS
+  content.style.willChange = 'height, opacity';
+
   // Estado inicial
   content.style.height        = '0px';
   content.style.opacity       = '0';
   content.style.paddingTop    = '0px';
   content.style.paddingBottom = '0px';
 
-  // Reflow
+  // Reflow para fijar el estado inicial
   content.getBoundingClientRect();
 
-  // Padding destino ANTES de medir
+  // Fijamos padding destino ANTES de medir target
   content.style.paddingTop    = DETAILS_PAD + 'px';
   content.style.paddingBottom = DETAILS_PAD + 'px';
   const target = content.scrollHeight;
 
-  // Animar a abierto
+  // 1er frame: aseguramos que el estado inicial quedó aplicado
   requestAnimationFrame(() => {
-    content.style.height  = target + 'px';
-    content.style.opacity = '1';
+    // 2º frame: disparamos la transición hacia el destino
+    requestAnimationFrame(() => {
+      content.style.height  = target + 'px';
+      content.style.opacity = '1';
+    });
   });
 
-  const finishOpen = () => {
+  let ended = false;
+  const finish = () => {
+    if (ended) return; ended = true;
+    // Pasar a 'auto' sin salto
     const prev = content.style.transition;
     content.style.transition = 'none';
     content.style.height = target + 'px';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         content.style.height = 'auto';
-        content.style.transition = prev || '';
+        content.style.transition = '';      // limpiar inline
+        content.style.willChange = '';      // limpiar hint
         content.dataset.animating = '0';
       });
     });
   };
 
-  // Cerrar listener robusto (cualquier prop) + fallback
-  let ended = false;
-  const onEnd = () => { if (ended) return; ended = true; finishOpen(); cleanup(); };
+  const onEnd = () => { finish(); cleanup(); };
   const cleanup = () => content.removeEventListener('transitionend', onEnd);
 
   content.addEventListener('transitionend', onEnd);
-  setTimeout(onEnd, 700); // fallback si el evento no llega
+  // Fallback por si no llega el evento (Safari, blur de pestaña, etc.)
+  setTimeout(onEnd, 800);
 }
 
-// --- Cierre: quitar padding sin animar, forzar transición y limpiar SIEMPRE ---
+// --- Cierre SUAVE + limpia cualquier transition inline al final ---
 function detailsClose(detailsEl, content) {
   if (content.dataset.animating === '1') return;
   content.dataset.animating = '1';
 
-  // Altura actual (si está en 'auto', la fijamos primero)
+  // Si está en 'auto', fijamos altura actual primero
   const start = content.scrollHeight;
   content.style.height  = start + 'px';
   content.style.opacity = '1';
 
-  // Quitar padding ya (sin animación) para que el target sea 0 exacto
+  // Quitar padding sin animación (altura objetivo = 0 exacto)
   content.style.paddingTop    = '0px';
   content.style.paddingBottom = '0px';
 
   // Reflow
   content.getBoundingClientRect();
 
-  // Animar a cerrado
-  // dentro de detailsClose, antes de setear height/opacity a 0:
+  // Si por CSS no hubiera transición, inyectamos una temporal
+  const td = getComputedStyle(content).transitionDuration
+               .split(',')
+               .some(v => parseFloat(v) > 0);
+  if (!td) {
+    content.style.transition = 'height 280ms cubic-bezier(.22,.61,.36,1), opacity 220ms ease';
+  }
+  content.style.willChange = 'height, opacity';
+
   requestAnimationFrame(() => {
-    const td = getComputedStyle(content).transitionDuration
-                 .split(',')
-                 .some(v => parseFloat(v) > 0);
-    if (!td) {
-      content.style.transition = 'height 280ms cubic-bezier(.22,.61,.36,1), opacity 220ms ease';
-    }
     content.style.height  = '0px';
     content.style.opacity = '0';
   });
 
-  const finishClose = () => {
+  let ended = false;
+  const finish = () => {
+    if (ended) return; ended = true;
     content.classList.remove('collapsible--open');
     detailsEl.open = false;
-    // limpiar estilos temporales sin romper la próxima animación
-    content.style.height = '0px';
-    // No resetear transition aquí; dejá que CSS la defina (o quedará el inline que pusimos arriba)
     content.dataset.animating = '0';
+    // Limpieza total para que la PRÓXIMA apertura sea igual de suave
+    content.style.willChange = '';
+    content.style.transition = '';   // <- clave: no dejar inline pegado
+    content.style.height = '0px';
   };
 
-  // Listener robusto + fallback
-  let ended = false;
-  const onEnd = () => { if (ended) return; ended = true; finishClose(); cleanup(); };
+  const onEnd = () => { finish(); cleanup(); };
   const cleanup = () => content.removeEventListener('transitionend', onEnd);
 
   content.addEventListener('transitionend', onEnd);
-  setTimeout(onEnd, 800); // si por lo que sea no llega el evento, igual cerramos
+  setTimeout(onEnd, 900);
 }
+
 
   function enhanceDetails(detailsEl) {
     const summary = detailsEl.querySelector(':scope > summary');
