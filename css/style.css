@@ -314,10 +314,18 @@ details.exp ul { margin: 0; padding-left: 20px; }
 
 /* Caption técnico */
 .vo-caption{
-  position:absolute; left:0; right:0; bottom:0; padding:10px 12px;
-  font-size:13px; color:#eef2f6;
-  background:none; text-shadow:none;
+  position: absolute;
+  left: 0; right: 0;
+  bottom: calc(var(--yt-controls-h) + env(safe-area-inset-bottom, 0px));
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #eef2f6;
+  background: none;          /* <- sin difuminado */
+  text-shadow: none;         /* <- sin sombra */
+  pointer-events: none;
 }
+.vo-caption a, .vo-caption button { pointer-events: auto; }
+
 body.vo-open .carousel .dots{ pointer-events:none; opacity:.35; }
 .vo-caption a.credit{
   color:#cdd6e0; text-decoration:none; opacity:.85;
