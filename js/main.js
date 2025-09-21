@@ -2,6 +2,54 @@
 (() => {
   'use strict';
 
+  /* ===== Theme toggle (opción A) ===== */
+  const THEME_KEY = 'theme';
+
+  function applyTheme(theme) {
+    const root = document.documentElement;
+    const btn  = document.getElementById('themeToggle');
+    const isDark = theme === 'dark';
+
+    if (isDark) {
+      root.setAttribute('data-theme', 'dark');
+      btn?.setAttribute('aria-checked', 'true');
+      btn?.querySelector('.icon')?.replaceChildren(document.createTextNode('☀️'));
+    } else {
+      root.removeAttribute('data-theme'); // claro por defecto
+      btn?.setAttribute('aria-checked', 'false');
+      btn?.querySelector('.icon')?.replaceChildren(document.createTextNode('🌙'));
+    }
+  }
+
+  function detectInitialTheme() {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function initThemeToggle() {
+    applyTheme(detectInitialTheme());
+
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const nowDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = nowDark ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+
+    // Si el sistema cambia y el usuario no fijó preferencia, respetarlo
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener?.('change', (e) => {
+      const saved = localStorage.getItem(THEME_KEY);
+      if (saved !== 'dark' && saved !== 'light') {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+
   /* ===== Año automático en el footer ===== */
   function initYear() {
     const span = document.getElementById('y');
@@ -358,6 +406,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    // NUEVO: inicializar tema antes que todo para evitar "flash"
+    initThemeToggle();
+
     initYear();
     document.querySelectorAll('.carousel').forEach(initCarousel);
 
@@ -451,6 +502,3 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
-
-
-
