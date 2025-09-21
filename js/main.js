@@ -59,7 +59,7 @@
   /* ===== Carrusel reusable =====
      Estructura:
      <div class="carousel" data-autoplay="6000">
-       <button class="nav prev">‹</button>   (pueden estar ocultas por CSS)
+       <button class="nav prev">‹</button>
        <div class="track"> <figure class="slide">…</figure>… </div>
        <button class="nav next">›</button>
        <div class="dots"></div>
@@ -236,13 +236,67 @@
     });
   }
 
-  /* ===== <details> con transición suave (sin display:none) =====
-     - Envolvemos todo menos <summary> en .details-content
-     - Animamos height + opacity (el padding lo cambiamos sin animar)
-     - Durante el cierre mantenemos details.open=true y lo cambiamos a false al final
-  ================================================================= */
+  /* ===== Lightbox de imágenes (doble-click / doble-tap) ===== */
+  function initImageLightbox() {
+    const overlay = document.getElementById('imgOverlay');
+    if (!overlay) return;
 
-  // Padding acolchonado para la animación
+    const imgEl = overlay.querySelector('.io-img');
+    const capEl = overlay.querySelector('.io-cap');
+
+    function open(src, alt, caption) {
+      imgEl.src = src;
+      imgEl.alt = alt || '';
+      capEl.textContent = caption || '';
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('vo-open'); // reutiliza el body lock
+    }
+
+    function close() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      imgEl.src = '';
+      document.body.classList.remove('vo-open');
+    }
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target.matches('[data-io-close], .io-backdrop')) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+    });
+
+    // Target: figuras de research y robotics
+    const candidates = document.querySelectorAll('#figures .slide img, #robotics .slide img');
+
+    candidates.forEach(img => {
+      // Desktop: doble click
+      img.addEventListener('dblclick', (e) => {
+        e.stopPropagation();
+        const fig = img.closest('figure');
+        const cap = fig?.querySelector('figcaption')?.textContent?.trim() || '';
+        const full = img.dataset.full || img.src;
+        open(full, img.alt, cap);
+      });
+
+      // Móvil: doble-tap simple (~300 ms)
+      let lastTap = 0;
+      img.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if (now - lastTap < 300) {
+          e.preventDefault();
+          const fig = img.closest('figure');
+          const cap = fig?.querySelector('figcaption')?.textContent?.trim() || '';
+          const full = img.dataset.full || img.src;
+          open(full, img.alt, cap);
+        }
+        lastTap = now;
+      }, { passive: true });
+    });
+  }
+
+  /* ===== <details> con transición suave (sin display:none) ===== */
   const DETAILS_PAD = 12; // px
 
   function ensureDetailsContent(detailsEl) {
@@ -275,7 +329,6 @@
     return wrap;
   }
 
-  // --- Apertura SUAVE ---
   function detailsOpen(detailsEl, content) {
     if (content.dataset.animating === '1') return;
     content.dataset.animating = '1';
@@ -330,7 +383,6 @@
     setTimeout(() => { finish(); cleanup(); }, 900);
   }
 
-  // --- Cierre SUAVE ---
   function detailsClose(detailsEl, content) {
     if (content.dataset.animating === '1') return;
     content.dataset.animating = '1';
@@ -406,7 +458,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // NUEVO: inicializar tema antes que todo para evitar "flash"
+    // Inicializar tema antes que todo para evitar "flash"
     initThemeToggle();
 
     initYear();
@@ -421,6 +473,9 @@
 
     VO.mount();
     initDemoButtons();
+
+    // NUEVO: lightbox de imágenes
+    initImageLightbox();
   });
 })();
 
@@ -502,3 +557,4 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
+
