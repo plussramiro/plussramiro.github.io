@@ -28,6 +28,16 @@
   <!-- Favicon básico (ajusta la ruta si hace falta) -->
   <link rel="icon" href="/images/profile/ramiropluss.jpg">
 
+  <!-- Evitar “flash” de tema: aplica preferencia antes de cargar CSS -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
 
@@ -55,6 +65,17 @@
       <a href="#contact">Contact</a>
       <a href="#cv">CV</a>
     </div>
+
+    <!-- Toggle de tema (opción A) -->
+    <button id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-label="Toggle dark mode"
+            title="Toggle theme">
+      <span class="icon">🌙</span>
+    </button>
   </nav>
 
   <main>
@@ -334,4 +355,5 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
 
