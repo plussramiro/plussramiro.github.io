@@ -336,11 +336,11 @@ footer {
   display: flex; flex-wrap: wrap;
   gap: 14px; margin-top: 8px;
 }
-/* En pantallas chicas centramos todo */
+
 @media (max-width: 520px) {
-  #contact { text-align: center; }
-  #contact p { justify-content: center; }
-  #contact .social-links { justify-content: center; }
+  #contact { text-align: left; }
+  #contact p { justify-content: flex-start; }
+  #contact .social-links { justify-content: flex-start; }
 }
 
 /* ========= Ajustes extra ========= */
