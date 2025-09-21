@@ -260,28 +260,12 @@
       document.body.classList.remove('vo-open');
     }
 
-    // 1) Click simple: solo cierra si fue en la X (botón explícito)
     overlay.addEventListener('click', (e) => {
-      if (e.target.matches('[data-io-close]')) close();
+      if (e.target.matches('[data-io-close], .io-backdrop')) close();
     });
-    
-    // 2) Desktop: doble-click en el fondo (backdrop) cierra
-    overlay.addEventListener('dblclick', (e) => {
-      if (e.target.classList.contains('io-backdrop')) close();
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
     });
-    
-    // 3) Móvil: doble-tap (~300 ms) en el fondo cierra
-    let lastTapBackdrop = 0;
-    overlay.addEventListener('touchend', (e) => {
-      if (!e.target.classList.contains('io-backdrop')) return;
-      const now = Date.now();
-      if (now - lastTapBackdrop < 300) {
-        e.preventDefault();
-        close();
-      }
-      lastTapBackdrop = now;
-    }, { passive: true });
-
 
     // Target: figuras de research y robotics
     const candidates = document.querySelectorAll('#figures .slide img, #robotics .slide img');
