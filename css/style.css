@@ -605,5 +605,41 @@ details[open] .summary-toggle .chev {
   transform: rotate(180deg);
 }
 
+/* ===== Image Lightbox ===== */
+.io{ position:fixed; inset:0; display:none; z-index:2100; }
+.io.open{ display:block; }
+.io-backdrop{
+  position:absolute; inset:0; background:rgba(0,0,0,.6); backdrop-filter: blur(2px);
+}
+.io-card{
+  position:absolute; inset:0; margin:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:10px;
+  padding: min(6vh, 40px) min(4vw, 28px);
+}
+.io-img{
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto; height: auto;
+  border-radius: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.io-cap{
+  color:#e6edf3; font-size:14px; text-align:center;
+  max-width: min(900px, 92vw);
+}
+[data-theme="dark"] .io-cap{ color:#cfd6dd; }
+.io-close{
+  position:absolute; top:10px; right:10px;
+  width:36px; height:36px; border:none; border-radius:9999px;
+  background:rgba(255,255,255,.18); color:#fff; font-size:18px; cursor:pointer;
+}
+.io-close:hover{ background:rgba(255,255,255,.3); }
+
+/* Permitir buen gesto de pinch/zoom de navegador en móviles */
+@media (max-width: 520px){
+  .io-img{ max-height: 76vh; }
+}
+
+
 
 
