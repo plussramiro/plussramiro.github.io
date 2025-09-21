@@ -167,19 +167,36 @@ footer {
   opacity: 1; background: var(--nav-chip-hover); outline: none;
 }
 
-/* Botón de tema (toggle) — sitúalo en la topnav a la derecha */
-.theme-toggle{
-  margin-right: 10px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--on-nav);
-  border-radius: 9999px;
-  padding: 6px 10px;
-  cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s;
+/* ===== Toggle de tema dentro del header ===== */
+header {
+  text-align: center;   /* centra foto, nombre, descripción y botón */
+  position: relative;   /* por si más adelante querés posicionar algo relativo */
 }
-.theme-toggle:hover { background: var(--nav-chip-hover); }
-.theme-toggle:focus-visible{ outline: 2px solid var(--link); outline-offset: 2px; }
+
+.theme-toggle {
+  margin-top: 18px;       /* espacio debajo de la descripción */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border, #ccc);
+  background: var(--card, #f4f6f8);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--bg, #e9eef3);
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--link, #1d76d2);
+  outline-offset: 2px;
+}
 
 /* Mobile: chips scrolleables */
 @media (max-width: 520px) {
