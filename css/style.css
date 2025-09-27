@@ -643,11 +643,11 @@ details[open] .summary-toggle .chev {
 /* === Ajustes de header sólo para desktop === */
 @media (min-width: 1024px) {
   header {
-    padding: 24px 20px 32px; /* menos espacio arriba/abajo */
+    padding: 24px 10px 24px; /* menos espacio arriba/abajo --> (arriba/laterales/abajo) */
   }
   header img {
-    width: 160px;  /* más chico que 220px */
-    height: 160px;
+    width: 200px;  
+    height: 200px;
   }
   header h1 {
     font-size: 28px; /* más compacto */
