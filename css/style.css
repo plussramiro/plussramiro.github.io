@@ -640,6 +640,62 @@ details[open] .summary-toggle .chev {
   .io-img{ max-height: 76vh; }
 }
 
+/* === Compact desktop adjustments (append to your style.css) === */
+@media (min-width: 1024px) {
+  /* Max width a ~1060 px */
+  main, .container, .wrap { max-width: 1060px; margin-left: auto; margin-right: auto; }
+
+  /* Header more compact */
+  header.site-header { padding: 28px 20px 44px; }
+  header.site-header .avatar { width: 180px; height: 180px; }
+  header.site-header .title { margin-top: 12px; }
+  header.site-header .subtitle { margin-top: 6px; }
+
+  /* Sections: less vertical padding */
+  section { padding-top: 28px; padding-bottom: 28px; }
+  section > h2 { margin-bottom: 14px; }
+
+  /* Tighter text line-height */
+  p, li { line-height: 1.55; }
+
+  /* About + Contact two-column layout */
+  .contact-cv .cc-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1.9fr;
+    gap: 20px 28px;
+    align-items: start;
+  }
+  .contact-cv .cc-left { position: sticky; top: calc(var(--nav-h, 56px) + 16px); align-self: start; }
+  .contact-cv .mini-avatar { width: 120px; height: 120px; border-radius: 999px; display: block; }
+  .contact-cv .quick { margin: 8px 0 14px; font-size: 0.95rem; color: var(--muted); }
+  .contact-cv .contact-list { display: grid; gap: 8px; }
+  .contact-cv .cv-actions { margin-top: 12px; }
+
+  /* Grids for Figures / Robotics */
+  .figure-grid, .robotics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 16px;
+  }
+  @media (min-width: 820px) and (max-width: 1199px) {
+    .figure-grid, .robotics-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  }
+  /* Cards */
+  .card-fig, .card-robot {
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--card-shadow);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .card-fig img, .card-robot img { width: 100%; height: auto; display: block; }
+  .card-fig figcaption, .card-robot .caption { padding: 10px 12px; font-size: 0.95rem; }
+
+  /* Hide carousel chrome if a grid is present */
+  .section--robotics .carousel { display: none; }
+}
+
+
 
 
 
