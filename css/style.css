@@ -640,48 +640,62 @@ details[open] .summary-toggle .chev {
   .io-img{ max-height: 76vh; }
 }
 
-/* === Compact header (desktop only) === */
-@media (min-width: 1024px) {
-  :root{
-    --hdr-pad-y: 24px;      /* antes ~40–56px */
-    --hdr-avatar: 160px;    /* antes ~200px */
-    --hdr-gap: 10px;        /* separación vertical entre líneas */
+
+
+/* === Desktop layout overrides (merged in one file) === */
+img, svg, video, canvas { max-width: 100%; height: auto; display: block; }
+
+@media (min-width: 1100px) {
+  main, .container, .wrap { max-width: 1060px; margin-inline: auto; }
+  section { padding-top: 28px; padding-bottom: 28px; }
+
+  /* Header compacto en grilla: avatar | textos | toggle */
+  .site-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 28px;
+    padding: 24px 24px 12px;
+  }
+  .site-header img {
+    width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--border-soft, rgba(255,255,255,.15));
+  }
+  .site-header .id h1 { margin: 0 0 8px 0; line-height: 1.15; }
+  .site-header .id .subtitle { margin: 4px 0 0 0; line-height: 1.25; opacity: .9; }
+  .topnav { margin-top: 6px; }
+
+  /* Contact + CV cards (si usás contact-cv o contact-cv-row) */
+  .contact-cv-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-top: 6px;
+  }
+  .contact-cv-row > section,
+  .contact-cv .cc-grid > .cc-col {
+    background: var(--card, rgba(255,255,255,0.02));
+    border: 1px solid var(--border-soft, rgba(255,255,255,0.08));
+    border-radius: 14px;
+    box-shadow: var(--card-shadow, 0 6px 20px rgba(0,0,0,.15));
+    padding: 16px 18px;
   }
 
-  /* bloque principal del header */
-  header {
-    padding: var(--hdr-pad-y) 16px calc(var(--hdr-pad-y) + 8px);
+  /* Grids de Figures/Robotics (si querés usarlas en lugar del carrusel) */
+  .figure-grid, .robotics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 16px;
   }
-
-  /* foto */
-  header img {
-    width: var(--hdr-avatar);
-    height: var(--hdr-avatar);
+  @media (min-width: 1100px) and (max-width: 1279px) {
+    .figure-grid, .robotics-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   }
-
-  /* título y subtítulos más compactos */
-  header h1 {
-    margin-top: 8px;
-    margin-bottom: 6px;
-    line-height: 1.2;
-    /* si querés achicar un toque la tipografía en desktop: */
-    /* font-size: clamp(1.6rem, 1.2rem + 1vw, 2.1rem); */
+  .card-fig, .card-robot {
+    background: var(--card, rgba(255,255,255,0.02));
+    border: 1px solid var(--border-soft, rgba(255,255,255,0.08));
+    border-radius: 14px;
+    overflow: hidden;
   }
-  header .subtitle {
-    margin-top: var(--hdr-gap);
-    margin-bottom: 0;
-    line-height: 1.25;
-  }
-
-  /* barra de navegación más pegada al header */
-  .topnav {
-    margin-top: 8px;  /* reduce el “aire” entre header y nav */
-  }
+  .card-fig figcaption, .card-robot .caption { padding: 10px 12px; font-size: 0.95rem; }
 }
-
-
-
-
-
-
-
