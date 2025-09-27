@@ -567,34 +567,3 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
-
-/* ===== Publications: show top-5, collapse the rest ===== */
-function compactPublicationsTop5() {
-  const pubSection = document.getElementById('publications');
-  if (!pubSection) return;
-  const list = pubSection.querySelector('ul, ol');
-  if (!list) return;
-  const items = Array.from(list.children).filter(li => li.tagName.toLowerCase() === 'li');
-  if (items.length <= 5) return;
-
-  // Create details wrapper
-  const details = document.createElement('details');
-  details.className = 'exp';
-  const summary = document.createElement('summary');
-  summary.innerHTML = 'See all publications <span class="chev">▾</span>';
-  details.appendChild(summary);
-
-  // Move overflow items into a new <ul>
-  const restList = document.createElement(list.tagName.toLowerCase());
-  for (let i = 5; i < items.length; i++) restList.appendChild(items[i]);
-  details.appendChild(restList);
-
-  // Insert details after the 5th item
-  list.parentNode.insertBefore(details, list.nextSibling);
-}
-
-/* call after DOMContentLoaded init */
-document.addEventListener('DOMContentLoaded', () => {
-  try { compactPublicationsTop5(); } catch (_) {}
-});
-
