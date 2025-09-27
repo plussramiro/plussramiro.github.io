@@ -567,3 +567,4 @@ document.addEventListener('click', (ev) => {
     setTimeout(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   }
 });
+
