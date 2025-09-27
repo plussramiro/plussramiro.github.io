@@ -695,6 +695,62 @@ details[open] .summary-toggle .chev {
   .section--robotics .carousel { display: none; }
 }
 
+/* === HERO COMBINED (header + about) & mobile fixes === */
+
+/* Slim header that only holds the toggle */
+.site-header.slim {
+  display: flex; justify-content: flex-end; align-items: center;
+  padding: 8px 12px; background: transparent;
+}
+
+/* Hero container */
+.hero-combo {
+  padding-top: 16px;
+}
+.hero-combo .hero-head {
+  display: grid; grid-template-columns: auto 1fr; gap: 16px;
+  align-items: center; margin-bottom: 10px;
+}
+.hero-combo .hero-avatar {
+  width: 120px; height: 120px; border-radius: 999px; object-fit: cover;
+  border: 3px solid var(--border-soft, rgba(255,255,255,.15));
+}
+.hero-combo .hero-id h1 { margin: 0; font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem); }
+.hero-combo .subtitle { margin: 2px 0; opacity: .85; }
+
+/* Two-column grid reused */
+.hero-combo.contact-cv .cc-grid {
+  display: grid; gap: 16px 24px;
+}
+/* Desktop: two columns */
+@media (min-width: 1024px) {
+  .hero-combo.contact-cv .cc-grid {
+    grid-template-columns: 1.1fr 1.9fr;
+  }
+  .hero-combo .cc-left { position: sticky; top: calc(var(--nav-h, 56px) + 12px); }
+}
+
+/* Mobile stacking */
+@media (max-width: 1023.98px) {
+  .hero-combo .hero-avatar { width: 88px; height: 88px; }
+  .hero-combo .cc-left { position: static; }
+  .contact-list { font-size: 0.95rem; }
+}
+
+/* Ensure images never overflow on mobile (fix huge portrait issue) */
+img, svg, video, canvas { max-width: 100%; height: auto; }
+figure img { display: block; width: 100%; }
+
+/* Grids already defined; just ensure gap on mobile */
+.figure-grid, .robotics-grid { gap: 12px; }
+
+/* Reduce top spacing globally on desktop to save scroll */
+@media (min-width: 1024px) {
+  section { padding-top: 24px; padding-bottom: 24px; }
+  main, .container, .wrap { max-width: 1060px; margin-inline: auto; }
+}
+
+
 
 
 
