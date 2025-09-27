@@ -240,10 +240,10 @@
   function initImageLightbox() {
     const overlay = document.getElementById('imgOverlay');
     if (!overlay) return;
-
+  
     const imgEl = overlay.querySelector('.io-img');
     const capEl = overlay.querySelector('.io-cap');
-
+  
     function open(src, alt, caption) {
       imgEl.src = src;
       imgEl.alt = alt || '';
@@ -252,42 +252,51 @@
       overlay.setAttribute('aria-hidden', 'false');
       document.body.classList.add('vo-open'); // reutiliza el body lock
     }
-
+  
     function close() {
       overlay.classList.remove('open');
       overlay.setAttribute('aria-hidden', 'true');
       imgEl.src = '';
       document.body.classList.remove('vo-open');
     }
-
+  
+    // Cerrar con ❌, con el backdrop, o tocando en cualquier zona fuera de la imagen/controles
     overlay.addEventListener('click', (e) => {
-      if (e.target.matches('[data-io-close], .io-backdrop')) close();
+      const clickedClose   = e.target.matches('[data-io-close], .io-backdrop');
+      const clickedImage   = !!e.target.closest('.io-img');
+      const clickedControl = !!e.target.closest('a, button, input, textarea, select, label, iframe');
+  
+      if (clickedClose || (!clickedImage && !clickedControl)) {
+        close();
+      }
     });
+  
+    // Cerrar con Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('open')) close();
     });
-
+  
     // Target: figuras de research y robotics
     const candidates = document.querySelectorAll('#figures .slide img, #robotics .slide img');
-
+  
     candidates.forEach(img => {
-      // Desktop: doble click
+      // Desktop: doble click para abrir
       img.addEventListener('dblclick', (e) => {
         e.stopPropagation();
-        const fig = img.closest('figure');
-        const cap = fig?.querySelector('figcaption')?.textContent?.trim() || '';
+        const fig  = img.closest('figure');
+        const cap  = fig?.querySelector('figcaption')?.textContent?.trim() || '';
         const full = img.dataset.full || img.src;
         open(full, img.alt, cap);
       });
-
-      // Móvil: doble-tap simple (~300 ms)
+  
+      // Móvil: doble-tap simple (~300 ms) para abrir
       let lastTap = 0;
       img.addEventListener('touchend', (e) => {
         const now = Date.now();
         if (now - lastTap < 300) {
           e.preventDefault();
-          const fig = img.closest('figure');
-          const cap = fig?.querySelector('figcaption')?.textContent?.trim() || '';
+          const fig  = img.closest('figure');
+          const cap  = fig?.querySelector('figcaption')?.textContent?.trim() || '';
           const full = img.dataset.full || img.src;
           open(full, img.alt, cap);
         }
@@ -295,6 +304,7 @@
       }, { passive: true });
     });
   }
+
 
   /* ===== <details> con transición suave (sin display:none) ===== */
   const DETAILS_PAD = 12; // px
