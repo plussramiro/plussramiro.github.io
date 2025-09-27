@@ -5,40 +5,18 @@
   <title>Ramiro Plüss — Academic Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Ramiro Plüss — Physicist & PhD candidate. Computational neuroscience, adaptive networks, connectomics & robotics. Publications, figures, prototypes, CV and contact.">
+  <meta name="description" content="Ramiro Plüss — Physicist & PhD candidate. Computational neuroscience, adaptive networks, connectomics & robotics.">
   <link rel="canonical" href="https://plussramiro.github.io/">
-  
-  <!-- Open Graph -->
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Ramiro Plüss — Academic Website">
-  <meta property="og:description" content="Computational neuroscience, adaptive networks & robotics. Publications, figures, prototypes, CV and contact.">
-  <meta property="og:url" content="https://plussramiro.github.io/">
-  <meta property="og:type" content="website">
+  <meta property="og:description" content="Computational neuroscience, adaptive networks & robotics.">
   <meta property="og:image" content="https://plussramiro.github.io/images/profile/ramiropluss.jpg">
-  
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ramiro Plüss — Academic Website">
-  <meta name="twitter:description" content="Computational neuroscience, adaptive networks & robotics.">
-  <meta name="twitter:image" content="https://plussramiro.github.io/images/profile/ramiropluss.jpg">
-  
-  <!-- Performance: preconnect to Google Fonts -->
+
+  <!-- Preconnect + Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- Favicon -->
-  <link rel="icon" href="/images/profile/ramiropluss.jpg">
-
-  <!-- Avoid theme flash -->
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      } catch (e) {}
-    })();
-  </script>
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
@@ -46,27 +24,21 @@
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-  
-<body>
-  <header class="site-header">
-    <img class="avatar" src="images/profile/ramiropluss.jpg" alt="Portrait of Ramiro Plüss, physicist and PhD candidate at ITBA">
-    <h1 class="title">Ramiro Plüss</h1>
-    <p class="subtitle">Ph.D. in Engineering (in progress), ITBA</p>
-    <p class="subtitle">B.Sc. in Physics (Licenciatura en Física, 9-semester program), UNR – FCEIA</p>
 
-    <!-- Theme toggle -->
-    <button id="themeToggle"
-            class="theme-toggle"
-            type="button"
-            role="switch"
-            aria-checked="false"
-            aria-label="Toggle dark mode"
-            title="Toggle theme">
+  <!-- Avoid theme flash -->
+  <script>
+    (function(){try{var t=localStorage.getItem('theme'); if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
+</head>
+
+<body>
+  <!-- Slim top bar with only theme toggle -->
+  <header class="site-header slim">
+    <button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Toggle theme">
       <span class="icon">🌙</span>
     </button>
   </header>
-  
+
   <nav class="topnav" role="navigation" aria-label="Primary">
     <div class="scroller">
       <a href="#intro">About</a>
@@ -79,18 +51,24 @@
   </nav>
 
   <main>
-    <!-- ABOUT + CONTACT (two-column on desktop) -->
-    <section id="intro" class="contact-cv">
-      <h2>About Me</h2>
+    <!-- HERO COMBINED (Header + About + Contact) -->
+    <section id="intro" class="hero-combo contact-cv">
+      <div class="hero-head">
+        <img class="hero-avatar" src="images/profile/ramiropluss.jpg" alt="Ramiro Plüss">
+        <div class="hero-id">
+          <h1>Ramiro Plüss</h1>
+          <p class="subtitle">Ph.D. in Engineering (in progress), ITBA</p>
+          <p class="subtitle">B.Sc. in Physics, UNR – FCEIA</p>
+        </div>
+      </div>
+
       <div class="cc-grid">
         <!-- Left: quick profile + contact -->
         <aside class="cc-left">
-          <img class="mini-avatar" src="images/profile/ramiropluss.jpg" alt="Ramiro Plüss">
-          <div class="quick">PhD candidate — Computational Neuroscience & Robotics · ITBA</div>
+          <div class="quick">Computational Neuroscience · Complex Networks · Bio‑inspired Robotics</div>
           <div class="contact-list">
             <div>📍 Buenos Aires, Argentina</div>
             <div>📧 <a href="mailto:rpluss@itba.edu.ar">rpluss@itba.edu.ar</a></div>
-            <div>🌐 <a href="https://plussramiro.github.io" target="_blank" rel="noopener">Website</a></div>
             <div>👨‍🔬 <a href="https://scholar.google.com/citations?user=l1XV7YYAAAAJ" target="_blank" rel="noopener">Google Scholar</a></div>
             <div>🐙 <a href="https://github.com/plussramiro" target="_blank" rel="noopener">GitHub</a></div>
             <div>🔗 <a href="https://www.linkedin.com/in/ramiropluss/" target="_blank" rel="noopener">LinkedIn</a></div>
@@ -103,23 +81,17 @@
 
         <!-- Right: about text -->
         <div class="cc-right">
+          <h2>About Me</h2>
           <p>
             My name is Ramiro Plüss. I am a physicist, graduated from UNR–FCEIA, and currently a PhD candidate at ITBA.
             My research combines computational models of complex networks with robotic models to study proprioception and cognition.
             In recent work, I investigated how changes in connection density in an adaptive network of chaotic units shape cluster synchronization
-            and structural properties such as integration and segregation, a balance that is fundamental in neuroscience. I have also applied
-            a hemispheric-specific Wilson–Cowan model to connectome data from patients with schizophrenia, improving the modeling of functional connectivity.
+            and structural properties such as integration and segregation. I have also applied a hemispheric‑specific Wilson–Cowan model to connectome data from patients with schizophrenia, improving the modeling of functional connectivity.
           </p>
           <details class="fold">
-            <summary>
-              <span class="more">See more</span>
-              <span class="less">See less</span>
-            </summary>
+            <summary><span class="more">See more</span><span class="less">See less</span></summary>
             <p>
-              Currently, I am working with robotic models based on real connectomics of Drosophila and C. elegans to explore embodiment and autonomy.
-              These connectome architectures can be seen as biologically pre-trained networks, offering a bridge between neuroscience and robotics
-              while reducing reliance on conventional artificial training. With this line of research, I aim to contribute to autonomous robotics
-              and long-range exploration, while also expanding my interests toward models of consciousness, behavior, and artificial intelligence.
+              I’m exploring embodiment with robotic models based on real connectomics (Drosophila, C. elegans). These architectures act as biologically pre‑trained networks, bridging neuroscience and robotics and reducing reliance on conventional training.
             </p>
           </details>
         </div>
@@ -142,166 +114,66 @@
           <strong>Bachelor’s thesis in Physics: “Dynamics and Structure in Adaptive Neural Networks”</strong><br>
           <a class="btn" href="https://rephip.unr.edu.ar/items/6c17ef73-9980-4100-bc26-d19c5f1bd73e" target="_blank" rel="noopener">UNR RePHip repository</a>
         </li>
-        <!-- Agregá aquí más <li> y el JS compactará a Top-5 -->
       </ul>
     </section>
-    
-    <!-- FIGURES: GRID -->
+
+    <!-- FIGURES GRID -->
     <section id="figures">
       <h2><i class="fa-solid fa-diagram-project"></i> Research Figures</h2>
-      <p class="muted">Selected figures from my recent publications and comparative references.</p>
-
       <div class="figure-grid">
         <figure class="card-fig">
-          <img
-            src="images/connectomics/hemispheric.png"
-            alt="Hemispheric-specific coupling vs global coupling in a Wilson–Cowan model"
-            loading="lazy">
-          <figcaption>
-            Hemisphere-specific coupling (G₁ intra / G₂ inter) improves SC–FC correspondence
-            compared with global coupling (G) [Plüss et al., 2025b].
-          </figcaption>
+          <img src="images/connectomics/hemispheric.png" alt="Hemispheric-specific vs global coupling">
+          <figcaption>Hemispheric-specific coupling improves SC–FC correspondence [Plüss et al., 2025b].</figcaption>
         </figure>
-
         <figure class="card-fig">
-          <img
-            src="images/connectomics/comparative_connectomes_adaptive_model.png"
-            alt="Comparative connectomes across species alongside an adaptive network model"
-            loading="lazy">
-          <figcaption>
-            Comparative connectomes (C. elegans, Drosophila, Mouse, Macaque, Human) [van den Heuvel et al., 2016].
-            Adaptive network evolves to balance segregation/integration [Plüss et al., 2025a].
-          </figcaption>
+          <img src="images/connectomics/comparative_connectomes_adaptive_model.png" alt="Comparative connectomes + adaptive model">
+          <figcaption>Comparative connectomes; adaptive network balances segregation/integration [Plüss et al., 2025a].</figcaption>
         </figure>
-
-        <!-- Duplicá más figures aquí… -->
       </div>
     </section>
 
-    <!-- VIDEO OVERLAY (unchanged) -->
+    <!-- VIDEO OVERLAY -->
     <div id="videoOverlay" class="vo" aria-hidden="true">
       <div class="vo-backdrop" data-vo-close></div>
       <div class="vo-card" role="dialog" aria-modal="true" aria-label="Demo video">
         <button class="vo-close" aria-label="Close" data-vo-close>✕</button>
         <div class="vo-meta">
-          <span class="vo-title"></span>
-          <span class="vo-dot">•</span>
-          <span class="vo-duration"></span>
+          <span class="vo-title"></span><span class="vo-dot">•</span><span class="vo-duration"></span>
         </div>
-        <div class="vo-player"><!-- iframe injected via JS --></div>
+        <div class="vo-player"></div>
         <div class="vo-caption"></div>
       </div>
     </div>
 
-    <!-- ROBOTICS: GRID -->
+    <!-- ROBOTICS GRID -->
     <section id="robotics" class="section--robotics">
       <h2><i class="fa-solid fa-robot"></i> Robotics Prototypes & Evolution</h2>
-      <p class="muted">Selected robotics projects and quick demos.</p>
-
       <div class="robotics-grid">
         <div class="card-robot">
-          <img src="images/robotics/hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
+          <img src="images/robotics/hexapod1.jpg" alt="Hexapod prototype">
           <div class="caption">Hexapod prototype with servos & wiring</div>
-          <button class="demo-btn"
-                  data-id="sP3aGM9wyew"
-                  data-title="Hexapod — Servo offset calibration & first steps"
-                  data-duration="14 s"
-                  data-caption="18 servos · tripod gait · offsets tuned · <a href='https://www.instructables.com/Hexapod-Robot/' target='_blank' rel='noopener noreferrer' class='credit'>Ref: Instructables</a>">
-            ▶ Watch servo offset calibration
-          </button>
+          <button class="demo-btn" data-id="sP3aGM9wyew" data-title="Hexapod — Servo offset calibration" data-duration="14 s">▶ Watch</button>
         </div>
-
         <div class="card-robot">
-          <img src="images/robotics/1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
+          <img src="images/robotics/1leg.jpg" alt="Single leg prototype">
           <div class="caption">Single leg prototype</div>
         </div>
-
         <div class="card-robot">
-          <img src="images/robotics/2eyes.jpg" alt="Dual-eye prototype" loading="lazy">
+          <img src="images/robotics/2eyes.jpg" alt="Dual-eye prototype">
           <div class="caption">Dual-eye prototype</div>
-          <button class="demo-btn"
-                  data-id="LXXqcms6eXk"
-                  data-title="Dual-eye — Saccades & blink"
-                  data-duration="24 s"
-                  data-caption="Dual-eye robot head — PS2 joystick control + rotating base · <a href='https://www.youtube.com/watch?v=jsXolwJskKM' target='_blank' rel='noopener noreferrer' class='credit'>Inspired by James Bruton</a>">
-            ▶ Watch saccades & blink
-          </button>
+          <button class="demo-btn" data-id="LXXqcms6eXk" data-title="Dual-eye — Saccades & blink" data-duration="24 s">▶ Watch</button>
         </div>
-
         <div class="card-robot">
-          <img src="images/robotics/robot_wheels_mecanum.jpg" 
-               alt="Mecanum-wheel robot with PS2 joystick control and ultrasonic sensor" 
-               loading="lazy">
+          <img src="images/robotics/robot_wheels_mecanum.jpg" alt="Mecanum-wheel robot">
           <div class="caption">Mecanum-wheel robot with ultrasonic sensor</div>
-          <button class="demo-btn"
-                  data-id="HWUrwyTYjJM"
-                  data-title="Mecanum-wheel — Omni-directional control"
-                  data-duration="28 s"
-                  data-caption="PS2 joystick control · Ultrasonic distance sensor · Omni-directional motion">
-            ▶ Watch omni-directional control
-          </button>
+          <button class="demo-btn" data-id="HWUrwyTYjJM" data-title="Mecanum-wheel — Omni-directional control" data-duration="28 s">▶ Watch</button>
         </div>
-
         <div class="card-robot">
-          <img src="images/robotics/robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor and light sensor (LDR)" loading="lazy">
+          <img src="images/robotics/robot_sensor.png" alt="Two-wheel robot with sensors">
           <div class="caption">Two-wheel robot with ultrasonic sensor</div>
-          <button class="demo-btn"
-                  data-id="YI7VJW33vqE"
-                  data-title="Two-wheel — Obstacle avoidance"
-                  data-duration="28 s"
-                  data-caption="Braitenberg-style neural controller · Ultrasonic + LDR">
-            ▶ Watch obstacle avoidance
-          </button>
+          <button class="demo-btn" data-id="YI7VJW33vqE" data-title="Two-wheel — Obstacle avoidance" data-duration="28 s">▶ Watch</button>
         </div>
       </div>
-    </section>
-
-    <!-- PROGRAMS & POSTERS -->
-    <section id="posters">
-      <details class="exp">
-        <summary>
-          <i class="fa-solid fa-thumbtack"></i>
-          Poster Presentations in Conferences and International Schools
-          <span class="chev" aria-hidden="true">▾</span>
-        </summary>
-        <ul>
-          <li>
-            <strong><em>Modeling Functional Connectivity Alterations in Schizophrenia Patients from the Structural Connectome</em></strong>
-            (with Hernán Villota, Tomás Bosch, and Patricio Orio). Bogotá, Colombia (April 2025).
-          </li>
-          <li>
-            <strong><em>Phase Transition in an Adaptive Network with Chaotic Units</em></strong>
-            (with Pablo Gleiser). ICTP-SAIFR (Feb–Mar 2025); University of Tokyo (July 2024); RAFA (2022–2023); etc.
-          </li>
-          <li>
-            <strong><em>Preliminary Study of the Viscoelastic Properties of Red Blood Cells Irradiated with Gamma Radiation Using a Rheometer</em></strong>
-            (with F. Gómez Fava et al.). RAFA 107 (Sep 2022); STIC Rosario (Oct 2022).
-          </li>
-        </ul>
-      </details>
-    </section>
-
-    <section id="programs">
-      <details class="exp">
-        <summary>
-          <i class="fa-solid fa-graduation-cap"></i>
-          Relevant programs and courses
-          <span class="chev" aria-hidden="true">▾</span>
-        </summary>
-        <ul>
-          <li><em>School on the Origins of Life, Behavior and Cognition</em>, ICTP-SAIFR, Brazil — March 2025</li>
-          <li><em>School on Synchronization: from Collective Motion to Brain Dynamics</em>, ICTP-SAIFR, Brazil — February 2025</li>
-          <li><em>Latin American Summer School of Computational Neuroscience</em>, University of Valparaíso, Chile — January 2025</li>
-          <li><em>Artificial Intelligence Systems</em>, ITBA, Argentina — August–November 2024</li>
-          <li><em>Complex Networks</em>, ITBA, Argentina — August–November 2024</li>
-          <li><em>Modeling and Analysis of Complex Systems</em>, UBA — July 2024</li>
-          <li><em>IRCN/Chen Institute Joint Course on Neuro-inspired Computation</em>, University of Tokyo — July 2024</li>
-          <li><em>Neuroscience and Productive Development</em>, ITBA — March–June 2024</li>
-          <li><em>Latin American School of Computational Neuroscience</em>, USP — January 2024</li>
-          <li><em>Bioinspired Robotics</em>, ITBA — August–December 2023</li>
-          <li><em>Introduction to Medical and Biomedical Physics</em>, UNR — October–December 2019</li>
-        </ul>
-      </details>
     </section>
 
     <!-- AFFILIATIONS -->
@@ -323,21 +195,17 @@
       </div>
     </section>
 
-    <!-- CV quick link (anchors to sidebar CV button too) -->
+    <!-- CV -->
     <section id="cv">
       <h2><i class="fa-regular fa-file-lines"></i> Curriculum Vitae</h2>
       <a class="btn" href="https://drive.google.com/file/d/1HVBofvdWIET62d3NLVKvbWxi8QytLzof/view?usp=drive_link"
-         target="_blank" rel="noopener" aria-label="Open CV in Google Drive (PDF)">
-        Google Drive (PDF)
-      </a>
+         target="_blank" rel="noopener">Google Drive (PDF)</a>
     </section>
   </main>
 
-  <footer>
-    © <span id="y"></span> Ramiro Plüss · All rights reserved · Built with GitHub Pages
-  </footer>
+  <footer>© <span id="y"></span> Ramiro Plüss · All rights reserved</footer>
 
-  <!-- Image Lightbox -->
+  <!-- Lightbox -->
   <div id="imgOverlay" class="io" aria-hidden="true">
     <div class="io-backdrop" data-io-close></div>
     <figure class="io-card" role="dialog" aria-modal="true" aria-label="Image preview">
@@ -347,7 +215,6 @@
     </figure>
   </div>
 
-  <!-- Scripts -->
   <script src="js/main.js"></script>
 </body>
 </html>
