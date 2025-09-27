@@ -43,21 +43,17 @@
 
   <!-- Estilos externos -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Overrides de desktop (nuevo) -->
-  <link rel="stylesheet" href="css/style.desktop.overrides.css">
 
   <!-- Iconos (Font Awesome) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
   
 <body>
-  <header class="site-header">
+  <header>
     <img src="images/profile/ramiropluss.jpg" alt="Portrait of Ramiro Plüss, physicist and PhD candidate at ITBA">
-    <div class="id">
-      <h1>Ramiro Plüss</h1>
-      <p class="subtitle">Ph.D. in Engineering (in progress), ITBA</p>
-      <p class="subtitle">B.Sc. in Physics (Licenciatura en Física, 9-semester program), UNR – FCEIA</p>
-    </div>
+    <h1>Ramiro Plüss</h1>
+    <p class="subtitle">Ph.D. in Engineering (in progress), ITBA</p>
+    <p class="subtitle">B.Sc. in Physics (Licenciatura en Física, 9-semester program), UNR – FCEIA</p>
 
     <!-- Botón de toggle centrado -->
     <button id="themeToggle"
@@ -132,6 +128,7 @@
       <p class="muted">Selected figures from my recent publications and comparative references.</p>
     
       <div class="carousel research-carousel" id="figuresCarousel" data-autoplay="6000" aria-roledescription="carousel" aria-label="Research figures">
+        <!-- Flechas originales quedan por si querés volver a mostrarlas -->
         <button class="nav prev" aria-label="Previous slide">‹</button>
     
         <div class="track" role="group" aria-live="polite">
@@ -161,6 +158,7 @@
         <button class="nav next" aria-label="Next slide">›</button>
         <div class="dots" aria-label="Carousel pagination"></div>
 
+        <!-- NUEVO: hotzones invisibles (zonas clickeables amplias) -->
         <button class="hotzone hotzone--prev" type="button" aria-label="Previous"></button>
         <button class="hotzone hotzone--next" type="button" aria-label="Next"></button>
       </div>
@@ -176,7 +174,7 @@
           <span class="vo-dot">•</span>
           <span class="vo-duration"></span>
         </div>
-        <div class="vo-player"></div>
+        <div class="vo-player"><!-- aquí se inyecta el iframe --></div>
         <div class="vo-caption"></div>
       </div>
     </div>
@@ -231,6 +229,7 @@
             </button>
           </figure>
 
+
           <figure class="slide">
             <img src="images/robotics/robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor and light sensor (LDR)" loading="lazy">
             <figcaption>Two-wheel robot with ultrasonic sensor</figcaption>
@@ -246,6 +245,7 @@
         <button class="nav next" aria-label="Next slide">›</button>
         <div class="dots" aria-label="Carousel pagination"></div>
 
+        <!-- NUEVO: hotzones invisibles -->
         <button class="hotzone hotzone--prev" type="button" aria-label="Previous"></button>
         <button class="hotzone hotzone--next" type="button" aria-label="Next"></button>
       </div>
@@ -338,6 +338,7 @@
             <a href="https://scholar.google.com/citations?user=l1XV7YYAAAAJ" target="_blank" rel="noopener">
               <i class="fa-solid fa-graduation-cap"></i> Google Scholar
             </a>
+            <!-- Nuevo: ORCID -->
             <a href="https://orcid.org/0009-0000-6502-0668" target="_blank" rel="noopener">
               <i class="fa-brands fa-orcid"></i> ORCID
             </a>
@@ -350,6 +351,7 @@
              target="_blank" rel="noopener" aria-label="Open CV in Google Drive (PDF)">
             Google Drive (PDF)
           </a>
+          <!-- meta de actualización del PDF la podés sumar luego -->
         </div>
       </div>
     </section>
@@ -368,6 +370,7 @@
       <figcaption class="io-cap"></figcaption>
     </figure>
   </div>
+
 
   <!-- Script externo -->
   <script src="js/main.js"></script>
