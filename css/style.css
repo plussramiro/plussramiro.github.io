@@ -639,3 +639,18 @@ details[open] .summary-toggle .chev {
 @media (max-width: 520px){
   .io-img{ max-height: 76vh; }
 }
+
+/* === Ajustes de header sólo para desktop === */
+@media (min-width: 1024px) {
+  header {
+    padding: 24px 20px 32px; /* menos espacio arriba/abajo */
+  }
+  header img {
+    width: 160px;  /* más chico que 220px */
+    height: 160px;
+  }
+  header h1 {
+    font-size: 28px; /* más compacto */
+  }
+}
+
