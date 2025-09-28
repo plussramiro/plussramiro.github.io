@@ -673,5 +673,12 @@ details[open] .summary-toggle .chev {
   section { scroll-margin-top: 104px; }
 }
 
+/* Robustez extra para el wrap */
+@media (min-width: 768px) {
+  .topnav { align-content: center; }   /* centra filas cuando hay más de una */
+  .topnav .scroller { min-width: 0; }  /* evita que su ancho "se imponga" y bloquee el wrap */
+}
+
+
 
 
