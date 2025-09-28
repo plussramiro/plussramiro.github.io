@@ -654,31 +654,41 @@ details[open] .summary-toggle .chev {
   }
 }
 
-/* === NAV: wrap en tablet/desktop, scroll sólo en mobile === */
-@media (min-width: 768px) {
-  .topnav .scroller {
-    width: 100%;              /* fuerza que calcule cortes dentro del ancho del nav */
-    flex-wrap: wrap;          /* permite 2 filas si no entra en una */
-    justify-content: center;  /* centrado en múltiples filas */
-    overflow-x: visible;      /* sin scroll horizontal en tablet/desktop */
-    column-gap: 14px;
-    row-gap: 6px;
-    padding: 10px 16px;
+/* === NAV por defecto: wrap (tablet/desktop y tablet en vertical) === */
+.topnav .scroller{
+  display:flex;
+  flex-wrap: wrap;            /* << wrap por defecto */
+  justify-content:center;
+  gap:14px; row-gap:6px;
+  padding:10px 16px;
+  overflow-x: visible;        /* sin scroll horizontal */
+  white-space: normal;        /* por si quedó heredado nowrap */
+}
+.topnav .scroller a{ flex:0 0 auto; padding:8px 12px; }
+
+/* Ajuste de anclas cuando la barra puede tener 2 filas */
+section{ scroll-margin-top: 96px; }
+
+/* === Móviles chicos: volver a scroll horizontal === */
+@media (max-width: 480px){
+  .topnav .scroller{
+    flex-wrap: nowrap;        /* una sola fila */
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: flex-start;
   }
-  .topnav .scroller a {
-    flex: 0 0 auto;           /* cada chip mantiene su tamaño */
-    padding: 8px 12px;
+  .topnav .scroller::-webkit-scrollbar{ display:none; }
+  .topnav .scroller a{
+    flex:0 0 auto;
+    padding:10px 14px;
   }
-  /* Si la barra ocupa dos filas, evita que el ancla tape títulos */
-  section { scroll-margin-top: 104px; }
+  section{ scroll-margin-top: calc(var(--nav-h) + 24px); }
 }
 
-/* Robustez extra para el wrap */
-@media (min-width: 768px) {
-  .topnav { align-content: center; }   /* centra filas cuando hay más de una */
-  .topnav .scroller { min-width: 0; }  /* evita que su ancho "se imponga" y bloquee el wrap */
+/* (Opcional) comprimí un toque la tipografía en anchos medios */
+@media (min-width: 481px) and (max-width: 900px){
+  .topnav .scroller a{ font-size: 14px; }
 }
-
 
 
 
