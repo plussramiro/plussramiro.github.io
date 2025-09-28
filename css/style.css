@@ -657,21 +657,21 @@ details[open] .summary-toggle .chev {
 /* === NAV: wrap en tablet/desktop, scroll sólo en mobile === */
 @media (min-width: 768px) {
   .topnav .scroller {
-    flex-wrap: wrap;            /* permite 2 filas si hace falta */
-    justify-content: center;    /* centrado en varias filas */
-    overflow-x: visible;        /* sin scroll horizontal */
+    width: 100%;              /* fuerza que calcule cortes dentro del ancho del nav */
+    flex-wrap: wrap;          /* permite 2 filas si no entra en una */
+    justify-content: center;  /* centrado en múltiples filas */
+    overflow-x: visible;      /* sin scroll horizontal en tablet/desktop */
     column-gap: 14px;
     row-gap: 6px;
     padding: 10px 16px;
   }
   .topnav .scroller a {
-    padding: 8px 12px;          /* chips un poco más compactos */
+    flex: 0 0 auto;           /* cada chip mantiene su tamaño */
+    padding: 8px 12px;
   }
-
-  /* Compensar el alto extra de la barra al ir a #anclas */
-  section { 
-    scroll-margin-top: 120px;   /* margen generoso para 2 filas pegajosas */
-  }
+  /* Si la barra ocupa dos filas, evita que el ancla tape títulos */
+  section { scroll-margin-top: 104px; }
 }
+
 
 
