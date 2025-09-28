@@ -654,3 +654,24 @@ details[open] .summary-toggle .chev {
   }
 }
 
+/* === NAV: wrap en tablet/desktop, scroll sólo en mobile === */
+@media (min-width: 768px) {
+  .topnav .scroller {
+    flex-wrap: wrap;            /* permite 2 filas si hace falta */
+    justify-content: center;    /* centrado en varias filas */
+    overflow-x: visible;        /* sin scroll horizontal */
+    column-gap: 14px;
+    row-gap: 6px;
+    padding: 10px 16px;
+  }
+  .topnav .scroller a {
+    padding: 8px 12px;          /* chips un poco más compactos */
+  }
+
+  /* Compensar el alto extra de la barra al ir a #anclas */
+  section { 
+    scroll-margin-top: 120px;   /* margen generoso para 2 filas pegajosas */
+  }
+}
+
+
