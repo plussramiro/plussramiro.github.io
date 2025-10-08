@@ -438,29 +438,36 @@
   }
 
   function enhanceDetails(detailsEl) {
-    const summary = detailsEl.querySelector(':scope > summary');
-    if (!summary) return;
     const content = ensureDetailsContent(detailsEl);
-
-    summary.__hasEnhancer && summary.removeEventListener('click', summary.__enhancer);
-    summary.__enhancer = (ev) => {
-      ev.preventDefault();
+  
+    // Limpia listeners viejos (por si quedaron del código anterior)
+    const summary = detailsEl.querySelector(':scope > summary');
+    if (summary && summary.__hasEnhancer) {
+      summary.removeEventListener('click', summary.__enhancer);
+      summary.__hasEnhancer = false;
+      summary.__enhancer = null;
+    }
+    if (detailsEl.__toggleHandler) {
+      detailsEl.removeEventListener('toggle', detailsEl.__toggleHandler);
+    }
+  
+    // Nuevo: animación según estado nativo de <details>
+    detailsEl.__toggleHandler = () => {
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduced) {
-        const toOpen = !detailsEl.open;
-        detailsEl.open = toOpen;
+        const toOpen = detailsEl.open;
         content.style.height        = toOpen ? 'auto' : '0px';
         content.style.opacity       = toOpen ? '1'    : '0';
         content.style.paddingTop    = toOpen ? (DETAILS_PAD + 'px') : '0px';
         content.style.paddingBottom = toOpen ? (DETAILS_PAD + 'px') : '0px';
         content.classList.toggle('collapsible--open', toOpen);
         content.dataset.animating = '0';
-        return;
+      } else {
+        detailsEl.open ? detailsOpen(detailsEl, content)
+                       : detailsClose(detailsEl, content);
       }
-      detailsEl.open ? detailsClose(detailsEl, content) : detailsOpen(detailsEl, content);
     };
-    summary.addEventListener('click', summary.__enhancer);
-    summary.__hasEnhancer = true;
+    detailsEl.addEventListener('toggle', detailsEl.__toggleHandler);
   }
 
   function initDetailsAccordions() {
