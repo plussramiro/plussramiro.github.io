@@ -300,7 +300,9 @@ header {
   min-width: 100%; margin: 0; background: var(--card);
   display: flex; flex-direction: column;
 }
-.carousel .slide img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+
+.carousel:not(.research-carousel) .slide img {width: 100%;aspect-ratio: 3 / 4; object-fit: cover;}
+
 .carousel figcaption {
   padding: 10px; font-size: 14px; color: #444; text-align: center; background: var(--card);
 }
@@ -689,6 +691,28 @@ section{ scroll-margin-top: 96px; }
 @media (min-width: 481px) and (max-width: 900px){
   .topnav .scroller a{ font-size: 14px; }
 }
+
+/* Research Figures: mostrar la figura completa, sin recortes */
+.research-carousel .slide {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+}
+.research-carousel .slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: #fff; /* opcional */
+}
+/* móvil: un poco más cuadrada */
+@media (max-width: 520px) {
+  .research-carousel .slide { aspect-ratio: 4 / 3; }
+}
+
 
 
 
