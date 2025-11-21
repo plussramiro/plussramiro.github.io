@@ -104,8 +104,19 @@ a:hover { text-decoration: underline; }
 
 /* ========= Header ========= */
 header {
-  background: var(--header-bg); color: var(--on-header); text-align: center;
-  padding: 40px 20px 60px;
+  /* color de base por si no carga la imagen */
+  background-color: var(--header-bg);
+
+  /* banner con redes complejas */
+  background-image: url("../images/banner_complex_network.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: var(--on-header);
+  text-align: center;
+  padding: 60px 20px 80px; /* un poco más alto para que se vea el fondo */
+  position: relative;      /* para el overlay */
   transition: background-color .25s ease, color .25s ease;
 }
 header img {
