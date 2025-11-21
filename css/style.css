@@ -128,8 +128,8 @@ header::before {
     radial-gradient(
       circle at center,
       rgba(10, 16, 26, 0.0) 0%,
-      rgba(10, 16, 26, 0.75) 45%,
-      rgba(10, 16, 26, 0.95) 70%
+      rgba(10, 16, 26, 0.30) 45%,
+      rgba(10, 16, 26, 0.40) 70%
     );
   pointer-events: none;
 }
