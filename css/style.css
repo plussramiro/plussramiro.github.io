@@ -119,6 +119,26 @@ header {
   position: relative;      /* para el overlay */
   transition: background-color .25s ease, color .25s ease;
 }
+/* Oscurezco un poco los bordes y dejo el centro más limpio */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(10, 16, 26, 0.0) 0%,
+      rgba(10, 16, 26, 0.75) 45%,
+      rgba(10, 16, 26, 0.95) 70%
+    );
+  pointer-events: none;
+}
+
+/* Que el contenido quede por encima del overlay */
+header > * {
+  position: relative;
+  z-index: 1;
+}
 header img {
   width: 220px; height: 220px; border-radius: 50%;
   border: 3px solid var(--on-header); object-fit: cover; margin-bottom: 15px;
