@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ramiro Plüss — PhD Candidate in Engineering | Computational Neuroscience, Connectomics & Bio-inspired Robotics | ITBA </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Ramiro Plüss — Physicist & PhD candidate. Computational neuroscience, adaptive networks, Wilson–Cowan whole-brain models, connectomics & bio-inspired robotics. CV and contact." />
+  
+  <link rel="canonical" href="https://plussramiro.github.io/" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ramiro Plüss — Academic Website" />
+  <meta property="og:description" content="Computational neuroscience, adaptive networks & robotics. Publications, figures, prototypes, CV and contact." />
+  <meta property="og:url" content="https://plussramiro.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://plussramiro.github.io/images/profile/ramiropluss.jpg" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ramiro Plüss — Academic Website" />
+  <meta name="twitter:description" content="Computational neuroscience, adaptive networks & robotics." />
+  <meta name="twitter:image" content="https://plussramiro.github.io/images/profile/ramiropluss.jpg" />
+  
+  <!-- Performance: preconnect a Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Favicon básico (ajusta la ruta si hace falta) -->
+  <link rel="icon" href="/images/profile/ramiropluss.jpg">
+
+  <!-- Evitar “flash” de tema: aplica preferencia antes de cargar CSS -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="css/style.css?v=2">
+
+  <!-- Iconos (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+  
+<body>
+  <header>
+    <img src="images/profile/ramiropluss.jpg" alt="Portrait of Ramiro Plüss, physicist and PhD candidate at ITBA">
+    <h1>Ramiro Plüss</h1>
+    <p class="subtitle">Ph.D. in Engineering (in progress), ITBA</p>
+    <p class="subtitle">B.Sc. in Physics (Licenciatura en Física, 9-semester program), UNR – FCEIA</p>
+
+    <!-- Botón de toggle centrado -->
+    <button id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            aria-label="Toggle dark mode"
+            title="Toggle theme">
+      <span class="icon">🌙</span>
+    </button>
+  </header>
+  
+  <nav class="topnav" role="navigation" aria-label="Primary">
+    <div class="scroller">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#figures">Figures</a>
+      <a href="#robotics">Robotics</a>
+      <a href="#posters">Posters</a>
+      <a href="#talks">Talks</a>
+      <a href="#programs">Programs</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#volunteering">Volunteering</a>
+      <a href="#contact">Contact</a>
+      <a href="#cv">CV</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+    <h2>About Me</h2>
+
+    <p>
+        My name is Ramiro Plüss. I am a physicist, graduated from UNR–FCEIA, and currently a PhD candidate at ITBA.
+        My research aims to understand the bidirectional relationship between structure, neural dynamics, and behavior,
+        examining how anatomical and structural organization shapes, and is shaped by, neural activity and motor behavior.
+        I combine computational neuroscience, neural network models, and bioinspired robotic systems to study proprioception
+        and embodied motor control.
+    </p>
+
+    <details class="fold">
+        <summary>
+            <span class="more">See more</span>
+            <span class="less">See less</span>
+        </summary>
+
+        <p>
+            In previous work, I studied how changes in connection density in adaptive networks of chaotic units impact
+            cluster synchronization and structural properties such as integration and segregation, a balance that is
+            central in neuroscience and complex systems. I have also applied hemispheric-specific Wilson–Cowan models
+            to human connectome data from control subjects and patients with schizophrenia, improving the modeling of
+            resting-state functional connectivity and exploring how robustness and asymmetries emerge at the network level.
+        </p>
+
+        <p>
+            Currently, I am working with robotic models driven by real connectomics data from Drosophila and
+            <em>C. elegans</em> to explore embodiment, autonomy, and sensorimotor feedback. These connectome-based
+            architectures can be viewed as biologically pre-trained networks, offering a bridge between neuroscience and
+            robotics while reducing reliance on conventional artificial training. Through this line of research, I aim to
+            contribute to autonomous and bioinspired robotics, long-range exploration, and broader questions about how
+            structure, dynamics, and embodied interaction give rise to behavior and intelligence in both biological and
+            artificial systems.
+        </p>
+    </details>
+</section>
+
+    <section id="publications">
+    <h2><i class="fa-solid fa-book-open"></i> Publications & Preprints</h2>
+    <ul>
+    <li>
+        <strong>Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity</strong><br>
+        <a class="btn" href="https://arxiv.org/abs/2506.22951v2" target="_blank" rel="noopener" aria-label="View preprint on arXiv">arXiv</a>
+        <a class="btn" href="https://hdl.handle.net/20.500.14769/5114" target="_blank" rel="noopener" aria-label="View record on ITBA Institutional Repository">ITBA Repository</a>
+    </li>
+    <li>
+        <strong>The Role of Connection Density in Adaptive Networks with Chaotic Units</strong><br>
+        <a class="btn" href="https://arxiv.org/abs/2505.11437v3" target="_blank" rel="noopener" aria-label="View preprint on arXiv">arXiv</a>
+        <a class="btn" href="https://hdl.handle.net/20.500.14769/5113" target="_blank" rel="noopener" aria-label="View record on ITBA Institutional Repository">ITBA Repository</a>
+    </li>
+    <li>
+        <strong>Bachelor’s thesis in Physics: “Dynamics and Structure in Adaptive Neural Networks”</strong><br>
+        <a class="btn" href="https://rephip.unr.edu.ar/items/6c17ef73-9980-4100-bc26-d19c5f1bd73e" target="_blank" rel="noopener">UNR RePHip repository</a>
+    </li>
+    </ul>
+</section>
+    <section id="talks">
+    <details class="exp">
+    <summary>
+        <i class="fa-solid fa-microphone"></i> Invited Talks
+        <span class="chev" aria-hidden="true">▾</span>
+    </summary>
+    <ul>
+        <li>
+        <strong>Young Scholar Speaker</strong> — 
+        <a href="https://lawcn25.exactas.unlp.edu.ar/" target="_blank" rel="noopener">
+            V Latin American Workshop on Computational Neurosciences (LAWCN'25)
+        </a>. 
+        Universidad Nacional de La Plata (UNLP), La Plata, Argentina (November 2025). 
+        Talk: “Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson–Cowan Dynamics.”
+        </li>
+        <li>
+        <strong>Invited Speaker</strong> — 
+        <a href="https://www.iue.edu.co/giss-2025/" target="_blank" rel="noopener">
+            International Congress INNOVA GISS 2025: Management of Social and Sustainable Research. Workshop 2025
+        </a>. 
+        Institución Universitaria de Envigado (IUE), Envigado, Colombia (August 2025). 
+        Talk: “Why Complex Networks?”
+        </li>
+    </ul>
+    </details>
+</section>
+    <section id="figures">
+    <h2><i class="fa-solid fa-diagram-project"></i> Research & Reference Figures</h2>
+    <p class="muted">Figures from my own work, ongoing projects, and external references that inspire my research.</p>
+
+    <div class="carousel research-carousel" id="figuresCarousel" data-autoplay="6000" aria-roledescription="carousel" aria-label="Research figures">
+    <!-- Flechas originales quedan por si querés volver a mostrarlas -->
+    <button class="nav prev" aria-label="Previous slide">‹</button>
+
+    <div class="track" role="group" aria-live="polite">
+        <figure class="slide">
+        <img
+            src="images/connectomics/hemispheric.png"
+            alt="Hemispheric-specific coupling vs global coupling in a Wilson–Cowan model"
+            loading="lazy">
+        <figcaption>
+            Hemisphere-specific coupling (G₁ intra / G₂ inter) improves SC–FC correspondence
+            comparing with global coupling (G) [Plüss et al., 2025b].
+        </figcaption>
+        </figure>
+
+        <figure class="slide">
+        <img
+            src="images/connectomics/comparative_connectomes_adaptive_model.png"
+            alt="Comparative connectomes across species alongside an adaptive network model"
+            loading="lazy">
+        <figcaption>
+            Figure 1: Evolution of the adaptive network along time obtaining balanced properties such as segregation and integration [Plüss et al., 2025a].
+            Figure 2: Comparative connectomes (C. elegans, Drosophila, Mouse, Macaque, Human) [van den Heuvel et al., 2016].
+        </figcaption>
+        </figure>
+
+        <figure class="slide">
+        <img
+            src="images/connectomics/celegans_connectome_robot_model.png"
+            alt="Differential-drive neurorobot controlled by a simulated C. elegans connectome next to the full adult male C. elegans connectome graph."
+            loading="lazy">
+        <figcaption>
+            Figure 1: Neurorobotic implementation of the <em>C. elegans</em> connectome on a differential-drive robot platform [Valencia&nbsp;Urbina et&nbsp;al., 2023]. 
+            Figure 2: Full adult male <em>C. elegans</em> connectome [Cook et&nbsp;al., 2019]. 
+            Figure 3: Low-dimensional neural manifold capturing global brain dynamics underlying forward, reverse and turning behavior in <em>C. elegans</em> [Kato et&nbsp;al., 2015].
+        </figcaption>
+        </figure>
+
+        <figure class="slide">
+        <img
+            src="images/connectomics/drosophila_leg_motor_circuits.png"
+            alt="Connectomics of Drosophila leg and wing motor circuits, showing an EM reconstruction of leg and wing motor neurons, a schematic of the 18 front-leg muscles, examples of premotor neuron classes, and a heatmap of the leg premotor–motor connectivity matrix."
+            loading="lazy">
+        <figcaption>
+            Connectomics of <em>Drosophila</em> leg and wing motor circuits, including identified motor neurons, front-leg muscles and the premotor–motor connectivity matrix [Lesser et al., 2024].
+        </figcaption>
+        </figure>
+
+        <figure class="slide">
+        <img
+            src="images/robotics/markwtech_hexa.jpg"
+            alt="CAD rendering of a six-legged hexapod robot with 3-DoF legs and a central electronics body"
+            loading="lazy">
+        <figcaption>
+            Reference six-legged bio-inspired “<a href="https://www.instructables.com/Hexapod-Robot/" target="_blank" rel="noopener">
+            hexapod robot</a>” design used as inspiration for ongoing hexapod locomotion and control experiments in our lab [markwtech, Instructables].
+        </figcaption>
+        </figure>
+        
+    </div>
+
+    <button class="nav next" aria-label="Next slide">›</button>
+    <div class="dots" aria-label="Carousel pagination"></div>
+
+    <!-- NUEVO: hotzones invisibles (zonas clickeables amplias) -->
+    <button class="hotzone hotzone--prev" type="button" aria-label="Previous"></button>
+    <button class="hotzone hotzone--next" type="button" aria-label="Next"></button>
+    </div>
+</section>
+
+
+
+    <section id="posters">
+    <details class="exp">
+    <summary>
+        <i class="fa-solid fa-thumbtack"></i>
+        Poster Presentations in Conferences and International Schools
+        <span class="chev" aria-hidden="true">▾</span>
+    </summary>
+    <ul>
+        <li>
+        <strong><em>Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson–Cowan Dynamics</em></strong>
+        (with Hernán Villota and Patricio Orio). Presented at 
+        <a href="https://lawcn25.exactas.unlp.edu.ar/" target="_blank" rel="noopener">
+            V Latin American Workshop on Computational Neuroscience (LAWCN'25)
+        </a> – Universidad Nacional de La Plata, La Plata, Argentina (November 2025).
+        </li>
+        <li>
+        <strong><em>Modeling Functional Connectivity Alterations in Schizophrenia Patients from the Structural Connectome</em></strong>
+        (with Hernán Villota, Tomás Bosch, and Patricio Orio). Presented at 
+        <a href="https://colne.org.co/congreso/" target="_blank" rel="noopener">
+            XIV National Congress and XV International Seminar of Neurosciences
+        </a>, Bogotá, Colombia (April 2025).
+        </li>
+        <li>
+        <strong><em>Phase Transition in an Adaptive Network with Chaotic Units</em></strong>
+        (with Pablo Gleiser). Presented at 
+        <a href="https://www.ictp-saifr.org/solbc2025/" target="_blank" rel="noopener">
+            School on the Origins of Life, Behavior and Cognition
+        </a> – ICTP-SAIFR, São Paulo, Brazil (March 2025); 
+        <a href="https://www.ictp-saifr.org/sscmbd2025/" target="_blank" rel="noopener">
+            School on Synchronization: from Collective Motion to Brain Dynamics
+        </a> – ICTP-SAIFR, São Paulo, Brazil (February 2025); 
+        <a href="https://ircn.jp/en/events/07_ircncourse2024" target="_blank" rel="noopener">
+            IRCN/Chen Institute Joint Course on Neuro-inspired Computation
+        </a> – University of Tokyo, Japan (July 2024); 
+        <a href="https://rafa2023.fisica.org.ar/" target="_blank" rel="noopener">
+            RAFA 108
+        </a> – Bahía Blanca, Argentina (September 2023); 
+        <a href="https://rafa2022.fisica.org.ar/" target="_blank" rel="noopener">
+            RAFA 107
+        </a> – Bariloche, Argentina (September 2022); 
+        <a href="https://unr.edu.ar/presentacion-de-resumenes-para-las-jornadas-ctei-2022/" target="_blank" rel="noopener">
+            Science, Technology and Innovation Conference
+        </a> – Rosario, Argentina (October 2022).
+        </li>
+        <li>
+        <strong><em>Preliminary Study of the Viscoelastic Properties of Red Blood Cells Irradiated with Gamma Radiation Using a Rheometer</em></strong>
+        (with F. Gómez Fava et al.). Presented at 
+        <a href="https://rafa2022.fisica.org.ar/" target="_blank" rel="noopener">
+            RAFA 107
+        </a> – Bariloche, Argentina (September 2022); 
+        <a href="https://unr.edu.ar/presentacion-de-resumenes-para-las-jornadas-ctei-2022/" target="_blank" rel="noopener">
+            Science, Technology and Innovation Conference
+        </a> – Rosario, Argentina (October 2022).
+        </li>
+    </ul>
+    </details>
+</section>
+    <section id="robotics">
+    <h2><i class="fa-solid fa-robot"></i> Robotics Prototypes & Evolution</h2>
+    <p class="muted">A compact carousel showing the progression of my robotics prototypes.</p>
+
+    <div class="carousel" id="roboticsCarousel" data-autoplay="5000" aria-roledescription="carousel" aria-label="Robotics gallery">
+    <button class="nav prev" aria-label="Previous slide">‹</button>
+    <div class="track" role="group" aria-live="polite">
+        <figure class="slide">
+        <img src="images/robotics/hexapod1.jpg" alt="Hexapod prototype with servos and wiring" loading="lazy">
+          <figcaption>Hexapod robot — tripod, ripple & wave gaits (18-DOF)</figcaption>
+          <button class="demo-btn"
+                  type="button"
+                  data-id="jcXTx5d4pRY"
+                  data-title="Hexapod Gaits | Tripod, Ripple & Wave"
+                  data-duration="18 s"
+                  data-caption="Silent demo · Arduino-based controller · 18 servos (3 per leg) · Gaits: tripod, ripple &amp; wave · <a href='https://www.instructables.com/Hexapod-Robot/' target='_blank' rel='noopener noreferrer' class='credit'>Special thanks to markwtech</a>">
+              ▶ Watch tripod, ripple & wave gaits (18 s)
+          </button>
+        </figure>
+
+        <figure class="slide">
+        <img src="images/robotics/1leg.jpg" alt="Single robotic leg actuator prototype" loading="lazy">
+        <figcaption>Single leg prototype</figcaption>
+                    <button class="demo-btn"
+                data-id="sP3aGM9wyew"
+                data-title="Hexapod — Servo offset calibration & first steps"
+                data-duration="14 s"
+                data-caption="18 servos · tripod gait · offsets tuned · <a href='https://www.instructables.com/Hexapod-Robot/' target='_blank' rel='noopener noreferrer' class='credit'>Ref: Instructables</a>">
+            ▶ Watch servo offset calibration (14 s)
+        </button>
+        </figure>
+
+        <figure class="slide">
+        <img
+            src="images/robotics/robot_head_body.jpg"
+            data-full="images/robotics/robot_head_body_full.jpg"
+            alt="Animatronic head with eyes, neck, and articulated arms mounted on a green chassis; PS2-controlled"
+            loading="lazy">
+        <figcaption>Animatronic head + torso — eyes, neck, shoulders & elbows (PS2-controlled)</figcaption>
+        
+        <button class="demo-btn"
+                data-id="LhsHS34h0lY"
+                data-title="Animatronic head + torso — demo"
+                data-duration="36 s"
+                data-caption="Head mechanics & arms — <a href='https://www.youtube.com/watch?v=tP919dwtG38' target='_blank' rel='noopener noreferrer' class='credit'>Inspired by James Bruton</a>">
+            ▶ Watch short demo (36 s)
+        </button>
+        </figure>
+
+        <figure class="slide">
+        <img src="images/robotics/2eyes.jpg" alt="Dual-eye prototype" loading="lazy">
+        <figcaption>Dual-eye prototype</figcaption>
+        <button class="demo-btn"
+                data-id="LXXqcms6eXk"
+                data-title="Dual-eye — Saccades & blink"
+                data-duration="24 s"
+                data-caption="Dual-eye robot head — PS2 joystick control + rotating base · <a href='https://www.youtube.com/watch?v=jsXolwJskKM' target='_blank' rel='noopener noreferrer' class='credit'>Inspired by James Bruton</a>">
+            ▶ Watch saccades & blink (16 s)
+        </button>
+        </figure>
+
+        <figure class="slide">
+        <img src="images/robotics/robot_wheels_mecanum.jpg" 
+                alt="Mecanum-wheel robot with PS2 joystick control and ultrasonic sensor" 
+                loading="lazy">
+        <figcaption>Mecanum-wheel robot with ultrasonic sensor</figcaption>
+        <button class="demo-btn"
+                data-id="HWUrwyTYjJM"
+                data-title="Mecanum-wheel — Omni-directional control"
+                data-duration="28 s"
+                data-caption="PS2 joystick control · Ultrasonic distance sensor · Omni-directional motion">
+            ▶ Watch omni-directional control (21 s)
+        </button>
+        </figure>
+
+
+        <figure class="slide">
+        <img src="images/robotics/robot_sensor.png" alt="Two-wheel robot with ultrasonic sensor and light sensor (LDR)" loading="lazy">
+        <figcaption>Two-wheel robot with ultrasonic sensor</figcaption>
+        <button class="demo-btn"
+                data-id="YI7VJW33vqE"
+                data-title="Two-wheel — Obstacle avoidance"
+                data-duration="28 s"
+                data-caption="Braitenberg-style neural controller · Ultrasonic + LDR">
+            ▶ Watch obstacle avoidance (28 s)
+        </button>
+        </figure>
+
+        <figure class="slide">
+        <img src="images/robotics/theo-jansen-walker.jpg"
+                alt="Mini strandbeest walker con servos de rotación continua y Arduino Nano sobre mesa de laboratorio"
+                loading="lazy">
+        <figcaption>Theo Jansen’s Robots — strandbeest walker (prototype)</figcaption>
+        <button class="demo-btn"
+                data-id="CNYgq52IVqg"
+                data-title="Theo Jansen’s Robots — Strandbeest-style walker"
+                data-duration="15 s"
+                data-caption="Arduino Nano + 360° servos · Silent demo">
+            ▶ Watch strandbeest demo (15 s)
+        </button>
+        </figure>
+
+    </div>
+    <button class="nav next" aria-label="Next slide">›</button>
+    <div class="dots" aria-label="Carousel pagination"></div>
+
+    <!-- NUEVO: hotzones invisibles -->
+    <button class="hotzone hotzone--prev" type="button" aria-label="Previous"></button>
+    <button class="hotzone hotzone--next" type="button" aria-label="Next"></button>
+    </div>
+
+</section>
+
+    <section id="programs">
+    <details class="exp">
+    <summary>
+        <i class="fa-solid fa-graduation-cap"></i>
+        Relevant programs and courses
+        <span class="chev" aria-hidden="true">▾</span>
+    </summary>
+    <ul>
+        <li>
+        <em>
+            <a href="https://primavera-dl.github.io/" target="_blank" rel="noopener">
+            Spring School on Deep Learning
+            </a>
+        </em>, UBA, CABA, Argentina — October 2025
+        </li>
+        <li>
+        <em>
+            <a href="https://www.ictp-saifr.org/solbc2025/" target="_blank" rel="noopener">
+            School on the Origins of Life, Behavior and Cognition
+            </a>
+        </em>, ICTP-SAIFR, São Paulo, Brazil — March 2025
+        </li>
+        <li>
+        <em>
+            <a href="https://www.ictp-saifr.org/sscmbd2025/" target="_blank" rel="noopener">
+            School on Synchronization: from Collective Motion to Brain Dynamics
+            </a>
+        </em>, ICTP-SAIFR, São Paulo, Brazil — February 2025
+        </li>
+        <li>
+        <em>
+            <a href="https://laconeu.cl/" target="_blank" rel="noopener">
+            Latin American Summer School of Computational Neuroscience
+            </a>
+        </em>, UV, Valparaíso, Chile — January 2025
+        </li>
+        <li><em>Artificial Intelligence Systems</em>, ITBA, CABA, Argentina — August–November 2024</li>
+        <li><em>Complex Networks</em>, ITBA, CABA, Argentina — August–November 2024</li>
+        <li>
+        <em>
+            <a href="https://eci.dc.uba.ar/cursos-eci/t2-modeling-and-analysis-of-complex-systems/" target="_blank" rel="noopener">
+            Modeling and Analysis of Complex Systems
+            </a>
+        </em>, UBA, CABA, Argentina — July 2024
+        </li>
+        <li>
+        <em>
+            <a href="https://ircn.jp/en/events/07_ircncourse2024" target="_blank" rel="noopener">
+            IRCN/Chen Institute Joint Course on Neuro-inspired Computation
+            </a>
+        </em>, UT, Tokyo, Japan — July 2024
+        </li>
+        <li><em>Neuroscience and Productive Development</em>, ITBA, CABA, Argentina — March–June 2024</li>
+        <li>
+        <em>
+            <a href="https://lascon.numec.prp.usp.br/" target="_blank" rel="noopener">
+            Latin American School of Computational Neuroscience
+            </a>
+        </em>, USP, São Paulo, Brazil — January 2024
+        </li>
+        <li><em>Bioinspired Robotics</em>, ITBA, CABA, Argentina — August–December 2023</li>
+        <li><em>Data Analysis Python Online Course</em>, ITBA, CABA, Argentina — October 2022</li>
+        <li><em>Introductory Python Online Course</em>, ITBA, CABA, Argentina — May 2022</li>
+        <li><em>Course on Radionuclides and Applications</em>, UNR, Rosario, Argentina — October–November 2020</li>
+        <li><em>Introduction to Medical and Biomedical Physics</em>, UNR, Rosario, Argentina — October–December 2019</li>
+    </ul>
+    </details>
+</section>
+    <section id="teaching">
+    <details class="exp">
+    <summary>
+        <i class="fa-solid fa-chalkboard-teacher"></i> Teaching Experience
+        <span class="chev" aria-hidden="true">▾</span>
+    </summary>
+    <ul>
+        <li>
+        <strong>Teaching Assistant</strong>, ITBA — September 2024–Present<br>
+        Assisted students in programming perceptron-based robots using Arduino for interaction with the environment
+        and other robots in the <em>Bioinspired Robotics</em> course at ITBA.
+        </li>
+        <li>
+        <strong>Private Tutor</strong> — 2020–2024<br>
+        Dedicated self-employed educator offering specialized classes in physics, mathematics, and chemistry to high
+        school and university students.
+        </li>
+    </ul>
+    </details>
+</section>
+    <section id="volunteering">
+    <details class="exp">
+    <summary>
+        <i class="fa-solid fa-hands-helping"></i> Volunteering
+        <span class="chev" aria-hidden="true">▾</span>
+    </summary>
+    <ul>
+    <li>
+        <strong>
+        <a href="https://goethe.edu.ar/2023/04/primer-encuentro-con-el-itba/" target="_blank" rel="noopener">
+            Goethe Schule outreach activity, ITBA
+        </a>
+        </strong> — November 2025<br>
+        Outreach session for Goethe Schule high-school students within the Bio-inspired Robotics course, with live demos of robotics prototypes.
+    </li>
+        <li>
+        <strong>Donor Appreciation Gathering, ITBA</strong> — November 2025<br>
+        Live demos of bio-inspired robotics prototypes (animatronic head with PS2 control, mini Theo-Jansen walker, and a PS2-driven rover with ultrasonic obstacle avoidance); conversations with donors about research impact.
+        </li>
+        <li>
+        <strong>
+            <a href="https://www.itba.edu.ar/future-day/" target="_blank" rel="noopener">
+            ITBA Future Day
+            </a>
+        </strong> — June 2025<br>
+        Presented the goals of the course and its interdisciplinary approach connecting neuroscience, biology, and robotics.
+        </li>
+        <li>
+        <strong>
+            <a href="https://www.oatec.org.ar/" target="_blank" rel="noopener">
+            OATec
+            </a>
+        </strong> — October 2023<br>
+            Contributed to the Argentine Technology Olympiad (OATec), an initiative aimed at awakening scientific-technological vocations in young high school students.
+        </li>
+        <li>
+        <strong>Scientific communication project</strong> — September 2022<br>
+        Participation as a photographer in a Science Communication Project of the Physical Management of the 
+        Bariloche Atomic Center of the National Atomic Energy Commission.
+        </li>
+    </ul>
+    </details>
+</section>
+    <section id="affiliations">
+    <h2><i class="fa-solid fa-building-columns"></i> Affiliations & Support</h2>
+    <div class="affiliations-logos">
+    <a href="https://www.itba.edu.ar" target="_blank" rel="noopener" title="ITBA">
+        <img src="images/affiliations/logo_itba.png" alt="ITBA logo">
+    </a>
+    <a href="https://www.conicet.gov.ar" target="_blank" rel="noopener" title="CONICET">
+        <img src="images/affiliations/logo_conicet.png" alt="CONICET logo">
+    </a>
+    <a href="https://unr.edu.ar" target="_blank" rel="noopener" title="UNR">
+        <img src="images/affiliations/logo_unr.png" alt="UNR logo">
+    </a>
+    <a href="https://web.fceia.unr.edu.ar/es/" target="_blank" rel="noopener" title="FCEIA">
+        <img src="images/affiliations/logo_fceia.png" alt="FCEIA logo">
+    </a>
+    </div>
+</section>
+    <section id="contact" class="contact-cv">
+  <div class="cc-grid">
+    <div class="cc-col cc-contact">
+      <h2><i class="fa-solid fa-envelope"></i> Contact</h2>
+      <p><i class="fa-solid fa-location-dot"></i> Buenos Aires, Argentina</p>
+      <p>
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:rpluss@itba.edu.ar">rpluss@itba.edu.ar</a>
+      </p>
+
+      <div class="social-links">
+          
+        <a href="https://www.linkedin.com/in/ramiropluss/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+          
+        <a href="https://github.com/plussramiro" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+          
+        <a href="https://scholar.google.com/citations?user=l1XV7YYAAAAJ" target="_blank" rel="noopener">
+          <i class="fa-solid fa-graduation-cap"></i> Google Scholar
+        </a>
+          
+        <a href="https://www.researchgate.net/profile/Ramiro-Pluess?ev=hdr_xprf" target="_blank" rel="noopener">
+          <i class="fa-brands fa-researchgate"></i> ResearchGate
+        </a>
+          
+        <a href="https://orcid.org/0009-0000-6502-0668" target="_blank" rel="noopener">
+          <i class="fa-brands fa-orcid"></i> ORCID
+        </a>
+          
+      </div>
+    </div>
+
+    <div class="cc-col cc-cv">
+      <h3 id="cv"><i class="fa-regular fa-file-lines"></i> Curriculum Vitae</h3>
+      <a class="btn"
+         href="https://drive.google.com/file/d/1HVBofvdWIET62d3NLVKvbWxi8QytLzof/view?usp=drive_link"
+         target="_blank"
+         rel="noopener"
+         aria-label="Open CV in Google Drive (PDF)">
+        Google Drive (PDF)
+      </a>
+      <!-- meta de actualización del PDF la podés sumar luego -->
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <!-- Overlay “phone card” para demos de video -->
+  <div id="videoOverlay" class="vo" aria-hidden="true">
+    <div class="vo-backdrop" data-vo-close></div>
+    <div class="vo-card" role="dialog" aria-modal="true" aria-label="Demo video">
+      <button class="vo-close" aria-label="Close" data-vo-close>✕</button>
+      <div class="vo-meta">
+        <span class="vo-title"></span>
+        <span class="vo-dot">•</span>
+        <span class="vo-duration"></span>
+      </div>
+      <div class="vo-player"><!-- aquí se inyecta el iframe --></div>
+      <div class="vo-caption"></div>
+    </div>
+  </div>
+
+  <footer>
+    © <span id="y"></span> Ramiro Plüss · All rights reserved · Built with GitHub Pages
+  </footer>
+
+  <!-- Image Lightbox -->
+  <div id="imgOverlay" class="io" aria-hidden="true">
+    <div class="io-backdrop" data-io-close></div>
+    <figure class="io-card" role="dialog" aria-modal="true" aria-label="Image preview">
+      <button class="io-close" aria-label="Close" data-io-close>✕</button>
+      <img class="io-img" alt="">
+      <figcaption class="io-cap"></figcaption>
+    </figure>
+  </div>
+
+  <!-- Script externo -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
+
