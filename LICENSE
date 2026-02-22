@@ -1,0 +1,62 @@
+MIT License for Source Code + All Rights Reserved for Site Content
+==================================================================
+
+1) SOURCE CODE LICENSE (MIT)
+
+Copyright (c) 2025 Ramiro Plüss
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this source code (HTML/CSS/JS and related build scripts) and associated
+documentation files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+2) SITE CONTENT LICENSE (ALL RIGHTS RESERVED)
+
+Except where otherwise noted, all non-code content of this repository and website
+—including but not limited to text, images, figures, photos, PDFs, the CV, and any
+downloadable assets under /images/ and /assets/—is © 2025 Ramiro Plüss. All rights
+reserved.
+
+You may:
+- View the website and its media in your browser.
+- Share links to the website and to public videos hosted on third-party platforms.
+- Use short quotations for non-commercial academic citation with clear attribution
+  (“© Ramiro Plüss — plussramiro.github.io”).
+
+You may not, without prior written permission:
+- Reproduce, redistribute, or republish the content (text, images, PDFs/CV, figures)
+  in whole or in substantial part.
+- Create derivative works of the content (e.g., re-editing images/figures) for public
+  distribution.
+- Use the content for commercial purposes.
+
+For permissions, please contact: rpluss@itba.edu.ar
+
+
+3) THIRD-PARTY COMPONENTS
+
+This site may load third-party resources (e.g., Google Fonts, Font Awesome via CDN,
+YouTube embeds). Such components remain subject to their respective licenses and
+terms of service and are not covered by the MIT license above.
+
+
+4) TRADEMARKS & REFERENCES
+
+References and links to third-party works (e.g., Instructables, James Bruton, etc.)
+are for attribution and educational purposes only. All trademarks and copyrights are
+the property of their respective owners.
