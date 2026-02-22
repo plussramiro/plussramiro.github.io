@@ -7,7 +7,7 @@ subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 profile:
   align: right
   image: ramiropluss.jpg
-  image_circular: true # crops the image to make it circular
+  image_circular: false # use rectangular image (not cropped to circle)
   more_info: >
     <p>Ph.D. candidate, ITBA</p>
     <p>Argentine Institute of Technology</p>
