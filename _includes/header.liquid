@@ -120,20 +120,308 @@
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+              <button
+                id="search-toggle"
+                type="button"
+                title="Search"
+                onclick="return window.__alfolioOpenSearchFromHeader ? window.__alfolioOpenSearchFromHeader(event) : false;"
+              >
                 <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span>
               </button>
             </li>
+            <script>
+              (function () {
+                if (window.__alfolioHeaderSearchInitialized) return;
+                window.__alfolioHeaderSearchInitialized = true;
+
+                function escapeHtml(text) {
+                  return String(text || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+                }
+
+                function getNinjaItems() {
+                  var ninja = document.querySelector('ninja-keys');
+                  if (!ninja || !Array.isArray(ninja.data)) return [];
+                  return ninja.data.filter(function (item) {
+                    return item && typeof item.title === 'string' && typeof item.handler === 'function';
+                  });
+                }
+
+                function getNavItems() {
+                  var links = document.querySelectorAll('.navbar-nav a.nav-link[href]');
+                  var items = [];
+
+                  links.forEach(function (link, index) {
+                    var title = (link.textContent || '').trim();
+                    var href = link.getAttribute('href');
+                    if (!title || !href || href === '#') return;
+
+                    items.push({
+                      id: 'nav-fallback-' + index,
+                      title: title,
+                      section: 'Navigation',
+                      handler: function () {
+                        window.location.href = href;
+                      }
+                    });
+                  });
+
+                  return items;
+                }
+
+                function getSearchItems() {
+                  var ninjaItems = getNinjaItems();
+                  return ninjaItems.length ? ninjaItems : getNavItems();
+                }
+
+                function ensureFallbackModal() {
+                  var existing = document.getElementById('alfolio-search-fallback');
+                  if (existing) return existing;
+
+                  var overlay = document.createElement('div');
+                  overlay.id = 'alfolio-search-fallback';
+                  overlay.style.cssText = [
+                    'position:fixed',
+                    'inset:0',
+                    'display:none',
+                    'align-items:flex-start',
+                    'justify-content:center',
+                    'padding:8vh 1rem 1rem',
+                    'background:rgba(0,0,0,.35)',
+                    'z-index:2100'
+                  ].join(';');
+
+                  overlay.innerHTML =
+                    '<div style="width:min(760px,100%); background:var(--global-card-bg-color,#fff); color:var(--global-text-color,#111); border:1px solid var(--global-divider-color,#ddd); border-radius:12px; box-shadow:0 12px 36px rgba(0,0,0,.22); overflow:hidden;">' +
+                    '  <div style="padding:.75rem; border-bottom:1px solid var(--global-divider-color,#ddd);">' +
+                    '    <input id="alfolio-search-input" type="text" placeholder="Type to search..." style="width:100%; border:0; outline:0; background:transparent; color:inherit; font-size:1rem;" />' +
+                    '  </div>' +
+                    '  <div id="alfolio-search-results" style="max-height:55vh; overflow:auto; padding:.35rem;"></div>' +
+                    '</div>';
+
+                  overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) closeFallbackSearch();
+                  });
+
+                  document.body.appendChild(overlay);
+                  return overlay;
+                }
+
+                function renderFallbackResults(query) {
+                  var resultsContainer = document.getElementById('alfolio-search-results');
+                  if (!resultsContainer) return;
+
+                  var q = String(query || '').trim().toLowerCase();
+                  var results = getSearchItems();
+
+                  if (q) {
+                    results = results.filter(function (item) {
+                      var haystack = [item.title, item.description || '', item.section || ''].join(' ').toLowerCase();
+                      return haystack.indexOf(q) !== -1;
+                    });
+                  }
+
+                  results = results.slice(0, 15);
+
+                  if (!results.length) {
+                    resultsContainer.innerHTML =
+                      '<div style="padding:.8rem; color:var(--global-text-color-light,#666);">No results found.</div>';
+                    return;
+                  }
+
+                  resultsContainer.innerHTML = '';
+                  results.forEach(function (item, idx) {
+                    var button = document.createElement('button');
+                    button.type = 'button';
+                    button.style.cssText = [
+                      'width:100%',
+                      'text-align:left',
+                      'border:0',
+                      'background:transparent',
+                      'color:inherit',
+                      'padding:.55rem .6rem',
+                      'border-radius:8px',
+                      'cursor:pointer'
+                    ].join(';');
+
+                    button.innerHTML =
+                      '<div style="font-weight:600;">' + escapeHtml(item.title) + '</div>' +
+                      (item.description
+                        ? '<div style="font-size:.86rem; opacity:.85; margin-top:.1rem;">' + escapeHtml(item.description) + '</div>'
+                        : '') +
+                      (item.section
+                        ? '<div style="font-size:.75rem; opacity:.7; margin-top:.12rem;">' + escapeHtml(item.section) + '</div>'
+                        : '');
+
+                    button.addEventListener('mouseenter', function () {
+                      button.style.background = 'var(--global-bg-color, rgba(0,0,0,.03))';
+                    });
+                    button.addEventListener('mouseleave', function () {
+                      button.style.background = 'transparent';
+                    });
+                    button.addEventListener('click', function () {
+                      closeFallbackSearch();
+                      item.handler();
+                    });
+
+                    if (idx === 0) button.id = 'alfolio-search-first-result';
+                    resultsContainer.appendChild(button);
+                  });
+                }
+
+                function openFallbackSearch() {
+                  var overlay = ensureFallbackModal();
+                  overlay.style.display = 'flex';
+
+                  var input = document.getElementById('alfolio-search-input');
+                  if (!input) return;
+
+                  input.value = '';
+                  renderFallbackResults('');
+
+                  input.oninput = function () {
+                    renderFallbackResults(input.value);
+                  };
+                  input.onkeydown = function (e) {
+                    if (e.key === 'Escape') {
+                      e.preventDefault();
+                      closeFallbackSearch();
+                      return;
+                    }
+                    if (e.key === 'Enter') {
+                      var first = document.getElementById('alfolio-search-first-result');
+                      if (first) {
+                        e.preventDefault();
+                        first.click();
+                      }
+                    }
+                  };
+
+                  setTimeout(function () {
+                    input.focus();
+                  }, 0);
+                }
+
+                function closeFallbackSearch() {
+                  var overlay = document.getElementById('alfolio-search-fallback');
+                  if (!overlay) return;
+                  overlay.style.display = 'none';
+                }
+
+                function openFromHeader(event) {
+                  if (event && typeof event.preventDefault === 'function') event.preventDefault();
+
+                  try {
+                    if (typeof window.openSearchModal === 'function' && window.openSearchModal !== openFromHeader) {
+                      window.openSearchModal();
+                      return false;
+                    }
+                  } catch (e) {
+                    // Fall back to inline modal if external search scripts fail.
+                  }
+
+                  var ninja = document.querySelector('ninja-keys');
+                  if (ninja && typeof ninja.open === 'function') {
+                    ninja.open();
+                    return false;
+                  }
+
+                  openFallbackSearch();
+                  return false;
+                }
+
+                window.__alfolioOpenSearchFromHeader = openFromHeader;
+                if (typeof window.openSearchModal !== 'function') {
+                  window.openSearchModal = openFromHeader;
+                }
+
+                if (!window.__alfolioSearchShortcutInitialized) {
+                  window.__alfolioSearchShortcutInitialized = true;
+                  document.addEventListener('keydown', function (event) {
+                    if (event.defaultPrevented) return;
+                    if ((event.target && event.target.isContentEditable) || /^(INPUT|TEXTAREA|SELECT)$/.test((event.target || {}).tagName || '')) {
+                      return;
+                    }
+                    if ((event.ctrlKey || event.metaKey) && !event.altKey && String(event.key || '').toLowerCase() === 'k') {
+                      event.preventDefault();
+                      openFromHeader();
+                    }
+                  });
+                }
+              })();
+            </script>
           {% endif %}
           {% if site.enable_darkmode %}
             <!-- Toogle theme mode -->
             <li class="toggle-container">
-              <button id="light-toggle" title="Change theme">
+              <button
+                id="light-toggle"
+                type="button"
+                title="Change theme"
+                onclick="return window.__alfolioCycleThemeFromButton ? window.__alfolioCycleThemeFromButton(event) : true;"
+              >
                 <i class="fa-half-sun-moon" id="light-toggle-system"></i>
                 <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
                 <i class="fa-solid fa-sun" id="light-toggle-light"></i>
               </button>
             </li>
+            <script>
+              (function () {
+                if (window.__alfolioCycleThemeFromButton) return;
+
+                function prefersDark() {
+                  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                }
+
+                function getThemeSetting() {
+                  try {
+                    return localStorage.getItem('theme') || 'system';
+                  } catch (e) {
+                    return 'system';
+                  }
+                }
+
+                function applyThemeSetting(setting) {
+                  var next = setting || getThemeSetting();
+                  var root = document.documentElement;
+
+                  if (next === 'system') {
+                    root.removeAttribute('data-theme-setting');
+                  } else {
+                    root.setAttribute('data-theme-setting', next);
+                  }
+
+                  if (next === 'dark' || (next === 'system' && prefersDark())) {
+                    root.setAttribute('data-theme', 'dark');
+                  } else {
+                    root.removeAttribute('data-theme');
+                  }
+                }
+
+                window.__alfolioCycleThemeFromButton = function (event) {
+                  if (event) {
+                    if (typeof event.preventDefault === 'function') event.preventDefault();
+                    if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+                  }
+
+                  var current = getThemeSetting();
+                  var next = current === 'system' ? 'dark' : current === 'dark' ? 'light' : 'system';
+
+                  try {
+                    localStorage.setItem('theme', next);
+                  } catch (e) {
+                    // Ignore storage errors (private mode / disabled storage)
+                  }
+
+                  applyThemeSetting(next);
+                  return false;
+                };
+              })();
+            </script>
           {% endif %}
         </ul>
       </div>

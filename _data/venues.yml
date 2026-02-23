@@ -7,3 +7,15 @@
 
 "Vision":
   color: "#009f36"
+
+"CCIS":
+  url: https://link.springer.com/bookseries/7899
+  color: "#1f6fb2"
+
+"arXiv":
+  url: https://arxiv.org/
+  color: "#b31b1b"
+
+"RePHip":
+  url: https://rephip.unr.edu.ar/
+  color: "#2d6a4f"
