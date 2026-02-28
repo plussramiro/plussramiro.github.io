@@ -10,43 +10,64 @@
       </h2>
     {% endif %}
 
-    <div class="affiliations-list">
-      {% for affiliation in site.data.affiliations %}
-        {% assign display_name = affiliation.full_name | default: affiliation.name %}
-        {% if affiliation.alt %}
-          {% assign alt_text = affiliation.alt %}
-        {% else %}
-          {% assign alt_text = affiliation.name | append: ' logo' %}
-        {% endif %}
-        <article class="affiliation-entry">
-          <div class="affiliation-entry__media">
-            {% if affiliation.period %}
-              <span class="affiliation-badge">{{ affiliation.period }}</span>
+    <div class="cv affiliations-cv">
+      <div class="card mt-3 p-3">
+        <ul class="card-text font-weight-light list-group list-group-flush">
+          {% for affiliation in site.data.affiliations %}
+            {% assign display_name = affiliation.full_name | default: affiliation.name %}
+            {% if affiliation.alt %}
+              {% assign alt_text = affiliation.alt %}
+            {% else %}
+              {% assign alt_text = affiliation.name | append: ' logo' %}
             {% endif %}
-            <a
-              class="affiliation-logo-link"
-              href="{{ affiliation.url }}"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="{{ affiliation.name }}"
-              title="{{ affiliation.name }}"
-            >
-              <img
-                src="{{ affiliation.logo | relative_url }}"
-                alt="{{ alt_text }}"
-                loading="lazy"
-                width="220"
-                height="72"
-              >
-            </a>
-          </div>
-          <div class="affiliation-entry__content">
-            <h3 class="affiliation-name">
-              <a href="{{ affiliation.url }}" target="_blank" rel="noopener noreferrer">{{ display_name }}</a>
-            </h3>
-          </div>
-        </article>
-      {% endfor %}
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+                  <table class="table-cv">
+                    <tbody>
+                      {% if affiliation.period %}
+                        <tr>
+                          <td>
+                            <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">
+                              {{ affiliation.period }}
+                            </span>
+                          </td>
+                        </tr>
+                      {% endif %}
+                      <tr>
+                        <td>
+                          <a
+                            class="affiliation-logo-cv-link"
+                            href="{{ affiliation.url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="{{ affiliation.name }}"
+                            title="{{ affiliation.name }}"
+                          >
+                            <img
+                              class="affiliation-logo-cv"
+                              src="{{ affiliation.logo | relative_url }}"
+                              alt="{{ alt_text }}"
+                              loading="lazy"
+                              width="150"
+                              height="80"
+                            >
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+                  <h6 class="title font-weight-bold ml-1 ml-md-4">
+                    <a href="{{ affiliation.url }}" target="_blank" rel="noopener noreferrer">{{ display_name }}</a>
+                  </h6>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </section>
 {% endif %}

@@ -212,107 +212,35 @@ ul.task-list input[type="checkbox"] {
   font-weight: 500;
 }
 
-.affiliations-list {
-  display: flex;
-  flex-direction: column;
+.affiliations-cv .list-group-item {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.affiliation-entry {
-  display: grid;
-  grid-template-columns: 210px 1fr;
-  gap: 1.15rem;
-  align-items: center;
-  padding: 0.85rem 0;
-}
-
-.affiliation-entry + .affiliation-entry {
-  border-top: 1px solid var(--global-divider-color);
-}
-
-.affiliation-entry__media {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.affiliation-badge {
-  display: inline-block;
-  margin-bottom: 0.6rem;
-  padding: 0.18rem 0.75rem 0.22rem;
-  border-radius: 0.18rem;
-  background: var(--global-theme-color);
-  color: var(--global-hover-text-color);
-  font-size: 0.76rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
-  text-align: center;
-}
-
-.affiliation-logo-link {
-  display: flex;
-  width: 100%;
-  min-height: 92px;
+.affiliation-logo-cv-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  border: 1px solid var(--global-divider-color);
-  background: var(--global-card-bg-color);
-  padding: 0.55rem;
-  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
-}
-
-.affiliation-logo-link:hover {
-  border-color: var(--global-theme-color);
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
-.affiliation-logo-link img {
-  max-width: 100%;
-  max-height: 78px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
-
-.affiliation-name {
-  margin: 0 0 0.3rem;
-  font-size: 1.35rem;
-  font-weight: 600;
-}
-
-.affiliation-name a {
-  color: var(--global-text-color);
-}
-
-.affiliation-name a:hover {
-  color: var(--global-theme-color);
   text-decoration: none;
 }
 
-@media (max-width: 575.98px) {
-  .affiliation-entry {
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
-    padding: 0.7rem 0;
-  }
+.affiliation-logo-cv {
+  max-width: 140px;
+  max-height: 84px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.16s ease;
+}
 
-  .affiliation-entry__media {
-    align-items: flex-start;
-  }
+.affiliation-logo-cv-link:hover .affiliation-logo-cv {
+  transform: scale(1.03);
+}
 
-  .affiliation-logo-link {
-    max-width: 220px;
-    min-height: 72px;
-  }
-
-  .affiliation-logo-link img {
-    max-height: 58px;
-  }
-
-  .affiliation-name {
-    font-size: 1.1rem;
+@media (max-width: 767.98px) {
+  .affiliation-logo-cv {
+    max-width: 118px;
+    max-height: 70px;
   }
 }
 
