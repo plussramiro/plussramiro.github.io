@@ -221,26 +221,44 @@ ul.task-list input[type="checkbox"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 128px;
+  min-height: 70px;
   text-decoration: none;
+  transform-origin: center;
+  transition: transform 0.14s ease;
 }
 
 .affiliation-logo-cv {
-  max-width: 140px;
-  max-height: 84px;
+  max-width: 128px;
+  max-height: 62px;
   width: auto;
   height: auto;
   object-fit: contain;
-  transition: transform 0.16s ease;
+  display: block;
 }
 
-.affiliation-logo-cv-link:hover .affiliation-logo-cv {
-  transform: scale(1.03);
+.affiliation-logo-cv-link:hover {
+  transform: scale(1.04);
+}
+
+.affiliation-logo-cv-link:active {
+  transform: scale(1.08);
+}
+
+.affiliation-logo-cv-link:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 4px;
 }
 
 @media (max-width: 767.98px) {
+  .affiliation-logo-cv-link {
+    width: 112px;
+    min-height: 62px;
+  }
+
   .affiliation-logo-cv {
-    max-width: 118px;
-    max-height: 70px;
+    max-width: 112px;
+    max-height: 54px;
   }
 }
 
