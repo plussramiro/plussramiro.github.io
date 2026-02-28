@@ -21,25 +21,115 @@
     {% include header.liquid %}
 
     <!-- Content -->
-    <div class="container mt-5" role="main">
+    {% assign is_cv_page = false %}
+    {% if page.layout == 'cv' %}
+      {% assign is_cv_page = true %}
+    {% endif %}
+
+    {% assign main_col_class = 'col-sm-9' %}
+    {% assign sidebar_col_class = 'col-sm-3' %}
+    {% assign spacer_col_class = '' %}
+    {% if is_cv_page %}
+      {% assign main_col_class = 'col-12 col-lg-8' %}
+      {% assign sidebar_col_class = 'd-none d-lg-block col-lg-2' %}
+      {% assign spacer_col_class = 'd-none d-lg-block col-lg-2' %}
+    {% endif %}
+
+    {% capture cv_toc_markup %}
+      {% if site.data.cv and site.data.cv.cv %}
+        {% assign cv_data = site.data.cv.cv %}
+        {% assign cv_sections = cv_data.sections %}
+        {% assign has_languages = false %}
+        {% assign has_skills = false %}
+        {% if cv_sections.Languages and cv_sections.Languages.size > 0 %}
+          {% assign has_languages = true %}
+        {% endif %}
+        {% if cv_sections.Skills and cv_sections.Skills.size > 0 %}
+          {% assign has_skills = true %}
+        {% endif %}
+        <ul class="nav flex-column">
+          {% if cv_data.name or cv_data.label or cv_data.location or cv_data.email or cv_data.phone or cv_data.website %}
+            <li class="nav-item"><a class="nav-link" href="#contact-information">Contact Information</a></li>
+          {% endif %}
+          {% if cv_data.summary %}
+            <li class="nav-item"><a class="nav-link" href="#professional-summary">Professional Summary</a></li>
+          {% endif %}
+
+          {% if cv_sections.Education and cv_sections.Education.size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          {% endif %}
+          {% if cv_sections.Publications and cv_sections.Publications.size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#publications">Publications and Preprints</a></li>
+          {% endif %}
+          {% if cv_sections.Projects and cv_sections.Projects.size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#projects">Research Projects</a></li>
+          {% endif %}
+          {% if cv_sections['Invited Talks'] and cv_sections['Invited Talks'].size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#invited-talks">Invited Talks</a></li>
+          {% endif %}
+          {% if cv_sections['Poster Presentations'] and cv_sections['Poster Presentations'].size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#poster-presentations">Poster Presentations in Conferences and International Schools</a></li>
+          {% endif %}
+          {% if cv_sections.Awards and cv_sections.Awards.size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#scholarships">Scholarships</a></li>
+          {% endif %}
+          {% if cv_sections.Certificates and cv_sections.Certificates.size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#certificates">Relevant Schools & Advanced Courses</a></li>
+          {% endif %}
+          {% if cv_sections.Experience and cv_sections.Experience.size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#experience">Teaching Experience</a></li>
+          {% endif %}
+          {% if has_skills or has_languages %}
+            <li class="nav-item"><a class="nav-link" href="#skills">Technical Skills & Languages</a></li>
+          {% endif %}
+          {% if cv_sections.Volunteer and cv_sections.Volunteer.size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#volunteer">Volunteering</a></li>
+          {% endif %}
+          {% if cv_sections['Industry Experience'] and cv_sections['Industry Experience'].size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#industry-experience">Industry Experience</a></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    {% endcapture %}
+    {% assign cv_toc_markup_stripped = cv_toc_markup | strip %}
+
+    <div class="container mt-5{% if is_cv_page %} cv-page-container{% endif %}" role="main">
       {% if page.toc and page.toc.sidebar %}
         {% if page.toc.sidebar == 'right' %}
-          <div class="row">
+          <div class="row{% if is_cv_page %} justify-content-center{% endif %}">
+            {% if is_cv_page %}
+              <div class="{{ spacer_col_class }} cv-sidebar-spacer"></div>
+            {% endif %}
             <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
+            <div class="{{ main_col_class }}">{{ content }}</div>
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+            <div class="{{ sidebar_col_class }}">
+              {% if is_cv_page and cv_toc_markup_stripped != '' %}
+                <nav id="toc-sidebar" class="sticky-top cv-manual-toc">
+                  {{ cv_toc_markup }}
+                </nav>
+              {% else %}
+                <nav id="toc-sidebar" class="sticky-top" data-toggle="toc"></nav>
+              {% endif %}
             </div>
           </div>
         {% else %}
-          <div class="row">
+          <div class="row{% if is_cv_page %} justify-content-center{% endif %}">
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+            <div class="{{ sidebar_col_class }}">
+              {% if is_cv_page and cv_toc_markup_stripped != '' %}
+                <nav id="toc-sidebar" class="sticky-top cv-manual-toc">
+                  {{ cv_toc_markup }}
+                </nav>
+              {% else %}
+                <nav id="toc-sidebar" class="sticky-top" data-toggle="toc"></nav>
+              {% endif %}
             </div>
             <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
+            <div class="{{ main_col_class }}">{{ content }}</div>
+            {% if is_cv_page %}
+              <div class="{{ spacer_col_class }} cv-sidebar-spacer"></div>
+            {% endif %}
           </div>
         {% endif %}
       {% else %}

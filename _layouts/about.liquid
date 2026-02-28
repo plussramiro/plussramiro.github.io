@@ -71,6 +71,16 @@ layout: default
 
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
+      <script>
+        (function () {
+          document.addEventListener('DOMContentLoaded', function () {
+            var cvLink = document.querySelector('.social .contact-icons a[title="Cv pdf"]');
+            if (!cvLink) return;
+            cvLink.setAttribute('target', '_blank');
+            cvLink.setAttribute('rel', 'noopener noreferrer');
+          });
+        })();
+      </script>
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}

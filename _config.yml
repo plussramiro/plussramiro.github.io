@@ -7,7 +7,8 @@ first_name: Ramiro
 middle_name: 
 last_name: Plüss
 contact_note: >
-  Prefer email for academic inquiries, otherwise reach out via LinkedIn or X.
+  Prefer email for academic inquiries, otherwise reach out via LinkedIn.<br>
+  Email: rpluss@itba.edu.ar
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Personal academic website of Ramiro Plüss; computational neuroscience, robotics, and bioinspired AI.
 footer_text: >
@@ -16,7 +17,7 @@ footer_text: >
   Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: ramiropluss-icon.png # image used as the favicon from /assets/img/
 
 url: https://plussramiro.github.io # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -32,7 +33,7 @@ back_to_top: true # set to false to disable the back to top button
 repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
-  enabled: true
+  enabled: false
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
   theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 

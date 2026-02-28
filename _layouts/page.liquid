@@ -14,6 +14,23 @@ layout: default
     <p class="post-description">{{ page.description }}</p>
   </header>
 
+  {% if page.collection == 'projects' and page.img %}
+    <div class="project-hero">
+      {% include figure.liquid loading="eager" path=page.img alt=page.title class="project-hero__image" %}
+    </div>
+  {% endif %}
+
+  {% if page.collection == 'projects' and page.figure_captions %}
+    <div class="project-figure-captions">
+      <p class="project-figure-captions__title">Figure captions:</p>
+      <ul>
+        {% for caption in page.figure_captions %}
+          <li>{{ caption }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
   <article>
     {{ content }}
   </article>

@@ -8,10 +8,12 @@ div.container-link-button {
 
 table.table-cv {
   background-color: transparent !important;
+  color: var(--global-text-color) !important;
 
   td,
   th {
     padding: 1px;
+    color: var(--global-text-color) !important;
   }
 }
 
@@ -196,7 +198,7 @@ ul.timeline li::before {
 }
 
 /*ul.timeline::before {
-     content: "●";
+     content: "â—";
      font-size: 1em;
      display: inline-block;
      margin: 0;
@@ -207,7 +209,7 @@ ul.timeline li::before {
      color: var(--global-text-color);
 }
  ul.timeline::after {
-     content: "●";
+     content: "â—";
      font-size: 1em;
      display: inline-block;
      margin: 0;
@@ -218,3 +220,60 @@ ul.timeline li::before {
      color: var(--global-text-color);
 }
 */
+
+/* Center CV date badges consistently across all timeline sections */
+.cv {
+  .date-column {
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .date-column .table-cv {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .date-column .table-cv td {
+    text-align: center;
+  }
+
+  .date-column .badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .container.cv-page-container {
+    max-width: 1200px;
+  }
+}
+
+.cv-manual-toc {
+  top: 5rem;
+}
+
+.cv-manual-toc .nav-link {
+  color: var(--global-text-color);
+  font-size: 0.8rem;
+  border-left: 2px solid transparent;
+  padding: 0.2rem 0 0.2rem 0.6rem;
+}
+
+.cv-manual-toc .nav-link:hover {
+  color: var(--global-hover-color);
+  border-left-color: var(--global-hover-color);
+  text-decoration: none;
+}
+
+.cv-manual-toc .nav-link.active {
+  color: var(--global-theme-color);
+  border-left-color: var(--global-theme-color);
+}
+

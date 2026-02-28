@@ -4,6 +4,12 @@
 
 @use "variables" as v;
 
+html {
+  /* Keep a stable viewport width across pages with/without vertical scrollbar */
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
 body {
   padding-bottom: 70px;
   color: var(--global-text-color);

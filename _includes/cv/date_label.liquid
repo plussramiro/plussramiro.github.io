@@ -1,0 +1,40 @@
+{% assign raw_value = include.value | default: '' | strip %}
+{% assign default_value = include.default | default: '' | strip %}
+
+{% if raw_value == '' %}
+  {{ default_value }}
+{% else %}
+  {% assign lowered = raw_value | downcase %}
+  {% if lowered == 'present' %}
+    Present
+  {% else %}
+    {% assign parts = raw_value | split: '-' %}
+    {% assign year = parts[0] | strip %}
+    {% assign month = parts[1] | default: '' | strip %}
+    {% assign month_label = '' %}
+
+    {% if month != '' %}
+      {% assign month_num = month | plus: 0 %}
+      {% case month_num %}
+        {% when 1 %}{% assign month_label = 'Jan' %}
+        {% when 2 %}{% assign month_label = 'Feb' %}
+        {% when 3 %}{% assign month_label = 'Mar' %}
+        {% when 4 %}{% assign month_label = 'Apr' %}
+        {% when 5 %}{% assign month_label = 'May' %}
+        {% when 6 %}{% assign month_label = 'Jun' %}
+        {% when 7 %}{% assign month_label = 'Jul' %}
+        {% when 8 %}{% assign month_label = 'Aug' %}
+        {% when 9 %}{% assign month_label = 'Sep' %}
+        {% when 10 %}{% assign month_label = 'Oct' %}
+        {% when 11 %}{% assign month_label = 'Nov' %}
+        {% when 12 %}{% assign month_label = 'Dec' %}
+      {% endcase %}
+    {% endif %}
+
+    {% if month_label != '' %}
+      {{ month_label }} {{ year }}
+    {% else %}
+      {{ year }}
+    {% endif %}
+  {% endif %}
+{% endif %}

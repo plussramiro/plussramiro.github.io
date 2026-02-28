@@ -141,6 +141,11 @@ ul.task-list input[type="checkbox"] {
     }
   }
 
+  a[data-project-category="research"] img,
+  a[data-project-category="research-reference-figures"] img {
+    cursor: zoom-in;
+  }
+
   .col {
     padding-bottom: 1rem;
   }
@@ -151,14 +156,46 @@ ul.task-list input[type="checkbox"] {
     margin-bottom: 10px;
   }
 
-  h2.category {
-    color: var(--global-divider-color);
+  .category {
     border-bottom: 1px solid var(--global-divider-color);
     padding-top: 0.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
     text-align: right;
   }
+}
+
+.project-hero {
+  margin: 0.35rem 0 1.25rem;
+}
+
+.project-hero figure {
+  margin-bottom: 0;
+}
+
+.project-hero__image {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+}
+
+.project-figure-captions {
+  margin: -0.25rem 0 1.25rem;
+}
+
+.project-figure-captions__title {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  color: var(--global-text-color);
+}
+
+.project-figure-captions ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.project-figure-captions li {
+  margin-bottom: 0.25rem;
+  color: var(--global-text-color-light);
 }
 
 // Repositories
@@ -243,6 +280,176 @@ ul.task-list input[type="checkbox"] {
   .wechat-modal > img {
     width: 100%;
   }
+}
+
+body.video-modal-open {
+  overflow: hidden;
+}
+
+body.research-image-modal-open {
+  overflow: hidden;
+}
+
+.research-image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.research-image-modal.is-open {
+  display: flex;
+}
+
+.research-image-modal__dialog {
+  position: relative;
+  width: min(1100px, 95vw);
+  max-height: 92vh;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  background: var(--global-bg-color);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.34);
+  overflow: hidden;
+}
+
+.research-image-modal__close {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.55rem;
+  z-index: 2;
+  border: none;
+  background: transparent;
+  color: var(--global-text-color);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.research-image-modal__close:hover {
+  color: var(--global-theme-color);
+}
+
+.research-image-modal__image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: calc(92vh - 2.7rem);
+  padding: 0.9rem 0.9rem 0.35rem;
+}
+
+.research-image-modal__image {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 4.8rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.research-image-modal__title {
+  padding: 0 0.9rem 0.8rem;
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--global-text-color-light);
+}
+
+.teaching-zoomable {
+  cursor: zoom-in;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.video-modal.is-open {
+  display: flex;
+}
+
+.video-modal__dialog {
+  width: min(980px, 95vw);
+  border-radius: 10px;
+  border: 1px solid var(--global-divider-color);
+  background: var(--global-bg-color);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.video-modal__header,
+.video-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.video-modal__footer {
+  border-bottom: none;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.video-modal__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--global-text-color);
+}
+
+.video-modal__close {
+  border: none;
+  background: transparent;
+  color: var(--global-text-color);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.video-modal__close:hover {
+  color: var(--global-theme-color);
+}
+
+.video-modal__frame-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+}
+
+.video-modal__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-modal__open-link {
+  font-size: 0.86rem;
+}
+
+.video-modal__meta {
+  font-size: 0.86rem;
+  color: var(--global-text-color-light);
+  margin-right: 1rem;
+}
+
+.video-modal__meta a {
+  color: var(--global-text-color-light);
+  text-decoration: underline;
+}
+
+.video-modal__meta a:hover {
+  color: var(--global-theme-color);
 }
 
 // Distill

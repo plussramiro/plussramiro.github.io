@@ -5,24 +5,81 @@
 <ul class="card-text font-weight-light list-group list-group-flush">
   {% for entry in entries %}
     <li class="list-group-item">
-      {% if entry.icon %}
-        <i class="{{ entry.icon }}"></i>
-      {% endif %}
-      {% if entry.url %}
-        <strong
-          ><a href="{{ entry.url }}" target="_blank">{{ entry.name }}</a></strong
-        >
+      {% capture start_date %}
+        {% if entry.start_date %}{{ entry.start_date }}{% elsif entry.startDate %}{{ entry.startDate }}{% elsif entry.date %}{{ entry.date }}{% endif %}
+      {% endcapture %}
+      {% capture end_date %}
+        {% if entry.end_date %}{{ entry.end_date }}{% elsif entry.endDate %}{{ entry.endDate }}{% endif %}
+      {% endcapture %}
+      {% capture start_label_raw %}{% include cv/date_label.liquid value=start_date %}{% endcapture %}
+      {% capture end_label_raw %}{% include cv/date_label.liquid value=end_date %}{% endcapture %}
+      {% assign start_label = start_label_raw | strip %}
+      {% assign end_label = end_label_raw | strip %}
+
+      {% if start_label != '' %}
+        {% if end_label != '' and end_label != start_label %}
+          {% assign cert_date_label = start_label | append: ' - ' | append: end_label %}
+        {% else %}
+          {% assign cert_date_label = start_label %}
+        {% endif %}
       {% else %}
-        <strong>{{ entry.name }}</strong>
+        {% assign cert_date_label = '' %}
       {% endif %}
+      {% capture cert_location %}
+        {% if entry.location %}{{ entry.location }}{% endif %}
+      {% endcapture %}
+      {% assign cert_location = cert_location | strip %}
 
-      {% if entry.issuer %}
-        - <em>{{ entry.issuer }}</em>
-      {% endif %}
+      <div class="row">
+        {% if cert_date_label != '' %}
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">{{ cert_date_label }}</span>
+                  </td>
+                </tr>
+                {% if cert_location != '' %}
+                  <tr>
+                    <td>
+                      <p class="location">
+                        <i class="fa-solid fa-location-dot iconlocation"></i>
+                        {{ cert_location }}
+                      </p>
+                    </td>
+                  </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+        {% else %}
+          <div class="col-12 mt-2 mt-md-0">
+        {% endif %}
+            <h6 class="title font-weight-bold ml-1 ml-md-4">
+              {% if entry.icon %}
+                <i class="{{ entry.icon }}"></i>
+              {% endif %}
+              {% if entry.url %}
+                <a href="{{ entry.url }}" target="_blank">{{ entry.name }}</a>
+              {% else %}
+                {{ entry.name }}
+              {% endif %}
+            </h6>
 
-      {% if entry.date %}
-        ({{ entry.date | split: '-' | slice: 0, 1 | join: '' }})
-      {% endif %}
+            {% if entry.issuer %}
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">{{ entry.issuer }}</h6>
+            {% endif %}
+
+            {% if cert_date_label == '' and cert_location != '' %}
+              <p class="location ml-1 ml-md-4">
+                <i class="fa-solid fa-location-dot iconlocation"></i>
+                {{ cert_location }}
+              </p>
+            {% endif %}
+          </div>
+      </div>
     </li>
   {% endfor %}
 </ul>

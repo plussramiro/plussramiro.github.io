@@ -2,33 +2,75 @@
 ---
 <script>
   (function () {
-    if (window.__alfolioToggleBibSection) return;
-    window.__alfolioToggleBibSection = function (trigger, kind) {
-      if (!trigger) return false;
+    if (!window.__alfolioToggleBibSection) {
+      window.__alfolioToggleBibSection = function (trigger, kind) {
+        if (!trigger) return false;
 
-      var links = trigger.closest('.links');
-      if (!links) return false;
+        var links = null;
+        if (trigger.closest) {
+          links = trigger.closest('.links');
+        }
+        if (!links) {
+          var node = trigger;
+          while (node && node !== document) {
+            if (node.classList && node.classList.contains('links')) {
+              links = node;
+              break;
+            }
+            node = node.parentElement;
+          }
+        }
+        if (!links) return false;
 
-      var entry = links.parentElement;
-      if (!entry) return false;
+        var entry = links.parentElement;
+        if (!entry) return false;
 
-      var panel = null;
+        var panel = null;
+        var panels = null;
 
-      if (kind === 'bibtex') {
-        panel = entry.querySelector('.bibtex.hidden');
-      } else if (kind === 'award') {
-        panel = entry.querySelector('.award.hidden');
-      } else if (kind === 'video') {
-        var videoBlocks = entry.querySelectorAll('.abstract.hidden');
-        if (videoBlocks.length) panel = videoBlocks[videoBlocks.length - 1];
-      } else {
-        panel = entry.querySelector('.abstract.hidden');
-      }
+        if (kind === 'bibtex') {
+          panels = entry.querySelectorAll('.bibtex.hidden');
+          if (panels && panels.length) panel = panels[0];
+        } else if (kind === 'award') {
+          panels = entry.querySelectorAll('.award.hidden');
+          if (panels && panels.length) panel = panels[0];
+        } else if (kind === 'video') {
+          panels = entry.querySelectorAll('.abstract.hidden');
+          if (panels && panels.length) panel = panels[panels.length - 1];
+        } else {
+          panels = entry.querySelectorAll('.abstract.hidden');
+          if (panels && panels.length) panel = panels[0];
+        }
 
-      if (!panel) return false;
-      panel.classList.toggle('open');
-      return false;
-    };
+        // Fallback: walk siblings after links in case query selectors miss due DOM differences.
+        if (!panel) {
+          var expected = kind === 'bibtex' ? 'bibtex' : kind === 'award' ? 'award' : 'abstract';
+          var sibling = links.nextElementSibling;
+          while (sibling) {
+            if (sibling.classList && sibling.classList.contains(expected) && sibling.classList.contains('hidden')) {
+              panel = sibling;
+              break;
+            }
+            sibling = sibling.nextElementSibling;
+          }
+        }
+
+        if (!panel) return false;
+        panel.classList.toggle('open');
+        return false;
+      };
+    }
+
+    if (!window.__alfolioBibToggleBound) {
+      document.addEventListener('click', function (event) {
+        var trigger = event.target.closest('a[data-bib-toggle]');
+        if (!trigger) return;
+        event.preventDefault();
+        var kind = trigger.getAttribute('data-bib-toggle') || 'abstract';
+        window.__alfolioToggleBibSection(trigger, kind);
+      });
+      window.__alfolioBibToggleBound = true;
+    }
   })();
 </script>
 <div class="row">
@@ -221,12 +263,24 @@
     <!-- Links/Buttons -->
     <div class="links">
       {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button" onclick="return window.__alfolioToggleBibSection(this, 'award');">
+        <a
+          href="javascript:void(0);"
+          data-bib-toggle="award"
+          class="award btn btn-sm z-depth-0"
+          role="button"
+          onclick="return window.__alfolioToggleBibSection(this, 'award');"
+        >
           {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
         </a>
       {% endif %}
       {% if entry.abstract %}
-        <a class="abstract btn btn-sm z-depth-0" role="button" onclick="return window.__alfolioToggleBibSection(this, 'abstract');">Abs</a>
+        <a
+          href="javascript:void(0);"
+          data-bib-toggle="abstract"
+          class="abstract btn btn-sm z-depth-0"
+          role="button"
+          onclick="return window.__alfolioToggleBibSection(this, 'abstract');"
+        >Abs</a>
       {% endif %}
       {% if entry.doi %}
         <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
@@ -238,7 +292,13 @@
         <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
       {% endif %}
       {% if entry.bibtex_show %}
-        <a class="bibtex btn btn-sm z-depth-0" role="button" onclick="return window.__alfolioToggleBibSection(this, 'bibtex');">Bib</a>
+        <a
+          href="javascript:void(0);"
+          data-bib-toggle="bibtex"
+          class="bibtex btn btn-sm z-depth-0"
+          role="button"
+          onclick="return window.__alfolioToggleBibSection(this, 'bibtex');"
+        >Bib</a>
       {% endif %}
       {% if entry.html %}
         {% if entry.html contains '://' %}
@@ -262,7 +322,13 @@
         {% endif %}
       {% endif %}
       {% if entry.video and site.enable_video_embedding %}
-        <a class="abstract btn btn-sm z-depth-0" role="button" onclick="return window.__alfolioToggleBibSection(this, 'video');">Video</a>
+        <a
+          href="javascript:void(0);"
+          data-bib-toggle="video"
+          class="abstract btn btn-sm z-depth-0"
+          role="button"
+          onclick="return window.__alfolioToggleBibSection(this, 'video');"
+        >Video</a>
       {% elsif entry.video %}
         <a href="{{ entry.video }}" class="btn btn-sm z-depth-0" role="button">Video</a>
       {% endif %}

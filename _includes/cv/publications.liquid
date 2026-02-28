@@ -4,20 +4,51 @@
 
 <ul class="card-text font-weight-light list-group list-group-flush">
   {% for entry in entries %}
+    {% assign doi_url = '' %}
+    {% if entry.doi %}
+      {% if entry.doi contains '://' %}
+        {% assign doi_url = entry.doi %}
+      {% else %}
+        {% assign doi_url = 'https://doi.org/' | append: entry.doi %}
+      {% endif %}
+    {% endif %}
+
+    {% assign arxiv_url = '' %}
+    {% if entry.arxiv %}
+      {% if entry.arxiv contains '://' %}
+        {% assign arxiv_url = entry.arxiv %}
+      {% else %}
+        {% assign arxiv_url = 'https://arxiv.org/abs/' | append: entry.arxiv %}
+      {% endif %}
+    {% endif %}
+
+    {% assign generic_url = '' %}
+    {% if entry.url and doi_url == '' and arxiv_url == '' %}
+      {% assign generic_url = entry.url %}
+    {% endif %}
+
+    {% assign website_url = '' %}
+    {% if entry.website %}
+      {% assign website_url = entry.website %}
+    {% endif %}
+    {% assign website_label = entry.website_label | default: 'Repository' %}
+
     <li class="list-group-item">
       <div class="row">
         {% capture pub_date %}
           {% if entry.releaseDate %}{{ entry.releaseDate }}{% elsif entry.date %}{{ entry.date }}{% endif %}
         {% endcapture %}
+        {% capture pub_date_label_raw %}{% include cv/date_label.liquid value=pub_date %}{% endcapture %}
+        {% assign pub_date_label = pub_date_label_raw | strip %}
 
-        {% if pub_date != '' %}
+        {% if pub_date_label != '' %}
           <div class="col-xs-2 col-sm-2 col-md-2 text-center">
             <table class="table-cv">
               <tbody>
                 <tr>
                   <td>
-                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
-                      {{- pub_date | split: '-' | slice: 0, 1 | join: '' -}}
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">
+                      {{- pub_date_label -}}
                     </span>
                   </td>
                 </tr>
@@ -25,12 +56,8 @@
             </table>
           </div>
           <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
-            {% if entry.url %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">
-                <a href="{{ entry.url }}">{{ entry.title | default: entry.name }}</a>
-              </h6>
-            {% elsif entry.title %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
+            {% if entry.title or entry.name %}
+              <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title | default: entry.name }}</h6>
             {% endif %}
 
             {% if entry.publisher %}
@@ -38,19 +65,42 @@
                 <em>{{ entry.publisher }}</em>
               </h6>
             {% endif %}
+            {% if entry.note %}
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ entry.note }}</h6>
+            {% endif %}
 
             {% if entry.summary %}
               <p class="ml-1 ml-md-4">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+            {% endif %}
+
+            {% if doi_url != '' or arxiv_url != '' or generic_url != '' or website_url != '' %}
+              <p class="ml-1 ml-md-4" style="font-size: 0.95rem">
+                {% assign has_link = false %}
+                {% if doi_url != '' %}
+                  <a href="{{ doi_url }}" target="_blank" rel="noopener noreferrer">DOI</a>
+                  {% assign has_link = true %}
+                {% endif %}
+                {% if arxiv_url != '' %}
+                  {% if has_link %} | {% endif %}
+                  <a href="{{ arxiv_url }}" target="_blank" rel="noopener noreferrer">arXiv</a>
+                  {% assign has_link = true %}
+                {% endif %}
+                {% if generic_url != '' %}
+                  {% if has_link %} | {% endif %}
+                  <a href="{{ generic_url }}" target="_blank" rel="noopener noreferrer">Link</a>
+                  {% assign has_link = true %}
+                {% endif %}
+                {% if website_url != '' %}
+                  {% if has_link %} | {% endif %}
+                  <a href="{{ website_url }}" target="_blank" rel="noopener noreferrer">{{ website_label }}</a>
+                {% endif %}
+              </p>
             {% endif %}
           </div>
         {% else %}
           <div class="col-xs-12 col-sm-12 col-md-12">
-            {% if entry.url %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">
-                <a href="{{ entry.url }}">{{ entry.title | default: entry.name }}</a>
-              </h6>
-            {% elsif entry.title %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
+            {% if entry.title or entry.name %}
+              <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title | default: entry.name }}</h6>
             {% endif %}
 
             {% if entry.publisher %}
@@ -58,9 +108,36 @@
                 <em>{{ entry.publisher }}</em>
               </h6>
             {% endif %}
+            {% if entry.note %}
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ entry.note }}</h6>
+            {% endif %}
 
             {% if entry.summary %}
               <p class="ml-1 ml-md-4">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+            {% endif %}
+
+            {% if doi_url != '' or arxiv_url != '' or generic_url != '' or website_url != '' %}
+              <p class="ml-1 ml-md-4" style="font-size: 0.95rem">
+                {% assign has_link = false %}
+                {% if doi_url != '' %}
+                  <a href="{{ doi_url }}" target="_blank" rel="noopener noreferrer">DOI</a>
+                  {% assign has_link = true %}
+                {% endif %}
+                {% if arxiv_url != '' %}
+                  {% if has_link %} | {% endif %}
+                  <a href="{{ arxiv_url }}" target="_blank" rel="noopener noreferrer">arXiv</a>
+                  {% assign has_link = true %}
+                {% endif %}
+                {% if generic_url != '' %}
+                  {% if has_link %} | {% endif %}
+                  <a href="{{ generic_url }}" target="_blank" rel="noopener noreferrer">Link</a>
+                  {% assign has_link = true %}
+                {% endif %}
+                {% if website_url != '' %}
+                  {% if has_link %} | {% endif %}
+                  <a href="{{ website_url }}" target="_blank" rel="noopener noreferrer">{{ website_label }}</a>
+                {% endif %}
+              </p>
             {% endif %}
           </div>
         {% endif %}

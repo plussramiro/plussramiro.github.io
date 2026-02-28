@@ -1,5 +1,18 @@
 <div class="col">
-  <a href="{% if project.redirect %}{{ project.redirect }}{% else %}{{ project.url | relative_url }}{% endif %}">
+  {% if project.redirect %}
+    {% assign project_href = project.redirect %}
+  {% else %}
+    {% assign project_href = project.url | relative_url %}
+  {% endif %}
+  <a
+    href="{{ project_href }}"
+    data-project-category="{{ project.category | default: '' | slugify }}"
+    data-project-title="{{ project.title | escape }}"
+    data-video-title="{{ project.video_title | default: project.title | escape }}"
+    data-video-caption="{{ project.video_caption | default: '' | escape }}"
+    data-video-source-label="{{ project.video_source_label | default: '' | escape }}"
+    data-video-source-url="{{ project.video_source_url | default: '' | escape }}"
+  >
     <div class="card h-100 hoverable">
       {% if project.img %}
         {%
