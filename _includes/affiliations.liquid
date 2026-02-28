@@ -1,0 +1,34 @@
+{% if site.data.affiliations and site.data.affiliations.size > 0 %}
+  <section class="affiliations-section" aria-labelledby="affiliations-title">
+    <h2 id="affiliations-title">
+      <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+      Affiliations & Support
+    </h2>
+
+    <div class="affiliations-grid">
+      {% for affiliation in site.data.affiliations %}
+        {% if affiliation.alt %}
+          {% assign alt_text = affiliation.alt %}
+        {% else %}
+          {% assign alt_text = affiliation.name | append: ' logo' %}
+        {% endif %}
+        <a
+          class="affiliation-card"
+          href="{{ affiliation.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="{{ affiliation.name }}"
+          title="{{ affiliation.name }}"
+        >
+          <img
+            src="{{ affiliation.logo | relative_url }}"
+            alt="{{ alt_text }}"
+            loading="lazy"
+            width="220"
+            height="64"
+          >
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
