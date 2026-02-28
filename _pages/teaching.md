@@ -13,9 +13,9 @@ nav_order: 6
     class="img-fluid z-depth-1 rounded teaching-zoomable"
     alt="Bioinspired robotics projects in class"
     loading="eager"
-    data-zoom-title="Bioinspired Robotics class projects"
+    data-zoom-title="Bioinspired Robotics class projects. Photos of projects showcased in the course."
   >
-  <p class="caption">Photos of projects showcased in the course.</p>
+  <p class="caption">Bioinspired Robotics class projects. Photos of projects showcased in the course.</p>
 </div>
 
 ### Teaching Assistant - Bioinspired Robotics, ITBA (Sep 2024 - Present)
