@@ -46,6 +46,11 @@ nav_order: 4
     border-radius: 8px;
   }
 
+  .repositories-cv .repositories-cv__repo-card .repo a {
+    pointer-events: none;
+    cursor: default;
+  }
+
   @media (max-width: 767.98px) {
     .repositories-cv .repositories-cv__octocat-link {
       width: 74px;
@@ -105,10 +110,13 @@ nav_order: 4
         {% for repo in site.data.repositories.github_repos %}
           {% assign repo_name = repo | split: '/' | last %}
           {% assign repo_date = '' %}
+          {% assign repo_comment = '' %}
           {% if repo_name == 'Wilson-Cowan-Hemispheric-Coupling' %}
             {% assign repo_date = 'Aug 2025 - Nov 2025' %}
+            {% assign repo_comment = 'Repository to replicate the work called Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics.' %}
           {% elsif repo_name == 'The-Role-of-Connection-Density-in-an-Adaptive-Network-with-Chaotic-Units' %}
             {% assign repo_date = 'Aug 2025 - Sep 2025' %}
+            {% assign repo_comment = 'Repository to replicate the work called The Role of Connection Density in Adaptive Networks with Chaotic Units.' %}
           {% endif %}
           <li class="list-group-item">
             <div class="row">
@@ -129,6 +137,9 @@ nav_order: 4
                     {{ repo_name | replace: '-', ' ' }}
                   </a>
                 </h6>
+                {% if repo_comment != '' %}
+                  <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ repo_comment }}</h6>
+                {% endif %}
                 <div class="ml-1 ml-md-4 repositories-cv__repo-card">
                   {% include repository/repo.liquid repository=repo %}
                 </div>
