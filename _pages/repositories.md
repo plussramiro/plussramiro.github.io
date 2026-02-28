@@ -97,10 +97,10 @@ nav_order: 4
           {% assign repo_comment = '' %}
           {% if repo_name == 'Wilson-Cowan-Hemispheric-Coupling' %}
             {% assign repo_date = 'Aug 2025 - Nov 2025' %}
-            {% assign repo_comment = 'Repository to replicate the work called Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics.' %}
+            {% assign repo_comment = 'Repository to replicate the work called <em>"Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics"</em>.' %}
           {% elsif repo_name == 'The-Role-of-Connection-Density-in-an-Adaptive-Network-with-Chaotic-Units' %}
             {% assign repo_date = 'Aug 2025 - Sep 2025' %}
-            {% assign repo_comment = 'Repository to replicate the work called The Role of Connection Density in Adaptive Networks with Chaotic Units.' %}
+            {% assign repo_comment = 'Repository to replicate the work called <em>"The Role of Connection Density in Adaptive Networks with Chaotic Units"</em>.' %}
           {% endif %}
           <li class="list-group-item">
             <div class="row">
