@@ -12,9 +12,7 @@ contact_note: >
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Personal academic website of Ramiro Plüss; computational neuroscience, robotics, and bioinspired AI.
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+  All rights reserved &middot; Built with GitHub Pages
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ramiropluss-icon.png # image used as the favicon from /assets/img/
@@ -187,23 +185,40 @@ kramdown:
 include: ["_pages", "_scripts"]
 exclude:
   - bin/
+  - blog/
+  - books/
   - CONTRIBUTING.md
+  - cv/
   - CUSTOMIZE.md
   - Dockerfile
+  - docs/
   - docker-compose.yml
   - docker-compose-slim.yml
   - FAQ.md
+  - feed.xml
   - Gemfile
   - Gemfile.lock
+  - index.html
   - INSTALL.md
   - LICENSE
   - lighthouse_results/
+  - news/
   - package.json
   - package-lock.json
+  - people/
+  - projects/
+  - public/
+  - publications/
   - _pages/about_einstein.md
+  - _pages/dropdown/index.html
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - repositories/
+  - robots.txt
+  - sitemap.xml
+  - teaching/
+  - 404.html
   - vendor
 keep_files:
   - CNAME
