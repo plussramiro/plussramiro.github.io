@@ -14,14 +14,6 @@
   url: https://www.conicet.gov.ar/
   alt: CONICET logo
 
-- name: UNR
-  full_name: National University of Rosario (UNR)
-  period: Feb 2016 - Mar 2016
-  role: Undergraduate Physics studies (Licenciatura en Fisica).
-  logo: /assets/img/affiliations/logo_unr.png
-  url: https://unr.edu.ar/
-  alt: National University of Rosario logo
-
 - name: FCEIA
   full_name: Faculty of Exact Sciences, Engineering and Surveying (FCEIA - UNR)
   period: Feb 2016 - Mar 2016
@@ -29,3 +21,11 @@
   logo: /assets/img/affiliations/logo_fceia.png
   url: https://fceia.unr.edu.ar/
   alt: FCEIA logo
+
+- name: UNR
+  full_name: National University of Rosario (UNR)
+  period: Feb 2016 - Mar 2016
+  role: Undergraduate Physics studies (Licenciatura en Fisica).
+  logo: /assets/img/affiliations/logo_unr.png
+  url: https://unr.edu.ar/
+  alt: National University of Rosario logo

@@ -75,6 +75,20 @@
   <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
 {% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
+<style>
+  .video-modal__dialog {
+    width: min(560px, 95vw);
+  }
+
+  .video-modal__frame-wrap {
+    width: min(92vw, calc((94vh - 7.5rem) * 9 / 16));
+    max-width: 420px;
+    aspect-ratio: 9 / 16;
+    padding-top: 0;
+    margin: 0 auto;
+    background: #000;
+  }
+</style>
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
 {% if site.enable_darkmode %}
