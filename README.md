@@ -19,6 +19,7 @@ Personal academic website built with [Jekyll](https://jekyllrb.com/) on top of t
 - CV
 - Teaching
 - Lab
+- Affiliations
 
 ## Local Development
 

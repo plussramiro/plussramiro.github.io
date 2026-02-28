@@ -1,9 +1,14 @@
 {% if site.data.affiliations and site.data.affiliations.size > 0 %}
-  <section class="affiliations-section" aria-labelledby="affiliations-title">
-    <h2 id="affiliations-title">
-      <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
-      Affiliations & Support
-    </h2>
+  <section
+    class="affiliations-section"
+    {% if include.show_title != false %}aria-labelledby="affiliations-title"{% else %}aria-label="Affiliations and support"{% endif %}
+  >
+    {% if include.show_title != false %}
+      <h2 id="affiliations-title">
+        <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+        Affiliations & Support
+      </h2>
+    {% endif %}
 
     <div class="affiliations-grid">
       {% for affiliation in site.data.affiliations %}

@@ -201,72 +201,59 @@ ul.task-list input[type="checkbox"] {
 // About affiliations
 
 .affiliations-section {
-  margin: 2.2rem 0 0.75rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--global-divider-color);
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(34, 83, 144, 0.1), rgba(60, 76, 125, 0.05));
+  margin: 1.25rem 0 0.9rem;
 }
 
 .affiliations-section h2 {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  margin: 0 0 0.95rem;
+  margin: 0 0 0.8rem;
+  font-weight: 500;
 }
 
 .affiliations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.9rem;
 }
 
 .affiliation-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 92px;
-  padding: 0.7rem 0.6rem;
+  min-height: 104px;
+  padding: 0.9rem 0.75rem;
   border: 1px solid var(--global-divider-color);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--global-card-bg-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
 }
 
 .affiliation-card:hover {
   border-color: var(--global-theme-color);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
   transform: translateY(-2px);
 }
 
 .affiliation-card img {
   max-width: 100%;
-  max-height: 58px;
+  max-height: 54px;
   width: auto;
   height: auto;
   object-fit: contain;
 }
 
-html[data-theme="dark"] .affiliations-section {
-  background: linear-gradient(135deg, rgba(30, 82, 146, 0.38), rgba(20, 32, 52, 0.6));
-}
-
-html[data-theme="dark"] .affiliation-card {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(255, 255, 255, 0.35);
-}
-
 @media (max-width: 575.98px) {
-  .affiliations-section {
-    padding: 0.85rem;
-  }
-
   .affiliations-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
   }
 
   .affiliation-card {
     min-height: 76px;
+    padding: 0.6rem;
   }
 
   .affiliation-card img {
