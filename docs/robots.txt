@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://plussramiro.github.io/sitemap.xml
