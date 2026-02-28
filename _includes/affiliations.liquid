@@ -1,4 +1,46 @@
 {% if site.data.affiliations and site.data.affiliations.size > 0 %}
+  <style>
+    .affiliations-cv .affiliation-logo-cv-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 72px;
+      overflow: hidden;
+      text-decoration: none;
+      transform-origin: center;
+      transition: transform 0.14s ease;
+    }
+
+    .affiliations-cv .affiliation-logo-cv-link:hover {
+      transform: scale(1.03);
+    }
+
+    .affiliations-cv .affiliation-logo-cv-link:active {
+      transform: scale(1.08);
+    }
+
+    .affiliations-cv .affiliation-logo-cv {
+      display: block;
+      max-width: 112px;
+      max-height: 56px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @media (max-width: 767.98px) {
+      .affiliations-cv .affiliation-logo-cv-link {
+        width: 105px;
+        height: 64px;
+      }
+
+      .affiliations-cv .affiliation-logo-cv {
+        max-width: 98px;
+        max-height: 50px;
+      }
+    }
+  </style>
   <section
     class="affiliations-section"
     {% if include.show_title != false %}aria-labelledby="affiliations-title"{% else %}aria-label="Affiliations and support"{% endif %}
@@ -58,6 +100,9 @@
                 </div>
                 <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
                   <h6 class="title font-weight-bold ml-1 ml-md-4">{{ display_name }}</h6>
+                  {% if affiliation.role %}
+                    <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ affiliation.role }}</h6>
+                  {% endif %}
                 </div>
               </div>
             </li>
