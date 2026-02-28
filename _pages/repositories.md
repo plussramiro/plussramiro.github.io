@@ -35,22 +35,6 @@ nav_order: 4
     display: block;
   }
 
-  .repositories-cv .repositories-cv__repo-card .repo {
-    max-width: 100%;
-    padding: 0 !important;
-    text-align: left;
-  }
-
-  .repositories-cv .repositories-cv__repo-card .repo img {
-    border: 1px solid var(--global-divider-color);
-    border-radius: 8px;
-  }
-
-  .repositories-cv .repositories-cv__repo-card .repo a {
-    pointer-events: none;
-    cursor: default;
-  }
-
   @media (max-width: 767.98px) {
     .repositories-cv .repositories-cv__octocat-link {
       width: 74px;
@@ -140,9 +124,6 @@ nav_order: 4
                 {% if repo_comment != '' %}
                   <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ repo_comment }}</h6>
                 {% endif %}
-                <div class="ml-1 ml-md-4 repositories-cv__repo-card">
-                  {% include repository/repo.liquid repository=repo %}
-                </div>
               </div>
             </div>
           </li>
