@@ -201,63 +201,118 @@ ul.task-list input[type="checkbox"] {
 // About affiliations
 
 .affiliations-section {
-  margin: 1.25rem 0 0.9rem;
+  margin: 1rem 0 0.75rem;
 }
 
 .affiliations-section h2 {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.95rem;
   font-weight: 500;
 }
 
-.affiliations-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.9rem;
+.affiliations-list {
+  display: flex;
+  flex-direction: column;
 }
 
-.affiliation-card {
+.affiliation-entry {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 1.15rem;
+  align-items: center;
+  padding: 0.85rem 0;
+}
+
+.affiliation-entry + .affiliation-entry {
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.affiliation-entry__media {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.affiliation-badge {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.18rem 0.75rem 0.22rem;
+  border-radius: 0.18rem;
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.affiliation-logo-link {
+  display: flex;
+  width: 100%;
+  min-height: 92px;
   align-items: center;
   justify-content: center;
-  min-height: 104px;
-  padding: 0.9rem 0.75rem;
+  border-radius: 8px;
   border: 1px solid var(--global-divider-color);
-  border-radius: 12px;
   background: var(--global-card-bg-color);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
-  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  padding: 0.55rem;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
 }
 
-.affiliation-card:hover {
+.affiliation-logo-link:hover {
   border-color: var(--global-theme-color);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
   transform: translateY(-2px);
 }
 
-.affiliation-card img {
+.affiliation-logo-link img {
   max-width: 100%;
-  max-height: 54px;
+  max-height: 78px;
   width: auto;
   height: auto;
   object-fit: contain;
 }
 
+.affiliation-name {
+  margin: 0 0 0.3rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.affiliation-name a {
+  color: var(--global-text-color);
+}
+
+.affiliation-name a:hover {
+  color: var(--global-theme-color);
+  text-decoration: none;
+}
+
 @media (max-width: 575.98px) {
-  .affiliations-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .affiliation-entry {
+    grid-template-columns: 1fr;
     gap: 0.7rem;
+    padding: 0.7rem 0;
   }
 
-  .affiliation-card {
-    min-height: 76px;
-    padding: 0.6rem;
+  .affiliation-entry__media {
+    align-items: flex-start;
   }
 
-  .affiliation-card img {
-    max-height: 44px;
+  .affiliation-logo-link {
+    max-width: 220px;
+    min-height: 72px;
+  }
+
+  .affiliation-logo-link img {
+    max-height: 58px;
+  }
+
+  .affiliation-name {
+    font-size: 1.1rem;
   }
 }
 

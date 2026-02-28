@@ -10,29 +10,42 @@
       </h2>
     {% endif %}
 
-    <div class="affiliations-grid">
+    <div class="affiliations-list">
       {% for affiliation in site.data.affiliations %}
+        {% assign display_name = affiliation.full_name | default: affiliation.name %}
         {% if affiliation.alt %}
           {% assign alt_text = affiliation.alt %}
         {% else %}
           {% assign alt_text = affiliation.name | append: ' logo' %}
         {% endif %}
-        <a
-          class="affiliation-card"
-          href="{{ affiliation.url }}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="{{ affiliation.name }}"
-          title="{{ affiliation.name }}"
-        >
-          <img
-            src="{{ affiliation.logo | relative_url }}"
-            alt="{{ alt_text }}"
-            loading="lazy"
-            width="220"
-            height="64"
-          >
-        </a>
+        <article class="affiliation-entry">
+          <div class="affiliation-entry__media">
+            {% if affiliation.period %}
+              <span class="affiliation-badge">{{ affiliation.period }}</span>
+            {% endif %}
+            <a
+              class="affiliation-logo-link"
+              href="{{ affiliation.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{ affiliation.name }}"
+              title="{{ affiliation.name }}"
+            >
+              <img
+                src="{{ affiliation.logo | relative_url }}"
+                alt="{{ alt_text }}"
+                loading="lazy"
+                width="220"
+                height="72"
+              >
+            </a>
+          </div>
+          <div class="affiliation-entry__content">
+            <h3 class="affiliation-name">
+              <a href="{{ affiliation.url }}" target="_blank" rel="noopener noreferrer">{{ display_name }}</a>
+            </h3>
+          </div>
+        </article>
       {% endfor %}
     </div>
   </section>
