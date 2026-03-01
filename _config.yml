@@ -13,7 +13,7 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Personal academic website of Ramiro Plüss; computational neuroscience, robotics, and bioinspired AI.
 footer_text: >
   All rights reserved &middot; Built with GitHub Pages
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: ramiro pluss, ramiro plüss, computational neuroscience, brain network modeling, wilson-cowan, dynamic mean field, complex networks, bioinspired robotics, artificial intelligence, itba, conicet
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ramiropluss-icon.png # image used as the favicon from /assets/img/
 
@@ -68,7 +68,7 @@ max_width: 930px
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
 og_image: https://plussramiro.github.io/assets/img/ramiropluss-icon.png # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
