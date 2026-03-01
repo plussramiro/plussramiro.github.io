@@ -91,6 +91,12 @@ cv:
         summary: Ramiro Plüss, Pablo Martín Gleiser.
 
     Projects:
+      - name: "Whole-brain WC/DMF modeling: hemispheric coupling for multi-scale SC-FC"
+        start_date: 2025-12
+        end_date: Present
+        location: CABA, Argentina
+        summary: Buenos Aires Institute of Technology (ITBA; Buenos Aires, Argentina), University Institution of Envigado (IUE; Envigado, Colombia), and University of Valparaiso / Interdisciplinary Center for Neuroscience of Valparaiso (UV/CINV; Valparaiso, Chile). Benchmarking global vs. hemispheric-specific coupling across parcellation scales and SC variability.
+
       - name: Hexapod robotic testbed
         start_date: 2025-03
         end_date: Present
@@ -102,12 +108,6 @@ cv:
         end_date: Present
         location: CABA, Argentina
         summary: Developing and extending an animatronic platform with vision and natural-language interaction capabilities.
-
-      - name: "Whole-brain WC/DMF modeling: hemispheric coupling for multi-scale SC-FC"
-        start_date: 2025-12
-        end_date: Present
-        location: CABA, Argentina
-        summary: Buenos Aires Institute of Technology (ITBA; Buenos Aires, Argentina), University Institution of Envigado (IUE; Envigado, Colombia), and University of Valparaiso / Interdisciplinary Center for Neuroscience of Valparaiso (UV/CINV; Valparaiso, Chile). Benchmarking global vs. hemispheric-specific coupling across parcellation scales and SC variability.
 
       - name: UNR-CRH linkage project (IFIR, UNR-CONICET)
         start_date: 2021-08
