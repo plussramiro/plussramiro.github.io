@@ -9,8 +9,8 @@ profile:
   image: ramiropluss.jpg
   image_circular: false # use rectangular image (not cropped to circle)
   more_info: >
-    <p><i class="fa-solid fa-atom fa-sm"></i> Physicist (UNR-FCEIA)</p>
-    <p><i class="fa-solid fa-graduation-cap fa-sm"></i> PhD Candidate at ITBA</p>
+    <p><i class="fa-solid fa-atom fa-sm"></i> Physicist (UNR)</p>
+    <p><i class="fa-solid fa-graduation-cap fa-sm"></i> PhD(c) (ITBA)</p>
     <p><i class="fa-solid fa-location-dot fa-sm"></i> CABA, Argentina</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
