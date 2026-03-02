@@ -140,7 +140,37 @@
     color: var(--global-text-color);
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
+  .profile-about .more-info {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .profile-about .more-info p {
+    display: block;
+    margin: 0.18rem 0;
+  }
+
+  .profile-about .more-info i {
+    display: inline-block;
+    width: 1rem;
+    margin-right: 0.35rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 767.98px) {
+    .profile-about .more-info {
+      font-size: 1rem;
+      line-height: 1.28;
+    }
+
+    .profile-about .more-info p {
+      white-space: normal;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 900px) {
     .profile-about {
       width: 35%;
     }
@@ -152,23 +182,29 @@
     }
 
     .profile-about .more-info {
-      font-family: inherit;
       font-size: 0.83rem;
       line-height: 1.2;
     }
 
     .profile-about .more-info p {
-      display: block;
       margin: 0.18rem 0;
       white-space: nowrap;
     }
 
     .profile-about .more-info i {
-      display: inline-block;
       width: 0.95rem;
       margin-right: 0.3rem;
-      text-align: center;
-      vertical-align: middle;
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .profile-about .more-info {
+      font-size: 0.96rem;
+      line-height: 1.25;
+    }
+
+    .profile-about .more-info p {
+      white-space: nowrap;
     }
   }
 </style>
