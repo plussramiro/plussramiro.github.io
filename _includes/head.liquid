@@ -106,21 +106,32 @@
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    .profile .more-info {
+    .profile-about {
+      width: 35%;
+    }
+
+    .profile-about img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .profile-about .more-info {
       font-family: inherit;
-      font-size: 0.95rem;
-      line-height: 1.35;
+      font-size: 0.83rem;
+      line-height: 1.2;
     }
 
-    .profile .more-info p {
+    .profile-about .more-info p {
       display: block;
-      margin: 0.2rem 0;
+      margin: 0.18rem 0;
+      white-space: nowrap;
     }
 
-    .profile .more-info i {
+    .profile-about .more-info i {
       display: inline-block;
-      width: 1.1rem;
-      margin-right: 0.4rem;
+      width: 0.95rem;
+      margin-right: 0.3rem;
       text-align: center;
       vertical-align: middle;
     }
