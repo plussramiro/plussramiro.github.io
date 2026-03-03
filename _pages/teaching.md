@@ -5,6 +5,36 @@ title: Teaching
 description: Teaching activities and course support in bioinspired robotics.
 nav: true
 nav_order: 6
+_styles: |
+  .post .post-header .post-description {
+    margin-bottom: 1.45rem;
+  }
+
+  .teaching-date-wrap {
+    margin: 0 0 0.45rem 0;
+  }
+
+  .teaching-date-badge {
+    display: inline-block;
+    background-color: var(--global-theme-color);
+    color: var(--global-card-bg-color);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
+    border-radius: 0.2rem;
+    padding: 0.28rem 0.58rem;
+  }
+
+  @media (max-width: 767.98px) {
+    .teaching-date-wrap {
+      margin-bottom: 0.35rem;
+    }
+
+    .teaching-date-badge {
+      font-size: 0.86rem;
+      padding: 0.24rem 0.52rem;
+    }
+  }
 ---
 
 <div class="profile float-right">
@@ -18,7 +48,11 @@ nav_order: 6
   <p class="caption">Bioinspired Robotics class projects. Photos of projects showcased in the course.</p>
 </div>
 
-### Teaching Assistant - Bioinspired Robotics, ITBA (Sep 2024 - Present)
+<div class="teaching-date-wrap">
+  <span class="teaching-date-badge">Sep 2024 - Present</span>
+</div>
+
+### Teaching Assistant - Bioinspired Robotics, ITBA
 
 I support laboratory sessions, student project development, and office-hour guidance in the Bioinspired Robotics course at ITBA. The course is led by Dr. Pablo Martín Gleiser.
 
