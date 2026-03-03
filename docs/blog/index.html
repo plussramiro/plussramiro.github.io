@@ -124,6 +124,27 @@
     background: #000;
   }
 
+  @media (max-width: 991.98px) {
+    .publications .abbr {
+      width: 96px;
+      max-width: 96px;
+    }
+
+    .publications .abbr .badge {
+      width: 100%;
+      max-width: 96px;
+      min-width: 0;
+    }
+
+    .publications .abbr .preview,
+    .publications .abbr img.preview {
+      display: block;
+      width: 96px !important;
+      max-width: 96px !important;
+      height: auto !important;
+    }
+  }
+
   @media (max-width: 767.98px) {
     .cv .date-column .badge {
       font-size: 0.62rem;
@@ -133,6 +154,21 @@
       max-width: 72px;
       white-space: normal;
       overflow-wrap: anywhere;
+    }
+
+    .publications .abbr {
+      max-width: 88px;
+      width: 88px;
+    }
+
+    .publications .abbr .badge {
+      max-width: 88px;
+    }
+
+    .publications .abbr .preview {
+      width: 100%;
+      max-width: 88px;
+      height: auto;
     }
   }
 
@@ -241,7 +277,7 @@
     <!-- Header -->
     <header>
   <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg fixed-top" role="navigation">
     <div class="container">
       
         <a class="navbar-brand title font-weight-lighter" href="/">
