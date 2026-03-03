@@ -122,23 +122,32 @@
     background: #000;
   }
 
-  @media (max-width: 991.98px) {
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    .publications .row {
+      --bs-gutter-x: 1.35rem;
+    }
+
     .publications .abbr {
-      width: 96px;
-      max-width: 96px;
+      width: 108px;
+      max-width: 108px;
+      padding-right: 0.25rem;
     }
 
     .publications .abbr .badge {
-      width: 100%;
-      max-width: 96px;
+      width: 100% !important;
+      max-width: 100% !important;
       min-width: 0;
+    }
+
+    .publications .abbr figure {
+      margin: 0 0 0.45rem 0;
     }
 
     .publications .abbr .preview,
     .publications .abbr img.preview {
       display: block;
-      width: 96px !important;
-      max-width: 96px !important;
+      width: 100% !important;
+      max-width: 100% !important;
       height: auto !important;
     }
   }
