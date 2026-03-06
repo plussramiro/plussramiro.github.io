@@ -829,6 +829,23 @@
       object-fit: contain;
     }
 
+    .affiliations-cv .affiliation-logos-cv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .affiliations-cv .affiliation-logo-cv-link-multi {
+      width: 56px;
+      height: 56px;
+    }
+
+    .affiliations-cv .affiliation-logo-cv-link-multi .affiliation-logo-cv {
+      max-width: 52px;
+      max-height: 44px;
+    }
+
     @media (max-width: 767.98px) {
       .affiliations-cv .date-column .badge {
         font-size: 0.62rem;
@@ -848,6 +865,16 @@
       .affiliations-cv .affiliation-logo-cv {
         max-width: 98px;
         max-height: 50px;
+      }
+
+      .affiliations-cv .affiliation-logo-cv-link-multi {
+        width: 50px;
+        height: 50px;
+      }
+
+      .affiliations-cv .affiliation-logo-cv-link-multi .affiliation-logo-cv {
+        max-width: 44px;
+        max-height: 40px;
       }
     }
   </style>
@@ -877,9 +904,11 @@
                       
                       <tr>
                         <td>
-                          <a class="affiliation-logo-cv-link" href="https://www.itba.edu.ar/" target="_blank" rel="noopener noreferrer" aria-label="ITBA" title="ITBA">
-                            <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_itba.png" alt="ITBA logo" loading="lazy">
-                          </a>
+                          
+                            <a class="affiliation-logo-cv-link" href="https://www.itba.edu.ar/" target="_blank" rel="noopener noreferrer" aria-label="ITBA" title="ITBA">
+                              <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_itba.png" alt="ITBA logo" loading="lazy">
+                            </a>
+                          
                         </td>
                       </tr>
                     </tbody>
@@ -912,9 +941,11 @@
                       
                       <tr>
                         <td>
-                          <a class="affiliation-logo-cv-link" href="https://www.conicet.gov.ar/" target="_blank" rel="noopener noreferrer" aria-label="CONICET" title="CONICET">
-                            <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_conicet.png" alt="CONICET logo" loading="lazy">
-                          </a>
+                          
+                            <a class="affiliation-logo-cv-link" href="https://www.conicet.gov.ar/" target="_blank" rel="noopener noreferrer" aria-label="CONICET" title="CONICET">
+                              <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_conicet.png" alt="CONICET logo" loading="lazy">
+                            </a>
+                          
                         </td>
                       </tr>
                     </tbody>
@@ -947,53 +978,32 @@
                       
                       <tr>
                         <td>
-                          <a class="affiliation-logo-cv-link" href="https://fceia.unr.edu.ar/" target="_blank" rel="noopener noreferrer" aria-label="FCEIA" title="FCEIA">
-                            <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_fceia.png" alt="FCEIA logo" loading="lazy">
-                          </a>
+                          
+                            <div class="affiliation-logos-cv">
+                              
+                                
+                                
+                                <a class="affiliation-logo-cv-link affiliation-logo-cv-link-multi" href="https://unr.edu.ar/" target="_blank" rel="noopener noreferrer" aria-label="UNR" title="UNR">
+                                  <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_unr.png" alt="National University of Rosario logo" loading="lazy">
+                                </a>
+                              
+                                
+                                
+                                <a class="affiliation-logo-cv-link affiliation-logo-cv-link-multi" href="https://fceia.unr.edu.ar/" target="_blank" rel="noopener noreferrer" aria-label="FCEIA" title="FCEIA">
+                                  <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_fceia.png" alt="FCEIA logo" loading="lazy">
+                                </a>
+                              
+                            </div>
+                          
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
-                  <h6 class="title font-weight-bold ml-1 ml-md-4">Faculty of Exact Sciences, Engineering and Surveying (FCEIA - UNR)</h6>
+                  <h6 class="title font-weight-bold ml-1 ml-md-4">National University of Rosario (UNR), Faculty of Exact Sciences, Engineering and Surveying (FCEIA)</h6>
                   
-                    <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">Undergraduate Physics studies (Licenciatura en Fisica).</h6>
-                  
-                </div>
-              </div>
-            </li>
-          
-            
-            
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
-                  <table class="table-cv">
-                    <tbody>
-                      
-                        <tr>
-                          <td>
-                            <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">
-                              Feb 2016 - Mar 2023
-                            </span>
-                          </td>
-                        </tr>
-                      
-                      <tr>
-                        <td>
-                          <a class="affiliation-logo-cv-link" href="https://unr.edu.ar/" target="_blank" rel="noopener noreferrer" aria-label="UNR" title="UNR">
-                            <img class="affiliation-logo-cv" src="/assets/img/affiliations/logo_unr.png" alt="National University of Rosario logo" loading="lazy">
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
-                  <h6 class="title font-weight-bold ml-1 ml-md-4">National University of Rosario (UNR)</h6>
-                  
-                    <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">Undergraduate Physics studies (Licenciatura en Fisica).</h6>
+                    <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">Undergraduate Physics studies (Licenciatura en Fisica, a 9-semester undergraduate degree including a research thesis) at FCEIA, a faculty within UNR.</h6>
                   
                 </div>
               </div>
