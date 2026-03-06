@@ -29,6 +29,23 @@
       object-fit: contain;
     }
 
+    .affiliations-cv .affiliation-logos-cv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .affiliations-cv .affiliation-logo-cv-link-multi {
+      width: 56px;
+      height: 56px;
+    }
+
+    .affiliations-cv .affiliation-logo-cv-link-multi .affiliation-logo-cv {
+      max-width: 52px;
+      max-height: 44px;
+    }
+
     @media (max-width: 767.98px) {
       .affiliations-cv .date-column .badge {
         font-size: 0.62rem;
@@ -48,6 +65,16 @@
       .affiliations-cv .affiliation-logo-cv {
         max-width: 98px;
         max-height: 50px;
+      }
+
+      .affiliations-cv .affiliation-logo-cv-link-multi {
+        width: 50px;
+        height: 50px;
+      }
+
+      .affiliations-cv .affiliation-logo-cv-link-multi .affiliation-logo-cv {
+        max-width: 44px;
+        max-height: 40px;
       }
     }
   </style>
@@ -88,21 +115,49 @@
                       {% endif %}
                       <tr>
                         <td>
-                          <a
-                            class="affiliation-logo-cv-link"
-                            href="{{ affiliation.url }}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="{{ affiliation.name }}"
-                            title="{{ affiliation.name }}"
-                          >
-                            <img
-                              class="affiliation-logo-cv"
-                              src="{{ affiliation.logo | relative_url }}"
-                              alt="{{ alt_text }}"
-                              loading="lazy"
+                          {% if affiliation.logos and affiliation.logos.size > 0 %}
+                            <div class="affiliation-logos-cv">
+                              {% for logo_item in affiliation.logos %}
+                                {% assign logo_name = logo_item.name | default: affiliation.name %}
+                                {% if logo_item.alt %}
+                                  {% assign logo_alt = logo_item.alt %}
+                                {% else %}
+                                  {% assign logo_alt = logo_name | append: ' logo' %}
+                                {% endif %}
+                                <a
+                                  class="affiliation-logo-cv-link affiliation-logo-cv-link-multi"
+                                  href="{{ logo_item.url | default: affiliation.url }}"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label="{{ logo_name }}"
+                                  title="{{ logo_name }}"
+                                >
+                                  <img
+                                    class="affiliation-logo-cv"
+                                    src="{{ logo_item.logo | default: affiliation.logo | relative_url }}"
+                                    alt="{{ logo_alt }}"
+                                    loading="lazy"
+                                  >
+                                </a>
+                              {% endfor %}
+                            </div>
+                          {% else %}
+                            <a
+                              class="affiliation-logo-cv-link"
+                              href="{{ affiliation.url }}"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="{{ affiliation.name }}"
+                              title="{{ affiliation.name }}"
                             >
-                          </a>
+                              <img
+                                class="affiliation-logo-cv"
+                                src="{{ affiliation.logo | relative_url }}"
+                                alt="{{ alt_text }}"
+                                loading="lazy"
+                              >
+                            </a>
+                          {% endif %}
                         </td>
                       </tr>
                     </tbody>

@@ -21,7 +21,7 @@ nav_order: 7
 
 ### Lab Focus
 
-Our work combines computational neuroscience, connectomics, complex systems, and bioinspired robotics. We study how network structure and neural dynamics shape behavior, and we translate those principles into embodied robotic platforms.
+The lab's work combines computational neuroscience, connectomics, complex systems, and bioinspired robotics. The team studies how network structure and neural dynamics shape behavior and translates these principles into embodied robotic platforms.
 
 Current lines include:
 - Connectome-informed embodied control with C. elegans and Drosophila references.

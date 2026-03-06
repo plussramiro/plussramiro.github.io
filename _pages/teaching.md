@@ -54,7 +54,7 @@ _styles: |
 
 ### Teaching Assistant - Bioinspired Robotics, ITBA
 
-I support laboratory sessions, student project development, and office-hour guidance in the Bioinspired Robotics course at ITBA. The course is led by Dr. Pablo Martín Gleiser.
+Ramiro Plüss supports laboratory sessions, student project development, and office hour guidance in the Bioinspired Robotics course at ITBA. The course is led by Dr. [Pablo Martín Gleiser](https://www.itba.edu.ar/docentes/pablo-gleiser/).
 
 Current course focus:
 - Building basic robotic agents, including three-wheeled platforms with distance and light sensors inspired by Braitenberg vehicles.
