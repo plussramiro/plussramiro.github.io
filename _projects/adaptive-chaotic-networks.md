@@ -2,17 +2,19 @@
 layout: page
 title: Adaptive Networks with Chaotic Units
 description: Studying how connection density shapes synchronization, integration, and modular organization in adaptive dynamical networks.
+_styles: |
+  .post .post-header .post-description {
+    display: none;
+  }
 importance: 2
 category: "Research & Reference Figures"
 img: /assets/img/research/comparative_connectomes_adaptive_model.png
 figure_captions:
-  - "Figure 1: Evolution of the adaptive network over time, obtaining balanced properties such as segregation and integration [Pluss et al., 2025]."
-  - "Figure 2: External reference used only to compare against real connectomes (C. elegans, Drosophila, Mouse, Macaque, Human) [van den Heuvel et al., 2016]."
+  - "Figure 1. Evolution of the adaptive network over time. As the network co-evolves with node dynamics, mesoscale organization emerges, leading to a balance between segregation and integration [Plüss and Gleiser, 2025]."
+  - "Figure 2. Qualitative comparison with empirical connectome organization across species (C. elegans, Drosophila, mouse, macaque, and human) [van den Heuvel et al., 2016]."
 ---
 
-This project investigates adaptive neural-like networks where links evolve according to node dynamics.
-
-By varying connection density, the model reveals transitions between fragmented desynchronized regimes and globally integrated yet modular synchronized regimes.
+We study how connection density shapes synchronization, integration, and modular organization in adaptive dynamical networks. In this project, connectivity evolves jointly with node dynamics, giving rise to transitions from fragmented, desynchronized regimes to globally integrated yet modular synchronized states.
 
 Links:
 - Preprint: [arXiv:2505.11437v3](https://arxiv.org/abs/2505.11437v3)

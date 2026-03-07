@@ -1,9 +1,12 @@
 ---
 layout: page
-title: Hexapod Robot Gaits (18-DoF)
-description: Tripod, ripple, and wave gait experiments on an 18-servo hexapod platform.
+title: Hexapod Robotic Model | Gaits (Tripod, Ripple & Wave)
+description: Intermediate Hexapod Robotic Model stage focused on tripod, ripple, and wave gait experiments.
 importance: 1
 category: "Robotics Prototypes & Evolution"
+robotics_group: "hexapod"
+robotics_group_title: "Hexapod Robotic Model"
+robotics_group_description: "Progression from calibration and gait experiments to natural joystick-driven motions."
 img: /assets/img/robotics/hexapod1.jpg
 redirect: https://www.youtube.com/watch?v=jcXTx5d4pRY
 video_title: "Hexapod Gaits | Tripod, Ripple & Wave"

@@ -1,9 +1,12 @@
 ---
 layout: page
-title: Dual-Eye Saccades and Blink
-description: Eye actuation prototype for saccadic motion and coordinated blinking.
+title: Animatronic Robotic Model | Dual-eye saccades & blink
+description: Animatronic Robotic Model stage focused on dual-eye saccades and coordinated blinking.
 importance: 4
 category: "Robotics Prototypes & Evolution"
+robotics_group: "animatronic"
+robotics_group_title: "Animatronic Robotic Model"
+robotics_group_description: "Progression of head, torso, and eye-control subsystems for expressive embodied behavior."
 img: /assets/img/robotics/2eyes.jpg
 redirect: https://www.youtube.com/watch?v=LXXqcms6eXk
 video_title: "Dual-eye | Saccades & blink"

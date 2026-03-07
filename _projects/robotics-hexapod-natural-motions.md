@@ -1,9 +1,12 @@
 ---
 layout: page
-title: Hexapod Joystick Control - Natural Motions
-description: Silent demo of joystick-controlled hexapod locomotion with natural motion primitives.
+title: Hexapod Robotic Model | Joystick control - Natural motions
+description: Latest iteration of the Hexapod Robotic Model with joystick control and natural motion primitives.
 importance: 0
 category: "Robotics Prototypes & Evolution"
+robotics_group: "hexapod"
+robotics_group_title: "Hexapod Robotic Model"
+robotics_group_description: "Progression from calibration and gait experiments to natural joystick-driven motions."
 img: /assets/img/robotics/hexapod_natural.jpeg
 redirect: https://www.youtube.com/shorts/3WHSHeuxowA
 video_title: "Hexapod Joystick Control - Natural Motions"

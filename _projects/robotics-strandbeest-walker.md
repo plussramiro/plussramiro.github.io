@@ -1,9 +1,12 @@
 ---
 layout: page
-title: Strandbeest-Style Walker
+title: Theo Jansen's Robot Model
 description: Theo Jansen-inspired walking mechanism prototype driven by continuous-rotation servos.
-importance: 7
+importance: 6
 category: "Robotics Prototypes & Evolution"
+robotics_group: "strandbeest"
+robotics_group_title: "Theo Jansen's Robot Model"
+robotics_group_description: "Linkage-based walking prototype inspired by Theo Jansen mechanisms."
 img: /assets/img/robotics/theo-jansen-walker.jpg
 redirect: https://www.youtube.com/watch?v=CNYgq52IVqg
 video_title: "Theo Jansen's Robots | Strandbeest-style walker"

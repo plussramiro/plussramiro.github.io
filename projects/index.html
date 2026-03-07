@@ -24,14 +24,58 @@
 <meta name="author" content="Ramiro Plüss">
 <meta name="description" content="Research and development projects across computational neuroscience, connectomics, and embodied robotics.">
 
-  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+  <meta name="keywords" content="ramiro pluss, ramiro plüss, computational neuroscience, brain network modeling, wilson-cowan, dynamic mean field, complex networks, bioinspired robotics, artificial intelligence, itba, conicet">
 
 
 
 
 
 
+  <!-- OpenGraph -->
+  <meta property="og:site_name" content="Ramiro Plüss">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ramiro Plüss | Projects">
+  <meta property="og:url" content="https://plussramiro.github.io/projects/">
+  <meta property="og:description" content="Research and development projects across computational neuroscience, connectomics, and embodied robotics.">
+  
+    <meta property="og:image" content="https://plussramiro.github.io/assets/img/ramiropluss-icon.png">
+  
+  <meta property="og:locale" content="en">
 
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Projects">
+  <meta name="twitter:description" content="Research and development projects across computational neuroscience, connectomics, and embodied robotics.">
+  
+    <meta name="twitter:image" content="https://plussramiro.github.io/assets/img/ramiropluss-icon.png">
+  
+  
+
+
+
+  <!-- Schema.org -->
+  
+  
+  
+
+  <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Ramiro Plüss"
+        },
+        "url": "https://plussramiro.github.io/projects/",
+        "@type": "WebSite",
+        "description": "Research and development projects across computational neuroscience, connectomics, and embodied robotics.",
+        "headline": "Projects",
+        
+        "sameAs": [null,"https://www.linkedin.com/in/ramiropluss","https://github.com/plussramiro","https://scholar.google.com/citations?user=l1XV7YYAAAAJ","https://orcid.org/0009-0000-6502-0668","https://www.researchgate.net/profile/Ramiro-Pluess/"],
+        
+        "name": "Ramiro Plüss",
+        "@context": "https://schema.org"
+    }
+  </script>
 
 
 
@@ -64,6 +108,154 @@
   <link rel="shortcut icon" href="/assets/img/ramiropluss-icon.png">
 
 <link rel="stylesheet" href="/assets/css/main.css">
+<style>
+  .video-modal__dialog {
+    width: min(560px, 95vw);
+  }
+
+  .video-modal__frame-wrap {
+    width: min(92vw, calc((94vh - 7.5rem) * 9 / 16));
+    max-width: 420px;
+    aspect-ratio: 9 / 16;
+    padding-top: 0;
+    margin: 0 auto;
+    background: #000;
+  }
+
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    .publications .row {
+      --bs-gutter-x: 1.35rem;
+    }
+
+    .publications .abbr {
+      width: 108px;
+      max-width: 108px;
+      padding-right: 0.25rem;
+    }
+
+    .publications .abbr .badge {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0;
+    }
+
+    .publications .abbr figure {
+      margin: 0 0 0.45rem 0;
+    }
+
+    .publications .abbr .preview,
+    .publications .abbr img.preview {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .cv .date-column .badge {
+      font-size: 0.62rem;
+      line-height: 1.1;
+      padding: 0.12rem 0.3rem;
+      min-width: 0 !important;
+      max-width: 72px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .publications .abbr {
+      max-width: 88px;
+      width: 88px;
+    }
+
+    .publications .abbr .badge {
+      max-width: 88px;
+    }
+
+    .publications .abbr figure,
+    .publications .abbr .preview,
+    .publications .abbr img.preview {
+      display: none !important;
+    }
+  }
+
+  .publications h2.bibliography {
+    color: var(--global-text-color);
+  }
+
+  .profile-about .more-info {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .profile-about .more-info p {
+    display: block;
+    margin: 0.18rem 0;
+    font-weight: 700;
+  }
+
+  .profile-about .more-info i {
+    display: inline-block;
+    width: 1rem;
+    margin-right: 0.35rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 767.98px) {
+    .profile-about .more-info {
+      font-size: 1.08rem;
+      line-height: 1.32;
+      margin-bottom: 0.85rem;
+    }
+
+    .profile-about .more-info p {
+      margin: 0.26rem 0;
+      white-space: normal;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 900px) {
+    .profile-about {
+      width: 35%;
+    }
+
+    .profile-about img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .profile-about .more-info {
+      font-size: 0.83rem;
+      line-height: 1.2;
+    }
+
+    .profile-about .more-info p {
+      margin: 0.18rem 0;
+      white-space: nowrap;
+    }
+
+    .profile-about .more-info i {
+      width: 0.95rem;
+      margin-right: 0.3rem;
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .profile-about .more-info {
+      font-size: 0.96rem;
+      line-height: 1.25;
+    }
+
+    .profile-about .more-info p {
+      white-space: nowrap;
+    }
+  }
+</style>
 <link rel="canonical" href="https://plussramiro.github.io/projects/">
 
 
@@ -94,7 +286,7 @@
     <!-- Header -->
     <header>
   <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg fixed-top" role="navigation">
     <div class="container">
       
         <a class="navbar-brand title font-weight-lighter" href="/">
@@ -178,12 +370,21 @@
             
           
             
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/publications/">Publications
+                    
+                  </a>
+                </li>
+              
+            
           
             
               
                 
                 <li class="nav-item ">
-                  <a class="nav-link" href="/publications/">Publications
+                  <a class="nav-link" href="/talks/">Talks
                     
                   </a>
                 </li>
@@ -247,6 +448,17 @@
               
             
           
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/affiliations/">Affiliations
+                    
+                  </a>
+                </li>
+              
             
           
           
@@ -583,6 +795,91 @@
   }
 }
 
+.robotics-group-card .carousel-item {
+  position: relative;
+}
+
+.robotics-group-card .card-img-top {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.robotics-slide-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.6rem 0.7rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.robotics-slide-title {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 74%;
+}
+
+.robotics-video-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  min-height: 2rem;
+  min-width: 7.6rem;
+  font-size: 0.76rem;
+  line-height: 1;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.35rem;
+  pointer-events: auto;
+  text-align: center;
+  transform: translateY(1px);
+}
+
+.robotics-video-link__text {
+  position: relative;
+  top: 5px;
+}
+
+.robotics-group-card .carousel-control-prev,
+.robotics-group-card .carousel-control-next {
+  width: 11%;
+}
+
+.robotics-group-card .carousel-indicators {
+  margin-bottom: 0.2rem;
+}
+
+.robotics-group-card .carousel-indicators li {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+@media (max-width: 767.98px) {
+  .robotics-group-card .card-img-top {
+    aspect-ratio: 4 / 5;
+  }
+
+  .robotics-video-link {
+    min-height: 2.2rem;
+    min-width: 8rem;
+    padding: 0.42rem 0.8rem;
+  }
+}
+
   </style>
 
 
@@ -608,11 +905,13 @@
   </a>
   
   
-  <!-- Generate cards for each project -->
+
   
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+    <!-- Generate cards for each project -->
     
-      <div class="col">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+      
+        <div class="col">
   
   <a href="/projects/wilson-cowan-hemispheric/" data-project-category="research-reference-figures" data-project-title="Hemispheric-Specific Wilson-Cowan Model" data-video-title="Hemispheric-Specific Wilson-Cowan Model" data-video-caption="" data-video-source-label="" data-video-source-url="">
     <div class="card h-100 hoverable">
@@ -629,7 +928,7 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/research/hemispheric.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/research/hemispheric.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
@@ -647,8 +946,8 @@
   </a>
 </div>
 
-    
-      <div class="col">
+      
+        <div class="col">
   
   <a href="/projects/adaptive-chaotic-networks/" data-project-category="research-reference-figures" data-project-title="Adaptive Networks with Chaotic Units" data-video-title="Adaptive Networks with Chaotic Units" data-video-caption="" data-video-source-label="" data-video-source-url="">
     <div class="card h-100 hoverable">
@@ -665,7 +964,7 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/research/comparative_connectomes_adaptive_model.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/research/comparative_connectomes_adaptive_model.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
@@ -683,8 +982,8 @@
   </a>
 </div>
 
-    
-      <div class="col">
+      
+        <div class="col">
   
   <a href="/projects/connectome-driven-robotics/" data-project-category="research-reference-figures" data-project-title="Connectome-Driven Embodied Robotics" data-video-title="Connectome-Driven Embodied Robotics" data-video-caption="" data-video-source-label="" data-video-source-url="">
     <div class="card h-100 hoverable">
@@ -701,7 +1000,7 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/research/celegans_connectome_robot_model.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/research/celegans_connectome_robot_model.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
@@ -719,10 +1018,10 @@
   </a>
 </div>
 
-    
-      <div class="col">
+      
+        <div class="col">
   
-  <a href="/projects/drosophila-leg-wing-motor-connectomics/" data-project-category="research-reference-figures" data-project-title="Drosophila Leg and Wing Motor Connectomics" data-video-title="Drosophila Leg and Wing Motor Connectomics" data-video-caption="" data-video-source-label="" data-video-source-url="">
+  <a href="/projects/drosophila-leg-wing-motor-connectomics/" data-project-category="research-reference-figures" data-project-title="Drosophila Leg Motor Connectomics" data-video-title="Drosophila Leg Motor Connectomics" data-video-caption="" data-video-source-label="" data-video-source-url="">
     <div class="card h-100 hoverable">
       
         
@@ -737,7 +1036,7 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/research/drosophila_leg_motor_circuits.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/research/drosophila_leg_motor_circuits.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
@@ -745,7 +1044,7 @@
 
       
       <div class="card-body">
-        <h2 class="card-title">Drosophila Leg and Wing Motor Connectomics</h2>
+        <h2 class="card-title">Drosophila Leg Motor Connectomics</h2>
         <p class="card-text">Connectomics of Drosophila leg and wing motor circuits, including identified motor neurons, front-leg muscles, and the premotor-motor connectivity matrix.</p>
         <div class="row ml-1 mr-1 p-0">
           
@@ -755,9 +1054,11 @@
   </a>
 </div>
 
+      
+    </div>
     
-  </div>
   
+
   
   
   <a id="robotics-prototypes-evolution" href=".#robotics-prototypes-evolution">
@@ -765,16 +1066,23 @@
   </a>
   
   
-  <!-- Generate cards for each project -->
+
   
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     
-      <div class="col">
-  
-  <a href="https://www.youtube.com/shorts/3WHSHeuxowA" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Joystick Control - Natural Motions" data-video-title="Hexapod Joystick Control - Natural Motions" data-video-caption="Silent demo - Joystick control with natural motions + predefined moves (turn, twist, posture changes) - Arduino platform - 18 servos total (3 per leg) - Duration: 54 s" data-video-source-label="Credits / inspiration: markwtech (open CAD + code)" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
+    
       
         
+        
+        
+        <div class="col">
+          <div class="card h-100 hoverable robotics-group-card">
+            <div id="robotics-carousel-1" class="carousel slide" data-ride="carousel" data-interval="false">
+              <div class="carousel-inner">
+                
+                  
+                  <div class="carousel-item active">
+                    
 
 
 
@@ -786,31 +1094,23 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/robotics/hexapod_natural.jpeg" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/robotics/hexapod_natural.jpeg" class="card-img-top" width="100%" height="auto" alt="Hexapod Robotic Model | Joystick control - Natural motions" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
 </figure>
 
-      
-      <div class="card-body">
-        <h2 class="card-title">Hexapod Joystick Control - Natural Motions</h2>
-        <p class="card-text">Silent demo of joystick-controlled hexapod locomotion with natural motion primitives.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
-
-    
-      <div class="col">
-  
-  <a href="https://www.youtube.com/watch?v=jcXTx5d4pRY" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robot Gaits (18-DoF)" data-video-title="Hexapod Gaits | Tripod, Ripple &amp; Wave" data-video-caption="Silent demo - Arduino-based controller - 18 servos (3 per leg) - Gaits: tripod, ripple &amp; wave" data-video-source-label="Special thanks to markwtech" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
-      
-        
+                    <div class="robotics-slide-overlay">
+                      <p class="robotics-slide-title">Hexapod Joystick Control - Natural Motions</p>
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/shorts/3WHSHeuxowA" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Joystick control - Natural motions" data-video-title="Hexapod Joystick Control - Natural Motions" data-video-caption="Arduino-based controller - Joystick control with natural motions - Duration: 54 s" data-video-source-label="Credits / inspiration: markwtech (open CAD + code)" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
+                        <span class="robotics-video-link__text">See video demo</span>
+                      </a>
+                    </div>
+                  </div>
+                
+                  
+                  <div class="carousel-item">
+                    
 
 
 
@@ -822,31 +1122,23 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/robotics/hexapod1.jpg" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/robotics/hexapod1.jpg" class="card-img-top" width="100%" height="auto" alt="Hexapod Robotic Model | Gaits (Tripod, Ripple &amp; Wave)" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
 </figure>
 
-      
-      <div class="card-body">
-        <h2 class="card-title">Hexapod Robot Gaits (18-DoF)</h2>
-        <p class="card-text">Tripod, ripple, and wave gait experiments on an 18-servo hexapod platform.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
-
-    
-      <div class="col">
-  
-  <a href="https://www.youtube.com/watch?v=sP3aGM9wyew" data-project-category="robotics-prototypes-evolution" data-project-title="Single Leg Servo Calibration" data-video-title="Hexapod | Servo offset calibration &amp; first steps" data-video-caption="18 servos - tripod gait - offsets tuned" data-video-source-label="Ref: Instructables" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
-      
-        
+                    <div class="robotics-slide-overlay">
+                      <p class="robotics-slide-title">Hexapod Gaits | Tripod, Ripple &amp; Wave</p>
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=jcXTx5d4pRY" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Gaits (Tripod, Ripple &amp; Wave)" data-video-title="Hexapod Gaits | Tripod, Ripple &amp; Wave" data-video-caption="Silent demo - Arduino-based controller - 18 servos (3 per leg) - Gaits: tripod, ripple &amp; wave" data-video-source-label="Special thanks to markwtech" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
+                        <span class="robotics-video-link__text">See video demo</span>
+                      </a>
+                    </div>
+                  </div>
+                
+                  
+                  <div class="carousel-item">
+                    
 
 
 
@@ -858,31 +1150,59 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/robotics/1leg.jpg" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/robotics/1leg.jpg" class="card-img-top" width="100%" height="auto" alt="Hexapod Robotic Model | Servo offset calibration &amp; first steps" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
 </figure>
 
-      
-      <div class="card-body">
-        <h2 class="card-title">Single Leg Servo Calibration</h2>
-        <p class="card-text">Offset tuning and motion calibration for early hexapod leg control.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
+                    <div class="robotics-slide-overlay">
+                      <p class="robotics-slide-title">Hexapod | Servo offset calibration &amp; first steps</p>
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=sP3aGM9wyew" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Servo offset calibration &amp; first steps" data-video-title="Hexapod | Servo offset calibration &amp; first steps" data-video-caption="18 servos - tripod gait - offsets tuned" data-video-source-label="Ref: Instructables" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
+                        <span class="robotics-video-link__text">See video demo</span>
+                      </a>
+                    </div>
+                  </div>
+                
+              </div>
+              
+                <a class="carousel-control-prev" href="#robotics-carousel-1" role="button" data-slide="prev" aria-label="Previous slide">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#robotics-carousel-1" role="button" data-slide="next" aria-label="Next slide">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+                <ol class="carousel-indicators">
+                  
+                    <li data-target="#robotics-carousel-1" data-slide-to="0" class="active" aria-label="Slide 1">
+                  
+                    <li data-target="#robotics-carousel-1" data-slide-to="1" aria-label="Slide 2">
+                  
+                    <li data-target="#robotics-carousel-1" data-slide-to="2" aria-label="Slide 3">
+                  
+                </ol>
+              
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Hexapod Robotic Model</h2>
+              <p class="card-text">Progression from calibration and gait experiments to natural joystick-driven motions.</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </a>
-</div>
-
+      
     
-      <div class="col">
-  
-  <a href="https://www.youtube.com/watch?v=LhsHS34h0lY" data-project-category="robotics-prototypes-evolution" data-project-title="Animatronic Head + Torso" data-video-title="Animatronic head + torso | Demo" data-video-caption="Head mechanics &amp; arms" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=tP919dwtG38" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
       
         
+        
+        
+        <div class="col">
+          <div class="card h-100 hoverable robotics-group-card">
+            <div id="robotics-carousel-2" class="carousel slide" data-ride="carousel" data-interval="false">
+              <div class="carousel-inner">
+                
+                  
+                  <div class="carousel-item active">
+                    
 
 
 
@@ -894,31 +1214,23 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/robotics/robot_head_body.jpg" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/robotics/robot_head_body.jpg" class="card-img-top" width="100%" height="auto" alt="Animatronic Robotic Model | Head + torso demo" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
 </figure>
 
-      
-      <div class="card-body">
-        <h2 class="card-title">Animatronic Head + Torso</h2>
-        <p class="card-text">Eyes, neck, shoulders, and elbows integrated into a PS2-controlled animatronic prototype.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
-
-    
-      <div class="col">
-  
-  <a href="https://www.youtube.com/watch?v=LXXqcms6eXk" data-project-category="robotics-prototypes-evolution" data-project-title="Dual-Eye Saccades and Blink" data-video-title="Dual-eye | Saccades &amp; blink" data-video-caption="Dual-eye robot head - PS2 joystick control + rotating base" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=jsXolwJskKM" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
-      
-        
+                    <div class="robotics-slide-overlay">
+                      <p class="robotics-slide-title">Animatronic head + torso | Demo</p>
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=LhsHS34h0lY" data-project-category="robotics-prototypes-evolution" data-project-title="Animatronic Robotic Model | Head + torso demo" data-video-title="Animatronic head + torso | Demo" data-video-caption="Head mechanics &amp; arms" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=tP919dwtG38" rel="external nofollow noopener" target="_blank">
+                        <span class="robotics-video-link__text">See video demo</span>
+                      </a>
+                    </div>
+                  </div>
+                
+                  
+                  <div class="carousel-item">
+                    
 
 
 
@@ -930,31 +1242,57 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/robotics/2eyes.jpg" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/robotics/2eyes.jpg" class="card-img-top" width="100%" height="auto" alt="Animatronic Robotic Model | Dual-eye saccades &amp; blink" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
 </figure>
 
-      
-      <div class="card-body">
-        <h2 class="card-title">Dual-Eye Saccades and Blink</h2>
-        <p class="card-text">Eye actuation prototype for saccadic motion and coordinated blinking.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
+                    <div class="robotics-slide-overlay">
+                      <p class="robotics-slide-title">Dual-eye | Saccades &amp; blink</p>
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=LXXqcms6eXk" data-project-category="robotics-prototypes-evolution" data-project-title="Animatronic Robotic Model | Dual-eye saccades &amp; blink" data-video-title="Dual-eye | Saccades &amp; blink" data-video-caption="Dual-eye robot head - PS2 joystick control + rotating base" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=jsXolwJskKM" rel="external nofollow noopener" target="_blank">
+                        <span class="robotics-video-link__text">See video demo</span>
+                      </a>
+                    </div>
+                  </div>
+                
+              </div>
+              
+                <a class="carousel-control-prev" href="#robotics-carousel-2" role="button" data-slide="prev" aria-label="Previous slide">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#robotics-carousel-2" role="button" data-slide="next" aria-label="Next slide">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+                <ol class="carousel-indicators">
+                  
+                    <li data-target="#robotics-carousel-2" data-slide-to="0" class="active" aria-label="Slide 1">
+                  
+                    <li data-target="#robotics-carousel-2" data-slide-to="1" aria-label="Slide 2">
+                  
+                </ol>
+              
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Animatronic Robotic Model</h2>
+              <p class="card-text">Progression of head, torso, and eye-control subsystems for expressive embodied behavior.</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </a>
-</div>
-
+      
     
-      <div class="col">
-  
-  <a href="https://www.youtube.com/watch?v=HWUrwyTYjJM" data-project-category="robotics-prototypes-evolution" data-project-title="Mecanum Omni-Directional Robot" data-video-title="Mecanum-wheel | Omni-directional control" data-video-caption="PS2 joystick control - Ultrasonic distance sensor - Omni-directional motion" data-video-source-label="" data-video-source-url="" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
       
         
+        
+        
+        <div class="col">
+          <div class="card h-100 hoverable robotics-group-card">
+            <div id="robotics-carousel-3" class="carousel slide" data-ride="carousel" data-interval="false">
+              <div class="carousel-inner">
+                
+                  
+                  <div class="carousel-item active">
+                    
 
 
 
@@ -966,31 +1304,43 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/robotics/robot_wheels_mecanum.jpg" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/robotics/robot_wheels_mecanum.jpg" class="card-img-top" width="100%" height="auto" alt="Mecanum Robotic Model | Omni-directional control" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
 </figure>
 
-      
-      <div class="card-body">
-        <h2 class="card-title">Mecanum Omni-Directional Robot</h2>
-        <p class="card-text">Mecanum-wheel mobile base with PS2 joystick control and ultrasonic sensing.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
+                    <div class="robotics-slide-overlay">
+                      <p class="robotics-slide-title">Mecanum-wheel | Omni-directional control</p>
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=HWUrwyTYjJM" data-project-category="robotics-prototypes-evolution" data-project-title="Mecanum Robotic Model | Omni-directional control" data-video-title="Mecanum-wheel | Omni-directional control" data-video-caption="PS2 joystick control - Ultrasonic distance sensor - Omni-directional motion" data-video-source-label="" data-video-source-url="" rel="external nofollow noopener" target="_blank">
+                        <span class="robotics-video-link__text">See video demo</span>
+                      </a>
+                    </div>
+                  </div>
+                
+              </div>
+              
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Mecanum Robotic Model</h2>
+              <p class="card-text">Omni-directional mobile platform with joystick control and obstacle-aware sensing.</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </a>
-</div>
-
+      
     
-      <div class="col">
-  
-  <a href="https://www.youtube.com/watch?v=YI7VJW33vqE" data-project-category="robotics-prototypes-evolution" data-project-title="Two-Wheel Obstacle Avoidance" data-video-title="Two-wheel | Obstacle avoidance" data-video-caption="Braitenberg-style neural controller - Ultrasonic + LDR" data-video-source-label="" data-video-source-url="" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
       
         
+        
+        
+        <div class="col">
+          <div class="card h-100 hoverable robotics-group-card">
+            <div id="robotics-carousel-4" class="carousel slide" data-ride="carousel" data-interval="false">
+              <div class="carousel-inner">
+                
+                  
+                  <div class="carousel-item active">
+                    
 
 
 
@@ -1002,63 +1352,34 @@
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
     
-    <img src="/assets/img/robotics/robot_sensor.png" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/robotics/theo-jansen-walker.jpg" class="card-img-top" width="100%" height="auto" alt="Theo Jansen's Robot Model" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
   
 </figure>
 
-      
-      <div class="card-body">
-        <h2 class="card-title">Two-Wheel Obstacle Avoidance</h2>
-        <p class="card-text">Braitenberg-inspired controller using ultrasonic and light sensing.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
+                    <div class="robotics-slide-overlay">
+                      <p class="robotics-slide-title">Theo Jansen's Robots | Strandbeest-style walker</p>
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=CNYgq52IVqg" data-project-category="robotics-prototypes-evolution" data-project-title="Theo Jansen's Robot Model" data-video-title="Theo Jansen's Robots | Strandbeest-style walker" data-video-caption="Arduino Nano + 360 deg servos - Silent demo" data-video-source-label="" data-video-source-url="" rel="external nofollow noopener" target="_blank">
+                        <span class="robotics-video-link__text">See video demo</span>
+                      </a>
+                    </div>
+                  </div>
+                
+              </div>
+              
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Theo Jansen's Robot Model</h2>
+              <p class="card-text">Linkage-based walking prototype inspired by Theo Jansen mechanisms.</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </a>
-</div>
-
-    
-      <div class="col">
-  
-  <a href="https://www.youtube.com/watch?v=CNYgq52IVqg" data-project-category="robotics-prototypes-evolution" data-project-title="Strandbeest-Style Walker" data-video-title="Theo Jansen's Robots | Strandbeest-style walker" data-video-caption="Arduino Nano + 360 deg servos - Silent demo" data-video-source-label="" data-video-source-url="" rel="external nofollow noopener" target="_blank">
-    <div class="card h-100 hoverable">
       
-        
-
-
-
-<figure>
-  <picture>
-    <!-- Auto scaling with imagemagick -->
-    <!--
-      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
-      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
-    -->
-    
-    <img src="/assets/img/robotics/theo-jansen-walker.jpg" class="card-img-top" width="100%" height="auto" alt="project thumbnail" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-  </picture>
-
-  
-</figure>
-
-      
-      <div class="card-body">
-        <h2 class="card-title">Strandbeest-Style Walker</h2>
-        <p class="card-text">Theo Jansen-inspired walking mechanism prototype driven by continuous-rotation servos.</p>
-        <div class="row ml-1 mr-1 p-0">
-          
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
-
     
   </div>
   
+
   
 
 
@@ -1086,10 +1407,7 @@
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
       
-  © Copyright 2026
-  Ramiro
-  
-  Plüss. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+  © 2026 Ramiro Plüss · All rights reserved · Built with GitHub Pages
 
   
   
@@ -1104,7 +1422,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <!-- Bootsrap & MDB scripts -->
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
 

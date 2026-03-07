@@ -3,7 +3,7 @@ layout: page
 title: Two-Wheel Obstacle Avoidance
 description: Braitenberg-inspired controller using ultrasonic and light sensing.
 importance: 6
-category: "Robotics Prototypes & Evolution"
+category: "Teaching & Course Projects"
 img: /assets/img/robotics/robot_sensor.png
 redirect: https://www.youtube.com/watch?v=YI7VJW33vqE
 video_title: "Two-wheel | Obstacle avoidance"
