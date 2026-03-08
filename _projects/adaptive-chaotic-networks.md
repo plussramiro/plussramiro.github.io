@@ -8,7 +8,8 @@ _styles: |
   }
 importance: 2
 category: "Research & Reference Figures"
-img: /assets/img/research/comparative_connectomes_adaptive_model.png
+img: /assets/img/research/abstract_paper.png
+hero_img: /assets/img/research/comparative_connectomes_adaptive_model.png
 figure_captions:
   - "Figure 1. Evolution of the adaptive network over time. As the network co-evolves with node dynamics, mesoscale organization emerges, leading to a balance between segregation and integration [Plüss and Gleiser, 2025]."
   - "Figure 2. Qualitative comparison with empirical connectome organization across species (C. elegans, Drosophila, mouse, macaque, and human) [van den Heuvel et al., 2016]."

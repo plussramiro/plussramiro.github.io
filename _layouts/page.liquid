@@ -14,9 +14,10 @@ layout: default
     <p class="post-description">{{ page.description }}</p>
   </header>
 
-  {% if page.collection == 'projects' and page.img %}
+  {% assign project_hero_img = page.hero_img | default: page.img %}
+  {% if page.collection == 'projects' and project_hero_img %}
     <div class="project-hero">
-      {% include figure.liquid loading="eager" path=page.img alt=page.title class="project-hero__image" %}
+      {% include figure.liquid loading="eager" path=project_hero_img alt=page.title class="project-hero__image" %}
     </div>
   {% endif %}
 
