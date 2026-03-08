@@ -23,14 +23,61 @@
 <meta name="description" content="Personal academic website of Ramiro Plüss; computational neuroscience, robotics, and bioinspired AI.
 ">
 
-  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+  <meta name="keywords" content="ramiro pluss, ramiro plüss, computational neuroscience, brain network modeling, wilson-cowan, dynamic mean field, complex networks, bioinspired robotics, artificial intelligence, itba, conicet">
 
 
 
 
 
 
+  <!-- OpenGraph -->
+  <meta property="og:site_name" content="Ramiro Plüss">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ramiro Plüss | About">
+  <meta property="og:url" content="https://plussramiro.github.io/">
+  <meta property="og:description" content="Personal academic website of Ramiro Plüss; computational neuroscience, robotics, and bioinspired AI.
+">
+  
+    <meta property="og:image" content="https://plussramiro.github.io/assets/img/ramiropluss-icon.png">
+  
+  <meta property="og:locale" content="en">
 
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About">
+  <meta name="twitter:description" content="Personal academic website of Ramiro Plüss; computational neuroscience, robotics, and bioinspired AI.
+">
+  
+    <meta name="twitter:image" content="https://plussramiro.github.io/assets/img/ramiropluss-icon.png">
+  
+  
+
+
+
+  <!-- Schema.org -->
+  
+  
+  
+
+  <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Ramiro Plüss"
+        },
+        "url": "https://plussramiro.github.io/",
+        "@type": "WebSite",
+        "description": "Personal academic website of Ramiro Plüss; computational neuroscience, robotics, and bioinspired AI.
+",
+        "headline": "About",
+        
+        "sameAs": [null,"https://www.linkedin.com/in/ramiropluss","https://github.com/plussramiro","https://scholar.google.com/citations?user=l1XV7YYAAAAJ","https://orcid.org/0009-0000-6502-0668","https://www.researchgate.net/profile/Ramiro-Pluess/"],
+        
+        "name": "Ramiro Plüss",
+        "@context": "https://schema.org"
+    }
+  </script>
 
 
 
@@ -63,6 +110,154 @@
   <link rel="shortcut icon" href="/assets/img/ramiropluss-icon.png">
 
 <link rel="stylesheet" href="/assets/css/main.css">
+<style>
+  .video-modal__dialog {
+    width: min(560px, 95vw);
+  }
+
+  .video-modal__frame-wrap {
+    width: min(92vw, calc((94vh - 7.5rem) * 9 / 16));
+    max-width: 420px;
+    aspect-ratio: 9 / 16;
+    padding-top: 0;
+    margin: 0 auto;
+    background: #000;
+  }
+
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    .publications .row {
+      --bs-gutter-x: 1.35rem;
+    }
+
+    .publications .abbr {
+      width: 108px;
+      max-width: 108px;
+      padding-right: 0.25rem;
+    }
+
+    .publications .abbr .badge {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0;
+    }
+
+    .publications .abbr figure {
+      margin: 0 0 0.45rem 0;
+    }
+
+    .publications .abbr .preview,
+    .publications .abbr img.preview {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .cv .date-column .badge {
+      font-size: 0.62rem;
+      line-height: 1.1;
+      padding: 0.12rem 0.3rem;
+      min-width: 0 !important;
+      max-width: 72px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .publications .abbr {
+      max-width: 88px;
+      width: 88px;
+    }
+
+    .publications .abbr .badge {
+      max-width: 88px;
+    }
+
+    .publications .abbr figure,
+    .publications .abbr .preview,
+    .publications .abbr img.preview {
+      display: none !important;
+    }
+  }
+
+  .publications h2.bibliography {
+    color: var(--global-text-color);
+  }
+
+  .profile-about .more-info {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .profile-about .more-info p {
+    display: block;
+    margin: 0.18rem 0;
+    font-weight: 700;
+  }
+
+  .profile-about .more-info i {
+    display: inline-block;
+    width: 1rem;
+    margin-right: 0.35rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 767.98px) {
+    .profile-about .more-info {
+      font-size: 1.08rem;
+      line-height: 1.32;
+      margin-bottom: 0.85rem;
+    }
+
+    .profile-about .more-info p {
+      margin: 0.26rem 0;
+      white-space: normal;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 900px) {
+    .profile-about {
+      width: 35%;
+    }
+
+    .profile-about img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .profile-about .more-info {
+      font-size: 0.83rem;
+      line-height: 1.2;
+    }
+
+    .profile-about .more-info p {
+      margin: 0.18rem 0;
+      white-space: nowrap;
+    }
+
+    .profile-about .more-info i {
+      width: 0.95rem;
+      margin-right: 0.3rem;
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .profile-about .more-info {
+      font-size: 0.96rem;
+      line-height: 1.25;
+    }
+
+    .profile-about .more-info p {
+      white-space: nowrap;
+    }
+  }
+</style>
 <link rel="canonical" href="https://plussramiro.github.io/">
 
 
@@ -93,7 +288,7 @@
     <!-- Header -->
     <header>
   <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg fixed-top" role="navigation">
     <div class="container">
       
       <!-- Navbar Toggle -->
@@ -173,12 +368,21 @@
             
           
             
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/publications/">Publications
+                    
+                  </a>
+                </li>
+              
+            
           
             
               
                 
                 <li class="nav-item ">
-                  <a class="nav-link" href="/publications/">Publications
+                  <a class="nav-link" href="/talks/">Talks
                     
                   </a>
                 </li>
@@ -234,6 +438,17 @@
                 
                 <li class="nav-item ">
                   <a class="nav-link" href="/people/">Lab
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/affiliations/">Affiliations
                     
                   </a>
                 </li>
@@ -579,7 +794,7 @@
 
   <article>
     
-      <div class="profile float-right">
+      <div class="profile profile-about float-right">
         
           
           
@@ -606,18 +821,46 @@
         
         
           <div class="more-info">
-<p><i class="fa-solid fa-atom fa-sm"></i> Physicist (UNR-FCEIA)</p> <p><i class="fa-solid fa-graduation-cap fa-sm"></i> PhD Candidate at ITBA</p> <p><i class="fa-solid fa-location-dot fa-sm"></i> Buenos Aires, Argentina</p>
+<p><i class="fa-solid fa-atom fa-sm"></i> Physicist (UNR)</p> <p><i class="fa-solid fa-graduation-cap fa-sm"></i> PhD(c) (ITBA)</p> <p><i class="fa-solid fa-location-dot fa-sm"></i> CABA, Argentina</p>
 </div>
         
       </div>
     
 
     <div class="clearfix">
-<p>I am a physicist with a B.Sc. in Physics (Licenciatura en Física, a 9-semester undergraduate degree including a research thesis) from the National University of Rosario (UNR), at the Faculty of Exact Sciences, Engineering and Surveying (FCEIA), and I am currently a PhD candidate in Engineering at the Buenos Aires Institute of Technology (ITBA). My research aims to understand the bidirectional relationship between structure, neural dynamics, and behavior, examining how anatomical and structural organization shapes, and is shaped by, neural activity and motor behavior. I combine computational neuroscience, neural network models, and bioinspired robotic systems to study proprioception and embodied motor control.</p>
+<p>Ramiro Plüss holds a degree in Physics from the National University of Rosario (UNR, FCEIA) and is currently a PhD candidate in Engineering at the Buenos Aires Institute of Technology (ITBA). His research focuses on the bidirectional relationship between structure, neural dynamics, and behavior, examining how anatomical organization shapes neural activity and motor control, and how neural activity and behavior, in turn, shape structure. He combines computational neuroscience, neural network models, and bioinspired robotic systems to study proprioception and embodied motor control.</p>
 
-<p>In previous work, I studied how changes in connection density in adaptive networks of chaotic units impact cluster synchronization and structural properties such as integration and segregation, a balance that is central in neuroscience and complex systems. I have also applied hemispheric-specific Wilson-Cowan models to human connectome data from control subjects and patients with schizophrenia, improving the modeling of resting-state functional connectivity and exploring how robustness and asymmetries emerge at the network level.</p>
+<div class="row mt-3 mb-0 justify-content-center">
+  <div class="col-12">
+    <a href="/assets/img/research/research_scheme_v2.png" class="research-zoomable" style="display: block; cursor: zoom-in; text-decoration: none;" data-image-zoomable="" data-image-title="Schematic of how neural structure gives rise to behavior through dynamics, embodiment, and proprioceptive feedback." aria-label="Open research overview image">
+      
 
-<p>Currently, I am working with robotic models driven by real connectomics data from <em>Drosophila</em> and <em>C. elegans</em> to explore embodiment, autonomy, and sensorimotor feedback. These connectome-based architectures can be viewed as biologically pre-trained networks, offering a bridge between neuroscience and robotics while reducing reliance on conventional artificial training. Through this line of research, I aim to contribute to autonomous and bioinspired robotics, long-range exploration, and broader questions about how structure, dynamics, and embodied interaction give rise to behavior and intelligence in both biological and artificial systems.</p>
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/research/research_scheme_v2.png" class="img-fluid rounded z-depth-1 mb-0" width="100%" height="auto" alt="Schematic overview linking connectome structure, neural dynamics, embodiment, and behavior." loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+    </a>
+  </div>
+</div>
+
+<p>In previous work, he studied how changes in connection density in adaptive networks affect collective dynamics and network organization, including integration and segregation. He has also applied dynamical network models to human connectome data from control subjects and patients with schizophrenia to improve the modeling of functional connectivity.</p>
+
+<p>Currently, he is working with robotic models driven by real connectomics data from Drosophila and C. elegans to explore embodiment, autonomy, and sensorimotor feedback. These connectome based architectures can be viewed as biologically pre trained networks, offering a bridge between neuroscience and robotics while reducing reliance on conventional artificial training. Through this line of research, he aims to contribute to autonomous and bioinspired robotics, long range exploration, and broader questions about how structure, dynamics, and embodied interaction give rise to behavior and intelligence in both biological and artificial systems.</p>
+
+<script defer src="/assets/js/research-image-modal.js"></script>
+
 </div>
 
     <!-- News -->
@@ -717,6 +960,28 @@
           </abbr>
         
       
+      
+        
+          
+          
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/ccis_springer.jpg" class="preview z-depth-1 rounded" width="100%" height="auto" alt="ccis_springer.jpg" data-zoomable loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
       
     </div>
   
@@ -901,6 +1166,28 @@
         
       
       
+        
+          
+          
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/arxiv.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="arxiv.png" data-zoomable loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+      
     </div>
   
 
@@ -1056,10 +1343,7 @@
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
       
-  © Copyright 2026
-  Ramiro
-  
-  Plüss. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+  © 2026 Ramiro Plüss · All rights reserved · Built with GitHub Pages
 
   
   
@@ -1074,7 +1358,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <!-- Bootsrap & MDB scripts -->
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
 

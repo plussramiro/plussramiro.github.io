@@ -5,6 +5,7 @@ permalink: /assets/js/research-image-modal.js
   const MODAL_CLASS = "research-image-modal";
   const OPEN_CLASS = "is-open";
   const BODY_OPEN_CLASS = "research-image-modal-open";
+  const INLINE_TRIGGER_SELECTOR = "[data-image-zoomable]";
   const RESEARCH_CARD_SELECTOR =
     'a[data-project-category="research"], a[data-project-category="research-reference-figures"]';
   const FALLBACK_TITLE = "Research figure";
@@ -47,21 +48,23 @@ permalink: /assets/js/research-image-modal.js
 
   const closeModal = (overlay) => {
     const modalImage = overlay.querySelector(".research-image-modal__image");
+    const modalTitle = overlay.querySelector(".research-image-modal__title");
     modalImage.src = "";
     modalImage.alt = "";
+    modalTitle.textContent = "";
     overlay.classList.remove(OPEN_CLASS);
     overlay.setAttribute("aria-hidden", "true");
     document.body.classList.remove(BODY_OPEN_CLASS);
   };
 
-  const openModal = (image, link) => {
+  const openModal = (image, options = {}) => {
     const imageSrc = image.currentSrc || image.src || image.getAttribute("src");
     if (!imageSrc) return;
 
     const overlay = createModal();
     const modalImage = overlay.querySelector(".research-image-modal__image");
     const modalTitle = overlay.querySelector(".research-image-modal__title");
-    const title = link?.dataset.projectTitle || image.alt || FALLBACK_TITLE;
+    const title = options.title || options.link?.dataset.projectTitle || image.alt || FALLBACK_TITLE;
 
     modalImage.src = imageSrc;
     modalImage.alt = image.alt || title;
@@ -73,15 +76,27 @@ permalink: /assets/js/research-image-modal.js
   };
 
   document.addEventListener("DOMContentLoaded", () => {
-    const projectsSection = document.querySelector(".projects");
-    if (!projectsSection) return;
-
-    projectsSection.addEventListener(
+    document.addEventListener(
       "click",
       (event) => {
         if (event.defaultPrevented) return;
         if (event.button !== 0) return;
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+        const inlineTrigger = event.target.closest(INLINE_TRIGGER_SELECTOR);
+        if (inlineTrigger) {
+          const image = inlineTrigger.matches("img") ? inlineTrigger : inlineTrigger.querySelector("img");
+          if (!image) return;
+
+          const title = inlineTrigger.dataset.imageTitle || image.dataset.zoomTitle || image.alt || FALLBACK_TITLE;
+          event.preventDefault();
+          event.stopPropagation();
+          openModal(image, { title });
+          return;
+        }
+
+        const projectsSection = document.querySelector(".projects");
+        if (!projectsSection) return;
 
         const image = event.target.closest(`${RESEARCH_CARD_SELECTOR} img`);
         if (!image || !projectsSection.contains(image)) return;
@@ -91,7 +106,7 @@ permalink: /assets/js/research-image-modal.js
 
         event.preventDefault();
         event.stopPropagation();
-        openModal(image, link);
+        openModal(image, { link });
       },
       true
     );

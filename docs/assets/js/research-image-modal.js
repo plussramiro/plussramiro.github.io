@@ -1,1 +1,111 @@
-!function(){const e="research-image-modal",t="is-open",a="research-image-modal-open",r='a[data-project-category="research"], a[data-project-category="research-reference-figures"]',s="Research figure",c=()=>{const a=document.querySelector(`.${e}`);if(a)return a;const r=document.createElement("div");r.className=e,r.setAttribute("aria-hidden","true"),r.innerHTML='\n      <div class="research-image-modal__dialog" role="dialog" aria-modal="true" aria-label="Research figure">\n        <button type="button" class="research-image-modal__close" aria-label="Close image">&times;</button>\n        <div class="research-image-modal__image-wrap">\n          <img class="research-image-modal__image" alt="" />\n        </div>\n        <div class="research-image-modal__title"></div>\n      </div>\n    ',document.body.appendChild(r);return r.querySelector(".research-image-modal__close").addEventListener("click",()=>i(r)),r.addEventListener("click",e=>{e.target===r&&i(r)}),document.addEventListener("keydown",e=>{"Escape"===e.key&&r.classList.contains(t)&&i(r)}),r},i=e=>{const r=e.querySelector(".research-image-modal__image");r.src="",r.alt="",e.classList.remove(t),e.setAttribute("aria-hidden","true"),document.body.classList.remove(a)},n=(e,r)=>{const i=e.currentSrc||e.src||e.getAttribute("src");if(!i)return;const n=c(),o=n.querySelector(".research-image-modal__image"),d=n.querySelector(".research-image-modal__title"),l=r?.dataset.projectTitle||e.alt||s;o.src=i,o.alt=e.alt||l,d.textContent=l,n.classList.add(t),n.setAttribute("aria-hidden","false"),document.body.classList.add(a)};document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".projects");e&&e.addEventListener("click",t=>{if(t.defaultPrevented)return;if(0!==t.button)return;if(t.metaKey||t.ctrlKey||t.shiftKey||t.altKey)return;const a=t.target.closest(`${r} img`);if(!a||!e.contains(a))return;const s=a.closest(r);s&&(t.preventDefault(),t.stopPropagation(),n(a,s))},!0)})}();
+(function () {
+  const MODAL_CLASS = "research-image-modal";
+  const OPEN_CLASS = "is-open";
+  const BODY_OPEN_CLASS = "research-image-modal-open";
+  const INLINE_TRIGGER_SELECTOR = "[data-image-zoomable]";
+  const RESEARCH_CARD_SELECTOR =
+    'a[data-project-category="research"], a[data-project-category="research-reference-figures"]';
+  const FALLBACK_TITLE = "Research figure";
+
+  const createModal = () => {
+    const existing = document.querySelector(`.${MODAL_CLASS}`);
+    if (existing) return existing;
+
+    const overlay = document.createElement("div");
+    overlay.className = MODAL_CLASS;
+    overlay.setAttribute("aria-hidden", "true");
+
+    overlay.innerHTML = `
+      <div class="research-image-modal__dialog" role="dialog" aria-modal="true" aria-label="Research figure">
+        <button type="button" class="research-image-modal__close" aria-label="Close image">&times;</button>
+        <div class="research-image-modal__image-wrap">
+          <img class="research-image-modal__image" alt="" />
+        </div>
+        <div class="research-image-modal__title"></div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const closeButton = overlay.querySelector(".research-image-modal__close");
+    closeButton.addEventListener("click", () => closeModal(overlay));
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) closeModal(overlay);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && overlay.classList.contains(OPEN_CLASS)) {
+        closeModal(overlay);
+      }
+    });
+
+    return overlay;
+  };
+
+  const closeModal = (overlay) => {
+    const modalImage = overlay.querySelector(".research-image-modal__image");
+    const modalTitle = overlay.querySelector(".research-image-modal__title");
+    modalImage.src = "";
+    modalImage.alt = "";
+    modalTitle.textContent = "";
+    overlay.classList.remove(OPEN_CLASS);
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove(BODY_OPEN_CLASS);
+  };
+
+  const openModal = (image, options = {}) => {
+    const imageSrc = image.currentSrc || image.src || image.getAttribute("src");
+    if (!imageSrc) return;
+
+    const overlay = createModal();
+    const modalImage = overlay.querySelector(".research-image-modal__image");
+    const modalTitle = overlay.querySelector(".research-image-modal__title");
+    const title = options.title || options.link?.dataset.projectTitle || image.alt || FALLBACK_TITLE;
+
+    modalImage.src = imageSrc;
+    modalImage.alt = image.alt || title;
+    modalTitle.textContent = title;
+
+    overlay.classList.add(OPEN_CLASS);
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add(BODY_OPEN_CLASS);
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener(
+      "click",
+      (event) => {
+        if (event.defaultPrevented) return;
+        if (event.button !== 0) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+        const inlineTrigger = event.target.closest(INLINE_TRIGGER_SELECTOR);
+        if (inlineTrigger) {
+          const image = inlineTrigger.matches("img") ? inlineTrigger : inlineTrigger.querySelector("img");
+          if (!image) return;
+
+          const title = inlineTrigger.dataset.imageTitle || image.dataset.zoomTitle || image.alt || FALLBACK_TITLE;
+          event.preventDefault();
+          event.stopPropagation();
+          openModal(image, { title });
+          return;
+        }
+
+        const projectsSection = document.querySelector(".projects");
+        if (!projectsSection) return;
+
+        const image = event.target.closest(`${RESEARCH_CARD_SELECTOR} img`);
+        if (!image || !projectsSection.contains(image)) return;
+
+        const link = image.closest(RESEARCH_CARD_SELECTOR);
+        if (!link) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        openModal(image, { link });
+      },
+      true
+    );
+  });
+})();
