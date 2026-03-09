@@ -20,4 +20,4 @@ We study how connection density shapes synchronization, integration, and modular
 Links:
 - Preprint: [arXiv:2505.11437v3](https://arxiv.org/abs/2505.11437v3)
 - Repository copy: [ITBA repository](https://hdl.handle.net/20.500.14769/5113)
-- [van den Heuvel et al. (2016), comparative connectomics](http://dx.doi.org/10.1016/j.tics.2016.03.001)
+- van den Heuvel et al. (2016), comparative connectomics: [DOI](http://dx.doi.org/10.1016/j.tics.2016.03.001)
