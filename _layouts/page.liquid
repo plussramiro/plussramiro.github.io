@@ -17,7 +17,16 @@ layout: default
   {% assign project_hero_img = page.hero_img | default: page.img %}
   {% if page.collection == 'projects' and project_hero_img %}
     <div class="project-hero">
-      {% include figure.liquid loading="eager" path=project_hero_img alt=page.title class="project-hero__image" %}
+      <a
+        href="{{ project_hero_img | relative_url }}"
+        class="research-zoomable"
+        style="display: block; cursor: zoom-in; text-decoration: none;"
+        data-image-zoomable
+        data-image-title="{{ page.title | escape }}"
+        aria-label="Open project figure"
+      >
+        {% include figure.liquid loading="eager" path=project_hero_img alt=page.title class="project-hero__image" %}
+      </a>
     </div>
   {% endif %}
 
@@ -41,6 +50,10 @@ layout: default
     <div class="publications">
       {% bibliography --cited_in_order %}
     </div>
+  {% endif %}
+
+  {% if page.collection == 'projects' %}
+    <script defer src="{{ '/assets/js/research-image-modal.js' | relative_url | bust_file_cache }}"></script>
   {% endif %}
 
   {% if site.giscus and page.giscus_comments %}

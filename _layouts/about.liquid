@@ -27,10 +27,19 @@ layout: default
           {% endif %}
           {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
       30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
+          <a
+            href="{{ profile_image_path | relative_url }}"
+            class="research-zoomable"
+            style="display: block; cursor: zoom-in; text-decoration: none;"
+            data-image-zoomable
+            data-image-title="{{ site.title | default: page.title | escape }}"
+            aria-label="Open profile image"
+          >
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              cache_bust=true
+            %}
+          </a>
         {% endif %}
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
