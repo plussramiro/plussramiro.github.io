@@ -6,6 +6,7 @@ permalink: /assets/js/research-image-modal.js
   const OPEN_CLASS = "is-open";
   const BODY_OPEN_CLASS = "research-image-modal-open";
   const INLINE_TRIGGER_SELECTOR = "[data-image-zoomable]";
+  const ROBOTICS_IMAGE_SELECTOR = ".robotics-group-card .carousel-item .card-img-top";
   const RESEARCH_CARD_SELECTOR =
     'a[data-project-category="research"], a[data-project-category="research-reference-figures"]';
   const FALLBACK_TITLE = "Research figure";
@@ -92,6 +93,17 @@ permalink: /assets/js/research-image-modal.js
           event.preventDefault();
           event.stopPropagation();
           openModal(image, { title });
+          return;
+        }
+
+        const roboticsImage = event.target.closest(ROBOTICS_IMAGE_SELECTOR);
+        if (roboticsImage) {
+          const slide = roboticsImage.closest(".carousel-item");
+          const slideTitle = slide?.querySelector(".robotics-slide-title")?.textContent?.trim();
+          const title = slideTitle || roboticsImage.alt || FALLBACK_TITLE;
+          event.preventDefault();
+          event.stopPropagation();
+          openModal(roboticsImage, { title });
           return;
         }
 

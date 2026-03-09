@@ -39,6 +39,7 @@ _styles: |
     align-items: center;
     justify-content: space-between;
     gap: 0.6rem;
+    pointer-events: none;
   }
 
   .robotics-slide-title {
