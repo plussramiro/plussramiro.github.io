@@ -2,6 +2,8 @@
 layout: about
 title: About
 permalink: /
+seo_title: "Ramiro Plüss | Physicist and PhD(c)"
+seo_description: "Computational Neuroscience, Connectomics, Complex Systems & Bio-inspired Robotics | ITBA"
 subtitle: "<em>Computational Neuroscience, Connectomics, Complex Systems & Bioinspired Robotics</em>"
 
 profile:

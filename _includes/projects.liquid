@@ -8,6 +8,7 @@
     href="{{ project_href }}"
     data-project-category="{{ project.category | default: '' | slugify }}"
     data-project-title="{{ project.title | escape }}"
+    data-image-title="{{ project.image_zoom_title | default: project.title | escape }}"
     data-video-title="{{ project.video_title | default: project.title | escape }}"
     data-video-caption="{{ project.video_caption | default: '' | escape }}"
     data-video-source-label="{{ project.video_source_label | default: '' | escape }}"

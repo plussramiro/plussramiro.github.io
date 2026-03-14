@@ -65,7 +65,12 @@ permalink: /assets/js/research-image-modal.js
     const overlay = createModal();
     const modalImage = overlay.querySelector(".research-image-modal__image");
     const modalTitle = overlay.querySelector(".research-image-modal__title");
-    const title = options.title || options.link?.dataset.projectTitle || image.alt || FALLBACK_TITLE;
+    const title =
+      options.title ||
+      options.link?.dataset.imageTitle ||
+      options.link?.dataset.projectTitle ||
+      image.alt ||
+      FALLBACK_TITLE;
 
     modalImage.src = imageSrc;
     modalImage.alt = image.alt || title;
