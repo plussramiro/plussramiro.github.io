@@ -131,16 +131,27 @@ _styles: |
       grid-template-columns: 1fr;
     }
 
-    .media-card__embed .ratio {
-      max-width: 100%;
+    .media-card--vertical .media-card__embed {
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0;
     }
 
-    .media-card--vertical .media-card__embed .ratio {
-      max-width: 420px;
+    .media-card--vertical .media-instagram-frame {
+      width: min(100%, 430px);
+      height: 36.5rem;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .media-card--vertical .media-card__embed {
+      padding: 0;
     }
 
-    .media-instagram-frame {
-      height: 32rem;
+    .media-card--vertical .media-instagram-frame {
+      width: 100%;
+      height: 36rem;
     }
   }
 ---
