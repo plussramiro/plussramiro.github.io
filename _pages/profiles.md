@@ -88,23 +88,76 @@ _styles: |
   <p class="caption">Photos from lab activities and project demonstrations.</p>
 </div>
 
-### Current Research Group
+### Current Research Group (ITBA)
 
 <div class="research-date-wrap">
-  <span class="research-date-badge">Jul 2023 – Present</span>
+  <span class="research-date-badge">Jul 2023 - Present</span>
 </div>
 
 **Bioinspired Robotics Laboratory (ITBA)**
 
-Ramiro Plüss began working with Pablo Martin Gleiser in March 2022 during his undergraduate Physics thesis at the National University of Rosario (UNR), initially through remote collaboration, and continued this work in July 2023 as part of his PhD at ITBA. His current research focuses on connectomics-driven embodied robotics, with broader interests in adaptive networks, neural dynamics, and structure-dynamics-behavior relationships. In parallel, he develops bioinspired robotic platforms as experimental testbeds for closed-loop sensorimotor interaction and robust embodied control.
+Ramiro PlÃ¼ss began working with Pablo Martin Gleiser in March 2022 during his undergraduate Physics thesis at the National University of Rosario (UNR), initially through remote collaboration, and continued this work in July 2023 as part of his PhD at ITBA. His current research focuses on connectomics-driven embodied robotics, with broader interests in adaptive networks, neural dynamics, and structure-dynamics-behavior relationships. In parallel, he develops bioinspired robotic platforms as experimental testbeds for closed-loop sensorimotor interaction and robust embodied control.
 
 #### Lead Researcher
 
-**[Pablo Martin Gleiser](https://scholar.google.com/citations?user=WlU_A_UAAAAJ&hl=en)** first supervised Ramiro Plüss during his undergraduate Physics thesis at UNR, and later became his PhD advisor at ITBA. He is a physicist (BSc and PhD, National University of Cordoba, Argentina) and completed postdoctoral research at the Complex Systems Department, University of Barcelona, Spain. His academic work includes more than 50 scientific publications and interdisciplinary research spanning social-network analysis, connectomics, circadian rhythms, sleep studies, and robotics. His research interests include biological rhythms, synchronization, and complex systems.
+**[Pablo Martin Gleiser](https://scholar.google.com/citations?user=WlU_A_UAAAAJ&hl=en)** first supervised Ramiro PlÃ¼ss during his undergraduate Physics thesis at UNR, and later became his PhD advisor at ITBA. He is a physicist (BSc and PhD, National University of Cordoba, Argentina) and completed postdoctoral research at the Complex Systems Department, University of Barcelona, Spain. His academic work includes more than 50 scientific publications and interdisciplinary research spanning social-network analysis, connectomics, circadian rhythms, sleep studies, and robotics. His research interests include biological rhythms, synchronization, and complex systems.
 
 #### Lab Focus
 
 The lab combines computational neuroscience, connectomics, complex systems, and bioinspired robotics to study how network structure and neural dynamics shape behavior, and how these principles can be translated into embodied robotic platforms. Its current lines of work include connectome-informed embodied control inspired by C. elegans and Drosophila, as well as experimental and educational robotic testbeds for studying closed-loop sensorimotor interaction.
+
+<div class="research-clear"></div>
+<div class="research-divider"></div>
+
+<div class="profile float-right">
+  <div id="uv-iue-collab-carousel" class="carousel slide research-carousel z-depth-1" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+      <li data-target="#uv-iue-collab-carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#uv-iue-collab-carousel" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="{{ '/assets/img/research-group/uv_iue_colab/lawcn25_poster.jpeg' | relative_url }}"
+          class="d-block w-100 teaching-zoomable"
+          alt="Presentation of poster at LAWCN 25 with Patricio and Hernan"
+          loading="lazy"
+          data-zoom-group="uv-iue-collaboration"
+          data-zoom-title="Presentation of poster at LAWCN 25 with Patricio Orio and HernÃ¡n Villota."
+        >
+      </div>
+      <div class="carousel-item">
+        <img
+          src="{{ '/assets/img/research-group/uv_iue_colab/lawcn25_talk.jpeg' | relative_url }}"
+          class="d-block w-100 teaching-zoomable"
+          alt="Ramiro talk at LAWCN 25"
+          loading="lazy"
+          data-zoom-group="uv-iue-collaboration"
+          data-zoom-title="Ramiro presenting a talk at LAWCN 25."
+        >
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#uv-iue-collab-carousel" role="button" data-slide="prev" aria-label="Previous slide">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#uv-iue-collab-carousel" role="button" data-slide="next" aria-label="Next slide">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <p class="caption">LAWCN 25 collaborative activities: poster presentation and invited talk.</p>
+</div>
+
+### Collaborative Research (ITBA-UV-IUE)
+
+<div class="research-date-wrap">
+  <span class="research-date-badge">Jan 2025 - Present</span>
+</div>
+
+**Collaboration with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) and [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) (ITBA-UV-IUE)**
+
+Ramiro Plüss maintains a remote collaboration with [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) at the [Valparaíso Neural Dynamics Laboratory (VANDAL)](https://vandal-uv.github.io/), the [University of Valparaíso (UV)](https://cinv.uv.cl/), and with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) at the [University Institution of Envigado (IUE)](https://www.iue.edu.co/), focused on connectome-based whole-brain modeling and hemispheric-specific network dynamics. This collaboration originated at the Latin America Summer School of Computational Neuroscience [LACONEU](https://laconeu.cl/) held at the University of Valparaiso, where Patricio Orio served as mentor. Work initiated there later evolved into two posters and a conference paper. The collaboration currently centers on dynamic mean field (DMF) modeling to assess whether this framework improves the simulation of human brain functional activity.
 
 <div class="research-clear"></div>
 <div class="research-divider"></div>
@@ -171,7 +224,7 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
   <p class="caption">Previous research experience and project outputs at IFIR (UNR-CONICET).</p>
 </div>
 
-### Previous Research Experience
+### Research Experience at IFIR (UNR-CONICET)
 
 <div class="research-date-wrap">
   <span class="research-date-badge">Aug 2021 - Oct 2022</span>
@@ -179,7 +232,7 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
 
 **Biomedical Physics Group (IFIR, UNR - CONICET)**
 
-During his undergraduate Physics studies, Ramiro Plüss contributed to the UNR-CRH linkage project at IFIR (UNR-CONICET), which focused on the effects of ionizing radiation on biological systems and their applications in medical and biomedical physics. His selected contribution was Gomez Fava et al. (2022), a preliminary study on the viscoelastic properties of gamma-irradiated red blood cells using an erythrocyte rheometer, presented at the 107th Meeting of the Asociación Física Argentina (AFA) in Bariloche.
+During his undergraduate Physics studies, Ramiro PlÃ¼ss contributed to the UNR-CRH linkage project at IFIR (UNR-CONICET), which focused on the effects of ionizing radiation on biological systems and their applications in medical and biomedical physics. His selected contribution was Gomez Fava et al. (2022), a preliminary study on the viscoelastic properties of gamma-irradiated red blood cells using an erythrocyte rheometer, presented at the 107th Meeting of the Asociación Física Argentina (AFA) in Bariloche.
 
 #### Research Mentor
 
@@ -192,5 +245,6 @@ The group combines hemorheology, bio-optics, and biosignal analysis to study bio
 <div class="research-clear"></div>
 
 <script defer src="{{ '/assets/js/teaching-image-modal.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+
 
 
