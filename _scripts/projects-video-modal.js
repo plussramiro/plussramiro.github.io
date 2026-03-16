@@ -113,6 +113,21 @@ permalink: /assets/js/projects-video-modal.js
     return parts.join(" - ");
   };
 
+  const closeResearchImageModalIfOpen = () => {
+    const researchModal = document.querySelector(".research-image-modal.is-open");
+    if (!researchModal) return;
+
+    const closeButton = researchModal.querySelector(".research-image-modal__close");
+    if (closeButton) {
+      closeButton.click();
+      return;
+    }
+
+    researchModal.classList.remove("is-open");
+    researchModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("research-image-modal-open");
+  };
+
   const openModal = (videoUrl, triggerElement) => {
     const videoId = getYoutubeVideoId(videoUrl);
     if (!videoId) {
@@ -151,18 +166,19 @@ permalink: /assets/js/projects-video-modal.js
   };
 
   document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(VIDEO_TRIGGER_SELECTOR);
-    links.forEach((link) => {
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest(VIDEO_TRIGGER_SELECTOR);
+      if (!link) return;
+      if (event.defaultPrevented) return;
+      if (event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
       const href = link.getAttribute("href");
       if (!href || !YOUTUBE_HOST_RE.test(href)) return;
 
-      link.addEventListener("click", (event) => {
-        if (event.defaultPrevented) return;
-        if (event.button !== 0) return;
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        openModal(href, link);
-      });
+      event.preventDefault();
+      closeResearchImageModalIfOpen();
+      openModal(href, link);
     });
   });
 })();

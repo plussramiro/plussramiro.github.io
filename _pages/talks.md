@@ -3,8 +3,8 @@ layout: page
 permalink: /talks/
 title: Talks
 description: Invited talks, seminars, and conference poster presentations.
-nav: true
-nav_order: 2.5
+nav: false
+nav_order: 5
 ---
 
 {% assign cv = site.data.cv.cv %}

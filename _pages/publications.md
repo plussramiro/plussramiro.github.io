@@ -4,7 +4,7 @@ permalink: /publications/
 title: Publications
 description: Publications (peer-reviewed and preprints) in computational neuroscience, connectomics, and bioinspired robotics.
 nav: true
-nav_order: 2
+nav_order: 3
 ---
 
 <!-- _pages/publications.md -->

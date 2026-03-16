@@ -1,13 +1,19 @@
 ---
 layout: page
 title: Submenus
-nav: false
-nav_order: 8
+nav_title: More
+nav: true
+nav_order: 6
 dropdown: true
 children:
-  - title: bookshelf
-    permalink: /books/
-  - title: divider
-  - title: blog
-    permalink: /blog/
+  - title: Media
+    permalink: /media/
+  - title: Talks
+    permalink: /talks/
+  - title: Repositories
+    permalink: /repositories/
+  - title: Teaching
+    permalink: /teaching/
+  - title: Affiliations
+    permalink: /affiliations/
 ---

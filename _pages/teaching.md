@@ -1,13 +1,26 @@
 ---
 layout: page
 permalink: /teaching/
-title: Teaching
-description: Teaching activities and course support in bioinspired robotics.
-nav: true
-nav_order: 6
+title: Teaching at ITBA
+description: Teaching activities and course support in bioinspired robotics. The course is led by Dr. <a href="https://www.itba.edu.ar/docentes/pablo-gleiser/" target="_blank" rel="noopener noreferrer">Pablo Mart&iacute;n Gleiser</a>.
+seo_description: Teaching activities and course support in bioinspired robotics. The course is led by Dr. Pablo Martin Gleiser.
+nav: false
+nav_order: 9
 _styles: |
   .post .post-header .post-description {
     margin-bottom: 1.45rem;
+  }
+
+  .post .post-header .post-description a {
+    color: var(--global-theme-color) !important;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .post .post-header .post-description a:hover,
+  .post .post-header .post-description a:focus {
+    color: var(--global-theme-color) !important;
+    opacity: 0.9;
   }
 
   .teaching-date-wrap {
@@ -39,7 +52,7 @@ _styles: |
 
 <div class="profile float-right">
   <img
-    src="{{ '/assets/img/robotics/teaching.jpeg' | relative_url }}"
+    src="{{ '/assets/img/teaching/teaching.jpeg' | relative_url }}"
     class="img-fluid z-depth-1 rounded teaching-zoomable"
     alt="Bioinspired robotics projects in class"
     loading="eager"
@@ -54,7 +67,8 @@ _styles: |
 
 ### Teaching Assistant - Bioinspired Robotics, ITBA
 
-Ramiro Plüss supports laboratory sessions, student project development, and office hour guidance in the Bioinspired Robotics course at ITBA. The course is led by Dr. [Pablo Martín Gleiser](https://www.itba.edu.ar/docentes/pablo-gleiser/).
+Ramiro Pl&uuml;ss supports laboratory sessions, student project development, and office hour guidance in the Bioinspired Robotics course at ITBA.
+
 
 Current course focus:
 - Building basic robotic agents, including three-wheeled platforms with distance and light sensors inspired by Braitenberg vehicles.
@@ -68,3 +82,4 @@ These showcased robots are demonstration platforms; the course provides the tool
 
 <script defer src="{{ '/assets/js/teaching-image-modal.js' | relative_url | bust_file_cache }}"></script>
 <script defer src="{{ '/assets/js/projects-video-modal.js' | relative_url | bust_file_cache }}"></script>
+

@@ -9,29 +9,76 @@
 
 
 
+
+
 <!-- Standard metadata -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>
   
-  
     
-      CV | Ramiro Plüss
+      
+        CV | Ramiro Plüss
+      
     
   
 </title>
 <meta name="author" content="Ramiro Plüss">
 <meta name="description" content="Online CV with section anchors, plus PDF download.">
 
-  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+  <meta name="keywords" content="ramiro pluss, ramiro plüss, computational neuroscience, brain network modeling, wilson-cowan, dynamic mean field, complex networks, bioinspired robotics, artificial intelligence, itba, conicet">
 
 
 
 
 
 
+  <!-- OpenGraph -->
+  <meta property="og:site_name" content="Ramiro Plüss">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ramiro Plüss | CV">
+  <meta property="og:url" content="https://plussramiro.github.io/cv/">
+  <meta property="og:description" content="Online CV with section anchors, plus PDF download.">
+  
+    <meta property="og:image" content="https://plussramiro.github.io/assets/img/ramiropluss-icon.png">
+  
+  <meta property="og:locale" content="en">
 
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CV">
+  <meta name="twitter:description" content="Online CV with section anchors, plus PDF download.">
+  
+    <meta name="twitter:image" content="https://plussramiro.github.io/assets/img/ramiropluss-icon.png">
+  
+  
+
+
+
+  <!-- Schema.org -->
+  
+  
+  
+
+  <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Ramiro Plüss"
+        },
+        "url": "https://plussramiro.github.io/cv/",
+        "@type": "WebSite",
+        "description": "Online CV with section anchors, plus PDF download.",
+        "headline": "CV",
+        
+        "sameAs": [null,"https://www.linkedin.com/in/ramiropluss","https://github.com/plussramiro","https://scholar.google.com/citations?user=l1XV7YYAAAAJ","https://orcid.org/0009-0000-6502-0668","https://www.researchgate.net/profile/Ramiro-Pluess/"],
+        
+        "name": "Ramiro Plüss",
+        "@context": "https://schema.org"
+    }
+  </script>
 
 
 
@@ -67,6 +114,154 @@
   <link rel="shortcut icon" href="/assets/img/ramiropluss-icon.png">
 
 <link rel="stylesheet" href="/assets/css/main.css">
+<style>
+  .video-modal__dialog {
+    width: min(560px, 95vw);
+  }
+
+  .video-modal__frame-wrap {
+    width: min(92vw, calc((94vh - 7.5rem) * 9 / 16));
+    max-width: 420px;
+    aspect-ratio: 9 / 16;
+    padding-top: 0;
+    margin: 0 auto;
+    background: #000;
+  }
+
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    .publications .row {
+      --bs-gutter-x: 1.35rem;
+    }
+
+    .publications .abbr {
+      width: 108px;
+      max-width: 108px;
+      padding-right: 0.25rem;
+    }
+
+    .publications .abbr .badge {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0;
+    }
+
+    .publications .abbr figure {
+      margin: 0 0 0.45rem 0;
+    }
+
+    .publications .abbr .preview,
+    .publications .abbr img.preview {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .cv .date-column .badge {
+      font-size: 0.62rem;
+      line-height: 1.1;
+      padding: 0.12rem 0.3rem;
+      min-width: 0 !important;
+      max-width: 72px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .publications .abbr {
+      max-width: 88px;
+      width: 88px;
+    }
+
+    .publications .abbr .badge {
+      max-width: 88px;
+    }
+
+    .publications .abbr figure,
+    .publications .abbr .preview,
+    .publications .abbr img.preview {
+      display: none !important;
+    }
+  }
+
+  .publications h2.bibliography {
+    color: var(--global-text-color);
+  }
+
+  .profile-about .more-info {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .profile-about .more-info p {
+    display: block;
+    margin: 0.18rem 0;
+    font-weight: 700;
+  }
+
+  .profile-about .more-info i {
+    display: inline-block;
+    width: 1rem;
+    margin-right: 0.35rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 767.98px) {
+    .profile-about .more-info {
+      font-size: 1.08rem;
+      line-height: 1.32;
+      margin-bottom: 0.85rem;
+    }
+
+    .profile-about .more-info p {
+      margin: 0.26rem 0;
+      white-space: normal;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 900px) {
+    .profile-about {
+      width: 35%;
+    }
+
+    .profile-about img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .profile-about .more-info {
+      font-size: 0.83rem;
+      line-height: 1.2;
+    }
+
+    .profile-about .more-info p {
+      margin: 0.18rem 0;
+      white-space: nowrap;
+    }
+
+    .profile-about .more-info i {
+      width: 0.95rem;
+      margin-right: 0.3rem;
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .profile-about .more-info {
+      font-size: 0.96rem;
+      line-height: 1.25;
+    }
+
+    .profile-about .more-info p {
+      white-space: nowrap;
+    }
+  }
+</style>
 <link rel="canonical" href="https://plussramiro.github.io/cv/">
 
 
@@ -97,7 +292,7 @@
     <!-- Header -->
     <header>
   <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg fixed-top" role="navigation">
     <div class="container">
       
         <a class="navbar-brand title font-weight-lighter" href="/">
@@ -184,17 +379,6 @@
               
                 
                 <li class="nav-item ">
-                  <a class="nav-link" href="/publications/">Publications
-                    
-                  </a>
-                </li>
-              
-            
-          
-            
-              
-                
-                <li class="nav-item ">
                   <a class="nav-link" href="/projects/">Projects
                     
                   </a>
@@ -206,7 +390,18 @@
               
                 
                 <li class="nav-item ">
-                  <a class="nav-link" href="/repositories/">Repositories
+                  <a class="nav-link" href="/publications/">Publications
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/research-experience/">Research Experience
                     
                   </a>
                 </li>
@@ -227,25 +422,46 @@
             
           
             
-              
-                
-                <li class="nav-item ">
-                  <a class="nav-link" href="/teaching/">Teaching
-                    
-                  </a>
-                </li>
-              
+          
             
           
             
               
                 
-                <li class="nav-item ">
-                  <a class="nav-link" href="/people/">Lab
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More
                     
                   </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    
+                      
+                        <a class="dropdown-item " href="/media/">Media</a>
+                      
+                    
+                      
+                        <a class="dropdown-item " href="/talks/">Talks</a>
+                      
+                    
+                      
+                        <a class="dropdown-item " href="/repositories/">Repositories</a>
+                      
+                    
+                      
+                        <a class="dropdown-item " href="/teaching/">Teaching</a>
+                      
+                    
+                      
+                        <a class="dropdown-item " href="/affiliations/">Affiliations</a>
+                      
+                    
+                  </div>
                 </li>
               
+            
+          
+            
+          
             
           
             
@@ -581,7 +797,7 @@
               <div class="d-none d-lg-block col-lg-2 cv-sidebar-spacer"></div>
             
             <!-- main content area -->
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-md-9 col-lg-8">
 
 <div class="post">
   <header class="post-header">
@@ -656,7 +872,7 @@
           <a class="anchor" id="professional-summary"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Professional Summary</h3>
-            <p>My research focuses on the bidirectional relationship between network structure, neural dynamics, and behavior, combining computational neuroscience, network models, and bio-inspired robotics to study proprioception and embodied control. I build bio-inspired robotic testbeds to study embodied motor control with computational neuroscience models.
+            <p>Ramiro Plüss’s research focuses on the bidirectional relationship between network structure, neural dynamics, and behavior. He combines computational neuroscience, network models, and bio-inspired robotics to study proprioception and embodied control. He builds bio-inspired robotic testbeds that integrate computational neuroscience models to investigate embodied motor control.
 </p>
           </div>
         
@@ -1038,6 +1254,57 @@
               <tbody>
                 <tr>
                   <td>
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Dec 2025 - Present</span>
+                  </td>
+                </tr>
+                
+                  <tr>
+                    <td>
+                      <p class="location">
+                        <i class="fa-solid fa-location-dot iconlocation"></i>
+                        CABA, Argentina
+                      </p>
+                    </td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+        
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">Whole-brain WC/DMF modeling: hemispheric coupling for multi-scale SC-FC</h6>
+            
+
+            
+            
+              <p class="ml-1 ml-md-4">Buenos Aires Institute of Technology (ITBA; Buenos Aires, Argentina), University Institution of Envigado (IUE; Envigado, Colombia), and University of Valparaiso / Interdisciplinary Center for Neuroscience of Valparaiso (UV/CINV; Valparaiso, Chile). Benchmarking global vs. hemispheric-specific coupling across parcellation scales and SC variability.
+</p>
+            
+
+            
+          </div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <div class="row">
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
                     <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Mar 2025 - Present</span>
                   </td>
                 </tr>
@@ -1114,57 +1381,6 @@
             
             
               <p class="ml-1 ml-md-4">Developing and extending an animatronic platform with vision and natural-language interaction capabilities.
-</p>
-            
-
-            
-          </div>
-      </div>
-    </li>
-  
-    <li class="list-group-item">
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-      <div class="row">
-        
-          <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
-            <table class="table-cv">
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Dec 2025 - Present</span>
-                  </td>
-                </tr>
-                
-                  <tr>
-                    <td>
-                      <p class="location">
-                        <i class="fa-solid fa-location-dot iconlocation"></i>
-                        CABA, Argentina
-                      </p>
-                    </td>
-                  </tr>
-                
-              </tbody>
-            </table>
-          </div>
-          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
-        
-            
-              <h6 class="title font-weight-bold ml-1 ml-md-4">Whole-brain WC/DMF modeling: hemispheric coupling for multi-scale SC-FC</h6>
-            
-
-            
-            
-              <p class="ml-1 ml-md-4">Buenos Aires Institute of Technology (ITBA; Buenos Aires, Argentina), University Institution of Envigado (IUE; Envigado, Colombia), and University of Valparaiso / Interdisciplinary Center for Neuroscience of Valparaiso (UV/CINV; Valparaiso, Chile). Benchmarking global vs. hemispheric-specific coupling across parcellation scales and SC variability.
 </p>
             
 
@@ -1778,7 +1994,7 @@
                     <p class="location">
                       <i class="fa-solid fa-location-dot iconlocation"></i>
                       
-                Bahia Blanca, Argentina
+                Bahia Blanca, Arg.
               
                     </p>
                   </td>
@@ -2133,7 +2349,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Apr 2022 - Present</span>
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Apr 2023 - Present</span>
                   </td>
                 </tr>
                 
@@ -2478,7 +2694,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Nov 2024</span>
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Aug 2024 - Nov 2024</span>
                   </td>
                 </tr>
                 
@@ -2531,7 +2747,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Nov 2024</span>
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Aug 2024 - Nov 2024</span>
                   </td>
                 </tr>
                 
@@ -2690,7 +2906,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Jun 2024</span>
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Mar 2024 - Jun 2024</span>
                   </td>
                 </tr>
                 
@@ -2796,7 +3012,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Dec 2023</span>
+                    <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">Aug 2023 - Dec 2023</span>
                   </td>
                 </tr>
                 
@@ -3755,7 +3971,7 @@
 
 </div>
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="d-none d-lg-block col-lg-2">
+            <div class="d-none d-md-block col-md-3 col-lg-2">
               
                 <nav id="toc-sidebar" class="sticky-top cv-manual-toc">
                   
@@ -3825,10 +4041,7 @@
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
       
-  © Copyright 2026
-  Ramiro
-  
-  Plüss. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+  © 2026 Ramiro Plüss · All rights reserved · Built with GitHub Pages
 
   
   
@@ -3843,7 +4056,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <!-- Bootsrap & MDB scripts -->
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
 

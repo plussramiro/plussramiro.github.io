@@ -204,18 +204,22 @@ exclude:
   - lighthouse_results/
   - media/
   - news/
+  - affiliations/
   - package.json
   - package-lock.json
   - people/
   - projects/
   - public/
   - publications/
+  - research-group/
+  - research-experience/
   - _pages/about_einstein.md
   - _pages/dropdown/index.html
   - purgecss.config.js
   - README.md
   - readme_preview/
   - repositories/
+  - talks/
   - robots.txt
   - sitemap.xml
   - teaching/

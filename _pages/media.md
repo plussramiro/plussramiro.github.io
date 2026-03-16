@@ -3,8 +3,8 @@ layout: page
 permalink: /media/
 title: Media
 description: Interviews, institutional features, and outreach videos.
-nav: true
-nav_order: 6.8
+nav: false
+nav_order: 6
 _styles: |
   .post .post-header .post-description {
     margin-bottom: 1rem;

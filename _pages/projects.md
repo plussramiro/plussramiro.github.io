@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 description: Research and development projects across computational neuroscience, connectomics, and embodied robotics.
 nav: true
-nav_order: 3
+nav_order: 2
 display_categories:
   - "Research & Reference Figures"
   - "Robotics Prototypes & Evolution"
@@ -90,6 +90,50 @@ _styles: |
     border-radius: 50%;
   }
 
+  .research-image-modal__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 0.9rem 0.9rem;
+  }
+
+  .research-image-modal__title {
+    flex: none;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .research-image-modal__actions[hidden] {
+    display: none;
+  }
+
+  .research-image-modal__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .research-image-modal__video-link {
+    min-width: 10.8rem;
+    font-size: 0.8rem;
+    line-height: 1.1;
+    padding: 0.42rem 0.85rem;
+    text-align: center;
+  }
+
+  .research-image-modal__dialog.has-video-action .research-image-modal__image-wrap {
+    max-height: calc(92vh - 7.8rem);
+  }
+
+  .research-image-modal__dialog.has-video-action .research-image-modal__image {
+    max-height: calc(92vh - 10.1rem);
+  }
+
   @media (max-width: 767.98px) {
     .robotics-group-card .card-img-top {
       aspect-ratio: 4 / 5;
@@ -99,6 +143,10 @@ _styles: |
       min-height: 2.2rem;
       min-width: 8rem;
       padding: 0.42rem 0.8rem;
+    }
+
+    .research-image-modal__footer {
+      gap: 0.42rem;
     }
   }
 ---

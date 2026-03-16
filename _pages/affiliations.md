@@ -3,8 +3,8 @@ layout: page
 permalink: /affiliations/
 title: Affiliations & Support
 nav_title: Affiliations
-nav: true
-nav_order: 8
+nav: false
+nav_order: 11
 description: Institutional affiliations and academic support.
 ---
 
