@@ -76,6 +76,14 @@ _styles: |
   }
 ---
 
+### Current Research Group (ITBA)
+
+<div class="research-date-wrap">
+  <span class="research-date-badge">Jul 2023 - Present</span>
+</div>
+
+**Bioinspired Robotics Laboratory (ITBA)**
+
 <div class="profile float-right">
   <img
     src="{{ '/assets/img/research-group/br_lab/lab-gleiser.jpeg' | relative_url }}"
@@ -88,19 +96,12 @@ _styles: |
   <p class="caption">Photos from lab activities and project demonstrations.</p>
 </div>
 
-### Current Research Group (ITBA)
 
-<div class="research-date-wrap">
-  <span class="research-date-badge">Jul 2023 - Present</span>
-</div>
-
-**Bioinspired Robotics Laboratory (ITBA)**
-
-Ramiro PlÃ¼ss began working with Pablo Martin Gleiser in March 2022 during his undergraduate Physics thesis at the National University of Rosario (UNR), initially through remote collaboration, and continued this work in July 2023 as part of his PhD at ITBA. His current research focuses on connectomics-driven embodied robotics, with broader interests in adaptive networks, neural dynamics, and structure-dynamics-behavior relationships. In parallel, he develops bioinspired robotic platforms as experimental testbeds for closed-loop sensorimotor interaction and robust embodied control.
+Ramiro Plüss began working with Pablo Martin Gleiser in March 2022 during his undergraduate Physics thesis at the National University of Rosario (UNR), initially through remote collaboration, and continued this work in July 2023 as part of his PhD at ITBA. His current research focuses on connectomics-driven embodied robotics, with broader interests in adaptive networks, neural dynamics, and structure-dynamics-behavior relationships. In parallel, he develops bioinspired robotic platforms as experimental testbeds for closed-loop sensorimotor interaction and robust embodied control.
 
 #### Lead Researcher
 
-**[Pablo Martin Gleiser](https://scholar.google.com/citations?user=WlU_A_UAAAAJ&hl=en)** first supervised Ramiro PlÃ¼ss during his undergraduate Physics thesis at UNR, and later became his PhD advisor at ITBA. He is a physicist (BSc and PhD, National University of Cordoba, Argentina) and completed postdoctoral research at the Complex Systems Department, University of Barcelona, Spain. His academic work includes more than 50 scientific publications and interdisciplinary research spanning social-network analysis, connectomics, circadian rhythms, sleep studies, and robotics. His research interests include biological rhythms, synchronization, and complex systems.
+**[Pablo Martin Gleiser](https://scholar.google.com/citations?user=WlU_A_UAAAAJ&hl=en)** first supervised Ramiro Plüss during his undergraduate Physics thesis at UNR, and later became his PhD advisor at ITBA. He is a physicist (BSc and PhD, National University of Cordoba, Argentina) and completed postdoctoral research at the Complex Systems Department, University of Barcelona, Spain. His academic work includes more than 50 scientific publications and interdisciplinary research spanning social-network analysis, connectomics, circadian rhythms, sleep studies, and robotics. His research interests include biological rhythms, synchronization, and complex systems.
 
 #### Lab Focus
 
@@ -108,6 +109,14 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
 
 <div class="research-clear"></div>
 <div class="research-divider"></div>
+
+### Collaborative Research (ITBA-UV-IUE)
+
+<div class="research-date-wrap">
+  <span class="research-date-badge">Jan 2025 - Present</span>
+</div>
+
+**Collaboration with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) and [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) (ITBA-UV-IUE)**
 
 <div class="profile float-right">
   <div id="uv-iue-collab-carousel" class="carousel slide research-carousel z-depth-1" data-ride="carousel" data-interval="false">
@@ -123,7 +132,7 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
           alt="Presentation of poster at LAWCN 25 with Patricio and Hernan"
           loading="lazy"
           data-zoom-group="uv-iue-collaboration"
-          data-zoom-title="Presentation of poster at LAWCN 25 with Patricio Orio and HernÃ¡n Villota."
+          data-zoom-title="Presentation of poster at LAWCN 25 with Patricio Orio and Hernán Villota."
         >
       </div>
       <div class="carousel-item">
@@ -149,18 +158,19 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
   <p class="caption">LAWCN 25 collaborative activities: poster presentation and invited talk.</p>
 </div>
 
-### Collaborative Research (ITBA-UV-IUE)
-
-<div class="research-date-wrap">
-  <span class="research-date-badge">Jan 2025 - Present</span>
-</div>
-
-**Collaboration with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) and [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) (ITBA-UV-IUE)**
 
 Ramiro Plüss maintains a remote collaboration with [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) at the [Valparaíso Neural Dynamics Laboratory (VANDAL)](https://vandal-uv.github.io/), the [University of Valparaíso (UV)](https://cinv.uv.cl/), and with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) at the [University Institution of Envigado (IUE)](https://www.iue.edu.co/), focused on connectome-based whole-brain modeling and hemispheric-specific network dynamics. This collaboration originated at the Latin America Summer School of Computational Neuroscience [LACONEU](https://laconeu.cl/) held at the University of Valparaiso, where Patricio Orio served as mentor. Work initiated there later evolved into two posters and a conference paper. The collaboration currently centers on dynamic mean field (DMF) modeling to assess whether this framework improves the simulation of human brain functional activity.
 
 <div class="research-clear"></div>
 <div class="research-divider"></div>
+
+### Research Experience at IFIR (UNR-CONICET)
+
+<div class="research-date-wrap">
+  <span class="research-date-badge">Aug 2021 - Oct 2022</span>
+</div>
+
+**Biomedical Physics Group (IFIR, UNR - CONICET)**
 
 <div class="profile float-right">
   <div id="mariel-research-carousel" class="carousel slide research-carousel z-depth-1" data-ride="carousel" data-interval="false">
@@ -224,15 +234,8 @@ Ramiro Plüss maintains a remote collaboration with [Patricio Orio](https://scho
   <p class="caption">Previous research experience and project outputs at IFIR (UNR-CONICET).</p>
 </div>
 
-### Research Experience at IFIR (UNR-CONICET)
 
-<div class="research-date-wrap">
-  <span class="research-date-badge">Aug 2021 - Oct 2022</span>
-</div>
-
-**Biomedical Physics Group (IFIR, UNR - CONICET)**
-
-During his undergraduate Physics studies, Ramiro PlÃ¼ss contributed to the UNR-CRH linkage project at IFIR (UNR-CONICET), which focused on the effects of ionizing radiation on biological systems and their applications in medical and biomedical physics. His selected contribution was Gomez Fava et al. (2022), a preliminary study on the viscoelastic properties of gamma-irradiated red blood cells using an erythrocyte rheometer, presented at the 107th Meeting of the Asociación Física Argentina (AFA) in Bariloche.
+During his undergraduate Physics studies, Ramiro Plüss contributed to the UNR-CRH linkage project at IFIR (UNR-CONICET), which focused on the effects of ionizing radiation on biological systems and their applications in medical and biomedical physics. His selected contribution was Gomez Fava et al. (2022), a preliminary study on the viscoelastic properties of gamma-irradiated red blood cells using an erythrocyte rheometer, presented at the 107th Meeting of the Asociación Física Argentina (AFA) in Bariloche.
 
 #### Research Mentor
 
