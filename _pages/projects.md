@@ -20,12 +20,20 @@ _styles: |
     position: relative;
   }
 
+  .robotics-group-card .carousel-inner {
+    background-color: rgba(0, 0, 0, 0.28);
+    transition: height 260ms ease;
+  }
+
   .robotics-group-card .card-img-top {
     width: 100%;
-    aspect-ratio: 3 / 4;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
+  }
+
+  .robotics-group-card.carousel-fade .carousel-item {
+    transition: opacity 280ms ease-in-out;
   }
 
   .robotics-slide-overlay {
@@ -134,11 +142,16 @@ _styles: |
     max-height: calc(92vh - 10.1rem);
   }
 
-  @media (max-width: 767.98px) {
-    .robotics-group-card .card-img-top {
-      aspect-ratio: 4 / 5;
-    }
+  .research-image-modal__image {
+    opacity: 0;
+    transition: opacity 220ms ease-in-out;
+  }
 
+  .research-image-modal__image.is-visible {
+    opacity: 1;
+  }
+
+  @media (max-width: 767.98px) {
     .robotics-video-link {
       min-height: 2.2rem;
       min-width: 8rem;
@@ -173,7 +186,7 @@ _styles: |
         {% assign carousel_id = "robotics-carousel-" | append: forloop.index %}
         <div class="col">
           <div class="card h-100 hoverable robotics-group-card">
-            <div id="{{ carousel_id }}" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div id="{{ carousel_id }}" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
               <div class="carousel-inner">
                 {% for project in group_items %}
                   {% if project.redirect %}
@@ -286,3 +299,62 @@ _styles: |
 
 <script defer src="{{ '/assets/js/projects-video-modal.js' | relative_url | bust_file_cache }}"></script>
 <script defer src="{{ '/assets/js/research-image-modal.js' | relative_url | bust_file_cache }}"></script>
+<script>
+  (function () {
+    function getRenderedHeight(img) {
+      if (!img) return 0;
+      if (img.complete && img.naturalWidth > 0) {
+        return Math.round(img.getBoundingClientRect().height);
+      }
+      return 0;
+    }
+
+    function setCarouselHeight(carousel, img) {
+      var inner = carousel.querySelector(".carousel-inner");
+      if (!inner) return;
+
+      var targetImg = img || carousel.querySelector(".carousel-item.active img");
+      if (!targetImg) return;
+
+      var applyHeight = function () {
+        var h = getRenderedHeight(targetImg);
+        if (h > 0) {
+          inner.style.height = h + "px";
+        }
+      };
+
+      if (targetImg.complete && targetImg.naturalWidth > 0) {
+        applyHeight();
+      } else {
+        targetImg.addEventListener("load", applyHeight, { once: true });
+      }
+    }
+
+    function initRoboticsCarousel(carousel) {
+      setCarouselHeight(carousel);
+
+      if (window.jQuery) {
+        var $carousel = window.jQuery(carousel);
+        $carousel.on("slide.bs.carousel", function (event) {
+          if (event.relatedTarget) {
+            setCarouselHeight(carousel, event.relatedTarget.querySelector("img"));
+          }
+        });
+        $carousel.on("slid.bs.carousel", function () {
+          setCarouselHeight(carousel);
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var carousels = document.querySelectorAll(".robotics-group-card .carousel");
+      carousels.forEach(initRoboticsCarousel);
+
+      window.addEventListener("resize", function () {
+        carousels.forEach(function (carousel) {
+          setCarouselHeight(carousel);
+        });
+      });
+    });
+  })();
+</script>

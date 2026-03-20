@@ -11,6 +11,7 @@ permalink: /assets/js/research-image-modal.js
     'a[data-project-category="research"], a[data-project-category="research-reference-figures"]';
   const FALLBACK_TITLE = "Research figure";
   const ROBOTICS_VIDEO_LINK_SELECTOR = ".robotics-video-link";
+  const IMAGE_VISIBLE_CLASS = "is-visible";
   const NAV_BUTTON_BASE_STYLE =
     "position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:2.2rem;height:2.2rem;border:1px solid var(--global-divider-color);border-radius:999px;background:rgba(0,0,0,.45);color:#fff;font-size:1.3rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;";
 
@@ -124,6 +125,7 @@ permalink: /assets/js/research-image-modal.js
     const dialog = overlay.querySelector(".research-image-modal__dialog");
     modalImage.src = "";
     modalImage.alt = "";
+    modalImage.classList.remove(IMAGE_VISIBLE_CLASS);
     modalTitle.textContent = "";
     if (dialog) dialog.classList.remove("has-video-action");
     if (actions) actions.hidden = true;
@@ -160,9 +162,20 @@ permalink: /assets/js/research-image-modal.js
     const title = current.title || current.image.alt || FALLBACK_TITLE;
     const videoUrl = current.videoUrl || "";
 
+    modalImage.classList.remove(IMAGE_VISIBLE_CLASS);
     modalImage.src = imageSrc;
     modalImage.alt = current.image.alt || title;
     modalTitle.textContent = title;
+    const revealImage = () => {
+      window.requestAnimationFrame(() => {
+        modalImage.classList.add(IMAGE_VISIBLE_CLASS);
+      });
+    };
+    if (modalImage.complete && modalImage.naturalWidth > 0) {
+      revealImage();
+    } else {
+      modalImage.addEventListener("load", revealImage, { once: true });
+    }
     if (dialog) dialog.classList.toggle("has-video-action", Boolean(videoUrl));
 
     const hasMultiple = state.items.length > 1;
