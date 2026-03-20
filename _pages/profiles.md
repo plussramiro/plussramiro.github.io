@@ -37,12 +37,21 @@ _styles: |
     overflow: hidden;
   }
 
+  .research-carousel .carousel-inner {
+    background-color: rgba(0, 0, 0, 0.28);
+    transition: height 260ms ease;
+  }
+
   .research-carousel .carousel-item img {
     width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     object-position: center;
     cursor: zoom-in;
+  }
+
+  .research-carousel.carousel-fade .carousel-item {
+    transition: opacity 280ms ease-in-out;
   }
 
   .research-carousel .carousel-control-prev,
@@ -119,7 +128,7 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
 **Collaboration with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) and [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) (ITBA-UV-IUE)**
 
 <div class="profile float-right">
-  <div id="uv-iue-collab-carousel" class="carousel slide research-carousel z-depth-1" data-ride="carousel" data-interval="false">
+  <div id="uv-iue-collab-carousel" class="carousel slide carousel-fade research-carousel z-depth-1" data-ride="carousel" data-interval="false">
     <ol class="carousel-indicators">
       <li data-target="#uv-iue-collab-carousel" data-slide-to="0" class="active"></li>
       <li data-target="#uv-iue-collab-carousel" data-slide-to="1"></li>
@@ -173,7 +182,7 @@ Ramiro Plüss maintains a remote collaboration with [Patricio Orio](https://scho
 **Biomedical Physics Group (IFIR, UNR - CONICET)**
 
 <div class="profile float-right">
-  <div id="mariel-research-carousel" class="carousel slide research-carousel z-depth-1" data-ride="carousel" data-interval="false">
+  <div id="mariel-research-carousel" class="carousel slide carousel-fade research-carousel z-depth-1" data-ride="carousel" data-interval="false">
     <ol class="carousel-indicators">
       <li data-target="#mariel-research-carousel" data-slide-to="0" class="active"></li>
       <li data-target="#mariel-research-carousel" data-slide-to="1"></li>
@@ -248,6 +257,65 @@ The group combines hemorheology, bio-optics, and biosignal analysis to study bio
 <div class="research-clear"></div>
 
 <script defer src="{{ '/assets/js/teaching-image-modal.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+<script>
+  (function () {
+    function getRenderedHeight(img) {
+      if (!img) return 0;
+      if (img.complete && img.naturalWidth > 0) {
+        return Math.round(img.getBoundingClientRect().height);
+      }
+      return 0;
+    }
+
+    function setCarouselHeight(carousel, img) {
+      var inner = carousel.querySelector(".carousel-inner");
+      if (!inner) return;
+
+      var targetImg = img || carousel.querySelector(".carousel-item.active img");
+      if (!targetImg) return;
+
+      var applyHeight = function () {
+        var h = getRenderedHeight(targetImg);
+        if (h > 0) {
+          inner.style.height = h + "px";
+        }
+      };
+
+      if (targetImg.complete && targetImg.naturalWidth > 0) {
+        applyHeight();
+      } else {
+        targetImg.addEventListener("load", applyHeight, { once: true });
+      }
+    }
+
+    function initResearchCarousel(carousel) {
+      setCarouselHeight(carousel);
+
+      if (window.jQuery) {
+        var $carousel = window.jQuery(carousel);
+        $carousel.on("slide.bs.carousel", function (event) {
+          if (event.relatedTarget) {
+            setCarouselHeight(carousel, event.relatedTarget.querySelector("img"));
+          }
+        });
+        $carousel.on("slid.bs.carousel", function () {
+          setCarouselHeight(carousel);
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var carousels = document.querySelectorAll(".research-carousel");
+      carousels.forEach(initResearchCarousel);
+
+      window.addEventListener("resize", function () {
+        carousels.forEach(function (carousel) {
+          setCarouselHeight(carousel);
+        });
+      });
+    });
+  })();
+</script>
 
 
 
