@@ -32,6 +32,19 @@ _styles: |
     object-position: center;
   }
 
+  .projects a[data-project-category="research"] .card-img-top,
+  .projects a[data-project-category="research-reference-figures"] .card-img-top {
+    height: 120px;
+    object-fit: contain;
+    object-position: center;
+    background-color: #fff;
+  }
+
+  .projects a#research-reference-figures .category,
+  .projects a#robotics-prototypes-evolution .category {
+    text-align: left;
+  }
+
   .robotics-group-card.carousel-fade .carousel-item {
     transition: opacity 280ms ease-in-out;
   }
@@ -140,6 +153,62 @@ _styles: |
 
   .research-image-modal__dialog.has-video-action .research-image-modal__image {
     max-height: calc(92vh - 10.1rem);
+  }
+
+  @media (max-width: 767.98px) {
+    .projects .category {
+      text-align: left;
+    }
+
+    .projects a#research-reference-figures .category,
+    .projects a#robotics-prototypes-evolution .category {
+      font-size: 2rem;
+      line-height: 1.05;
+      text-align: left;
+      white-space: normal;
+    }
+
+    .robotics-group-card .card-img-top {
+      height: 420px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .robotics-group-card .carousel-control-prev,
+    .robotics-group-card .carousel-control-next {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .projects .category {
+      text-align: left;
+    }
+
+    .projects a#research-reference-figures .category,
+    .projects a#robotics-prototypes-evolution .category {
+      text-align: left;
+      white-space: normal;
+    }
+
+    .robotics-group-card .card-img-top {
+      height: 500px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .robotics-group-card .carousel-control-prev,
+    .robotics-group-card .carousel-control-next {
+      display: none;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .robotics-group-card .card-img-top {
+      height: 440px;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   .research-image-modal__image {
@@ -301,6 +370,54 @@ _styles: |
 <script defer src="{{ '/assets/js/research-image-modal.js' | relative_url | bust_file_cache }}"></script>
 <script>
   (function () {
+    var SWIPE_THRESHOLD = 40;
+
+    function moveCarousel(carousel, direction) {
+      if (!carousel) return;
+      if (window.jQuery) {
+        window.jQuery(carousel).carousel(direction);
+      }
+    }
+
+    function enableTouchSwipe(carousel) {
+      if (!carousel) return;
+
+      var startX = 0;
+      var startY = 0;
+      var tracking = false;
+
+      carousel.addEventListener(
+        "touchstart",
+        function (event) {
+          if (!event.touches || event.touches.length !== 1) return;
+          if (event.target && event.target.closest("a, button")) return;
+          startX = event.touches[0].clientX;
+          startY = event.touches[0].clientY;
+          tracking = true;
+        },
+        { passive: true }
+      );
+
+      carousel.addEventListener(
+        "touchend",
+        function (event) {
+          if (!tracking || !event.changedTouches || event.changedTouches.length !== 1) return;
+          tracking = false;
+
+          var endX = event.changedTouches[0].clientX;
+          var endY = event.changedTouches[0].clientY;
+          var deltaX = endX - startX;
+          var deltaY = endY - startY;
+
+          if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+          if (Math.abs(deltaY) > Math.abs(deltaX)) return;
+
+          moveCarousel(carousel, deltaX < 0 ? "next" : "prev");
+        },
+        { passive: true }
+      );
+    }
+
     function getRenderedHeight(img) {
       if (!img) return 0;
       if (img.complete && img.naturalWidth > 0) {
@@ -332,6 +449,7 @@ _styles: |
 
     function initRoboticsCarousel(carousel) {
       setCarouselHeight(carousel);
+      enableTouchSwipe(carousel);
 
       if (window.jQuery) {
         var $carousel = window.jQuery(carousel);
