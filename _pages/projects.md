@@ -14,10 +14,29 @@ _styles: |
     .container.mt-5[role='main'] {
       max-width: 1280px;
     }
+
+    .robotics-group-card .carousel-inner {
+      height: 410px;
+    }
+
+    .robotics-group-card .carousel-item {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .robotics-group-card .card-img-top {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .robotics-group-card .card-img-top[src*="hexapod1.jpg"] {
+      object-position: center 34%;
+    }
   }
 
   .robotics-group-card .carousel-item {
     position: relative;
+    aspect-ratio: 835 / 1043;
   }
 
   .robotics-group-card .carousel-inner {
@@ -27,14 +46,15 @@ _styles: |
 
   .robotics-group-card .card-img-top {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: contain;
     object-position: center;
+    background-color: #111;
   }
 
   .projects a[data-project-category="research"] .card-img-top,
   .projects a[data-project-category="research-reference-figures"] .card-img-top {
-    height: 120px;
+    height: 200px !important;
     object-fit: contain;
     object-position: center;
     background-color: #fff;
@@ -168,19 +188,19 @@ _styles: |
       white-space: normal;
     }
 
-    .robotics-group-card .card-img-top {
-      height: 420px;
-      object-fit: cover;
-      object-position: center;
+    .projects a[data-project-category="research"] .card-img-top,
+    .projects a[data-project-category="research-reference-figures"] .card-img-top {
+      height: 240px !important;
     }
 
     .robotics-group-card .carousel-control-prev,
     .robotics-group-card .carousel-control-next {
       display: none;
     }
+
   }
 
-  @media (min-width: 768px) and (max-width: 991.98px) {
+  @media (min-width: 768px) and (max-width: 1199.98px) {
     .projects .category {
       text-align: left;
     }
@@ -191,24 +211,16 @@ _styles: |
       white-space: normal;
     }
 
-    .robotics-group-card .card-img-top {
-      height: 500px;
-      object-fit: cover;
-      object-position: center;
+    .projects a[data-project-category="research"] .card-img-top,
+    .projects a[data-project-category="research-reference-figures"] .card-img-top {
+      height: 430px !important;
     }
 
     .robotics-group-card .carousel-control-prev,
     .robotics-group-card .carousel-control-next {
       display: none;
     }
-  }
 
-  @media (min-width: 992px) {
-    .robotics-group-card .card-img-top {
-      height: 440px;
-      object-fit: cover;
-      object-position: center;
-    }
   }
 
   .research-image-modal__image {
@@ -229,6 +241,13 @@ _styles: |
 
     .research-image-modal__footer {
       gap: 0.42rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .projects a[data-project-category="research"] .card-img-top,
+    .projects a[data-project-category="research-reference-figures"] .card-img-top {
+      height: 220px !important;
     }
   }
 ---
@@ -429,6 +448,11 @@ _styles: |
     function setCarouselHeight(carousel, img) {
       var inner = carousel.querySelector(".carousel-inner");
       if (!inner) return;
+
+      if (window.innerWidth >= 1200) {
+        inner.style.removeProperty("height");
+        return;
+      }
 
       var targetImg = img || carousel.querySelector(".carousel-item.active img");
       if (!targetImg) return;
