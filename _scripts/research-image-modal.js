@@ -21,7 +21,8 @@ permalink: /assets/js/research-image-modal.js
     index: 0
   };
 
-  const getImageSrc = (image) => image?.currentSrc || image?.src || image?.getAttribute("src") || "";
+  const getImageSrc = (image, zoomSrc = "") =>
+    zoomSrc || image?.dataset?.zoomSrc || image?.currentSrc || image?.src || image?.getAttribute("src") || "";
 
   const normalizeIndex = (index, total) => {
     if (!total) return 0;
@@ -149,7 +150,7 @@ permalink: /assets/js/research-image-modal.js
 
     state.index = normalizeIndex(state.index, state.items.length);
     const current = state.items[state.index];
-    const imageSrc = getImageSrc(current.image);
+    const imageSrc = getImageSrc(current.image, current.zoomSrc || "");
     if (!imageSrc) return;
 
     const modalImage = overlay.querySelector(".research-image-modal__image");
@@ -202,7 +203,7 @@ permalink: /assets/js/research-image-modal.js
   };
 
   const openModal = (items, startIndex = 0) => {
-    const validItems = items.filter((item) => item?.image && getImageSrc(item.image));
+    const validItems = items.filter((item) => item?.image && getImageSrc(item.image, item.zoomSrc || ""));
     if (!validItems.length) return;
 
     const overlay = createModal();
@@ -240,6 +241,10 @@ permalink: /assets/js/research-image-modal.js
       const slide = image.closest(".carousel-item");
       const slideTitle = slide?.querySelector(".robotics-slide-title")?.textContent?.trim();
       const videoLink = slide?.querySelector(ROBOTICS_VIDEO_LINK_SELECTOR);
+      let zoomSrc = videoLink?.dataset.zoomImage || "";
+      if (slideTitle === "Hexapod Gaits | Tripod, Ripple & Wave") {
+        zoomSrc = "/assets/img/robotics/hexapod1_zoom.jpg?v=3";
+      }
       return {
         image,
         title: slideTitle || image.alt || FALLBACK_TITLE,
@@ -247,7 +252,8 @@ permalink: /assets/js/research-image-modal.js
         videoTitle: videoLink?.dataset.videoTitle || "",
         videoCaption: videoLink?.dataset.videoCaption || "",
         videoSourceLabel: videoLink?.dataset.videoSourceLabel || "",
-        videoSourceUrl: videoLink?.dataset.videoSourceUrl || ""
+        videoSourceUrl: videoLink?.dataset.videoSourceUrl || "",
+        zoomSrc
       };
     });
   };

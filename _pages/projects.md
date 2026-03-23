@@ -198,6 +198,20 @@ _styles: |
       display: none;
     }
 
+    .robotics-group-card .carousel-inner {
+      height: 430px;
+    }
+
+    .robotics-group-card .carousel-item {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .robotics-group-card .card-img-top {
+      height: 100%;
+      object-fit: cover;
+    }
+
   }
 
   @media (min-width: 768px) and (max-width: 1199.98px) {
@@ -219,6 +233,23 @@ _styles: |
     .robotics-group-card .carousel-control-prev,
     .robotics-group-card .carousel-control-next {
       display: none;
+    }
+
+    .robotics-group-card .carousel-inner {
+      height: 920px !important;
+      min-height: 920px !important;
+    }
+
+    .robotics-group-card .carousel-item {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .robotics-group-card .card-img-top {
+      height: 100% !important;
+      object-fit: contain !important;
+      object-position: center top !important;
+      background-color: #111 !important;
     }
 
   }
@@ -248,6 +279,28 @@ _styles: |
     .projects a[data-project-category="research"] .card-img-top,
     .projects a[data-project-category="research-reference-figures"] .card-img-top {
       height: 220px !important;
+    }
+  }
+
+  /* Tablet override for Robotics cards: keep full image visible and consistent */
+  @media (min-width: 600px) and (max-width: 1199.98px) {
+    .projects .robotics-group-card .carousel-inner {
+      height: 760px !important;
+      min-height: 760px !important;
+      max-height: 760px !important;
+    }
+
+    .projects .robotics-group-card .carousel-item {
+      height: 100% !important;
+      aspect-ratio: auto !important;
+    }
+
+    .projects .robotics-group-card .card-img-top {
+      height: 100% !important;
+      width: 100% !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      background-color: #111 !important;
     }
   }
 ---
@@ -302,6 +355,7 @@ _styles: |
                         data-video-caption="{{ project.video_caption | default: '' | escape }}"
                         data-video-source-label="{{ project.video_source_label | default: '' | escape }}"
                         data-video-source-url="{{ project.video_source_url | default: '' | escape }}"
+                        data-zoom-image="{{ project.zoom_img | default: '' | escape }}"
                       >
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
@@ -448,27 +502,7 @@ _styles: |
     function setCarouselHeight(carousel, img) {
       var inner = carousel.querySelector(".carousel-inner");
       if (!inner) return;
-
-      if (window.innerWidth >= 1200) {
-        inner.style.removeProperty("height");
-        return;
-      }
-
-      var targetImg = img || carousel.querySelector(".carousel-item.active img");
-      if (!targetImg) return;
-
-      var applyHeight = function () {
-        var h = getRenderedHeight(targetImg);
-        if (h > 0) {
-          inner.style.height = h + "px";
-        }
-      };
-
-      if (targetImg.complete && targetImg.naturalWidth > 0) {
-        applyHeight();
-      } else {
-        targetImg.addEventListener("load", applyHeight, { once: true });
-      }
+      inner.style.removeProperty("height");
     }
 
     function initRoboticsCarousel(carousel) {

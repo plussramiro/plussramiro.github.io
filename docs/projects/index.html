@@ -1019,6 +1019,20 @@
     display: none;
   }
 
+  .robotics-group-card .carousel-inner {
+    height: 430px;
+  }
+
+  .robotics-group-card .carousel-item {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .robotics-group-card .card-img-top {
+    height: 100%;
+    object-fit: cover;
+  }
+
 }
 
 @media (min-width: 768px) and (max-width: 1199.98px) {
@@ -1040,6 +1054,23 @@
   .robotics-group-card .carousel-control-prev,
   .robotics-group-card .carousel-control-next {
     display: none;
+  }
+
+  .robotics-group-card .carousel-inner {
+    height: 920px !important;
+    min-height: 920px !important;
+  }
+
+  .robotics-group-card .carousel-item {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .robotics-group-card .card-img-top {
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center top !important;
+    background-color: #111 !important;
   }
 
 }
@@ -1069,6 +1100,28 @@
   .projects a[data-project-category="research"] .card-img-top,
   .projects a[data-project-category="research-reference-figures"] .card-img-top {
     height: 220px !important;
+  }
+}
+
+/* Tablet override for Robotics cards: keep full image visible and consistent */
+@media (min-width: 600px) and (max-width: 1199.98px) {
+  .projects .robotics-group-card .carousel-inner {
+    height: 760px !important;
+    min-height: 760px !important;
+    max-height: 760px !important;
+  }
+
+  .projects .robotics-group-card .carousel-item {
+    height: 100% !important;
+    aspect-ratio: auto !important;
+  }
+
+  .projects .robotics-group-card .card-img-top {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background-color: #111 !important;
   }
 }
 
@@ -1296,7 +1349,7 @@
 
                     <div class="robotics-slide-overlay">
                       <p class="robotics-slide-title">Hexapod Joystick Control - Natural Motions</p>
-                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/shorts/3WHSHeuxowA" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Joystick control - Natural motions" data-video-title="Hexapod Joystick Control - Natural Motions" data-video-caption="Arduino-based controller - Joystick control with natural motions - Duration: 54 s" data-video-source-label="Credits / inspiration: markwtech (open CAD + code)" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/shorts/3WHSHeuxowA" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Joystick control - Natural motions" data-video-title="Hexapod Joystick Control - Natural Motions" data-video-caption="Arduino-based controller - Joystick control with natural motions - Duration: 54 s" data-video-source-label="Credits / inspiration: markwtech (open CAD + code)" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" data-zoom-image="" rel="external nofollow noopener" target="_blank">
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
                     </div>
@@ -1324,7 +1377,7 @@
 
                     <div class="robotics-slide-overlay">
                       <p class="robotics-slide-title">Hexapod Gaits | Tripod, Ripple &amp; Wave</p>
-                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=jcXTx5d4pRY" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Gaits (Tripod, Ripple &amp; Wave)" data-video-title="Hexapod Gaits | Tripod, Ripple &amp; Wave" data-video-caption="Silent demo - Arduino-based controller - 18 servos (3 per leg) - Gaits: tripod, ripple &amp; wave" data-video-source-label="Special thanks to markwtech" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=jcXTx5d4pRY" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Gaits (Tripod, Ripple &amp; Wave)" data-video-title="Hexapod Gaits | Tripod, Ripple &amp; Wave" data-video-caption="Silent demo - Arduino-based controller - 18 servos (3 per leg) - Gaits: tripod, ripple &amp; wave" data-video-source-label="Special thanks to markwtech" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" data-zoom-image="/assets/img/robotics/hexapod1_zoom.jpg?v=2" rel="external nofollow noopener" target="_blank">
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
                     </div>
@@ -1352,7 +1405,7 @@
 
                     <div class="robotics-slide-overlay">
                       <p class="robotics-slide-title">Hexapod | Servo offset calibration &amp; first steps</p>
-                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=sP3aGM9wyew" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Servo offset calibration &amp; first steps" data-video-title="Hexapod | Servo offset calibration &amp; first steps" data-video-caption="18 servos - tripod gait - offsets tuned" data-video-source-label="Ref: Instructables" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" rel="external nofollow noopener" target="_blank">
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=sP3aGM9wyew" data-project-category="robotics-prototypes-evolution" data-project-title="Hexapod Robotic Model | Servo offset calibration &amp; first steps" data-video-title="Hexapod | Servo offset calibration &amp; first steps" data-video-caption="18 servos - tripod gait - offsets tuned" data-video-source-label="Ref: Instructables" data-video-source-url="https://www.instructables.com/Hexapod-Robot/" data-zoom-image="" rel="external nofollow noopener" target="_blank">
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
                     </div>
@@ -1416,7 +1469,7 @@
 
                     <div class="robotics-slide-overlay">
                       <p class="robotics-slide-title">Animatronic head + torso | Demo</p>
-                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=LhsHS34h0lY" data-project-category="robotics-prototypes-evolution" data-project-title="Animatronic Robotic Model | Head + torso demo" data-video-title="Animatronic head + torso | Demo" data-video-caption="Head mechanics &amp; arms" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=tP919dwtG38" rel="external nofollow noopener" target="_blank">
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=LhsHS34h0lY" data-project-category="robotics-prototypes-evolution" data-project-title="Animatronic Robotic Model | Head + torso demo" data-video-title="Animatronic head + torso | Demo" data-video-caption="Head mechanics &amp; arms" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=tP919dwtG38" data-zoom-image="" rel="external nofollow noopener" target="_blank">
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
                     </div>
@@ -1444,7 +1497,7 @@
 
                     <div class="robotics-slide-overlay">
                       <p class="robotics-slide-title">Dual-eye | Saccades &amp; blink</p>
-                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=LXXqcms6eXk" data-project-category="robotics-prototypes-evolution" data-project-title="Animatronic Robotic Model | Dual-eye saccades &amp; blink" data-video-title="Dual-eye | Saccades &amp; blink" data-video-caption="Dual-eye robot head - PS2 joystick control + rotating base" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=jsXolwJskKM" rel="external nofollow noopener" target="_blank">
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=LXXqcms6eXk" data-project-category="robotics-prototypes-evolution" data-project-title="Animatronic Robotic Model | Dual-eye saccades &amp; blink" data-video-title="Dual-eye | Saccades &amp; blink" data-video-caption="Dual-eye robot head - PS2 joystick control + rotating base" data-video-source-label="Inspired by James Bruton" data-video-source-url="https://www.youtube.com/watch?v=jsXolwJskKM" data-zoom-image="" rel="external nofollow noopener" target="_blank">
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
                     </div>
@@ -1506,7 +1559,7 @@
 
                     <div class="robotics-slide-overlay">
                       <p class="robotics-slide-title">Mecanum-wheel | Omni-directional control</p>
-                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=HWUrwyTYjJM" data-project-category="robotics-prototypes-evolution" data-project-title="Mecanum Robotic Model | Omni-directional control" data-video-title="Mecanum-wheel | Omni-directional control" data-video-caption="PS2 joystick control - Ultrasonic distance sensor - Omni-directional motion" data-video-source-label="" data-video-source-url="" rel="external nofollow noopener" target="_blank">
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=HWUrwyTYjJM" data-project-category="robotics-prototypes-evolution" data-project-title="Mecanum Robotic Model | Omni-directional control" data-video-title="Mecanum-wheel | Omni-directional control" data-video-caption="PS2 joystick control - Ultrasonic distance sensor - Omni-directional motion" data-video-source-label="" data-video-source-url="" data-zoom-image="" rel="external nofollow noopener" target="_blank">
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
                     </div>
@@ -1554,7 +1607,7 @@
 
                     <div class="robotics-slide-overlay">
                       <p class="robotics-slide-title">Theo Jansen's Robots | Strandbeest-style walker</p>
-                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=CNYgq52IVqg" data-project-category="robotics-prototypes-evolution" data-project-title="Theo Jansen's Robot Model" data-video-title="Theo Jansen's Robots | Strandbeest-style walker" data-video-caption="Arduino Nano + 360 deg servos - Silent demo" data-video-source-label="" data-video-source-url="" rel="external nofollow noopener" target="_blank">
+                      <a class="btn btn-primary robotics-video-link" href="https://www.youtube.com/watch?v=CNYgq52IVqg" data-project-category="robotics-prototypes-evolution" data-project-title="Theo Jansen's Robot Model" data-video-title="Theo Jansen's Robots | Strandbeest-style walker" data-video-caption="Arduino Nano + 360 deg servos - Silent demo" data-video-source-label="" data-video-source-url="" data-zoom-image="" rel="external nofollow noopener" target="_blank">
                         <span class="robotics-video-link__text">See video demo</span>
                       </a>
                     </div>
@@ -1644,27 +1697,7 @@
     function setCarouselHeight(carousel, img) {
       var inner = carousel.querySelector(".carousel-inner");
       if (!inner) return;
-
-      if (window.innerWidth >= 1200) {
-        inner.style.removeProperty("height");
-        return;
-      }
-
-      var targetImg = img || carousel.querySelector(".carousel-item.active img");
-      if (!targetImg) return;
-
-      var applyHeight = function () {
-        var h = getRenderedHeight(targetImg);
-        if (h > 0) {
-          inner.style.height = h + "px";
-        }
-      };
-
-      if (targetImg.complete && targetImg.naturalWidth > 0) {
-        applyHeight();
-      } else {
-        targetImg.addEventListener("load", applyHeight, { once: true });
-      }
+      inner.style.removeProperty("height");
     }
 
     function initRoboticsCarousel(carousel) {
