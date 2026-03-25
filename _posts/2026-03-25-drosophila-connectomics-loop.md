@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Beyond the Hype: Closing the Loop in Drosophila Connectomics"
 date: 2026-03-16 10:00:00 -0300

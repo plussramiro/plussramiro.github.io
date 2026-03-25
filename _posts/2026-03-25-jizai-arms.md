@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Extending Mind and Cognition, Not Just the Body: JIZAI ARMS"
 date: 2025-10-06 10:00:00 -0300
