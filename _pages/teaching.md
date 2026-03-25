@@ -4,7 +4,7 @@ permalink: /teaching/
 title: Teaching at ITBA
 description: Teaching activities and course support in bioinspired robotics. The course is led by Dr. <a href="https://www.itba.edu.ar/docentes/pablo-gleiser/" target="_blank" rel="noopener noreferrer">Pablo Mart&iacute;n Gleiser</a>.
 seo_description: Teaching activities and course support in bioinspired robotics. The course is led by Dr. Pablo Martin Gleiser.
-nav: false
+nav: true
 nav_order: 9
 _styles: |
   .post .post-header .post-description {
