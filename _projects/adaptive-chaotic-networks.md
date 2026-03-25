@@ -6,7 +6,7 @@ _styles: |
   .post .post-header .post-description {
     display: none;
   }
-importance: 2
+importance: 3
 category: "Research & Reference Figures"
 img: /assets/img/research/abstract_paper.png
 hero_img: /assets/img/research/comparative_connectomes_adaptive_model.png

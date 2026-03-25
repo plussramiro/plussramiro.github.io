@@ -6,7 +6,7 @@ _styles: |
   .post .post-header .post-description {
     display: none;
   }
-importance: 3
+importance: 5
 category: "Research & Reference Figures"
 img: /assets/img/research/celegans_connectome_robot_model.png
 image_zoom_title: "Connectome-Driven Embodied Robotics [Kato et al. (2015); Cook et al. (2019); Valencia Urbina et al. (2023)]."

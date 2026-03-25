@@ -1,15 +1,15 @@
 ---
 layout: page
-title: Hemispheric-Specific Wilson-Cowan Model
+title: Hemispheric Wilson-Cowan Model
 description: Modeling resting-state functional connectivity with asymmetric intra- and inter-hemispheric coupling.
 _styles: |
   .post .post-header .post-description {
     display: none;
   }
-importance: 1
+importance: 2
 category: "Research & Reference Figures"
-img: /assets/img/research/hemispheric.png
-image_zoom_title: "Hemispheric-Specific Wilson-Cowan Model [Plüss et al. (2026)]."
+img: /assets/img/research/wc_hemispheric.png
+image_zoom_title: "Hemispheric Wilson-Cowan Model [Pl&uuml;ss et al. (2026)]."
 figure_captions:
   - "Figure 1: Schematic of the hemispheric-specific Wilson-Cowan model. Unlike the standard global-coupling formulation, this approach distinguishes between intra-hemispheric and inter-hemispheric interactions when mapping structural connectivity onto functional connectivity [Pl&uuml;ss et al. (2026)]."
 ---
@@ -20,3 +20,4 @@ Links:
 - Pl&uuml;ss et al. (2026), DOI: [https://doi.org/10.1007/978-3-032-14664-9_10](https://doi.org/10.1007/978-3-032-14664-9_10)
 - Pl&uuml;ss et al. (2025), ITBA repository: [https://ri.itba.edu.ar/handle/20.500.14769/5114](https://ri.itba.edu.ar/handle/20.500.14769/5114)
 - Pl&uuml;ss et al. (2025), arXiv: [https://arxiv.org/abs/2506.22951v2](https://arxiv.org/abs/2506.22951v2)
+
