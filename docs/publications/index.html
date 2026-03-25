@@ -758,65 +758,12 @@
           
             <!-- Toogle theme mode -->
             <li class="toggle-container">
-              <button id="light-toggle" type="button" title="Change theme" onclick="return window.__alfolioCycleThemeFromButton ? window.__alfolioCycleThemeFromButton(event) : true;">
+              <button id="light-toggle" type="button" title="Change theme">
                 <i class="fa-half-sun-moon" id="light-toggle-system"></i>
                 <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
                 <i class="fa-solid fa-sun" id="light-toggle-light"></i>
               </button>
             </li>
-            <script>
-              (function () {
-                if (window.__alfolioCycleThemeFromButton) return;
-
-                function prefersDark() {
-                  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                }
-
-                function getThemeSetting() {
-                  try {
-                    return localStorage.getItem('theme') || 'system';
-                  } catch (e) {
-                    return 'system';
-                  }
-                }
-
-                function applyThemeSetting(setting) {
-                  var next = setting || getThemeSetting();
-                  var root = document.documentElement;
-
-                  if (next === 'system') {
-                    root.removeAttribute('data-theme-setting');
-                  } else {
-                    root.setAttribute('data-theme-setting', next);
-                  }
-
-                  if (next === 'dark' || (next === 'system' && prefersDark())) {
-                    root.setAttribute('data-theme', 'dark');
-                  } else {
-                    root.removeAttribute('data-theme');
-                  }
-                }
-
-                window.__alfolioCycleThemeFromButton = function (event) {
-                  if (event) {
-                    if (typeof event.preventDefault === 'function') event.preventDefault();
-                    if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
-                  }
-
-                  var current = getThemeSetting();
-                  var next = current === 'system' ? 'dark' : current === 'dark' ? 'light' : 'system';
-
-                  try {
-                    localStorage.setItem('theme', next);
-                  } catch (e) {
-                    // Ignore storage errors (private mode / disabled storage)
-                  }
-
-                  applyThemeSetting(next);
-                  return false;
-                };
-              })();
-            </script>
           
         </ul>
       </div>
