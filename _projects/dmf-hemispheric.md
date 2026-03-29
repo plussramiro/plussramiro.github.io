@@ -6,7 +6,7 @@ _styles: |
   .post .post-header .post-description {
     display: none;
   }
-importance: 1
+importance: 2
 category: "Research & Reference Figures"
 img: /assets/img/research/dmf_hemispheric.png
 image_zoom_title: "Hemispheric Dynamic Mean Field Model."
@@ -19,3 +19,4 @@ This project extends the hemispheric-specific whole-brain modeling line from Wil
 Links:
 - Pl&uuml;ss et al. (2026), DOI: [https://doi.org/10.1007/978-3-032-14664-9_10](https://doi.org/10.1007/978-3-032-14664-9_10)
 - Cammoun et al. (2012), Lausanne parcellation: [https://doi.org/10.1016/j.jneumeth.2011.09.031](https://doi.org/10.1016/j.jneumeth.2011.09.031)
+

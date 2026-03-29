@@ -6,7 +6,7 @@ _styles: |
   .post .post-header .post-description {
     display: none;
   }
-importance: 2
+importance: 3
 category: "Research & Reference Figures"
 img: /assets/img/research/wc_hemispheric.png
 image_zoom_title: "Hemispheric Wilson-Cowan Model [Pl&uuml;ss et al. (2026)]."
@@ -20,4 +20,5 @@ Links:
 - Pl&uuml;ss et al. (2026), DOI: [https://doi.org/10.1007/978-3-032-14664-9_10](https://doi.org/10.1007/978-3-032-14664-9_10)
 - Pl&uuml;ss et al. (2025), ITBA repository: [https://ri.itba.edu.ar/handle/20.500.14769/5114](https://ri.itba.edu.ar/handle/20.500.14769/5114)
 - Pl&uuml;ss et al. (2025), arXiv: [https://arxiv.org/abs/2506.22951v2](https://arxiv.org/abs/2506.22951v2)
+
 

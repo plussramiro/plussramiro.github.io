@@ -16,6 +16,37 @@ pagination:
     after: 3 # The number of links after the current page
 ---
 
+<style>
+  .post-meta-mobile {
+    display: none;
+  }
+
+  @media (max-width: 767.98px) {
+    .post .header-bar h1 {
+      font-size: clamp(2.3rem, 13vw, 3.3rem);
+      line-height: 1.04;
+    }
+
+    .post .header-bar h2 {
+      font-size: clamp(1.15rem, 8vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .post .blog-post-list-row .col-sm-4 {
+      margin-top: 0.6rem;
+    }
+
+    .post .post-meta-desktop {
+      display: none;
+    }
+
+    .post .post-meta-mobile {
+      display: block;
+      margin-top: 0.85rem;
+    }
+  }
+</style>
+
 <div class="post">
   <div class="header-bar">
     <h1>Research Notes</h1>
@@ -41,7 +72,7 @@ pagination:
 
 {% if post.thumbnail %}
 
-<div class="row">
+<div class="row blog-post-list-row">
           <div class="col-sm-8">
 {% endif %}
         <h3>
@@ -57,7 +88,7 @@ pagination:
         {% endif %}
       </h3>
       <p>{{ post.description }}</p>
-      <p class="post-meta">
+      <p class="post-meta post-meta-desktop">
         {{ read_time }} min read &nbsp; &middot; &nbsp;
         {{ post.date | date: '%B %d, %Y' }}
         {% if post.external_source %}
@@ -71,6 +102,15 @@ pagination:
 
   <div class="col-sm-4">
     <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; width: 100%; height: auto" alt="image">
+  </div>
+  <div class="col-12">
+    <p class="post-meta post-meta-mobile">
+      {{ read_time }} min read &nbsp; &middot; &nbsp;
+      {{ post.date | date: '%B %d, %Y' }}
+      {% if post.external_source %}
+      &nbsp; &middot; &nbsp; {{ post.external_source }}
+      {% endif %}
+    </p>
   </div>
 </div>
 {% endif %}
