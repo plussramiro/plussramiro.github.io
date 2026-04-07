@@ -1,6 +1,10 @@
 metadata:
   last_updated: '2026-02-06'
 papers:
+  l1XV7YYAAAAJ:hemispheric_wc_2026:
+    citations: 1
+    title: Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics
+    year: '2026'
   l1XV7YYAAAAJ:u5HHmVD_uO8C:
     citations: 1
     title: The Role of Connection Density in Adaptive Networks with Chaotic Units

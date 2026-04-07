@@ -416,8 +416,13 @@
             ></span>
           {% endif %}
           {% if site.enable_publication_badges.google_scholar and entry_has_google_scholar_badge %}
+            {% if entry.google_scholar_url %}
+              {% assign scholar_link = entry.google_scholar_url %}
+            {% else %}
+              {% assign scholar_link = "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=" | append: site.data.socials.scholar_userid | append: "&citation_for_view=" | append: site.data.socials.scholar_userid | append: ":" | append: entry.google_scholar_id %}
+            {% endif %}
             <a
-              href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user={{ site.data.socials.scholar_userid }}&citation_for_view={{ site.data.socials.scholar_userid }}:{{ entry.google_scholar_id }}"
+              href="{{ scholar_link }}"
               aria-label="Google Scholar link"
               role="button"
             >
