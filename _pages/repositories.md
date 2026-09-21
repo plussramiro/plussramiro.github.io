@@ -49,6 +49,7 @@ nav_order: 8
 </style>
 
 {% if site.data.repositories.github_users %}
+
   <div class="cv repositories-cv">
     <div class="card mt-3 p-3">
       <h5 class="card-title mb-2">GitHub Profile</h5>
@@ -87,6 +88,7 @@ nav_order: 8
 {% endif %}
 
 {% if site.data.repositories.github_repos %}
+
   <div class="cv repositories-cv">
     <div class="card mt-3 p-3">
       <h5 class="card-title mb-2">Selected Repositories</h5>
@@ -95,11 +97,17 @@ nav_order: 8
           {% assign repo_name = repo | split: '/' | last %}
           {% assign repo_date = '' %}
           {% assign repo_comment = '' %}
-          {% if repo_name == 'Wilson-Cowan-Hemispheric-Coupling' %}
+          {% if repo_name == 'male-cns-napari-viewer' %}
+            {% assign repo_date = 'Aug 2026' %}
+            {% assign repo_comment = 'Interactive napari viewer for the Janelia FlyEM Male CNS connectome, combining streamed electron microscopy, neuropil labels, and neuron skeletons and somas without downloading the complete EM volume.' %}
+          {% elsif repo_name == 'trexdata_to_movement' %}
+            {% assign repo_date = 'Aug 2026' %}
+            {% assign repo_comment = 'Converts TRex CSV exports of Drosophila larval trajectories into Movement datasets, with configurable quality checks, trajectory filtering, plots, and quality-control reports.' %}
+          {% elsif repo_name == 'Wilson-Cowan-Hemispheric-Coupling' %}
             {% assign repo_date = 'Aug 2025 - Nov 2025' %}
             {% assign repo_comment = 'Repository to replicate the work called <em>"Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics"</em>.' %}
           {% elsif repo_name == 'The-Role-of-Connection-Density-in-an-Adaptive-Network-with-Chaotic-Units' %}
-            {% assign repo_date = 'Aug 2025 - Sep 2025' %}
+            {% assign repo_date = 'Aug 2025 - Sep 2026' %}
             {% assign repo_comment = 'Repository to replicate the work called <em>"The Role of Connection Density in Adaptive Networks with Chaotic Units"</em>.' %}
           {% endif %}
           <li class="list-group-item">
@@ -109,7 +117,9 @@ nav_order: 8
                   <tbody>
                     <tr>
                       <td>
-                        <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">{{ repo_date }}</span>
+                        {% if repo_date != '' %}
+                          <span class="badge font-weight-bold danger-color-dark align-middle" style="min-width: 75px">{{ repo_date }}</span>
+                        {% endif %}
                       </td>
                     </tr>
                   </tbody>

@@ -4,5 +4,7 @@ github_users:
 repo_description_lines_max: 2
 
 github_repos:
-  - plussramiro/Wilson-Cowan-Hemispheric-Coupling
   - plussramiro/The-Role-of-Connection-Density-in-an-Adaptive-Network-with-Chaotic-Units
+  - plussramiro/male-cns-napari-viewer
+  - plussramiro/trexdata_to_movement
+  - plussramiro/Wilson-Cowan-Hemispheric-Coupling

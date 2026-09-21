@@ -3,7 +3,7 @@ cv:
   label: Physicist | PhD(c) in Engineering
   email: rpluss@itba.edu.ar
   summary: >
-    Ramiro Plüss's research focuses on the bidirectional relationship between network structure, neural dynamics, and behavior. He combines computational neuroscience, network models, and bio-inspired robotics to study proprioception and embodied control. He builds bio-inspired robotic testbeds that integrate computational neuroscience models to investigate embodied motor control.
+    My research focuses on the bidirectional relationship between network structure, neural dynamics, and behavior. I combine computational neuroscience, network models, and bio-inspired robotics to study proprioception and embodied control. I build bio-inspired robotic testbeds that integrate computational neuroscience models to investigate embodied motor control.
 
   social_networks:
     - network: GitHub
@@ -34,7 +34,7 @@ cv:
         end_date: 2023-03
         highlights:
           - 'Thesis: "Dynamics and Structure in Adaptive Neural Networks."'
-          - 'Thesis repository available in Spanish at the [UNR institutional repository](https://hdl.handle.net/2133/30075).'
+          - "Thesis repository available in Spanish at the [UNR institutional repository](https://hdl.handle.net/2133/30075)."
 
     Experience:
       - company: Buenos Aires Institute of Technology (ITBA)
@@ -45,6 +45,7 @@ cv:
 
       - company: Independent
         position: Private Tutor (Physics, Mathematics, Chemistry)
+        summary: For high-school and university students.
         location: Rosario, Argentina
         start_date: 2020
         end_date: 2024
@@ -74,17 +75,17 @@ cv:
     Publications:
       - title: Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics
         releaseDate: 2026
-        publisher: In Computational Neuroscience, Communications in Computer and Information Science (CCIS, Springer Nature), vol. 2734, 2026
-        note: Latin American Workshop on Computational Neuroscience (LAWCN, 2025)
+        publisher: In Computational Neuroscience (LAWCN 2025), A. Talevi and V. Rosa Cota (eds.), CCIS, vol. 2734, pp. 109–121, Springer, Cham (2026)
+        note: "arXiv:2506.22951 (available since 28 June 2025)."
         doi: 10.1007/978-3-032-14664-9_10
         arxiv: 2506.22951v2
         website: https://ri.itba.edu.ar/items/25f28a1a-fcca-4133-bf65-832ea5ab3c8c
         website_label: ITBA Repository
         summary: Ramiro Plüss, Hernán Villota, Patricio Orio.
 
-      - title: The Role of Connection Density in Adaptive Networks with Chaotic Units
+      - title: The Role of Connection Density in an Adaptive Network with Chaotic Units
         releaseDate: 2025
-        publisher: arXiv preprint
+        publisher: Nonlinear Science, accepted for publication (2026)
         arxiv: 2505.11437v3
         website: https://ri.itba.edu.ar/items/1194e285-a35c-4924-940e-2917bb4b6077
         website_label: ITBA Repository
@@ -109,20 +110,28 @@ cv:
         location: Rosario, Argentina
         summary: Joint project with the Rosario Regional Hemotherapy Center (CRH) and the Rosario Institute of Physics (IFIR, UNR-CONICET). The project was led by [Mariel Elisa Galassi](https://scholar.google.com/citations?user=TxZLOrsAAAAJ&hl=es). Experimental hemorheology study of gamma-irradiated human red blood cells using laser diffractometry (erythrocyte rheometer) to estimate viscoelastic and membrane parameters.
 
+    Research Visits:
+      - company: Brighton and Sussex Medical School, University of Sussex
+        position: Visiting Researcher
+        location: Brighton, UK
+        start_date: 2026-09
+        end_date: 2026-09
+        summary: "Host: Dr. Jimena Berni. Comparative analysis of larval and adult Drosophila motor circuits, focusing on how locomotor circuit organization changes across development."
+
     Invited Talks:
       - position: Young Scholar Speaker
         name: LAWCN 2025, Universidad Nacional de La Plata
         location: La Plata, Argentina
         start_date: 2025-11
         end_date: 2025-11
-        summary: "\"Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics.\""
+        summary: '"Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics."'
 
       - position: Invited Speaker
         name: International Congress INNOVA GISS 2025, Institucion Universitaria de Envigado
         location: Envigado, Colombia
         start_date: 2025-08
         end_date: 2025-08
-        summary: "\"Why Complex Networks?\""
+        summary: '"Why Complex Networks?"'
 
     Poster Presentations:
       - position: Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics
@@ -195,7 +204,66 @@ cv:
         end_date: 2022-09
         summary: Florencia Gómez Fava, Ramiro Plüss, Sabrina Porini, Horacio V. Castellini, Analía I. Alet, Liliana Di Tulio, Andrea Acosta, Néstor Manzelli, Ariel Aresi, Mariel Galassi, Bibiana D. Riquelme.
 
+    Competitive Grants, Fellowships & Travel Awards:
+      - title: The Company of Biologists Travelling Fellowship
+        date: 2026-09
+        summary: Competitive research-travel fellowship awarded through The Company of Biologists’ journal Development for a collaborative research visit to Dr. Jimena Berni’s group at Brighton and Sussex Medical School, UK.
+
+      - title: UCL Open Software Summer School
+        awarder: University College London
+        location: UK
+        date: 2026-08
+        summary: Selected participant; awarded travel and accommodation support.
+
+      - title: Konstanz School of Collective Behaviour
+        awarder: University of Konstanz
+        location: Germany
+        start_date: 2026-07
+        end_date: 2026-08
+        summary: Selected participant; awarded travel and accommodation support.
+
+      - title: School on the Origins of Life, Behavior and Cognition
+        awarder: ICTP-SAIFR
+        location: São Paulo, Brazil
+        date: 2025-03
+        summary: Selected participant; awarded travel and accommodation support.
+
+      - title: "School on Synchronization: from collective motion to brain dynamics"
+        awarder: ICTP-SAIFR
+        location: São Paulo, Brazil
+        date: 2025-02
+        summary: Selected participant; awarded travel and accommodation support.
+
+      - title: Latin American Summer School of Computational Neuroscience
+        awarder: Universidad de Valparaíso
+        location: Chile
+        date: 2025-01
+        summary: Selected participant; awarded travel and accommodation support.
+
+      - title: IRCN/Chen Institute Joint Course on Neuro-inspired Computation
+        awarder: University of Tokyo
+        location: Japan
+        date: 2024-07
+        summary: Selected participant; awarded travel and accommodation support.
+
+      - title: Latin American School of Computational Neuroscience
+        awarder: University of São Paulo
+        location: Brazil
+        date: 2024-01
+        summary: Selected participant; awarded accommodation support.
+
     Certificates:
+      - name: Open Software Summer School (OSSS)
+        issuer: Neuroinformatics Unit
+        location: London, UK
+        date: 2026-08
+
+      - name: Summer School on Collective Behavior
+        issuer: University of Konstanz
+        location: Konstanz, Germany
+        start_date: 2026-07
+        end_date: 2026-08
+
       - name: Spring School on Deep Learning
         issuer: University of Buenos Aires (UBA)
         location: CABA, Argentina
@@ -304,6 +372,11 @@ cv:
         summary: B2 (professional working proficiency)
 
     Volunteer:
+      - company: ITBA Future Day
+        position: Presented the Bioinspired Robotics course to prospective students
+        start_date: 2026-06
+        end_date: 2026-06
+
       - company: MiniLabs ITBA
         position: Bio-inspired robotics demos for prospective high-school students
         url: https://www.itba.edu.ar/mini-labs-itba/
@@ -343,16 +416,3 @@ cv:
         location: Bariloche, Argentina
         start_date: 2022-09
         end_date: 2022-09
-
-
-
-
-
-
-
-
-
-
-
-
-

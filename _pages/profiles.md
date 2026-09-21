@@ -105,12 +105,11 @@ _styles: |
   <p class="caption">Photos from lab activities and project demonstrations.</p>
 </div>
 
-
-Ramiro Plüss began working with Pablo Martin Gleiser in March 2022 during his undergraduate Physics thesis at the National University of Rosario (UNR), initially through remote collaboration, and continued this work in July 2023 as part of his PhD at ITBA. His current research focuses on connectomics-driven embodied robotics, with broader interests in adaptive networks, neural dynamics, and structure-dynamics-behavior relationships. In parallel, he develops bioinspired robotic platforms as experimental testbeds for closed-loop sensorimotor interaction and robust embodied control.
+I began working with Pablo Martin Gleiser in March 2022 during my undergraduate Physics thesis at the National University of Rosario (UNR), initially through remote collaboration, and continued this work in July 2023 as part of my PhD at ITBA. My current research focuses on connectomics-driven embodied robotics, with broader interests in adaptive networks, neural dynamics, and structure-dynamics-behavior relationships. In parallel, I develop bioinspired robotic platforms as experimental testbeds for closed-loop sensorimotor interaction and robust embodied control.
 
 #### Lead Researcher
 
-**[Pablo Martin Gleiser](https://scholar.google.com/citations?user=WlU_A_UAAAAJ&hl=en)** first supervised Ramiro Plüss during his undergraduate Physics thesis at UNR, and later became his PhD advisor at ITBA. He is a physicist (BSc and PhD, National University of Cordoba, Argentina) and completed postdoctoral research at the Complex Systems Department, University of Barcelona, Spain. His academic work includes more than 50 scientific publications and interdisciplinary research spanning social-network analysis, connectomics, circadian rhythms, sleep studies, and robotics. His research interests include biological rhythms, synchronization, and complex systems.
+**[Pablo Martin Gleiser](https://scholar.google.com/citations?user=WlU_A_UAAAAJ&hl=en)** first supervised me during my undergraduate Physics thesis at UNR, and later became my PhD advisor at ITBA. He is a physicist (BSc and PhD, National University of Cordoba, Argentina) and completed postdoctoral research at the Complex Systems Department, University of Barcelona, Spain. His academic work includes more than 50 scientific publications and interdisciplinary research spanning social-network analysis, connectomics, circadian rhythms, sleep studies, and robotics. His research interests include biological rhythms, synchronization, and complex systems.
 
 #### Lab Focus
 
@@ -151,7 +150,7 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
           alt="Ramiro talk at LAWCN 25"
           loading="lazy"
           data-zoom-group="uv-iue-collaboration"
-          data-zoom-title="Ramiro presenting a talk at LAWCN 25."
+          data-zoom-title="Me presenting a talk at LAWCN 25."
         >
       </div>
     </div>
@@ -167,8 +166,7 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
   <p class="caption">LAWCN 25 collaborative activities: poster presentation and invited talk.</p>
 </div>
 
-
-Ramiro Plüss maintains a remote collaboration with [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) at the [Valparaíso Neural Dynamics Laboratory (VANDAL)](https://vandal-uv.github.io/), the [University of Valparaíso (UV)](https://cinv.uv.cl/), and with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) at the [University Institution of Envigado (IUE)](https://www.iue.edu.co/), focused on connectome-based whole-brain modeling and hemispheric-specific network dynamics. This collaboration originated at the Latin America Summer School of Computational Neuroscience [LACONEU](https://laconeu.cl/) held at the University of Valparaiso, where Patricio Orio served as mentor. Work initiated there later evolved into two posters and a conference paper. The collaboration currently centers on dynamic mean field (DMF) modeling to assess whether this framework improves the simulation of human brain functional activity.
+I maintain a remote collaboration with [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) at the [Valparaíso Neural Dynamics Laboratory (VANDAL)](https://vandal-uv.github.io/), the [University of Valparaíso (UV)](https://cinv.uv.cl/), and with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) at the [University Institution of Envigado (IUE)](https://www.iue.edu.co/), focused on connectome-based whole-brain modeling and hemispheric-specific network dynamics. This collaboration originated at the Latin America Summer School of Computational Neuroscience [LACONEU](https://laconeu.cl/) held at the University of Valparaiso, where Patricio Orio served as mentor. Work initiated there later evolved into two posters and a conference paper. The collaboration currently centers on dynamic mean field (DMF) modeling to assess whether this framework improves the simulation of human brain functional activity.
 
 <div class="research-clear"></div>
 <div class="research-divider"></div>
@@ -243,12 +241,11 @@ Ramiro Plüss maintains a remote collaboration with [Patricio Orio](https://scho
   <p class="caption">Previous research experience and project outputs at IFIR (UNR-CONICET).</p>
 </div>
 
-
-During his undergraduate Physics studies, Ramiro Plüss contributed to the UNR-CRH linkage project at IFIR (UNR-CONICET), which focused on the effects of ionizing radiation on biological systems and their applications in medical and biomedical physics. His selected contribution was Gomez Fava et al. (2022), a preliminary study on the viscoelastic properties of gamma-irradiated red blood cells using an erythrocyte rheometer, presented at the 107th Meeting of the Asociación Física Argentina (AFA) in Bariloche.
+During my undergraduate Physics studies, I contributed to the UNR-CRH linkage project at IFIR (UNR-CONICET), which focused on the effects of ionizing radiation on biological systems and their applications in medical and biomedical physics. My selected contribution was Gomez Fava et al. (2022), a preliminary study on the viscoelastic properties of gamma-irradiated red blood cells using an erythrocyte rheometer, presented at the 107th Meeting of the Asociación Física Argentina (AFA) in Bariloche.
 
 #### Research Mentor
 
-**[Mariel Elisa Galassi](https://scholar.google.com/citations?hl=es&user=TxZLOrsAAAAJ&view_op=list_works&sortby=pubdate)** was his research mentor during this period. She is an [Independent Researcher at CONICET](https://bicyt.conicet.gov.ar/fichas/p/mariel-elisa-galassi) based at IFIR (UNR-CONICET). Her work focuses on atomic and molecular physics, medical and biomedical physics, and radiobiology, with particular emphasis on the effects of ionizing radiation on biological systems, including nanodosimetry and hadron dosimetry.
+**[Mariel Elisa Galassi](https://scholar.google.com/citations?hl=es&user=TxZLOrsAAAAJ&view_op=list_works&sortby=pubdate)** was my research mentor during this period. She is an [Independent Researcher at CONICET](https://bicyt.conicet.gov.ar/fichas/p/mariel-elisa-galassi) based at IFIR (UNR-CONICET). Her work focuses on atomic and molecular physics, medical and biomedical physics, and radiobiology, with particular emphasis on the effects of ionizing radiation on biological systems, including nanodosimetry and hadron dosimetry.
 
 #### Lab Focus
 
@@ -316,6 +313,3 @@ The group combines hemorheology, bio-optics, and biosignal analysis to study bio
     });
   })();
 </script>
-
-
-

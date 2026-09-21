@@ -52,7 +52,7 @@
             <li class="nav-item"><a class="nav-link" href="#contact-information">Contact Information</a></li>
           {% endif %}
           {% if cv_data.summary %}
-            <li class="nav-item"><a class="nav-link" href="#professional-summary">Professional Summary</a></li>
+            <li class="nav-item"><a class="nav-link" href="#professional-summary">About Me</a></li>
           {% endif %}
 
           {% if cv_sections.Education and cv_sections.Education.size > 0 %}
@@ -64,6 +64,9 @@
           {% if cv_sections.Projects and cv_sections.Projects.size > 0 %}
             <li class="nav-item"><a class="nav-link" href="#projects">Research Projects</a></li>
           {% endif %}
+          {% if cv_sections['Research Visits'] and cv_sections['Research Visits'].size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#research-visits">Research Visits</a></li>
+          {% endif %}
           {% if cv_sections['Invited Talks'] and cv_sections['Invited Talks'].size > 0 %}
             <li class="nav-item"><a class="nav-link" href="#invited-talks">Invited Talks</a></li>
           {% endif %}
@@ -72,6 +75,9 @@
           {% endif %}
           {% if cv_sections.Awards and cv_sections.Awards.size > 0 %}
             <li class="nav-item"><a class="nav-link" href="#scholarships">Scholarships</a></li>
+          {% endif %}
+          {% if cv_sections['Competitive Grants, Fellowships & Travel Awards'] and cv_sections['Competitive Grants, Fellowships & Travel Awards'].size > 0 %}
+            <li class="nav-item"><a class="nav-link" href="#grants-fellowships-travel-awards">Competitive Grants, Fellowships &amp; Travel Awards</a></li>
           {% endif %}
           {% if cv_sections.Certificates and cv_sections.Certificates.size > 0 %}
             <li class="nav-item"><a class="nav-link" href="#certificates">Relevant Schools & Advanced Courses</a></li>

@@ -67,10 +67,10 @@ _styles: |
 
 ### Teaching Assistant - Bioinspired Robotics, ITBA
 
-Ramiro Pl&uuml;ss supports laboratory sessions, student project development, and office hour guidance in the Bioinspired Robotics course at ITBA.
-
+I support laboratory sessions, student project development, and office hour guidance in the Bioinspired Robotics course at ITBA.
 
 Current course focus:
+
 - Building basic robotic agents, including three-wheeled platforms with distance and light sensors inspired by Braitenberg vehicles.
 - Implementing baseline rule-based control in code, then replacing fixed rules with simple neural-network controllers.
 - Developing sensorimotor interaction with the environment through adaptive control strategies.
@@ -82,4 +82,3 @@ These showcased robots are demonstration platforms; the course provides the tool
 
 <script defer src="{{ '/assets/js/teaching-image-modal.js' | relative_url | bust_file_cache }}"></script>
 <script defer src="{{ '/assets/js/projects-video-modal.js' | relative_url | bust_file_cache }}"></script>
-

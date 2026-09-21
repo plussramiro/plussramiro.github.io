@@ -28,10 +28,11 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-Ramiro Pl&uuml;ss holds a degree in Physics from the National University of Rosario (UNR, FCEIA) and is currently a PhD candidate in Engineering at the Buenos Aires Institute of Technology (ITBA). His research focuses on the bidirectional relationship between structure, neural dynamics, and behavior, examining how anatomical organization shapes neural activity and motor control, and how neural activity and behavior, in turn, shape structure. He combines computational neuroscience, neural network models, and bioinspired robotic systems to study proprioception and embodied motor control.
 
-In previous work, he studied how changes in connection density in adaptive networks affect collective dynamics and network organization, including integration and segregation. He has also applied dynamical network models to human connectome data from control subjects and patients with schizophrenia to improve the modeling of functional connectivity.
+I hold a degree in Physics from the National University of Rosario (UNR, FCEIA) and am currently a PhD candidate in Engineering at the Buenos Aires Institute of Technology (ITBA). My research focuses on the bidirectional relationship between structure, neural dynamics, and behavior, examining how anatomical organization shapes neural activity and motor control, and how neural activity and behavior, in turn, shape structure. I combine computational neuroscience, neural network models, and bioinspired robotic systems to study proprioception and embodied motor control.
 
-Currently, he studies bioinspired robotics and computational neuroscience, focusing on how neural structure and dynamics shape embodied behavior.
+In previous work, I studied how changes in connection density in adaptive networks affect collective dynamics and network organization, including integration and segregation. I have also applied dynamical network models to human connectome data from control subjects and patients with schizophrenia to improve the modeling of functional connectivity.
+
+Currently, I study bioinspired robotics and computational neuroscience, focusing on how neural structure and dynamics shape embodied behavior. As a visiting researcher in Dr. Jimena Berni’s lab at the University of Sussex, I have been analyzing motor circuits in larval and adult _Drosophila_.
 
 <script defer src="{{ '/assets/js/research-image-modal.js' | relative_url | bust_file_cache }}"></script>

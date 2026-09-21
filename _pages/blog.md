@@ -17,6 +17,19 @@ pagination:
 ---
 
 <style>
+  .post-thumbnail-crop {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+
+  .post-thumbnail-crop .card-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: right center;
+  }
+
   .post-meta-mobile {
     display: none;
   }
@@ -101,7 +114,13 @@ pagination:
 </div>
 
   <div class="col-sm-4">
+    {% if post.thumbnail_crop %}
+    <div class="post-thumbnail-crop">
+      <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-position: {{ post.thumbnail_position | default: '50% 50%' }}; transform: scale({{ post.thumbnail_zoom | default: 1 }})" alt="{{ post.thumbnail_alt | default: post.title | escape }}">
+    </div>
+    {% else %}
     <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; width: 100%; height: auto" alt="image">
+    {% endif %}
   </div>
   <div class="col-12">
     <p class="post-meta post-meta-mobile">
@@ -125,6 +144,3 @@ pagination:
 {% endif %}
 
 </div>
-
-
-
