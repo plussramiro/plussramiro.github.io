@@ -73,6 +73,16 @@ cv:
         summary: Scholarship period through February 2023.
 
     Publications:
+      - title: The Role of Connection Density in an Adaptive Network with Chaotic Units
+        releaseDate: 2026
+        publisher: Nonlinear Science, vol. 9, article 100215 (2026)
+        note: "Issue date: 15 December 2026."
+        doi: 10.1016/j.nls.2026.100215
+        arxiv: 2505.11437v3
+        website: https://ri.itba.edu.ar/items/1194e285-a35c-4924-940e-2917bb4b6077
+        website_label: ITBA Repository
+        summary: Ramiro Plüss, Pablo Martín Gleiser.
+
       - title: Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics
         releaseDate: 2026
         publisher: In Computational Neuroscience (LAWCN 2025), A. Talevi and V. Rosa Cota (eds.), CCIS, vol. 2734, pp. 109–121, Springer, Cham (2026)
@@ -82,14 +92,6 @@ cv:
         website: https://ri.itba.edu.ar/items/25f28a1a-fcca-4133-bf65-832ea5ab3c8c
         website_label: ITBA Repository
         summary: Ramiro Plüss, Hernán Villota, Patricio Orio.
-
-      - title: The Role of Connection Density in an Adaptive Network with Chaotic Units
-        releaseDate: 2025
-        publisher: Nonlinear Science, accepted for publication (2026)
-        arxiv: 2505.11437v3
-        website: https://ri.itba.edu.ar/items/1194e285-a35c-4924-940e-2917bb4b6077
-        website_label: ITBA Repository
-        summary: Ramiro Plüss, Pablo Martín Gleiser.
 
     Projects:
       - name: "Whole-brain WC/DMF modeling: hemispheric coupling for multi-scale SC-FC"
