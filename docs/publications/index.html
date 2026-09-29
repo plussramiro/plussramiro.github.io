@@ -829,7 +829,233 @@
 <div class="publications">
 
 <h2 class="bibliography">2026</h2>
-<ol class="bibliography"><li>
+<ol class="bibliography">
+<li>
+<script>
+  (function () {
+    if (!window.__alfolioToggleBibSection) {
+      window.__alfolioToggleBibSection = function (trigger, kind) {
+        if (!trigger) return false;
+
+        var links = null;
+        if (trigger.closest) {
+          links = trigger.closest('.links');
+        }
+        if (!links) {
+          var node = trigger;
+          while (node && node !== document) {
+            if (node.classList && node.classList.contains('links')) {
+              links = node;
+              break;
+            }
+            node = node.parentElement;
+          }
+        }
+        if (!links) return false;
+
+        var entry = links.parentElement;
+        if (!entry) return false;
+
+        var panel = null;
+        var panels = null;
+
+        if (kind === 'bibtex') {
+          panels = entry.querySelectorAll('.bibtex.hidden');
+          if (panels && panels.length) panel = panels[0];
+        } else if (kind === 'award') {
+          panels = entry.querySelectorAll('.award.hidden');
+          if (panels && panels.length) panel = panels[0];
+        } else if (kind === 'video') {
+          panels = entry.querySelectorAll('.abstract.hidden');
+          if (panels && panels.length) panel = panels[panels.length - 1];
+        } else {
+          panels = entry.querySelectorAll('.abstract.hidden');
+          if (panels && panels.length) panel = panels[0];
+        }
+
+        // Fallback: walk siblings after links in case query selectors miss due DOM differences.
+        if (!panel) {
+          var expected = kind === 'bibtex' ? 'bibtex' : kind === 'award' ? 'award' : 'abstract';
+          var sibling = links.nextElementSibling;
+          while (sibling) {
+            if (sibling.classList && sibling.classList.contains(expected) && sibling.classList.contains('hidden')) {
+              panel = sibling;
+              break;
+            }
+            sibling = sibling.nextElementSibling;
+          }
+        }
+
+        if (!panel) return false;
+        panel.classList.toggle('open');
+        return false;
+      };
+    }
+
+    if (!window.__alfolioBibToggleBound) {
+      document.addEventListener('click', function (event) {
+        var trigger = event.target.closest('a[data-bib-toggle]');
+        if (!trigger) return;
+        event.preventDefault();
+        var kind = trigger.getAttribute('data-bib-toggle') || 'abstract';
+        window.__alfolioToggleBibSection(trigger, kind);
+      });
+      window.__alfolioBibToggleBound = true;
+    }
+  })();
+</script>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+          <abbr class="badge rounded w-100" style="background-color:#142d4e">
+            
+              <a href="https://www.sciencedirect.com/journal/nonlinear-science" rel="external nofollow noopener" target="_blank">NLS</a>
+            
+          </abbr>
+        
+      
+      
+        
+          
+          
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/nonlinear-science.jpg" class="preview z-depth-1 rounded" width="100%" height="auto" alt="nonlinear-science.jpg" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+      
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="pluss2025density" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">The Role of Connection Density in an Adaptive Network with Chaotic Units</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      <em>Ramiro
+            Plüss</em>  and <a href="https://scholar.google.com/citations?user=WlU_A_UAAAAJ&amp;hl=es" rel="external nofollow noopener" target="_blank">Pablo Martín
+              Gleiser</a>
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>Nonlinear Science</em>, vol. 9, article 100215
+,  2026
+    </div>
+    <div class="periodical">
+      Issue date: 15 December 2026.
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+        <a href="javascript:void(0);" data-bib-toggle="abstract" class="abstract btn btn-sm z-depth-0" role="button" onclick="return window.__alfolioToggleBibSection(this, 'abstract');">Abs</a>
+      
+      
+        <a href="https://doi.org/10.1016/j.nls.2026.100215" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a>
+      
+      
+        <a href="http://arxiv.org/abs/2505.11437" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <a href="https://ri.itba.edu.ar/items/1194e285-a35c-4924-940e-2917bb4b6077" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">
+          ITBA Repository
+        </a>
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+        <div class="badges">
+          
+          
+          
+            
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=l1XV7YYAAAAJ&amp;citation_for_view=l1XV7YYAAAAJ:u5HHmVD_uO8C" aria-label="Google Scholar link" role="button" rel="external nofollow noopener" target="_blank">
+              
+              
+              
+              
+
+              
+                
+              
+
+              <img src="https://img.shields.io/badge/scholar-1-4285F4?logo=googlescholar&amp;labelColor=beige" alt="1 Google Scholar citations">
+            </a>
+          
+          
+        </div>
+      
+    
+
+    
+
+    
+      <!-- Hidden abstract block -->
+      <div class="abstract hidden">
+        <p>We investigate the role of connection density in an adaptive network model of chaotic units that dynamically rewire based on their internal states and local coherence. By systematically varying the network’s connectivity density, we uncover distinct dynamical regimes and structural transitions, revealing mechanisms of spontaneous modularity, dynamical segregation, and integration. We find that at higher densities, the network exhibits both local clustering and global synchrony. Additionally, we observe that low-density networks tend to fragment into desynchronized clusters, while high-density networks converge to synchronized states combining strong global integration with persistent modular segregation. Inspired by neural architectures, this model provides a general framework for understanding how simple microscopic rules can give rise to complex emergent behaviors in dynamical networks.</p>
+      </div>
+    
+
+    
+
+    
+  </div>
+</div>
+</li>
+<li>
 <script>
   (function () {
     if (!window.__alfolioToggleBibSection) {
@@ -1032,7 +1258,7 @@
                 
               
 
-              <img src="https://img.shields.io/badge/scholar-1-4285F4?logo=googlescholar&amp;labelColor=beige" alt="1 Google Scholar citations">
+              <img src="https://img.shields.io/badge/scholar-2-4285F4?logo=googlescholar&amp;labelColor=beige" alt="2 Google Scholar citations">
             </a>
           
           
@@ -1054,230 +1280,8 @@
     
   </div>
 </div>
-</li></ol>
-<h2 class="bibliography">2025</h2>
-<ol class="bibliography"><li>
-<script>
-  (function () {
-    if (!window.__alfolioToggleBibSection) {
-      window.__alfolioToggleBibSection = function (trigger, kind) {
-        if (!trigger) return false;
-
-        var links = null;
-        if (trigger.closest) {
-          links = trigger.closest('.links');
-        }
-        if (!links) {
-          var node = trigger;
-          while (node && node !== document) {
-            if (node.classList && node.classList.contains('links')) {
-              links = node;
-              break;
-            }
-            node = node.parentElement;
-          }
-        }
-        if (!links) return false;
-
-        var entry = links.parentElement;
-        if (!entry) return false;
-
-        var panel = null;
-        var panels = null;
-
-        if (kind === 'bibtex') {
-          panels = entry.querySelectorAll('.bibtex.hidden');
-          if (panels && panels.length) panel = panels[0];
-        } else if (kind === 'award') {
-          panels = entry.querySelectorAll('.award.hidden');
-          if (panels && panels.length) panel = panels[0];
-        } else if (kind === 'video') {
-          panels = entry.querySelectorAll('.abstract.hidden');
-          if (panels && panels.length) panel = panels[panels.length - 1];
-        } else {
-          panels = entry.querySelectorAll('.abstract.hidden');
-          if (panels && panels.length) panel = panels[0];
-        }
-
-        // Fallback: walk siblings after links in case query selectors miss due DOM differences.
-        if (!panel) {
-          var expected = kind === 'bibtex' ? 'bibtex' : kind === 'award' ? 'award' : 'abstract';
-          var sibling = links.nextElementSibling;
-          while (sibling) {
-            if (sibling.classList && sibling.classList.contains(expected) && sibling.classList.contains('hidden')) {
-              panel = sibling;
-              break;
-            }
-            sibling = sibling.nextElementSibling;
-          }
-        }
-
-        if (!panel) return false;
-        panel.classList.toggle('open');
-        return false;
-      };
-    }
-
-    if (!window.__alfolioBibToggleBound) {
-      document.addEventListener('click', function (event) {
-        var trigger = event.target.closest('a[data-bib-toggle]');
-        if (!trigger) return;
-        event.preventDefault();
-        var kind = trigger.getAttribute('data-bib-toggle') || 'abstract';
-        window.__alfolioToggleBibSection(trigger, kind);
-      });
-      window.__alfolioBibToggleBound = true;
-    }
-  })();
-</script>
-<div class="row">
-  
-    <div class="col col-sm-2 abbr">
-          <abbr class="badge rounded w-100" style="background-color:#b31b1b">
-            
-              <a href="https://arxiv.org/" rel="external nofollow noopener" target="_blank">arXiv</a>
-            
-          </abbr>
-        
-      
-      
-        
-          
-          
-
-
-
-<figure>
-  <picture>
-    <!-- Auto scaling with imagemagick -->
-    <!--
-      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
-      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
-    -->
-    
-    <img src="/assets/img/publication_preview/arxiv.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="arxiv.png" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-  </picture>
-
-  
-</figure>
-
-        
-      
-    </div>
-  
-
-  <!-- Entry bib key -->
-  <div id="pluss2025density" class="col-sm-8">
-    <!-- Title -->
-    <div class="title">The Role of Connection Density in an Adaptive Network with Chaotic Units</div>
-    <!-- Author -->
-    <div class="author">
-      
-
-      
-      <em>Ramiro
-            Plüss</em>  and Pablo Martín
-            Gleiser
-      
-    </div>
-
-    <!-- Journal/Book title and date -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="periodical">
-      <em></em> 2025
-    </div>
-    <div class="periodical">
-      Nonlinear Science, accepted for publication (2026).
-    </div>
-
-    <!-- Links/Buttons -->
-    <div class="links">
-      
-      
-        <a href="javascript:void(0);" data-bib-toggle="abstract" class="abstract btn btn-sm z-depth-0" role="button" onclick="return window.__alfolioToggleBibSection(this, 'abstract');">Abs</a>
-      
-      
-      
-        <a href="http://arxiv.org/abs/2505.11437" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <a href="https://ri.itba.edu.ar/items/1194e285-a35c-4924-940e-2917bb4b6077" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">
-          ITBA Repository
-        </a>
-      
-    </div>
-    
-      
-      
-
-      
-      
-
-      
-      
-
-      
-      
-      
-        <div class="badges">
-          
-          
-          
-            
-            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=l1XV7YYAAAAJ&amp;citation_for_view=l1XV7YYAAAAJ:u5HHmVD_uO8C" aria-label="Google Scholar link" role="button" rel="external nofollow noopener" target="_blank">
-              
-              
-              
-              
-
-              
-                
-              
-
-              <img src="https://img.shields.io/badge/scholar-1-4285F4?logo=googlescholar&amp;labelColor=beige" alt="1 Google Scholar citations">
-            </a>
-          
-          
-        </div>
-      
-    
-
-    
-
-    
-      <!-- Hidden abstract block -->
-      <div class="abstract hidden">
-        <p>We investigate the role of connection density in an adaptive network model of chaotic units that dynamically rewire based on their internal states and local coherence. By systematically varying the network’s connectivity density, we uncover distinct dynamical regimes and structural transitions, revealing mechanisms of spontaneous modularity, dynamical segregation, and integration. We find that at higher densities, the network exhibits both local clustering and global synchrony. Additionally, we observe that low-density networks tend to fragment into desynchronized clusters, while high-density networks converge to synchronized states combining strong global integration with persistent modular segregation. Inspired by neural architectures, this model provides a general framework for understanding how simple microscopic rules can give rise to complex emergent behaviors in dynamical networks.</p>
-      </div>
-    
-
-    
-
-    
-  </div>
-</div>
-</li></ol>
+</li>
+</ol>
 <h2 class="bibliography">2023</h2>
 <ol class="bibliography"><li>
 <script>
