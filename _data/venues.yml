@@ -16,6 +16,10 @@
   url: https://arxiv.org/
   color: "#b31b1b"
 
+"NLS":
+  url: https://www.sciencedirect.com/journal/nonlinear-science
+  color: "#142d4e"
+
 "RePHip":
   url: https://rephip.unr.edu.ar/
   color: "#2d6a4f"
