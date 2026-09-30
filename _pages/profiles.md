@@ -118,6 +118,39 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
 <div class="research-clear"></div>
 <div class="research-divider"></div>
 
+### Collaborative Research (ITBA-University of Sussex)
+
+<div class="research-date-wrap">
+  <span class="research-date-badge">Sep 2026 - Present</span>
+</div>
+
+Research stay at **Brighton and Sussex Medical School, University of Sussex — Brighton, UK**
+
+<div class="profile float-right">
+  <img
+    src="{{ '/assets/img/research-group/berni_lab/sussex-research-visit.jpeg' | relative_url }}"
+    class="img-fluid z-depth-1 rounded teaching-zoomable"
+    alt="Collage of my research visit and presentation at Jimena Berni's lab"
+    loading="lazy"
+    data-zoom-group="sussex-research-visit"
+    data-zoom-title="Research visit to Jimena Berni's lab at the University of Sussex"
+  >
+  <p class="caption">Research visit to Jimena Berni's lab at the University of Sussex.</p>
+</div>
+
+During my research visit to Dr. Jimena Berni's lab in September 2026, I studied motor circuits in larval and adult _Drosophila_, exploring common principles of motor control across developmental stages. I continue to collaborate remotely with the lab on the study of locomotion and its underlying neural circuits in larvae and adult flies.
+
+#### Lead Researcher
+
+**[Dr. Jimena Berni](https://scholar.google.com/citations?user=FXZS8uUAAAAJ&hl=en)** studies how neural circuits develop and generate behavior, with a particular interest in the genetic mechanisms that shape motor networks in _Drosophila_.
+
+#### Lab Focus
+
+The lab investigates how neural circuits assemble and diversify during development, and how their activity generates locomotion and exploratory behavior. Its research combines _Drosophila_ neurogenetics, behavioral analysis, and computational modeling, with particular emphasis on the role of Hox genes in motor circuit development. Learn more in [Jimena Berni's institutional profile at BSMS](https://www.bsms.ac.uk/about/contact-us/staff/dr-jimena-berni.aspx).
+
+<div class="research-clear"></div>
+<div class="research-divider"></div>
+
 ### Collaborative Research (ITBA-UV-IUE)
 
 <div class="research-date-wrap">
@@ -167,6 +200,16 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
 </div>
 
 I maintain a remote collaboration with [Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en) at the [Valparaíso Neural Dynamics Laboratory (VANDAL)](https://vandal-uv.github.io/), the [University of Valparaíso (UV)](https://cinv.uv.cl/), and with [Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es) at the [University Institution of Envigado (IUE)](https://www.iue.edu.co/), focused on connectome-based whole-brain modeling and hemispheric-specific network dynamics. This collaboration originated at the Latin America Summer School of Computational Neuroscience [LACONEU](https://laconeu.cl/) held at the University of Valparaiso, where Patricio Orio served as mentor. Work initiated there later evolved into two posters and a conference paper. The collaboration currently centers on dynamic mean field (DMF) modeling to assess whether this framework improves the simulation of human brain functional activity.
+
+#### Lead Researchers
+
+**[Patricio Orio](https://scholar.google.com/citations?user=S5t5YowAAAAJ&hl=en)** is the principal investigator of the Valparaíso Neural Dynamics Laboratory (VANDAL) and a Full Professor at the University of Valparaíso. He trained as a biochemist and earned his PhD in Sciences at the University of Chile. He served as my mentor at LACONEU, where this collaboration began. More information is available on [VANDAL's people page](https://vandal-uv.github.io/people.html).
+
+**[Hernán Villota](https://scholar.google.com/citations?user=7szEf5IAAAAJ&hl=es)**, at the University Institution of Envigado (IUE), collaborates with me and Patricio on connectome-based whole-brain modeling and hemispheric-specific network dynamics.
+
+#### Lab Focus
+
+[VANDAL](https://vandal-uv.github.io/) uses mathematical modeling and dynamical systems analysis to study how neuronal properties and network topology shape neural activity, including synchronization, multistability, and chaotic dynamics. The lab also investigates sensory processing, including the dynamics of cold-sensitive nerve endings. Within our ITBA-UV-IUE collaboration, we focus on connectome-based models of human brain activity and the relationship between structural and functional connectivity.
 
 <div class="research-clear"></div>
 <div class="research-divider"></div>
