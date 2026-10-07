@@ -124,7 +124,7 @@ The lab combines computational neuroscience, connectomics, complex systems, and 
   <span class="research-date-badge">Sep 2026 - Present</span>
 </div>
 
-Research stay at **Brighton and Sussex Medical School, University of Sussex — Brighton, UK**
+**Research stay at [Berni’s lab](https://www.bsms.ac.uk/about/contact-us/staff/dr-jimena-berni.aspx) (ITBA-University of Sussex)**
 
 <div class="profile float-right">
   <img
@@ -138,7 +138,7 @@ Research stay at **Brighton and Sussex Medical School, University of Sussex — 
   <p class="caption">Research visit to Jimena Berni's lab at the University of Sussex.</p>
 </div>
 
-During my research visit to Dr. Jimena Berni's lab in September 2026, I studied motor circuits in larval and adult _Drosophila_, exploring common principles of motor control across developmental stages. I continue to collaborate remotely with the lab on the study of locomotion and its underlying neural circuits in larvae and adult flies.
+During my research visit to Dr. Jimena Berni's lab at Brighton and Sussex Medical School, University of Sussex, in Brighton, UK, in September 2026, I studied motor circuits in larval and adult _Drosophila_, exploring common principles of motor control across developmental stages. I continue to collaborate remotely with the lab on the study of locomotion and its underlying neural circuits in larvae and adult flies.
 
 #### Lead Researcher
 

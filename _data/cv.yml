@@ -136,6 +136,20 @@ cv:
         summary: '"Why Complex Networks?"'
 
     Poster Presentations:
+      - position: From Neural Structure to Dynamics and Embodied Motor Control
+        name: Workshop on Interdisciplinary and Complex Systems 2026, FCEN–Universidad de Buenos Aires (UBA) and Universidad de San Andrés (UdeSA)
+        location: Buenos Aires, Argentina
+        start_date: 2026-10
+        end_date: 2026-10
+        summary: Ramiro Plüss.
+
+      - position: From Neural Structure to Dynamics and Embodied Motor Control
+        name: Open Science Summer School 2026, University College London (UCL)
+        location: London, United Kingdom
+        start_date: 2026-08
+        end_date: 2026-08
+        summary: Ramiro Plüss.
+
       - position: Hemispheric-Specific Coupling Improves Modeling of Functional Connectivity Using Wilson-Cowan Dynamics
         name: V Latin American Workshop on Computational Neuroscience (LAWCN 2025), Universidad Nacional de La Plata (UNLP)
         location: La Plata, Argentina

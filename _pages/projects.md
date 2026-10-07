@@ -317,7 +317,8 @@ _styles: |
   {% assign categorized_projects = site.projects | where: "category", category %}
   {% assign sorted_projects = categorized_projects | sort: "importance" %}
 
-  {% if category == "Robotics Prototypes & Evolution" %}
+{% if category == "Robotics Prototypes & Evolution" %}
+
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     {% assign robotics_groups = sorted_projects | map: "robotics_group" | uniq %}
     {% for group_key in robotics_groups %}
@@ -405,12 +406,16 @@ _styles: |
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
       {% for project in sorted_projects %}
         {% include projects.liquid %}
+        {% if project.new_row_after and forloop.last == false %}
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+        {% endif %}
       {% endfor %}
     </div>
     {% endif %}
   {% endif %}
 
-  {% endfor %}
+{% endfor %}
 
 {% else %}
 
