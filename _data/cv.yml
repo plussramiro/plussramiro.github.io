@@ -94,6 +94,13 @@ cv:
         summary: Ramiro Plüss, Hernán Villota, Patricio Orio.
 
     Projects:
+      - name: Comparative Analysis of Larval and Adult Drosophila Motor Circuits
+        start_date: 2026-09
+        end_date: Present
+        location: ITBA / University of Sussex
+        url: /projects/drosophila-motor-circuits/
+        summary: Comparative connectomic analysis of larval and adult Drosophila motor circuits, exploring how their structural organization relates to locomotion across developmental stages. Ongoing collaboration with Dr. Jimena Berni, initiated during a research visit to her lab at the University of Sussex.
+
       - name: "Whole-brain WC/DMF modeling: hemispheric coupling for multi-scale SC-FC"
         start_date: 2025-12
         end_date: Present
@@ -144,7 +151,7 @@ cv:
         summary: Ramiro Plüss.
 
       - position: From Neural Structure to Dynamics and Embodied Motor Control
-        name: Open Science Summer School 2026, University College London (UCL)
+        name: Open Software Summer School 2026, University College London (UCL)
         location: London, United Kingdom
         start_date: 2026-08
         end_date: 2026-08
@@ -222,63 +229,74 @@ cv:
 
     Competitive Grants, Fellowships & Travel Awards:
       - title: The Company of Biologists Travelling Fellowship
+        url: https://www.biologists.com/grants/travelling-fellowships/
         date: 2026-09
         summary: Competitive research-travel fellowship awarded through The Company of Biologists’ journal Development for a collaborative research visit to Dr. Jimena Berni’s group at Brighton and Sussex Medical School, UK.
+        location: Brighton, UK
 
-      - title: UCL Open Software Summer School
+      - title: Open Software Summer School (OSSS)
         awarder: University College London
-        location: UK
+        location: London, UK
         date: 2026-08
         summary: Selected participant; awarded travel and accommodation support.
+        url: https://neuroinformatics.dev/open-software-summer-school/index.html
 
-      - title: Konstanz School of Collective Behaviour
+      - title: Konstanz School of Collective Behaviour (KSCB)
         awarder: University of Konstanz
-        location: Germany
+        location: Konstanz, Germany
         start_date: 2026-07
         end_date: 2026-08
         summary: Selected participant; awarded travel and accommodation support.
+        url: https://www.exc.uni-konstanz.de/kscb/
 
       - title: School on the Origins of Life, Behavior and Cognition
         awarder: ICTP-SAIFR
         location: São Paulo, Brazil
         date: 2025-03
         summary: Selected participant; awarded travel and accommodation support.
+        url: "https://www.ictp-saifr.org/solbc2025/"
 
       - title: "School on Synchronization: from collective motion to brain dynamics"
         awarder: ICTP-SAIFR
         location: São Paulo, Brazil
         date: 2025-02
         summary: Selected participant; awarded travel and accommodation support.
+        url: "https://www.ictp-saifr.org/sscmbd2025/"
 
       - title: Latin American Summer School of Computational Neuroscience
         awarder: Universidad de Valparaíso
         location: Chile
         date: 2025-01
         summary: Selected participant; awarded travel and accommodation support.
+        url: "https://2025.laconeu.cl/"
 
       - title: IRCN/Chen Institute Joint Course on Neuro-inspired Computation
         awarder: University of Tokyo
         location: Japan
         date: 2024-07
         summary: Selected participant; awarded travel and accommodation support.
+        url: "https://ircn.jp/en/events/07_ircncourse2024"
 
       - title: Latin American School of Computational Neuroscience
         awarder: University of São Paulo
         location: Brazil
         date: 2024-01
         summary: Selected participant; awarded accommodation support.
+        url: "https://sisne.org/en/previous-editions-of-lascon/#:~:text=LASCON%20IX"
 
     Certificates:
       - name: Open Software Summer School (OSSS)
         issuer: Neuroinformatics Unit
         location: London, UK
         date: 2026-08
+        url: https://neuroinformatics.dev/open-software-summer-school/index.html
 
-      - name: Summer School on Collective Behavior
+      - name: Konstanz School of Collective Behaviour (KSCB)
         issuer: University of Konstanz
         location: Konstanz, Germany
         start_date: 2026-07
         end_date: 2026-08
+        url: https://www.exc.uni-konstanz.de/kscb/
 
       - name: Spring School on Deep Learning
         issuer: University of Buenos Aires (UBA)
@@ -290,19 +308,19 @@ cv:
         issuer: Abdus Salam International Centre for Theoretical Physics - South American Institute for Fundamental Research (ICTP - SAIFR)
         location: São Paulo, Brazil
         date: 2025-03
-        url: https://www.ictp-saifr.org/solbc2025/
+        url: "https://www.ictp-saifr.org/solbc2025/"
 
       - name: School on Synchronization, from Collective Motion to Brain Dynamics
         issuer: Abdus Salam International Centre for Theoretical Physics - South American Institute for Fundamental Research (ICTP - SAIFR)
         location: São Paulo, Brazil
         date: 2025-02
-        url: https://www.ictp-saifr.org/sscmbd2025/
+        url: "https://www.ictp-saifr.org/sscmbd2025/"
 
       - name: Latin American Summer School of Computational Neuroscience (LACONEU VII)
         issuer: University of Valparaiso (UV)
         location: Valparaiso, Chile
         date: 2025-01
-        url: https://laconeu.cl
+        url: "https://2025.laconeu.cl/"
 
       - name: Artificial Intelligence Systems
         issuer: Buenos Aires Institute of Technology (ITBA)
@@ -326,7 +344,7 @@ cv:
         issuer: International Research Center for Neurointelligence, University of Tokyo (IRCN - UT)
         location: Tokyo, Japan
         date: 2024-07
-        url: https://ircn.jp/en/events/07_ircncourse2024
+        url: "https://ircn.jp/en/events/07_ircncourse2024"
 
       - name: Neuroscience and Productive Development
         issuer: Buenos Aires Institute of Technology (ITBA)
@@ -392,6 +410,7 @@ cv:
         position: Presented the Bioinspired Robotics course to prospective students
         start_date: 2026-06
         end_date: 2026-06
+        url: "https://www.itba.edu.ar/itba-future-day-2026/"
 
       - company: MiniLabs ITBA
         position: Bio-inspired robotics demos for prospective high-school students
@@ -412,6 +431,7 @@ cv:
         location: CABA, Argentina
         start_date: 2025-11
         end_date: 2025-11
+        url: "/media/#donor-appreciation-2025"
 
       - company: ITBA Future Day
         position: Presented the Bioinspired Robotics course to prospective students

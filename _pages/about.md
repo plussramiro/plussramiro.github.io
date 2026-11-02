@@ -33,6 +33,6 @@ I hold a degree in Physics from the National University of Rosario (UNR, FCEIA) 
 
 In previous work, I studied how changes in connection density in adaptive networks affect collective dynamics and network organization, including integration and segregation. I have also applied dynamical network models to human connectome data from control subjects and patients with schizophrenia to improve the modeling of functional connectivity.
 
-Currently, I study bioinspired robotics and computational neuroscience, focusing on how neural structure and dynamics shape embodied behavior. As a visiting researcher in Dr. Jimena Berni’s lab at the University of Sussex, I have been analyzing motor circuits in larval and adult _Drosophila_.
+Currently, I study bioinspired robotics and computational neuroscience, focusing on how neural structure and dynamics shape embodied behavior. Following my research visit to Dr. Jimena Berni’s lab at the University of Sussex in September 2026, I continue to collaborate remotely with the group on the analysis of motor circuits in larval and adult _Drosophila_.
 
 <script defer src="{{ '/assets/js/research-image-modal.js' | relative_url | bust_file_cache }}"></script>

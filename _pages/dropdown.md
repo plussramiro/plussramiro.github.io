@@ -8,8 +8,6 @@ dropdown: true
 children:
   - title: Media
     permalink: /media/
-  - title: Talks
-    permalink: /talks/
   - title: Repositories
     permalink: /repositories/
   - title: Teaching
