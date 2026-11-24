@@ -13,7 +13,7 @@ figure_captions:
 
 I developed CNScope during the BrainGlobe track at the UCL Summer School in 2026. The viewer brings anatomical labels, selected neuronal morphologies, and electron microscopy (EM) into a shared napari coordinate space, making it possible to explore the Male CNS connectome at different spatial scales.
 
-[View the code, configuration, and usage instructions on GitHub](https://github.com/plussramiro/male-cns-napari-viewer).
+View the code, configuration, and usage instructions on [GitHub](https://github.com/plussramiro/male-cns-napari-viewer).
 
 ### Dataset and motivation
 
@@ -42,5 +42,5 @@ I aligned neuropil segmentations, neuronal skeletons and somas, and multiscale E
 ### Sources and related work
 
 - [Male CNS connectome: dataset, publication, and access tools](https://www.janelia.org/project-team/flyem/male-cns-connectome). Data acquired, reconstructed, and annotated by Janelia FlyEM, the Cambridge Drosophila Connectomics Group / MRC LMB, and Google Research; distributed under CC BY.
-- [Male CNS napari viewer repository](https://github.com/plussramiro/male-cns-napari-viewer), including setup instructions and data attribution.
+- Male CNS napari viewer repository on [GitHub](https://github.com/plussramiro/male-cns-napari-viewer), including setup instructions and data attribution.
 - [TRex Data to Movement]({{ '/projects/trex-to-movement/' | relative_url }}), my other UCL project, focused on behavioral tracking data.

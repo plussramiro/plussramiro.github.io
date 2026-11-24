@@ -285,6 +285,13 @@ cv:
         url: "https://sisne.org/en/previous-editions-of-lascon/#:~:text=LASCON%20IX"
 
     Certificates:
+      - name: ROS 2 Workshop
+        issuer: Argentine Robotics Conference (JAR)
+        issuer_url: https://www.jar.net.ar/index.html
+        location: Rosario, Argentina
+        date: 2026-11
+        url: https://www.jar.net.ar/taller-ros.html
+
       - name: Open Software Summer School (OSSS)
         issuer: Neuroinformatics Unit
         location: London, UK

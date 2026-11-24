@@ -13,7 +13,7 @@ figure_captions:
 
 During the UCL Summer School in 2026, I implemented a workflow that converts TRex trajectory CSV files into datasets compatible with the Movement Python package. I used larval tracking data to connect data loading with quality control, filtering, and visual inspection.
 
-[View the code and usage instructions on GitHub](https://github.com/plussramiro/trexdata_to_movement).
+View the code and usage instructions on [GitHub](https://github.com/plussramiro/trexdata_to_movement).
 
 ### What the tool does
 
@@ -45,3 +45,5 @@ For the larval dataset, the example analyzes 20–860 seconds, excludes trajecto
 The example data come from [Mudunuri and Vogt (2025), Social behavior in Drosophila larva](https://doi.org/10.48606/f2edp3nxb0mmddgj), University of Konstanz, distributed under CC BY 4.0. The associated publication is [Mudunuri, Zadigue-Dubé and Vogt (2026)](https://doi.org/10.1126/sciadv.ady0750).
 
 My [individual and group behavior project]({{ '/projects/larval-individual-group-behavior/' | relative_url }}) explores the behavioral questions and random-walk models using these data.
+
+The workflow code and usage instructions are available on [GitHub](https://github.com/plussramiro/trexdata_to_movement).

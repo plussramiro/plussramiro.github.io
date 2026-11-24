@@ -19,7 +19,9 @@ figure_captions:
 We study how connection density shapes synchronization, integration, and modular organization in adaptive dynamical networks. In this project, connectivity evolves jointly with node dynamics, giving rise to transitions from fragmented, desynchronized regimes to globally integrated yet modular synchronized states.
 
 Links:
+
+- Pl&uuml;ss and Gleiser (2026), _Nonlinear Science_, [DOI 10.1016/j.nls.2026.100215](https://doi.org/10.1016/j.nls.2026.100215)
+- Code and data on [GitHub](https://github.com/plussramiro/The-Role-of-Connection-Density-in-an-Adaptive-Network-with-Chaotic-Units)
 - Pl&uuml;ss and Gleiser (2025), ITBA repository: [https://hdl.handle.net/20.500.14769/5113](https://hdl.handle.net/20.500.14769/5113)
 - Pl&uuml;ss and Gleiser (2025), arXiv: [https://arxiv.org/abs/2505.11437v3](https://arxiv.org/abs/2505.11437v3)
 - van den Heuvel et al. (2016), comparative connectomics: [https://doi.org/10.1016/j.tics.2016.03.001](https://doi.org/10.1016/j.tics.2016.03.001)
-
