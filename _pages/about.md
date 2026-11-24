@@ -9,6 +9,7 @@ subtitle: "<em>Computational Neuroscience, Connectomics, Complex Systems & Bioin
 profile:
   align: right
   image: ramiropluss.jpg
+  image_alt: Portrait of Ramiro Plüss with his arms crossed
   image_circular: false # use rectangular image (not cropped to circle)
   more_info: >
     <p><i class="fa-solid fa-atom fa-sm"></i> Physicist (UNR)</p>

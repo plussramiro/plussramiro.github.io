@@ -19,6 +19,7 @@ layout: default
       <div class="profile profile-about float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {%- assign profile_image_alt = page.profile.image_alt | default: page.profile.image %}
           {% if page.profile.image_circular %}
             {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
           {% else %}
@@ -36,7 +37,7 @@ layout: default
             aria-label="Open profile image"
           >
             {%
-              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile_image_alt
               cache_bust=true
             %}
           </a>
